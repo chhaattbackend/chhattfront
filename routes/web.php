@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'PropertyController@home')->name('home');
 Route::get('/property', 'PropertyController@index')->name('property');
 Route::get('/agency', 'AgencyController@index')->name('agency');
+Route::post('/agency/ajax', 'AgencyController@ajax');
+
 Route::get('/contact', 'PropertyController@home')->name('contact');
 Route::get('/wanted', 'PropertyController@home')->name('wanted');
 
