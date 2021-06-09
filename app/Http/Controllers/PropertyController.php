@@ -49,12 +49,36 @@ class PropertyController extends Controller
      */
 
      
-    public function home(Request $request){
+    public function home(Request $request)
+    {
+
+        if (isset($request->type)) {
+            if($request->type == 'All'){
+
+                $property = Property::paginate(10);
+        $data= view('frontend.home.list',compact('property'))->render();
+                return response()->json([
+            'data' => $data,
+            // 'pagination' => (string) $areas->links()
+        ]);
+            }
+        $property=Property::where('type',$request->type)->paginate(10);
+        $data= view('frontend.home.list',compact('property'))->render();
+
+        return response()->json([
+            'data' => $data,
+            // 'pagination' => (string) $areas->links()
+        ]);
+
+        }
 
         $property=Property::paginate(10);
-        
         return view('frontend.home.index',compact('property'));
     }
+
+
+
+
     public function index(Request $request)
     {
 
