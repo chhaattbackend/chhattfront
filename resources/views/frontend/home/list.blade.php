@@ -1,4 +1,4 @@
-@foreach ($collection as $item)
+@foreach ($property as $item)
 
 
     <li class="scroll-img-list ms-3 me-1 p-2">

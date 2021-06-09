@@ -12,12 +12,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', 'PropertyController@home');
 
-Route::get('/', 'Property');
 
-Route::get('/home', function () {
-    return view('frontend.home');
-});
+Route::resource('properties', 'PropertyController');
+
+// Route::get('/', function () {
+//     return view('frontend.home.index');
+// });
 
 Route::get('property', function () {
     return view('property');

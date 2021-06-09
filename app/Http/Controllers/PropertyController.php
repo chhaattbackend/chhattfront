@@ -47,6 +47,14 @@ class PropertyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     
+    public function home(Request $request){
+
+        $property=Property::paginate(10);
+        
+        return view('frontend.home.index',compact('property'));
+    }
     public function index(Request $request)
     {
 
