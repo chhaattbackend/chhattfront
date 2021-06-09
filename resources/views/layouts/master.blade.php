@@ -1,63 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <link href="/favicon.ico" rel="icon">
-    <meta content="width=device-width,initial-scale=1,user-scalable=0" name="viewport">
-    <meta charset="utf-8">
-    <meta content="#007BFF" name="theme-color">
-    <link href="/manifest.json" rel="manifest">
-    <link href="https://chhatt.com/" rel="canonical" data-basehost="chhatt.com" data-baseprotocol="https:">
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-
-    <title>Pakistan’s Best Property Real Estate - Buy Sell and Build Properties | Chhatt.com</title>
-    <meta content="Pakistan’s Best Property Real Estate - Buy Sell and Build Properties | Chhatt.com" data-react-helmet="true" property="og:title">
-    <meta content="Browse the best property real estate and construction material providers in Pakistan. Buy, sell and rent properties, shops and commercial plots at Chhatt.com." data-react-helmet="true" name="description">
-    <meta content="summary_large_image" data-react-helmet="true" name="twitter:card">
-    <meta content="" data-react-helmet="true" name="twitter:site">
-    <meta content="Pakistan’s Best Property Real Estate - Buy Sell and Build Properties | Chhatt.com" data-react-helmet="true" name="twitter:title">
-    <meta content="Pakistan’s Best Property Real Estate - Buy Sell and Build Properties | Chhatt.com" data-react-helmet="true" itemprop="name">
-    <meta content="Browse the best property real estate and construction material providers in Pakistan. Buy, sell and rent properties, shops and commercial plots at Chhatt.com." data-react-helmet="true" itemprop="description">
-    <meta content="Browse the best property real estate and construction material providers in Pakistan. Buy, sell and rent properties, shops and commercial plots at Chhatt.com." data-react-helmet="true" property="og:description">
-    <meta content="Browse the best property real estate and construction material providers in Pakistan. Buy, sell and rent properties, shops and commercial plots at Chhatt.com." data-react-helmet="true" name="twitter:description">
-    <meta content="Browse the best property real estate and construction material providers in Pakistan. Buy, sell and rent properties, shops and commercial plots at Chhatt.com." data-react-helmet="true" itemprop="description">
-    <meta content="" data-react-helmet="true" property="og:image">
-    <meta content="" data-react-helmet="true" name="twitter:image">
-    <meta content="" data-react-helmet="true" itemprop="image">
-    <meta content="https://www.chhatt.com/" data-react-helmet="true" property="og:url">
-    <meta content="https://www.chhatt.com/" data-react-helmet="true" itemprop="url">
-    <link href="https://www.google-analytics.com" rel="preconnect">
-    <link href="https://stats.g.doubleclick.net" rel="preconnect">
-    <link href="https://dev.chhatt.com" rel="preconnect">
-    <link href="https://chhatt.s3.ap-south-1.amazonaws.com" rel="preconnect">
-    <noscript>
-        <link href="/static/css/2.783abc39.chunk.css" rel="stylesheet"><link href="/static/css/main.3cafa4fc.chunk.css" rel="stylesheet">3
-    </noscript>
-    <link href="/static/css/2.783abc39.chunk.css" rel="preload" as="style" onload="this.rel='stylesheet'">
-    <link href="/static/css/main.3cafa4fc.chunk.css" rel="preload" as="style" onload="this.rel='stylesheet'">
-
-    <!-- custom-css -->
-    @yield('custom-css')
-    <!-- custom-css end -->
+<head>
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+    <meta charset="utf-8" />
+    <meta name="theme-color" content="#007BFF" />
+    <link rel="stylesheet" type="text/css" href="./styles/home/home.css" />
+    <link rel="stylesheet" type="text/css" href="./styles/index.css" />
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 </head>
 
 <body>
+
     <div id="root">
-        <div>
-            <div>
-                @include('layouts.header')
-                @yield('content')
-                @include('layouts.footer')
-        </div>
+        <!-- HEADER START -->
+        @include('layouts.header')
+        <!-- HEADER END -->
+        @yield('content')
+
+        
+
+        <br />
+
+        <!-- explorer start -->
+        {{-- @include('layouts.explorer') --}}
+
+        
+        <!-- explorer end -->
+        {{-- <br /> --}}
+        <!-- == TEXT CONTENT START == -->
+        {{-- @include('layouts.twocard') --}}
+        {{-- @include('layouts.textcontent') --}}
+        
+        <!-- == TEXT CONTENT END == -->
+
+
+
     </div>
 
-    <script src="https://www.google-analytics.com/analytics.js" async></script>
-    <script src="/static/js/2.fd4fb1ca.chunk.js"></script>
-    <script src="/static/js/main.e120e58d.chunk.js"></script>
 
-    <!-- custom-css -->
-    @yield('custom-js')
-    <!-- custom-css end -->
+    <!-- two-cards start -->
+    
+    <!-- tow cards end -->
+
+    <!-- == NEWSLETTER START == -->
+
+    <!-- == NEWSLETTER END == -->
+
+
+    <!-- footr start -->
+    @include('layouts.footer')
+
+    <!-- footr end -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous">
+    </script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script>
+        var scrolled = 0;
+        $(".scroll-left").on("click", function() {
+            scrolled = scrolled - 300;
+            $("#box-wrapper").animate({
+                scrollLeft: scrolled,
+            });
+        });
+        $(".scroll-right").on("click", function() {
+            scrolled = scrolled + 300;
+            $("#box-wrapper").animate({
+                scrollLeft: scrolled,
+            });
+        });
+
+        var scrolled = 0;
+        $(".scroll-left2").on("click", function() {
+            scrolled = scrolled - 300;
+            $("#box-wrapper2").animate({
+                scrollLeft: scrolled,
+            });
+        });
+        $(".scroll-right2").on("click", function() {
+            scrolled = scrolled + 300;
+            $("#box-wrapper2").animate({
+                scrollLeft: scrolled,
+            });
+        });
+        var scrolled = 0;
+        $(".scroll-left2").on("click", function() {
+            scrolled = scrolled - 300;
+            $("#box-wrapper2").animate({
+                scrollLeft: scrolled,
+            });
+        });
+        $(".scroll-right2").on("click", function() {
+            scrolled = scrolled + 300;
+            $("#box-wrapper2").animate({
+                scrollLeft: scrolled,
+            });
+        });
+
+    </script>
 </body>
 
 </html>

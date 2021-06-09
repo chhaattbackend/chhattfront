@@ -1,58 +1,143 @@
-<footer class="Style_main_div__2Oe0L">
-    <div class="Style_sub_div__3_1FU">
-        <div class="Style_fdiv__2nTiL">
-            <div class="Style_call__kzEDm">
-                <div class="Style_callimg__GUqWQ"><img alt="chhatt" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAABgAAAAYADwa0LPAAAAB3RJTUUH5QMNDBYjiHK/XQAAAexJREFUSMe1lDFIW1EUhr9zoWheIUKDWQp2KYjQQCUUQpcurSWLgotUknTIVIqFgh2KlRDSxSlklgZpBLeWN7hIhU6loE4mOlgXKRSVtGAxKtV3OphHQqvkge/90x0+7vnuufdcgTc3VCsV0KcwPg5YYAytxKBeB1NHk0koPBezsoJPMaBVGBu7oLCbdYhEQGeQkRG/CrcJ8BgODzuj+h2NRoMQmIGdHQ9sGYnHgxCYgLU1D+w9GBgIQgCw7c6oXoe5uQAEGhVYWgJG0QvfwiOoVuHaLZicDECgeF/k6Aj0F1Iu/4/IFCwuQl5EGg2/BaS1zKk60SicJpCtLeAhhMNAFk5OwPRDPA6FPyK1mo8dcJMXMXt7QAYtFNqYd9DVBc4oatstUd870IqqCExNwMICEG5+VG6+odvbYD6cf0xuR15+UQ2FIHQHikWQJ5BOg36EzU2QjfNpkwewuwvyAmxbLnfLqaplwWkOXV4GzpBEog1oXg2voFQCViGZBFIQi3k4/G3Y35fOXE5Vu7vhLAKzs6DPIJXy6wpMZyQvIsfH8PYnZDKgv5vj+AkODq4q4KEDl+X1D3V6e0FqyPQ0SBGyWeAuWJaHDRrgOFcQ+DfuI7TSMDQEfEWHh4GbMDgIvEf6+oDP0NMDlGB+/i+uaqK6LvNHWwAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMS0wMy0xM1QxMjoyMjozNSswMDowMGvx7q8AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjEtMDMtMTNUMTI6MjI6MzUrMDA6MDAarFYTAAAAAElFTkSuQmCC"></div>
-                <div class="Style_txt_div__32hGa">
-                    <p class="m-0">Phone</p>
-                    <p class="m-0">033 02 244288</p>
-                </div>
-            </div>
-            <div class="Style_call1__2XSHO">
-                <div class="Style_callimg__GUqWQ"><img alt="mail" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAABgAAAAYADwa0LPAAAAB3RJTUUH5QMNDBcq6LU2uAAAAd9JREFUSMfl1D1I1XEUxvHP7991uZpgREu02CCBkEiDNKW4GEIlQUtSGORQQmSDoHWFGqKpaIkiCxWnCIJAsAhCECFJXLTBtmi6RNxehu6l01ARRJGZUtCzn+d7Xh4O/7sSg60RW7fiIFev4rDYuXMdmePSwgLu0NeXwxtx+zZeSu3tuCSt99z19bgpamoysg5pYIA4zZMn643GNRYWMCkND2fEI1FXR9UmWlqIAr29eEiptAbALvHuHbGdgQFyRbFrF2lC5PMZsUd68IBycO8e6YaYnCQ3S0MDZhgbwxARK+fGee7fxyw7dqCN0VEqbdLICPFQmprKvhWks3R2ooWlJcq3OHKE3CPR08PH17S2Yh+Liz8g9rG8THpPRwdVSRw4QHordXWRDvHsGXbT3Y0LpJT9wOiuVF1Nes7Fi1Q2S3NzZHcplykVRXMzsZ+hIZyhUKD0VDQ2EqOiWKT8SpqZIUpcvox2amu/hyUGByNWtNqvJ9jL+DgfJ0R/P3FFqlTYsI3hYSxz8iTyZNmvTH+ngZ+EyzkpJTSRz/+uSYYXfPiwiga+nGp14K/cDJfE9PQqDP5UBfH4cY7cFo4epbLxS1jmRVMTrpPW8ice/5yhOCHNz5OOSadO/YXB/zF9Ai7arlR0niHNAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIxLTAzLTEzVDEyOjIzOjQyKzAwOjAwS1GyBgAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMS0wMy0xM1QxMjoyMzo0MiswMDowMDoMCroAAAAASUVORK5CYII="></div>
-                <div class="Style_txt_div__32hGa">
-                    <p class="m-0">Email</p>
-                    <p class="m-0">info@Chhatt.com</p>
-                </div>
-            </div>
-            <div class="Style_call2__2BVHN">
-                <div class="Style_callimg__GUqWQ"><img alt="calling" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAABgAAAAYADwa0LPAAAAB3RJTUUH5QMNDBU0IIxpWQAAAkZJREFUSMedlU9IVFEUxn/naZCDOitRokUbhRpXgiKDi8IQI1pUiP8WbgIXghCN6ThtoqYxohZKYC7amKBJjIugTdpi1IkRiUATRkRXxUAF6UbSeafFOM7QvHHe89tcePc73/fdc7nnCTagKgKBKHR1gTRDby9oBK2ry6K9QFZXgdswPg7BWzA9DSCimk9b8tu2takWFUGNCyYngfPQ2Wkn8BHWYWoK4megpwdmZ0WSyf9JRv766mcwPGxh/AsOD0FewdJSZk1/P4YHuruh5inq9zvowN1l1ZIScJmQSAAfoKwMuAZ7e2B8RZub4VGfGCsrmbrAFTUbGlKq8/OAF0pLgY+wuwvFn6GyEh6KyP7+CR1wVaH19VnG6axdMDqaa5xG8JMYsRjIT3RsLGvjKpSXw9/3R7qFrkAiqQIrbG/buPs/yNZW7uei3+B22whgPoedHQvhKmhpKexvvoHWVouD3UFyD3DCKwhcUl1bA26Cx5O1sQwjI1C8ANmtTjZBfz/oZRgczOKHYX0dgt9EamudBHip2t4OfE+/51PiHHR0QLBPZGbGQYDjAXQPFheBs+D1OjB2QywGwfvQ2AjWA8k4SSFVYH4Bnw94APknWi7Mi6jPl8/YVoAUQgsi0SjwGubm7LU8HIbQDTEikUJkGwGOT/QOHRoC+uDgwIKQnpDXIRCwq+ogQGhBjHgcNAETExaEptRP6PEFkY0Nu6pil5iB/4eaFRVgrCGbm0AJGAboW7S6Gp6MipFIONd1jOGQmgMDmfV0+AflncQw6gBhegAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMS0wMy0xM1QxMjoyMTo1MiswMDowMIMOYqUAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjEtMDMtMTNUMTI6MjE6NTIrMDA6MDDyU9oZAAAAAElFTkSuQmCC"></div>
-                <div class="Style_txt_div__32hGa">
-                    <p class="m-0">Address</p>
-                    <p class="m-0">9-C Khayaban-e-Abbasi, D.H.A Phase 7</p>
-                    <p class="m-0">Ext Karachi, city, Sindh 75500</p>
-                </div>
-            </div>
+<div class="newsletterContainer">
+        <div class="innerNewsletter d-flex justify-content-between align-items-center text-white">
+          <div>
+            <h3>Newsletter</h2>
+            <h6>Subscribe for newsletter and receive latest updates and trends about chhatt.com</h5>
+          </div>
+          <div class="inpContainer d-flex">
+            <input type="text" name="" id="" placeholder="search">
+            <button>Subscribe</button>
+          </div>
         </div>
-        <div class="Style_sdiv__14QZ2">
-            <p><b>Company</b></p>
-            <ul>
-                <a href="/">
-                    <li>Home</li>
+      </div>
+
+<footer class="main_foter">
+        <div class="sub_div">
+          <div class="fdiv">
+            <div class="call">
+              <div class="callimg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#007bff" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                </svg>
+              </div>
+              <div class="txt_div">
+                <p class="m-0">Phone</p>
+                <a class="m-0" href="tel:03302244288">
+                  033 02 244288
                 </a>
-                <li><a href="/real-estate-agencies">Agencies</a></li>
-                <li><a href="/about-us">About Us</a></li>
-                <li><a href="/contact-us">Contact Us</a></li>
-            </ul>
-        </div>
-        <div class="Style_tdiv__2kdYl"><img alt="Chhatt Logo" src="/static/media/chhattLogo.fa186d01.png" title="Chhatt">
-            <p>Chhatt is a powerful platform which aims at connecting realtors,builders,developers,brokers with right kind of clientele for variouse types of properties from various mediums. It is a mix of a web platform as well as a mobile
-                application(s)</p>
-            <div class="Style_play__3GBtc">
-                <div class="Style_playHeading__1L9Yc">
-                    <h1>Get in Touch</h1>
-                </div>
-                <div class="Style_playIcons__2llv5"><a href="https://www.instagram.com/chhattcom/?igshid=1aynfz0mquewo" class="Style_icon__3oFj- Style_instagram__3u4dG"><svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="25" stroke="currentColor" stroke-width="0" width="25"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg></a>
-                    <a href="https://www.facebook.com/ChhattPK/" class="Style_icon__3oFj- Style_facebook__1iWwQ"><svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="25" stroke="currentColor" stroke-width="0" width="25"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"></path></svg></a>
-                    <a href="https://www.youtube.com/channel/UCrQuXvCQMRvNSpaU3znG9cA/featured" class="Style_icon__3oFj- Style_youtube__TDLxj"><svg viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="25" stroke="currentColor" stroke-width="0" width="25"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg></a>
-                    <a href="https://www.linkedin.com/company/chhatt-com" class="Style_icon__3oFj- Style_linkedin__2lGUP"><svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="25" stroke="currentColor" stroke-width="0" width="25"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></a>
-                    <a class="Style_icon__3oFj- Style_google__18FSk"><svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="25" stroke="currentColor" stroke-width="0" width="25" style="padding-left:.2rem"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"></path></svg></a>
-                </div>
+              </div>
             </div>
+            <div class="call1">
+              <div class="callimg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#007bff" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+                </svg>
+              </div>
+              <div class="txt_div">
+                <p class="m-0">Email</p>
+                <a class="m-0" href="mailto:info@Chhatt.com">
+                  info@Chhatt.com
+                </a>
+              </div>
+            </div>
+            <div class="call2">
+              <div class="callimg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#007bff" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                </svg>
+              </div>
+              <div class="txt_div">
+                <p class="m-0">Address</p>
+                <p class="m-0">9-C Khayaban-e-Abbasi, D.H.A Phase 7</p>
+                <p class="m-0">Ext Karachi, city, Sindh 75500</p>
+              </div>
+            </div>
+          </div>
+          <div class="sdiv">
+            <p>
+              <b>Company</b>
+            </p>
+            <ul>
+              <Link to="/">
+                <li>Home</li>
+              </Link>
+               <!-- <li>
+                <Link to="/FeaturedProjectsPage">Projects</Link>
+              </li>  -->
+              <li>
+                <Link to="/real-estate-agencies">Agencies</Link>
+              </li>
+              <!--  <li>
+                <Link to="/maps">Maps</Link>
+              </li>  -->
+              <li>
+                <Link to="/about-us">About Us</Link>
+              </li>
+              <li>
+                <Link to="/contact-us">Contact Us</Link>
+              </li>
+            </ul>
+          </div>
+          <div class="tdiv">
+            <img src="./assets/chhattLogo.png" alt="Chhatt Logo" title="Chhatt" />
+            <p>
+              Chhatt is a powerful platform which aims at connecting
+              realtors,builders,developers,brokers with right kind of clientele
+              for variouse types of properties from various mediums. It is a mix
+              of a web platform as well as a mobile application(s)
+            </p>
+            <div class="play">
+              <!--  <p>
+                <b>Search, Compare & Get</b>
+              </p>  -->
+  
+              <div class="playHeading">
+                <h4 class="font-weight-bold">Get in Touch</h4>
+              </div>
+              <div class="playIcons">
+                <a
+                  href="https://www.instagram.com/chhattcom/?igshid=1aynfz0mquewo"
+                  class="icon instagram"
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 15">
+                  <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+                </svg>
+                </a>
+
+                <a
+                  href="https://www.facebook.com/ChhattPK/"
+                  class="icon facebook"
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                </svg>
+                </a>
+                <a
+                  href="https://www.youtube.com/channel/UCrQuXvCQMRvNSpaU3znG9cA/featured"
+                  class="icon youtube"
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="30" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
+                  <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
+                </svg>
+                </a>
+                <a class="icon google">
+                  <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="25px" height="30px"><path d="M 7.125 2 L 28.78125 23.5 L 34.71875 17.5625 L 8.46875 2.40625 C 8.03125 2.152344 7.5625 2.011719 7.125 2 Z M 5.3125 3 C 5.117188 3.347656 5 3.757813 5 4.21875 L 5 46 C 5 46.335938 5.070313 46.636719 5.1875 46.90625 L 27.34375 24.90625 Z M 36.53125 18.59375 L 30.1875 24.90625 L 36.53125 31.1875 L 44.28125 26.75 C 45.382813 26.113281 45.539063 25.304688 45.53125 24.875 C 45.519531 24.164063 45.070313 23.5 44.3125 23.09375 C 43.652344 22.738281 38.75 19.882813 36.53125 18.59375 Z M 28.78125 26.3125 L 6.9375 47.96875 C 7.300781 47.949219 7.695313 47.871094 8.0625 47.65625 C 8.917969 47.160156 26.21875 37.15625 26.21875 37.15625 L 34.75 32.25 Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-    <div class="Style_footerbottom__2Yugr">
-        <div class="Style_footersub_div__1ZRrl">
-            <p class="m-0">©2021 <span style="color:#007bff">Chhatt</span>, All rights reserved</p><a class="soll"><button><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="1em" stroke="currentColor" stroke-width="0" width="1em" style="color:#fff;font-size:30px"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg></button></a></div>
-    </div>
-</footer>
+        <div class="footerbottom">
+          <div class="footersub_div">
+            <p class="m-0">
+              &copy;2021 <span style="color: #007BFF">Chhatt</span>, All
+              rights reserved
+            </p>
+              <button>
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#fff" class="bi bi-arrow-up-short" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
+                </svg>
+              </button>
+          </div>
+        </div>
+      </footer>
