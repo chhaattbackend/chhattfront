@@ -22,8 +22,8 @@ Route::get('/wanted', 'PropertyController@home')->name('wanted');
 
 // Route::resource('properties', 'PropertyController');
 
-// Route::get('/', function () {
-//     return view('frontend.home.index');
+// Route::get('/agency', function () {
+//     return view('frontend.agency.index');
 // });
 
 // Route::get('property', function () {

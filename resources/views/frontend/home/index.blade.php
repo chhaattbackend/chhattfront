@@ -1,10 +1,14 @@
 @extends('layouts.master')
 
+@section('style')
+    <link rel="stylesheet" type="text/css" href="./styles/home/home.css" />
+@endsection
+
 @section('headercontent')
-<div class="mn_div">
+    <div class="mn_div">
           <div class="backg">
             <div class="backg_sdiv">
-              <h1>Find the Best Properties and Construction Material</h1>
+              <h1>hello</h1>
               <div class="main_bar">
 
               </div>
