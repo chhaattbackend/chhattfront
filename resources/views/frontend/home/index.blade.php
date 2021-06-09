@@ -85,7 +85,10 @@
 
     <script>
         function getListdata(type) {
-            // console.log(e);
+            console.log(type);
+            if(type==='All'){
+                
+            }
 
             $.ajax({
                 type: "get",

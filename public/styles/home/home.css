@@ -1,5 +1,11 @@
 /* HEADER START */
 
+.paraContainer .title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .main_div {
     top: 0;
     position: absolute;
