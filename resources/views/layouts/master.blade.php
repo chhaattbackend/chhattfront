@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
     <meta charset="utf-8" />
     <meta name="theme-color" content="#007BFF" />
-    <link rel="stylesheet" type="text/css" href="./styles/home/home.css" />
+
+    @yield('style')
     <link rel="stylesheet" type="text/css" href="./styles/index.css" />
     <!-- CSS only -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">

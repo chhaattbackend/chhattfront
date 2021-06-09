@@ -26,32 +26,37 @@ class AgencyController extends Controller
 
     public function index(Request $request)
     {
-        if (!$request->keyword) {
-            $agencies = Agency::orderBy('created_at', 'desc')->paginate(25);
-        } else {
+        // if (!$request->keyword) {
+        //     $agencies = Agency::orderBy('created_at', 'desc')->paginate(25);
+        // } else {
 
-            $seacrh = $request->keyword;
-            $agencies = Agency::where('id', '!=', null)->orderBy('created_at', 'desc');
+        //     $seacrh = $request->keyword;
+        //     $agencies = Agency::where('id', '!=', null)->orderBy('created_at', 'desc');
 
-            $agencies = $agencies->whereHas('user', function ($query) use ($seacrh) {
-                $query->where('name', 'like', '%' . $seacrh . '%');
-            })->orWhereHas('areaOne', function ($query) use ($seacrh) {
-                $query->where('name', 'like', '%' . $seacrh . '%');
-            })->orWhereHas('areaTwo', function ($query) use ($seacrh) {
-                $query->where('name', 'like', '%' . $seacrh . '%');
-            })->orWhereHas('user', function ($query) use ($seacrh) {
-                $query->where('phone',$seacrh);
-            })->orWhere('id',$seacrh)
-            ->orWhere('name', 'like', '%' . $seacrh . '%')
-            ->paginate(25)->setPath('');
+        //     $agencies = $agencies->whereHas('user', function ($query) use ($seacrh) {
+        //         $query->where('name', 'like', '%' . $seacrh . '%');
+        //     })->orWhereHas('areaOne', function ($query) use ($seacrh) {
+        //         $query->where('name', 'like', '%' . $seacrh . '%');
+        //     })->orWhereHas('areaTwo', function ($query) use ($seacrh) {
+        //         $query->where('name', 'like', '%' . $seacrh . '%');
+        //     })->orWhereHas('user', function ($query) use ($seacrh) {
+        //         $query->where('phone',$seacrh);
+        //     })->orWhere('id',$seacrh)
+        //     ->orWhere('name', 'like', '%' . $seacrh . '%')
+        //     ->paginate(25)->setPath('');
 
-            $pagination = $agencies->appends(array(
-                'keyword' => $request->keyword
-            ));
-        }
-        $area_one = AreaOne::all();
-        $area_two = AreaTwo::all();
-        return view('admin.agency.index', compact('agencies', 'area_one', 'area_two'));
+        //     $pagination = $agencies->appends(array(
+        //         'keyword' => $request->keyword
+        //     ));
+        // }
+        // $area_one = AreaOne::all();
+        // $area_two = AreaTwo::all();
+        // return view('admin.agency.index', compact('agencies', 'area_one', 'area_two'));
+
+
+
+    return view('frontend.agency.index');
+
     }
 
 
