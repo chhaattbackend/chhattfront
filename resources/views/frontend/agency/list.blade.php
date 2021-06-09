@@ -11,7 +11,8 @@
                 <div class="text-dark paraContainer">
                     <div class="mt-1">
                         <div class="d-flex justify-content-between">
-                            <h6 class="lightColor">{{ $item->areaOne->city->name }}</h6>
+                            {{-- <h6 class="lightColor">{{ $item->areaOne->city->name }}</h6> --}}
+                            <h6 class="lightColor">Karachi</h6>
                         </div>
                         <div class="text-start mt-2">
                             <strong class="mt-5">{{ $item->name }}</strong>
