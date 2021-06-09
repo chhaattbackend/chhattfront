@@ -83,29 +83,31 @@ class PropertyController extends Controller
 
     public function index(Request $request)
     {
-        // if (isset($request->type)) {
-        //     if($request->type == 'All'){
+        if (isset($request->type)) {
+            if($request->type == 'All'){
 
-        //         $property = Property::paginate(10);
-        // $data= view('frontend.home.list',compact('property'))->render();
-        //         return response()->json([
-        //     'data' => $data,
-        //     // 'pagination' => (string) $areas->links()
-        // ]);
-        //     }
-        // $property=Property::where('type',$request->type)->paginate(10);
-        // $data= view('frontend.home.list',compact('property'))->render();
+                $property = Property::paginate(10);
+                $agencies = Agency::paginate(10);
+        $data= view('frontend.home.list',compact('property'))->render();
+                return response()->json([
+            'data' => $data,
+            // 'pagination' => (string) $areas->links()
+        ]);
+            }
+        $property=Property::where('type',$request->type)->paginate(10);
+        $agencies = Agency::paginate(10);
+        $data= view('frontend.home.list',compact('property'))->render();
 
-        // return response()->json([
-        //     'data' => $data,
-        //     // 'pagination' => (string) $areas->links()
-        // ]);
+        return response()->json([
+            'data' => $data,
+            // 'pagination' => (string) $areas->links()
+        ]);
 
-        // }
+        }
 
         $properties=Property::paginate(28);
         $agencies = Agency::paginate(10);
-       
+
 
         return view('frontend.property.index',compact('properties','agencies'));
 

@@ -32,16 +32,16 @@
             <div class="sul">
                 <ul>
                     <li title="All" class="active_bestProperties" id="allBtn">
-                        <button>All</button>
+                        <button onclick="getListdata('All')">All</button>
                     </li>
                     <li title="Residential" id="resBtn">
-                        <button variant="contained">Residential</button>
+                        <button onclick="getListdata('Residential')" variant="contained">Residential</button>
                     </li>
                     <li title="Commercial" id="comBtn">
-                        <button>Commercial</button>
+                        <button onclick="getListdata('Commercial')">Commercial</button>
                     </li>
                     <li title="Industrial" id="indBtn">
-                        <button>Industrial</button>
+                        <button onclick="getListdata('Industrial')">Industrial</button>
                     </li>
                     <li title="View all" class="viewall">
                         <button>View all</button>
