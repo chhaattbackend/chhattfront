@@ -15,6 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body>
@@ -25,20 +26,20 @@
         <!-- HEADER END -->
         @yield('content')
 
-        
+
 
         <br />
 
         <!-- explorer start -->
         {{-- @include('layouts.explorer') --}}
 
-        
+
         <!-- explorer end -->
         {{-- <br /> --}}
         <!-- == TEXT CONTENT START == -->
         {{-- @include('layouts.twocard') --}}
         {{-- @include('layouts.textcontent') --}}
-        
+
         <!-- == TEXT CONTENT END == -->
 
 
@@ -47,7 +48,7 @@
 
 
     <!-- two-cards start -->
-    
+
     <!-- tow cards end -->
 
     <!-- == NEWSLETTER START == -->

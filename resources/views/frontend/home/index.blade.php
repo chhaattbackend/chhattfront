@@ -85,10 +85,12 @@
 
     <script>
         function getListdata(type) {
-            console.log(type);
-            if(type==='All'){
+            $('#box-wrapper').addClass('animate__animated animate__fadeOut');
+
+            // console.log(type);
+            // if(type==='All'){
                 
-            }
+            // }
 
             $.ajax({
                 type: "get",
@@ -101,26 +103,10 @@
                    type: type
                 },
                 success: function(responese) {
-                    // $('#tick').show();
-                    // setTimeout(function() {
-                    //     $('#tick').hide();
-                    // }, 3000);
-                    // alert("#visit_date".id)
-                    // alert(date)
-                    // console.log(responese.data);
-
+                    $('#box-wrapper').removeClass('animate__animated animate__fadeOut');                    
                     $('#box-wrapper').html(responese.data);
+                    $('#box-wrapper').addClass('animate__animated animate__fadeIn');
 
-                    // $("#visit_date"+id).text(date);
-                    // $("#visit_date" + id).text('{{ date('D, d-m-Y', strtotime('responese.date')) }}');
-                    // // $("#visit_date" + id).color('green');
-                    // $("#visit_date2" + id).show();
-                    // $("#visit_date2" + id).text('{{ date('h:i A', strtotime('responese.date')) }}');
-
-
-
-
-                    // setTimeout(function(){ $("#tick").css("display", "block"); },2000);
                 },
             });
         }
