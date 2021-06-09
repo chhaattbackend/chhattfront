@@ -9,7 +9,7 @@
     <div class="mn_div">
         <div class="backg">
             <div class="backg_sdiv">
-                <h1>sammer</h1>
+                <h1>Find the Best Real Estate Agencies</h1>
                 <div class="main_bar">
 
                 </div>
@@ -19,6 +19,8 @@
 @endsection
 
 @section('content')
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
 
     <div>
         <div class="agency-search">
@@ -37,7 +39,7 @@
                         </span>
                         <!-- search field start  -->
                         <div>
-                            <input type="text" placeholder="try Something 'Final'" />
+                            <input id="keyword" type="text" placeholder="try Something 'Final'" />
                         </div>
                     </div>
                 </div>
@@ -49,72 +51,19 @@
     <!-- AGENCIES START -->
     <!-- propertylist start -->
     <div id="bestProperty" class="propertylist mapCardContainer">
-        <h6 class="text-end fw-bold">Showing 2206 Results</h6>
+        <h6 id="total" class="text-end fw-bold">Showing {{ $agencies->total() }} Results</h6>
         <br />
         <!--  property slider -->
 
         <!-- PROPERTY CARD START -->
         <div class="mapCardContainer">
             <div class="container-fluid px-0">
-                <div class="row">
-                    <div class="col-sm-4 col-lg-3 mb-4">
-                        <!-- property card start -->
-                        <div class="propertyCard p-2">
-                            <a class="text-decoration-none position-relative" href="#">
-                                <div class="imageSection">
-                                    <img class="slideImg"
-                                        src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
-                                        alt="" />
-                                </div>
-                                <div class="text-dark paraContainer">
-                                    <div class="mt-1">
-                                        <div class="d-flex justify-content-between">
-                                            <h6 class="lightColor">Residential</h6>
-                                        </div>
-                                        <div class="text-start mt-2">
-                                            <strong class="mt-5">Flat For Sale in DHA Phase 6</strong>
-                                        </div>
-                                        <h6 class="text-start mt-2">
-                                            <strong>
-                                                Rs: 1.2 Cr.
-                                            </strong>
-                                        </h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- property card end -->
-                    </div>
+                <div id="list" class="row">
+                    @include('frontend.agency.list')
 
-                    <div class="col-sm-4 col-lg-3 mb-4">
-                        <!-- property card start -->
-                        <div class="propertyCard p-2">
-                            <a class="text-decoration-none position-relative" href="#">
-                                <div class="imageSection">
-                                    <img class="slideImg"
-                                        src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
-                                        alt="" />
-                                </div>
-                                <div class="text-dark paraContainer">
-                                    <div class="mt-1">
-                                        <div class="d-flex justify-content-between">
-                                            <h6 class="lightColor">Residential</h6>
-                                        </div>
-                                        <div class="text-start mt-2">
-                                            <strong class="mt-5">Flat For Sale in DHA Phase 6</strong>
-                                        </div>
-                                        <h6 class="text-start mt-2">
-                                            <strong>
-                                                Rs: 1.2 Cr.
-                                            </strong>
-                                        </h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- property card end -->
-                    </div>
-                    
+                </div>
+                <div id="wow" class="justify-content-center pagination">
+                    {{ $agencies->links() }}
                 </div>
                 <br />
                 <hr class="bg-dark" />
@@ -124,6 +73,60 @@
         </div>
         <!--  PROPERTY CARD START  -->
     </div>
+
+
+    <script>
+        $('#keyword').on('keyup', function() {
+            var value = $(this).val();
+            $('#list').addClass('animate__animated animate__fadeOut');
+
+            // console.log(value);
+            ajaxSearch(value)
+        });
+
+
+
+        function ajaxSearch(value, page) {
+            $.ajax({
+                type: "POST",
+                url: "agency/ajax" + "?page=" + page,
+                dataType: 'JSON',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    keyword: value,
+                },
+                success: function(responese) {
+
+
+                    // console.log(responese.pagination)
+                    $('#list').removeClass('animate__animated animate__fadeOut');
+
+                    // console.log(responese.pagination)
+
+                    $('#list').html(responese.data);
+                    $('#list').addClass('animate__animated animate__fadeIn');
+                    $('#wow').html(responese.pagination);
+                    $('#total').html('Showing ' + responese.total + ' Results');
+                },
+            });
+        }
+        //   {{-- ajaxSearch --}}
+
+        //   {{-- ajaxPagination --}}
+        $(document).on('click', '.pagination a', function(event) {
+            event.preventDefault();
+            value = $('#keyword').val();
+            var href = $(this).attr('href');
+            var page = $(this).attr('href').split('page=')[1];
+            $('#list').addClass('animate__animated animate__fadeOut');
+
+            // console.log(href);
+            ajaxSearch(value, page)
+        });
+
+    </script>
 
 
 @endsection
