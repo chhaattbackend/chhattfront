@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Agency;
 use App\AreaOne;
 use App\AreaThree;
 use App\AreaTwo;
@@ -79,44 +80,34 @@ class PropertyController extends Controller
 
 
 
+
     public function index(Request $request)
     {
+        // if (isset($request->type)) {
+        //     if($request->type == 'All'){
 
-        if (!$request->keyword) {
+        //         $property = Property::paginate(10);
+        // $data= view('frontend.home.list',compact('property'))->render();
+        //         return response()->json([
+        //     'data' => $data,
+        //     // 'pagination' => (string) $areas->links()
+        // ]);
+        //     }
+        // $property=Property::where('type',$request->type)->paginate(10);
+        // $data= view('frontend.home.list',compact('property'))->render();
 
-            $properties = Property::orderBy('created_at', 'desc')->paginate(25);
-        } else {
+        // return response()->json([
+        //     'data' => $data,
+        //     // 'pagination' => (string) $areas->links()
+        // ]);
 
-            $seacrh = $request->keyword;
-            $properties = Property::where('id', '!=', null)->orderBy('updated_at', 'desc');
+        // }
 
-            $properties = $properties->whereHas('user', function ($query) use ($seacrh) {
-                $query->where('name', 'like', '%' . $seacrh . '%');
-            })->orWhereHas('user', function ($query) use ($seacrh) {
-                $query->whereHas('agent', function ($query) use ($seacrh) {
-                    $query->whereHas('agency', function ($query) use ($seacrh) {
-                        $query->where('name', 'like', '%' . $seacrh . '%');
-                    });
-                });
-            })->orWhereHas('areaOne', function ($query) use ($seacrh) {
-                $query->where('name', 'like', '%' . $seacrh . '%');
-            })->orWhereHas('areaTwo', function ($query) use ($seacrh) {
-                $query->where('name', 'like', '%' . $seacrh . '%');
-            })->orWhereHas('areaThree', function ($query) use ($seacrh) {
-                $query->where('name', 'like', '%' . $seacrh . '%');
-            })->orWhere('name', 'like', '%' . $seacrh . '%')
-                ->orWhere('type', 'like', '%' . $seacrh . '%')
-                ->orWhere('id',$seacrh)
-                ->orWhere('description', 'like', '%' . $seacrh . '%')
-                ->paginate(25)->setPath('');
+        $properties=Property::paginate(28);
+        $agencies = Agency::paginate(10);
+       
 
-            $pagination = $properties->appends(array(
-                'keyword' => $request->keyword
-            ));
-        }
-
-
-        return view('frontend.property.index', compact('properties'));
+        return view('frontend.property.index',compact('properties','agencies'));
 
     }
 

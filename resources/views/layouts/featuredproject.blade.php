@@ -13,7 +13,7 @@
                 <div class="imageSection">
                   <img
                   class="slideImg"
-                    src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
+                    src="assets/welcomeCenter.webp"
                     alt=""
                   />
                 </div>
