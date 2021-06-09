@@ -1,5 +1,17 @@
 @extends('layouts.master')
 
+@section('headercontent')
+<div class="mn_div">
+          <div class="backg">
+            <div class="backg_sdiv">
+              <h1>Find the Best Properties and Construction Material</h1>
+              <div class="main_bar">
+
+              </div>
+            </div>
+          </div>
+        </div>
+@endsection
 @section('content')
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
@@ -89,7 +101,7 @@
 
             // console.log(type);
             // if(type==='All'){
-                
+
             // }
 
             $.ajax({
@@ -103,7 +115,7 @@
                    type: type
                 },
                 success: function(responese) {
-                    $('#box-wrapper').removeClass('animate__animated animate__fadeOut');                    
+                    $('#box-wrapper').removeClass('animate__animated animate__fadeOut');
                     $('#box-wrapper').html(responese.data);
                     $('#box-wrapper').addClass('animate__animated animate__fadeIn');
 

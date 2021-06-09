@@ -48,7 +48,7 @@ class PropertyController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     
+
     public function home(Request $request)
     {
 
@@ -83,10 +83,10 @@ class PropertyController extends Controller
     {
 
         if (!$request->keyword) {
-            
+
             $properties = Property::orderBy('created_at', 'desc')->paginate(25);
         } else {
-            
+
             $seacrh = $request->keyword;
             $properties = Property::where('id', '!=', null)->orderBy('updated_at', 'desc');
 
@@ -115,10 +115,8 @@ class PropertyController extends Controller
             ));
         }
 
-        $area_one = AreaOne::all();
-        $area_two = AreaTwo::all();
 
-        return view('admin.property.index', compact('properties', 'area_one', 'area_two'));
+        return view('frontend.property.index', compact('properties'));
 
     }
 
@@ -161,8 +159,8 @@ class PropertyController extends Controller
             $marker = 1;
         }
 
-       $property = Property::create($request->except('images','platform')+['platform'=>$request->platform]); 
-         
+       $property = Property::create($request->except('images','platform')+['platform'=>$request->platform]);
+
         return redirect()->route('properties.index');
     }
 

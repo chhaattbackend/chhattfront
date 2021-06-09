@@ -1,92 +1,201 @@
 @extends('layouts.master')
 
-@section('content')
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
+@section('headercontent')
+    <div class="mn_div">
+        <div class="backg">
+            <div class="backg_sdiv">
+                <h1>Search Your Desire Property</h1>
+                <div class="main_bar">
 
-
-    <div class="pageContainer">
-
-        <div class="container-fluid">
-            <!-- TW CARDS START -->
-            <div class="twoCards mt-5 text-center">
-                <h2 class="fw-bolder">Find the Business in town</h2>
-                <div class="mt-5 d-flex justify-content-center">
-                    <div>
-                        <div class="card1">
-                            <a href="#">
-                                <img src="assets/propertyhigh.webp" alt="propertyhigh">
-                            </a>
-                            <a href="">
-                            </a>
-                        </div>
-                        <a class="mt-5 text-decoration-none text-dark" href="">
-                            <h4 class="mt-2 fw-bold">Realtor</h4>
-                        </a>
-                    </div>
-                    <div>
-                        <div class="card2 ms-4">
-                            <a href="#">
-                                <img src="assets/realtorhigh.webp" alt="propertyhigh">
-                            </a>
-                            <a href="">
-                            </a>
-                        </div>
-                        <a class="text-decoration-none text-dark" href="">
-                            <h4 class="mt-2 fw-bold">Property</h4>
-                        </a>
-                    </div>
                 </div>
             </div>
-            <!-- TW CARDS END -->
-            <br>
-            <hr>
-            <br>
-
-            <!-- BEST PROPERTY START -->
-            <div>
-                <div class="d-flex justify-content-between">
-                    <h2 class="fw-bold">Best properties for you</h2>
-                    <div class="d-flex">
-                        <div>
-                            <button onclick="getListdata('All')" class="themebtn text-white px-3 py-1">All</button>
-                            <button onclick="getListdata('Residential')" class="themebtnUnPressed px-3 py-1 ms-1">Residential</button>
-                            <button onclick="getListdata('Commercial')" class="themebtnUnPressed px-3 py-1 ms-1">Commercial</button>
-                            <button onclick="getListdata('Industrial')" class="themebtnUnPressed px-3 py-1 ms-1">Industrial</button>
-                        </div>
-                        <div class="ms-4">
-                            <button class="themebtn2 px-3 py-1 ms-1">View all</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="position-relative mt-5">
-                    <div class="sliderBtnLeft text-right m-auto">
-                        <i class="scroll-left bi bi-arrow-left-circle-fill"></i>
-                    </div>
-                    <!--image allary list-->
-                    <ul id="box-wrapper" class="boxWrapper ps-0">
-                        @include('frontend.home.list')
-
-                    </ul>
-                    <div class="sliderBtnRight col-1 m-auto">
-                        <i class="scroll-right bi bi-arrow-right-circle-fill"></i>
-                    </div>
-                </div>
-            </div>
-            <!-- BEST PROPERTY END -->
         </div>
     </div>
 
+@endsection
 
-
-    @include('layouts.explorer')
+@section('content')
     <br>
-    @include('layouts.textcontent')
-    @include('layouts.twocard')
+    <hr>
+    <br>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
+    <div id="bestProperty" class="propertylist">
+        <div class="secdiv">
+            <div class="secdivtxt">
+                <h3 class="fw-bold">Best properties for you</h3>
+            </div>
+            <div class="sul">
+                <ul>
+                    <li title="All" class="active_bestProperties" id="allBtn">
+                        <button>All</button>
+                    </li>
+                    <li title="Residential" id="resBtn">
+                        <button variant="contained">Residential</button>
+                    </li>
+                    <li title="Commercial" id="comBtn">
+                        <button>Commercial</button>
+                    </li>
+                    <li title="Industrial" id="indBtn">
+                        <button>Industrial</button>
+                    </li>
+                    <li title="View all" class="viewall">
+                        <button>View all</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <br />
+        <!--  property slider -->
+
+        <!-- PROPERTY CARD START -->
+        <div class="mapCardContainer">
+            <div class="container-fluid">
+                <div class="row px-2">
+                    <div class="col-sm-4 col-lg-3 mb-4">
+                        <!-- property card start -->
+                        <div class="propertyCard p-2">
+                            <a class="text-decoration-none position-relative" href="#">
+                                <div class="imageSection">
+                                    <img class="slideImg"
+                                        src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
+                                        alt="" />
+                                </div>
+                                <div class="text-dark paraContainer">
+                                    <div class="mt-1">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="lightColor">Residential</h6>
+                                            <h6 class="lightColor">an hour ago</h6>
+                                        </div>
+                                        <div class="mt-2">
+                                            <strong class="mt-5">Flat For Sale in DHA Phase 6</strong>
+                                        </div>
+                                        <h6 class="mt-2">
+                                            <strong>
+                                                Rs: 1.2 Cr.
+                                            </strong>
+                                        </h6>
+                                    </div>
+                                    <div class="d-flex justify-content-between mt-3">
+                                        <button class="w-100 themebtn py-1 text-white">View more</button>
+                                        <button class="w-100 ms-3">Contact Us</button>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- property card end -->
+                    </div>
+                    <div class="col-sm-4 col-lg-3 mb-4">
+                        <!-- property card start -->
+                        <div class="propertyCard p-2">
+                            <a class="text-decoration-none position-relative" href="#">
+                                <div class="imageSection">
+                                    <img class="slideImg"
+                                        src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
+                                        alt="" />
+                                </div>
+                                <div class="text-dark paraContainer">
+                                    <div class="mt-1">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="lightColor">Residential</h6>
+                                            <h6 class="lightColor">an hour ago</h6>
+                                        </div>
+                                        <div class="mt-2">
+                                            <strong class="mt-5">Flat For Sale in DHA Phase 6</strong>
+                                        </div>
+                                        <h6 class="mt-2">
+                                            <strong>
+                                                Rs: 1.2 Cr.
+                                            </strong>
+                                        </h6>
+                                    </div>
+                                    <div class="d-flex justify-content-between mt-3">
+                                        <button class="w-100 themebtn py-1 text-white">View more</button>
+                                        <button class="w-100 ms-3">Contact Us</button>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- property card end -->
+                    </div>
+                    <div class="col-sm-4 col-lg-3 mb-4">
+                        <!-- property card start -->
+                        <div class="propertyCard p-2">
+                            <a class="text-decoration-none position-relative" href="#">
+                                <div class="imageSection">
+                                    <img class="slideImg"
+                                        src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
+                                        alt="" />
+                                </div>
+                                <div class="text-dark paraContainer">
+                                    <div class="mt-1">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="lightColor">Residential</h6>
+                                            <h6 class="lightColor">an hour ago</h6>
+                                        </div>
+                                        <div class="mt-2">
+                                            <strong class="mt-5">Flat For Sale in DHA Phase 6</strong>
+                                        </div>
+                                        <h6 class="mt-2">
+                                            <strong>
+                                                Rs: 1.2 Cr.
+                                            </strong>
+                                        </h6>
+                                    </div>
+                                    <div class="d-flex justify-content-between mt-3">
+                                        <button class="w-100 themebtn py-1 text-white">View more</button>
+                                        <button class="w-100 ms-3">Contact Us</button>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- property card end -->
+                    </div>
+                    <div class="col-sm-4 col-lg-3 mb-4">
+                        <!-- property card start -->
+                        <div class="propertyCard p-2">
+                            <a class="text-decoration-none position-relative" href="#">
+                                <div class="imageSection">
+                                    <img class="slideImg"
+                                        src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
+                                        alt="" />
+                                </div>
+                                <div class="text-dark paraContainer">
+                                    <div class="mt-1">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="lightColor">Residential</h6>
+                                            <h6 class="lightColor">an hour ago</h6>
+                                        </div>
+                                        <div class="mt-2">
+                                            <strong class="mt-5">Flat For Sale in DHA Phase 6</strong>
+                                        </div>
+                                        <h6 class="mt-2">
+                                            <strong>
+                                                Rs: 1.2 Cr.
+                                            </strong>
+                                        </h6>
+                                    </div>
+                                    <div class="d-flex justify-content-between mt-3">
+                                        <button class="w-100 themebtn py-1 text-white">View more</button>
+                                        <button class="w-100 ms-3">Contact Us</button>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- property card end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  PROPERTY CARD START  -->
+    </div>
+    @include('layouts.agency')
+    @include('layouts.explorer')
+    @include('layouts.featuredproject')
     <script>
         function getListdata(type) {
             console.log(type);
-            if(type==='All'){
+            if (type === 'All') {
 
             }
 
@@ -98,7 +207,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 data: {
-                   type: type
+                    type: type
                 },
                 success: function(responese) {
                     // $('#tick').show();

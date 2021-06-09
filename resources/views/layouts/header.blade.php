@@ -28,14 +28,5 @@
             </div>
           </div>
         </div>
-        <div class="mn_div">
-          <div class="backg">
-            <div class="backg_sdiv">
-              <h1>Find the Best Properties and Construction Material</h1>
-              <div class="main_bar">
-                  
-              </div>
-            </div>
-          </div>
-        </div>
+        @yield('headercontent')
       </header>
