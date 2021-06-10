@@ -19,9 +19,7 @@
 @endsection
 
 @section('content')
-    <br>
-    <hr>
-    <br>
+
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <div id="bestProperty" class="propertylist">
@@ -82,14 +80,14 @@
 
                                     <div class="imageSection">
                                         @if ($item->images != null)
-                                        <img class="slideImg"
-                                        src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ $item->images[0]->name }}"
-                                            alt="" />
-                                    @else
-                                        <img src="https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"
-                                            alt="" class="slideImg">
+                                            <img class="slideImg"
+                                                src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ $item->images[0]->name }}"
+                                                alt="" />
+                                        @else
+                                            <img src="https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"
+                                                alt="" class="slideImg">
 
-                                    @endif
+                                        @endif
                                     </div>
                                     <div class="text-dark paraContainer">
                                         <div class="mt-1">
@@ -99,7 +97,8 @@
                                                 </h6>
                                             </div>
                                             <div class="mt-2">
-                                                <strong class="mt-5">{{ $item->property_type}} {{ $item->property_for }} in {{ $item->areaOne->name }} {{ $item->areaTwo->name }}</strong>
+                                                <strong class="mt-5">{{ $item->property_type }} {{ $item->property_for }}
+                                                    in {{ $item->areaOne->name }} {{ $item->areaTwo->name }}</strong>
                                             </div>
                                             <h6 class="mt-2">
                                                 <strong>
@@ -122,13 +121,42 @@
                 </div>
 
             </div>
-            @include('layouts.agency')
+            <hr style="background-color: black">
+
+
+            @include('layouts.featuredproject')
         </div>
+        <br><br><br>
+        <div class="maindiv marginTop">
+            <div class="innerDiv">
+                <div class="secOne">
+                    <h2>Visit Our Construction Site</h2>
+                </div>
+                <div class="secTwo">
+                    Chhatt Media Pvt.ltd commonly known as chhatt.com is a powerful
+                    platform which aims at connecting the realtors, builders,
+                    developers, brokers with right kind of clientele for various types
+                    of properties from various mediums.
+                </div>
+                <div class="secThree">
+                    <!-- <Link to='/construction'> -->
+                    <button>Visit Now</button>
+                    <!-- </Link> -->
+                </div>
+            </div>
+        </div>
+        <div class="mapCardContainer">
+
+            @include('layouts.agency')
+
+        </div>
+
         <!--  PROPERTY CARD START  -->
 
     </div>
 
-    @include('layouts.featuredproject')
+
+
     @include('layouts.explorer')
     <script>
         function getListdata(type) {
