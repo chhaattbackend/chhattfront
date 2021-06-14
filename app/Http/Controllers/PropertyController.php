@@ -38,11 +38,24 @@ class PropertyController extends Controller
         $pagination = $properties->appends(array(
             'search_areas' => $request->search_areas
         ));
+        // $currentURL = url()->current();
+        // $currentURL = url()->full();
+        // $url = url()->previous();
 
-        return response()->json([
-            'data' => $properties
-        ]);
+            // dd($currentURL);
+
+        // return response()->json([
+        //     'data' => $properties
+        // ]);
+
+        return view('frontend.property.search',compact('properties'));
     }
+
+    public function singleProperty($id)
+    {
+        dd($id);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -73,8 +86,10 @@ class PropertyController extends Controller
 
         }
 
+        $city=City::all();
+
         $property=Property::paginate(10);
-        return view('frontend.home.index',compact('property'));
+        return view('frontend.home.index',compact('property','city'));
     }
 
 

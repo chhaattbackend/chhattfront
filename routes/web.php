@@ -13,20 +13,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', 'PropertyController@home')->name('home');
+
 Route::get('/property', 'PropertyController@index')->name('property');
+// Route::get('/property/{id}', 'PropertyController@index')->name('single.property');
+Route::get('/search', 'PropertyController@search')->name('property.search');
+
 Route::get('/agency', 'AgencyController@index')->name('agency');
+Route::get('/agency/{id}', 'AgencyController@singleAgency')->name('single.agency');
 Route::post('/agency/ajax', 'AgencyController@ajax');
 
 Route::get('/contact', 'PropertyController@home')->name('contact');
-Route::get('/wanted', 'PropertyController@home')->name('wanted');
+// Route::get('/wanted', 'PropertyController@home')->name('wanted');
 
 
 
 // Route::resource('properties', 'PropertyController');
 
-// Route::get('/agency', function () {
-//     return view('frontend.agency.index');
-// });
+
+
+Route::get('/wanted', function () {
+    return view('frontend.property.search');
+})->name('wanted');
 
 // Route::get('property', function () {
 //     return view('property');
