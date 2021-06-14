@@ -22,7 +22,9 @@ Route::get('/agency', 'AgencyController@index')->name('agency');
 Route::get('/agency/{id}', 'AgencyController@singleAgency')->name('single.agency');
 Route::post('/agency/ajax', 'AgencyController@ajax');
 
-Route::get('/contact', 'PropertyController@home')->name('contact');
+Route::get('/contact', function () {
+    return view('layouts.contact');
+})->name('contact');
 // Route::get('/wanted', 'PropertyController@home')->name('wanted');
 
 

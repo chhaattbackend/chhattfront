@@ -12,7 +12,7 @@
     <div class="mn_div">
         <div class="backg">
             <div class="backg_sdiv">
-                <h1>Find the Best Real Estate Agencies</h1>
+                <h1>{{ $agency->name }}</h1>
                 <div class="main_bar">
 
                 </div>
@@ -29,24 +29,24 @@
         <div class="right_side">
             <div class="agencyDetails">
                 <h3>
-                    Agency Name
+                    {{ $agency->name }}
                 </h3>
                 <hr />
                 <div class="imgDetails">
-                    <img src="https://images.unsplash.com/photo-1464646690318-73d48f8bdc15?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c2VhJTIwc2lkZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                        alt="" />
+                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/agencies/{{ $agency->image }}" alt="" />
                     <div class="right_side">
                         <div>
                             <h6>Name</h6>
                             <h3>
-                                Sameer Shaikh
+                                {{ $agency->user->name }}
                             </h3>
                         </div>
                         <br />
                         <div>
                             <h6>Contact</h6>
                             <h3>
-                                03358485588
+                                {{ $agency->user->phone }}
+
                             </h3>
                         </div>
                         <br />
@@ -60,10 +60,12 @@
                 <div class="bottom_section">
                     <div class="left_side">
                         <div>
-                            Agents : 90
+                            Agents : {{ $agency->agents()->count() }}
+
                         </div>
                         <div>
-                            100
+
+                            Properties : {{ $totalproperties }}
                         </div>
                     </div>
                     <div class="right_side">
@@ -78,7 +80,8 @@
         <div class="contactContainer">
             <h2>Contact Us</h2>
             <Button class="showNumber">
-                268445848484
+                {{ $agency->user->phone }}
+
             </Button>
             <hr />
             <div class="innerContactform">
@@ -111,106 +114,29 @@
             <!--image allary list-->
             <ul id="box-wrapper" class="boxWrapper ps-0">
                 <!--apply loop on this li-->
-                <li class="scroll-img-list ms-3 me-1 p-2">
-                    <div class="maindivAgentCard">
-                        <div class="imgContainer">
-                            <img src="https://images.unsplash.com/photo-1606787364406-a3cdf06c6d0c?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                                alt="" />
-                        </div>
-                        <div class="card_body text-center">
-                            <h3>Saleem</h3>
-                            <h6>Usman</h6>
-                            <div class="icons">
-                                <div class="icon_container">
-                                    <i class="bi bi-telephone-fill icon"></i>
-                                </div>
-                                <div class="icon_container">
-                                    <i class="bi bi-envelope-fill icon"></i>
+                @foreach ($agents as $item)
+                    <li class="scroll-img-list ms-3 me-1 p-2">
+                        <div class="maindivAgentCard">
+                            <div class="imgContainer">
+                                <img src="https://images.unsplash.com/photo-1606787364406-a3cdf06c6d0c?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                                    alt="" />
+                            </div>
+                            <div class="card_body text-center">
+                                <h3>{{ $item->user->name }}</h3>
+                                <h6>{{ $item->agency->name }}</h6>
+                                <div class="icons">
+                                    <div class="icon_container">
+                                        <i class="bi bi-telephone-fill icon"></i>
+                                    </div>
+                                    <div class="icon_container">
+                                        <i class="bi bi-envelope-fill icon"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </li>
-                <li class="scroll-img-list ms-3 me-1 p-2">
-                    <div class="maindivAgentCard">
-                        <div class="imgContainer">
-                            <img src="https://images.unsplash.com/photo-1606787364406-a3cdf06c6d0c?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                                alt="" />
-                        </div>
-                        <div class="card_body text-center">
-                            <h3>Saleem</h3>
-                            <h6>Usman</h6>
-                            <div class="icons">
-                                <div class="icon_container">
-                                    <i class="bi bi-telephone-fill icon"></i>
-                                </div>
-                                <div class="icon_container">
-                                    <i class="bi bi-envelope-fill icon"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="scroll-img-list ms-3 me-1 p-2">
-                    <div class="maindivAgentCard">
-                        <div class="imgContainer">
-                            <img src="https://images.unsplash.com/photo-1606787364406-a3cdf06c6d0c?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                                alt="" />
-                        </div>
-                        <div class="card_body text-center">
-                            <h3>Saleem</h3>
-                            <h6>Usman</h6>
-                            <div class="icons">
-                                <div class="icon_container">
-                                    <i class="bi bi-telephone-fill icon"></i>
-                                </div>
-                                <div class="icon_container">
-                                    <i class="bi bi-envelope-fill icon"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="scroll-img-list ms-3 me-1 p-2">
-                    <div class="maindivAgentCard">
-                        <div class="imgContainer">
-                            <img src="https://images.unsplash.com/photo-1606787364406-a3cdf06c6d0c?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                                alt="" />
-                        </div>
-                        <div class="card_body text-center">
-                            <h3>Saleem</h3>
-                            <h6>Usman</h6>
-                            <div class="icons">
-                                <div class="icon_container">
-                                    <i class="bi bi-telephone-fill icon"></i>
-                                </div>
-                                <div class="icon_container">
-                                    <i class="bi bi-envelope-fill icon"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="scroll-img-list ms-3 me-1 p-2">
-                    <div class="maindivAgentCard">
-                        <div class="imgContainer">
-                            <img src="https://images.unsplash.com/photo-1606787364406-a3cdf06c6d0c?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                                alt="" />
-                        </div>
-                        <div class="card_body text-center">
-                            <h3>Saleem</h3>
-                            <h6>Usman</h6>
-                            <div class="icons">
-                                <div class="icon_container">
-                                    <i class="bi bi-telephone-fill icon"></i>
-                                </div>
-                                <div class="icon_container">
-                                    <i class="bi bi-envelope-fill icon"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
+                    </li>
+                @endforeach
+
             </ul>
             <div class="sliderBtnRight col-1 m-auto">
                 <i class="scroll-right bi bi-arrow-right-circle-fill"></i>

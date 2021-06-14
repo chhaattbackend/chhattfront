@@ -3,7 +3,7 @@
         <div class="s_div navbarContainer">
             <div class="innerContainer">
                 <div class="logo" id="lgo">
-                    <img src="./assets/logow.png" alt="home" />
+                    <img src="{{ asset('assets/logow.png') }}" alt="home" />
                 </div>
                 <div class="tabss">
                     <ul>

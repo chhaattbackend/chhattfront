@@ -62,9 +62,17 @@ class AgencyController extends Controller
     public function singleAgency($id)
     {
 
-        $agencies = Agency::paginate(24);
+        $agency = Agency::find($id);
+        $agents = Agent::where('agency_id', $agency->id)->get();
+        $agentproperties = 0;
+        foreach($agents as $agent) {
+            $agentproperties += count($agent->properties);
+        }
+        $agencyproperties=$agency->properties->count();
+        $totalproperties= $agencyproperties+$agentproperties;
+        return view("frontend.agency.single", compact(['agency','agents','totalproperties']));
 
-        return view('frontend.agency.single',compact('agencies'));
+        // return view('frontend.agency.single',compact('agency'));
     }
 
     public function index(Request $request)

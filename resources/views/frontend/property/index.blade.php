@@ -2,7 +2,7 @@
 @section('style')
     <link rel="stylesheet" type="text/css" href="./styles/home/home.css" />
     <link rel="stylesheet" type="text/css" href="./styles/property/property.css" />
-    
+
 @endsection
 
 @section('headercontent')
@@ -11,7 +11,6 @@
             <div class="backg_sdiv">
                 <h1>Search Your Desire Property</h1>
                 <div class="main_bar">
-
 
                 </div>
             </div>
