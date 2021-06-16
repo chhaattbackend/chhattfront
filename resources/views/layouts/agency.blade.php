@@ -3,7 +3,7 @@
         <h2 class="fw-bold">Agencies</h2>
         <div class="d-flex">
             <div class="ms-4">
-                <button class="themebtn2 px-3 py-1 ms-1">View all</button>
+                <button onclick="window.location='{{ route('agency') }}'"  class="themebtn2 px-3 py-1 ms-1">View all</button>
             </div>
         </div>
     </div>

@@ -146,11 +146,11 @@
                 </div>
             </div>
         </div>
-        <div class="mapCardContainer">
+
+        <br>
 
             @include('layouts.agency')
 
-        </div>
 
         <!--  PROPERTY CARD START  -->
 

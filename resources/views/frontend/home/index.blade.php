@@ -34,9 +34,10 @@
                             <input id="autoComplete" autocomplete="off" type="text" tabindex="1" />
                         </div>
                         <!-- city select start -->
-                        <select id="citiesSelect" class="form-select" aria-label="Default select example">
+                        <select id="citiesSelect" onchange="changecity()" class="form-select"
+                            aria-label="Default select example">
                             @foreach ($city as $item)
-                                <option value="{{ $item->id }}">{{ $item->name }} </option>
+                                <option value="{{ $item->name }}">{{ $item->name }} </option>
                             @endforeach
                         </select>
                         <!-- city select end -->
@@ -67,9 +68,9 @@
     <!-- EXTERNAL LINKS END -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script>
-        // $(document).ready(function() {
-        //     citiesData();
-        // });
+        var city = $('#citiesSelect').children("option:selected").val();
+
+        search('karachi');
 
         // function citiesData() {
         // CITIES START
@@ -84,87 +85,103 @@
         // CITIES END
 
         // == SEARCH AREA DROPDOWN START
-        var city;
         var areas;
-        const autoCompleteJS = new autoComplete({
-            data: {
-                src: async () => {
-                    try {
-                        // Loading placeholder text
-                        document
-                            .getElementById("autoComplete")
-                            .setAttribute("placeholder", "Loading...");
-                        // Fetch External Data Source
-                        const source = await fetch(
-                            "http://uat.chhatt.com/api/allareas?city=karachi"
-                        );
-                        areas = await source.json();
-                        // Post Loading placeholder text
-                        document
-                            .getElementById("autoComplete")
-                            .setAttribute("placeholder", autoCompleteJS.placeHolder);
-                        // Returns Fetched data
-                        return areas.data;
-                    } catch (error) {
-                        return error;
-                    }
-                },
-                keys: ["name"],
-                cache: true,
-                filter: (list) => {
-                    // Filter duplicates
-                    // incase of multiple data keys usage
-                    const filteredResults = Array.from(
-                        new Set(list.map((value) => value.match))
-                    ).map((food) => {
-                        return list.find((value) => value.match === food);
-                    });
-                    return filteredResults;
-                }
-            },
-            placeHolder: "Try Something 'Final'",
-            resultsList: {
-                element: (list, data) => {
-                    const info = document.createElement("p");
-                    if (data.results.length > 0) {
-                        info.innerHTML = `Displaying <strong>${data.matches.length}</strong> results`;
-                    } else {
-                        info.innerHTML =
-                            `Found <strong>${data.matches.length}</strong> matching results for <strong>"${data.query}"</strong>`;
-                    }
-                    list.prepend(info);
-                },
-                noResults: true,
-                maxResults: 10000,
-                tabSelect: true
-            },
-            resultItem: {
-                element: (item, data) => {
-                    // Modify Results Item Style
-                    item.style = "display: flex; justify-content: space-between;";
-                    // Modify Results Item Content
-                    item.innerHTML = `
-                                                      <span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-                                                        ${data.match}
-                                                      </span>
-                                                      <span style="margin-left:15px;display:inline-block;width:160px;text-align:right;align-items: center; font-size: 13px; font-weight: 100; text-transform: uppercase; color: rgba(0,0,0,.2); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-                                                        ${data.value.parent}
-                                                      </span>`;
-                },
-                highlight: true
-            },
-            events: {
-                input: {
-                    selection: (e) => {
-                        const selection = e.detail.selection.value;
-                        autoCompleteJS.input.value = selection.name;
+        var city;
+
+        function changecity() {
+            // var city = $('#citiesSelect').children("option:selected").val();
+            city = $('#citiesSelect').children("option:selected").val();
+            // console.log(city);
+            // areas = "";
+            search(city);
+        }
+
+        function search() {
+
+            const autoCompleteJS = new autoComplete({
+                data: {
+                    src: async () => {
+                        try {
+                            // Loading placeholder text
+                            document
+                                .getElementById("autoComplete")
+                                .setAttribute("placeholder", "Loading...");
+                            // Fetch External Data Source
+                            const source = await fetch(
+                                `http://uat.chhatt.com/api/allareas?city=${city}`
+                            );
+                            areas = await source.json();
+                            // Post Loading placeholder text
+                            document
+                                .getElementById("autoComplete")
+                                .setAttribute("placeholder", autoCompleteJS.placeHolder);
+                            // Returns Fetched data
+                            console.log(areas.data)
+                            return areas.data;
+                        } catch (error) {
+                            return error;
+                        }
                     },
-                    focus: () => {
-                        if (autoCompleteJS.input.value.length) autoCompleteJS.start();
+                    keys: ["name"],
+                    cache: true,
+                    // filter: (list) => {
+                    //     // Filter duplicates
+                    //     // incase of multiple data keys usage
+                    //     const filteredResults = Array.from(
+                    //         new Set(list.map((value) => value.match))
+                    //     ).map((food) => {
+                    //         return list.find((value) => value.match === food);
+                    //     });
+                    //     return filteredResults;
+                    // }
+                },
+                placeHolder: "Try Something 'Final'",
+                resultsList: {
+                    element: (list, data) => {
+                        const info = document.createElement("p");
+                        if (data.results.length > 0) {
+                            info.innerHTML = `Displaying <strong>${data.matches.length}</strong> results`;
+                        } else {
+                            info.innerHTML =
+                                `Found <strong>${data.matches.length}</strong> matching results for <strong>"${data.query}"</strong>`;
+                        }
+                        list.prepend(info);
+                    },
+                    noResults: true,
+                    maxResults: 10000,
+                    tabSelect: true
+                },
+                resultItem: {
+                    element: (item, data) => {
+                        // console.log(data.match)
+                        // Modify Results Item Style
+                        item.style = "display: flex; justify-content: space-between;";
+                        // Modify Results Item Content
+                        item.innerHTML =
+                            `<span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ${data.match}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    <span style="margin-left:15px;display:inline-block;width:160px;text-align:right;align-items: center; font-size: 13px; font-weight: 100; text-transform: uppercase; color: rgba(0,0,0,.2); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    ${data.value.parent}
+                                                                                                                                                                                                                                                           </span>`;
+                    },
+                    highlight: true
+                },
+                events: {
+                    input: {
+                        selection: (e) => {
+                            const selection = e.detail.selection.value;
+                            autoCompleteJS.input.value = selection.name;
+                        },
+                        focus: () => {
+                            if (autoCompleteJS.input.value.length) autoCompleteJS.start();
+                        }
                     }
                 }
-            }
-        });
+            });
+
+        }
+
         // SUBMIT START
         function changeFunc(e) {
             e.preventDefault()
@@ -244,7 +261,8 @@
                                 class="themebtnUnPressed px-3 py-1 ms-1">Industrial</button>
                         </div>
                         <div class="ms-4">
-                            <button class="themebtn2 px-3 py-1 ms-1"><a href="{{ route('property') }}">View All</a></button>
+                            <button class="themebtn2 px-3 py-1 ms-1"><a href="{{ route('property') }}">View
+                                    All</a></button>
                         </div>
                     </div>
                 </div>
@@ -300,8 +318,6 @@
                 },
             });
         }
-
-        
 
     </script>
 

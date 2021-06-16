@@ -9,7 +9,6 @@
         .mn_div {
             background-image: url("../../assets/propertyCard.webp") !important;
         }
-
     </style>
 @endsection
 
