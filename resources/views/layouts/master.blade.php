@@ -133,21 +133,24 @@
 
 
         // == EXPLORE CAROUSEL START
-    var scrolled = 0;
-    $(".scroll-leftExplore").on("click", function () {
-      scrolled = scrolled - 300;
-      $("#box-wrapperExplore").animate({
-        scrollLeft: scrolled,
-      });
-    });
-    $(".scroll-rightExplore").on("click", function () {
-      scrolled = scrolled + 300;
-      $("#box-wrapperExplore").animate({
-        scrollLeft: scrolled,
-      });
-    });
-    // == EXPLORE CAROUSEL END
+        var scrolled = 0;
+        $(".scroll-leftExplore").on("click", function() {
+            scrolled = scrolled - 300;
+            $("#box-wrapperExplore").animate({
+                scrollLeft: scrolled,
+            });
+        });
+        $(".scroll-rightExplore").on("click", function() {
+            scrolled = scrolled + 300;
+            $("#box-wrapperExplore").animate({
+                scrollLeft: scrolled,
+            });
+        });
+        // == EXPLORE CAROUSEL END
+
     </script>
+
+    
 </body>
 
 </html>
