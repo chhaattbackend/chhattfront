@@ -47,6 +47,47 @@ class AreaOneController extends Controller
 
     }
 
+    public function allareas(Request $request)
+    {
+        $areaones = AreaOne::where('id', '!=', null);
+        $areatwos = AreaTwo::where('id', '!=', null);
+        $areathrees = AreaThree::where('id', '!=', null);
+
+        if (isset($request->city)) {
+            $seacrh = $request->city;
+            $areaones = $areaones->whereHas('city', function ($query) use ($seacrh) {
+                $query->where('name', 'like', '%' . $seacrh . '%');
+            });
+
+            $areatwos = $areatwos->whereHas('area_one', function ($query) use ($seacrh) {
+                $query->whereHas('city', function ($query) use ($seacrh) {
+                    $query->where('name', 'like', '%' . $seacrh . '%');
+                });
+            });
+
+            $areathrees = $areathrees->whereHas('area_one', function ($query) use ($seacrh) {
+                $query->whereHas('city', function ($query) use ($seacrh) {
+                    $query->where('name', 'like', '%' . $seacrh . '%');
+                });
+            });
+        }
+        $a = $areaones->get();
+        $b = $areatwos->get();
+        $c = $areathrees->get();
+
+        $a = json_decode(json_encode($a));
+        $b = json_decode(json_encode($b));
+        $c = json_decode(json_encode($c));
+        dd($c->area_one_id);
+        
+        // dd(array_merge($a, $b, $c));
+            
+
+        return response()->json([
+            'data' => array_merge($a, $b, $c)
+        ]);
+    }
+
 
 
 

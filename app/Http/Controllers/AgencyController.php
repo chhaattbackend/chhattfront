@@ -59,6 +59,14 @@ class AgencyController extends Controller
         ]);
     }
 
+    public function singleAgency($id)
+    {
+
+        $agencies = Agency::paginate(24);
+
+        return view('frontend.agency.single',compact('agencies'));
+    }
+
     public function index(Request $request)
     {
         if (!$request->keyword) {
@@ -85,14 +93,14 @@ class AgencyController extends Controller
             ));
         }
 
-        
-        
+
+
 
          return view('frontend.agency.index',compact('agencies'));
 
     }
 
-    
+
 
 
 
@@ -209,7 +217,7 @@ class AgencyController extends Controller
     public function destroy($id)
     {
         if(auth()->user()->email == 'chhattofficial@chhatt.com'){
-            
+
             $item = Agency::find($id);
             $item->delete();
         }
