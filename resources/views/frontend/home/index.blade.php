@@ -124,16 +124,16 @@
                     },
                     keys: ["name"],
                     cache: true,
-                    // filter: (list) => {
-                    //     // Filter duplicates
-                    //     // incase of multiple data keys usage
-                    //     const filteredResults = Array.from(
-                    //         new Set(list.map((value) => value.match))
-                    //     ).map((food) => {
-                    //         return list.find((value) => value.match === food);
-                    //     });
-                    //     return filteredResults;
-                    // }
+                    filter: (list) => {
+                        // Filter duplicates
+                        // incase of multiple data keys usage
+                        const filteredResults = Array.from(
+                            new Set(list.map((value) => value.match))
+                        ).map((food) => {
+                            return list.find((value) => value.match === food);
+                        });
+                        return filteredResults;
+                    }
                 },
                 placeHolder: "Try Something 'Final'",
                 resultsList: {
@@ -147,9 +147,9 @@
                         }
                         list.prepend(info);
                     },
-                    noResults: true,
-                    maxResults: 10000,
-                    tabSelect: true
+                    // noResults: true,
+                    maxResults: 100,
+                    // tabSelect: true
                 },
                 resultItem: {
                     element: (item, data) => {
