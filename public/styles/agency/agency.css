@@ -372,6 +372,12 @@
     background-color: #fff;
     border-radius: 6px;
     box-shadow: 0 0 10px 5px #eee;
+    height: 336px;
+}
+
+.propertyCard .imageSection {
+    height: 190px;
+    width: 100%;
 }
 
 .propertyCard .imageSection .slideImg {

@@ -252,17 +252,16 @@
                     <h2 class="fw-bold">Best properties for you</h2>
                     <div class="d-flex">
                         <div>
-                            <button onclick="getListdata('All')" class="themebtn text-white px-3 py-1">All</button>
-                            <button onclick="getListdata('Residential')"
-                                class="themebtnUnPressed px-3 py-1 ms-1">Residential</button>
-                            <button onclick="getListdata('Commercial')"
-                                class="themebtnUnPressed px-3 py-1 ms-1">Commercial</button>
-                            <button onclick="getListdata('Industrial')"
-                                class="themebtnUnPressed px-3 py-1 ms-1">Industrial</button>
+                            <button onclick="allProperties()" class="active_bestProperties px-3 py-1" id="allBtn">All</button>
+                            <button onclick="residential()"
+                                class="themebtnUnPressed px-3 py-1 ms-1" id="resBtn">Residential</button>
+                            <button onclick="commercial()"
+                                class="themebtnUnPressed px-3 py-1 ms-1" id="comBtn">Commercial</button>
+                            <button onclick="industrial()"
+                                class="themebtnUnPressed px-3 py-1 ms-1" id="indBtn">Industrial</button>
                         </div>
                         <div class="ms-4">
-                            <button class="themebtn2 px-3 py-1 ms-1"><a href="{{ route('property') }}">View
-                                    All</a></button>
+                            <button class="themebtn2 px-3 py-1 ms-1"><a class="text-decoration-none" href="{{ route('property') }}">View All</a></button>
                         </div>
                     </div>
                 </div>
@@ -292,14 +291,11 @@
     @include('layouts.twocard')
 
     <script>
+
+
+
         function getListdata(type) {
             $('#box-wrapper').addClass('animate__animated animate__fadeOut');
-
-            // console.log(type);
-            // if(type==='All'){
-
-            // }
-
             $.ajax({
                 type: "get",
                 url: "/",
@@ -318,6 +314,45 @@
                 },
             });
         }
+
+
+  // FOR INNER PAGE NAVIGATION START
+  const btn1 = document.getElementById("allBtn");
+  const btn2 = document.getElementById("resBtn");
+  const btn3 = document.getElementById("comBtn");
+  const btn4 = document.getElementById("indBtn");
+  const allProperties = () => {
+    getListdata('All');
+    btn1.classList.add("active_bestProperties");
+    btn2.classList.remove("active_bestProperties");
+    btn3.classList.remove("active_bestProperties");
+    btn4.classList.remove("active_bestProperties");
+  };
+  const residential = () => {
+    getListdata("residential");
+    btn2.classList.add("active_bestProperties");
+    btn1.classList.remove("active_bestProperties");
+    btn3.classList.remove("active_bestProperties");
+    btn4.classList.remove("active_bestProperties");
+  };
+  const commercial = () => {
+    getListdata("commercial");
+    btn3.classList.add("active_bestProperties");
+    btn1.classList.remove("active_bestProperties");
+    btn2.classList.remove("active_bestProperties");
+    btn4.classList.remove("active_bestProperties");
+  };
+  const industrial = () => {
+    getListdata("industrial");
+    btn4.classList.add("active_bestProperties");
+    btn1.classList.remove("active_bestProperties");
+    btn2.classList.remove("active_bestProperties");
+    btn3.classList.remove("active_bestProperties");
+  };
+
+
+
+
 
     </script>
 

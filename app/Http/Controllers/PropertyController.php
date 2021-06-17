@@ -69,14 +69,14 @@ class PropertyController extends Controller
         if (isset($request->type)) {
             if($request->type == 'All'){
 
-                $property = Property::paginate(10);
+                $property = Property::paginate(28);
         $data= view('frontend.home.list',compact('property'))->render();
                 return response()->json([
             'data' => $data,
             // 'pagination' => (string) $areas->links()
         ]);
             }
-        $property=Property::where('type',$request->type)->paginate(10);
+        $property=Property::where('type',$request->type)->paginate(28);
         $data= view('frontend.home.list',compact('property'))->render();
 
         return response()->json([
@@ -88,9 +88,11 @@ class PropertyController extends Controller
 
         $city=City::all();
 
-        $property=Property::paginate(10);
+
+        $property=Property::paginate(28);
         return view('frontend.home.index',compact('property','city'));
     }
+
 
 
 
@@ -99,19 +101,20 @@ class PropertyController extends Controller
     public function index(Request $request)
     {
         if (isset($request->type)) {
+
             if($request->type == 'All'){
 
-                $property = Property::paginate(10);
+                $properties = Property::paginate(10);
                 $agencies = Agency::paginate(10);
-        $data= view('frontend.home.list',compact('property'))->render();
+        $data= view('frontend.property.list',compact('properties'))->render();
                 return response()->json([
             'data' => $data,
             // 'pagination' => (string) $areas->links()
         ]);
             }
-        $property=Property::where('type',$request->type)->paginate(10);
+        $properties=Property::where('type',$request->type)->paginate(10);
         $agencies = Agency::paginate(10);
-        $data= view('frontend.home.list',compact('property'))->render();
+        $data= view('frontend.property.list',compact('properties'))->render();
 
         return response()->json([
             'data' => $data,

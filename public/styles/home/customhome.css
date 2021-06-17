@@ -888,7 +888,7 @@
     position: relative;
 }
 
-.twoCards .card1 img,
+.card1 img,
 .twoCards .card2 img {
     position: absolute;
     border-radius: 5px;
@@ -896,6 +896,12 @@
     transform: translateX(-50%);
     width: 80%;
     bottom: 15%;
+    transition: 0.3s all;
+}
+
+.twoCards .card1:hover img,
+.twoCards .card2:hover img {
+    width: 85%;
 }
 
 
@@ -1029,8 +1035,7 @@
     border-radius: 3px;
     color: #fff;
     background-color: #101820;
-    outline: none;
-    padding: 6px 0 6px 12px;
+    outline: 6px 0 6px 12px;
     width: 300px;
 }
 
@@ -1051,3 +1056,144 @@
 
 
 /* <!-- == NEWSLETTER END == --> */
+
+
+/* <!-- == ACTIVE NAV START == --> */
+
+.active_bestProperties {
+    background-color: #007BFF !important;
+    color: #fff !important;
+    border-radius: 3px !important;
+}
+
+
+/* <!-- == EXPLORE START == --> */
+
+#box-wrapperExplore {
+    width: 100%;
+    display: block;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    padding: 1rem 0rem;
+}
+
+#box-wrapperExplore i {
+    color: #007bff;
+}
+
+#box-wrapperExplore.boxWrapper {
+    white-space: nowrap;
+}
+
+#box-wrapperExplore .scroll-img-list {
+    display: inline-block;
+    height: 100%;
+    width: 200px;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0 10px 5px #eee;
+}
+
+#box-wrapperExplore .scroll-img-list .imageSection {
+    height: 200px;
+    width: 100%;
+}
+
+#box-wrapperExplore .scroll-img-list .imageSection .slideImg {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+#box-wrapperExplore .scroll-img-list .paraContainer {
+    white-space: normal;
+}
+
+.scroll-img-list .paraContainer h6 {
+    margin-bottom: 0px;
+}
+
+
+/* <!-- == EXPLORE END == --> */
+
+
+/* lol */
+
+
+/* explorer start */
+
+.exp {
+    background-color: #fbfbfb;
+    padding: 60px 50px;
+    padding-right: 50px;
+    width: 100%;
+    max-width: 1620px;
+    min-width: 991px;
+    margin: auto;
+}
+
+.exp .sdiv {
+    width: 100%;
+    max-width: 1310px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.exp .sdiv .f_div {
+    width: 300px !important;
+}
+
+.exp .sdiv .f_div h3 {
+    font-weight: bolder;
+}
+
+.mainSlide_Div {
+    margin-left: 50px;
+    text-align: -webkit-center;
+    width: 850px;
+}
+
+.mainSlide_Div a {
+    color: #000;
+}
+
+.mainSlide_Div a:hover {
+    color: #000;
+}
+
+.apart,
+.house,
+.office,
+.villa,
+.svilla {
+    cursor: pointer;
+    width: 170px !important;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 5px #eee;
+}
+
+@media (max-width: 1270px) {
+    .mainSlide_Div {
+        max-width: 650px !important;
+    }
+}
+
+@media (max-width: 1400px) {
+    .autoComplete_wrapper>ul {
+        width: 680px !important;
+    }
+    .exp {
+        padding: 10px 50px;
+    }
+}
+
+
+/* explorer end */
+
+
+/* <!-- == ACTIVE NAV END == --> */
