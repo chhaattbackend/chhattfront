@@ -9,6 +9,7 @@
 
     @yield('style')
     <link rel="stylesheet" type="text/css" href="./styles/index.css" />
+    <link rel="stylesheet" type="text/css" href="./styles/mediaquery.css" />
     <!-- CSS only -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -27,13 +28,11 @@
 
 <body>
 
-    <div id="root">
+    <div>
         <!-- HEADER START -->
         @include('layouts.header')
         <!-- HEADER END -->
         @yield('content')
-
-
 
         <br />
 
@@ -57,12 +56,6 @@
     <!-- two-cards start -->
 
     <!-- tow cards end -->
-
-    <!-- == NEWSLETTER START == -->
-
-    <!-- == NEWSLETTER END == -->
-
-
     <!-- footr start -->
     @include('layouts.footer')
 
@@ -150,7 +143,7 @@
 
     </script>
 
-    
+
 </body>
 
 </html>

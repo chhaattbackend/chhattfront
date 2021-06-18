@@ -8,7 +8,7 @@
                 <div class="tabss">
                     <ul>
                         <li id="home" onclick="window.location='{{ route('home') }}'" style="color: #fff" class="lif">
-                            <span>HOME</span>
+                            <span>Home</span>
                         </li>
                         <li id="property" onclick="window.location='{{ route('property') }}'" style="color: #fff" class="lis">
                             <span>Property</span>

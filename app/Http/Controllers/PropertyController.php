@@ -33,6 +33,7 @@ class PropertyController extends Controller
         $str = explode(',', $request->search_areas);
         $area = $str[0];
         $area_id = $str[1];
+        $propertytype = PropertyType::all();
 
         $properties = Property::where($area, $area_id)->paginate(25)->setPath('');
         $pagination = $properties->appends(array(
@@ -48,7 +49,7 @@ class PropertyController extends Controller
         //     'data' => $properties
         // ]);
 
-        return view('frontend.property.search',compact('properties'));
+        return view('frontend.property.search',compact('properties','propertytype'));
     }
 
     public function singleProperty($id)

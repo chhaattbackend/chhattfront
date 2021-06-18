@@ -203,37 +203,37 @@
 
 /* breadcrumbs start */
 
-.main_div {
+.breadcrumbs_main_div {
     min-width: 987px;
     max-width: 1280px;
     margin: auto;
     margin-top: 50px;
 }
 
-.main_div .cursor {
+.breadcrumbs_main_div .cursor {
     cursor: pointer;
 }
 
-.main_div a,
-.main_div a:focus {
+.breadcrumbs_main_div a,
+.breadcrumbs_main_div a:focus {
     color: #c7c7c7;
 }
 
-.main_div a:hover {
+.breadcrumbs_main_div a:hover {
     color: #000;
 }
 
-.main_div .inner_div {
+.breadcrumbs_main_div .inner_div {
     display: flex;
     justify-content: space-between;
 }
 
-.main_div .inner_div div:nth-child(1) {
+.breadcrumbs_main_div .inner_div div:nth-child(1) {
     align-self: center;
     color: #c7c7c7;
 }
 
-.main_div .inner_div button {
+.breadcrumbs_main_div .inner_div button {
     padding-right: 15px;
     margin-left: 12px;
     margin-right: 10px;
@@ -241,7 +241,7 @@
 }
 
 @media screen and (max-width: 1330px) {
-    .main_div {
+    .breadcrumbs_main_div {
         margin: 50px 20px 0px 20px;
     }
 }
@@ -252,7 +252,7 @@
 
 /* image gallery start */
 
-.maindiv {
+.image_gallery_maindiv {
     position: relative;
     min-width: 991px;
     max-width: 1280px;
@@ -262,12 +262,12 @@
     margin-top: 50px;
 }
 
-.maindiv .slider {
+.image_gallery_maindiv .slider {
     max-width: 69%;
     width: 100%;
 }
 
-.maindiv .mapImage {
+.image_gallery_maindiv .mapImage {
     height: auto;
     width: 100%;
     padding: 10px;
@@ -275,35 +275,35 @@
     border-radius: 6px;
 }
 
-.maindiv .mapImage h3 {
+.image_gallery_maindiv .mapImage h3 {
     font-size: 20px;
     padding: 15px;
 }
 
-.maindiv .mapImage img {
+.image_gallery_maindiv .mapImage img {
     width: 100%;
     border-radius: 6px;
 }
 
-.maindiv .formContainer {
+.image_gallery_maindiv .formContainer {
     margin-left: 15px;
     height: 100%;
     width: 100%;
 }
 
-.maindiv .imageGallery {
+.image_gallery_maindiv .imageGallery {
     width: 100px;
     margin-top: 10px;
     background-color: #000;
 }
 
 @media screen and (max-width: 1330px) {
-    .maindiv {
+    .image_gallery_maindiv {
         display: flex;
         flex-direction: column;
         margin: 0px 20px;
     }
-    .maindiv .slider {
+    .image_gallery_maindiv .slider {
         max-width: 100%;
     }
     .formContainer {
@@ -566,7 +566,7 @@
 /* SLIDER START */
 
 #box-wrapper {
-    height: 400px;
+    /* height: 400px;   */
     width: 100%;
     display: block;
     overflow-y: hidden;

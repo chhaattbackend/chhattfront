@@ -2,29 +2,21 @@
 
 @section('style')
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/index.css') }}" />
-
-    <link rel="stylesheet" type="text/css" href="{{ asset('styles/home/home.css') }}" />
-    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('styles/agency/agency.css') }}" /> --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/agency/singleagency.css') }}" />
 @endsection
 
 @section('headercontent')
-    <div class="mn_div">
-        <div class="backg">
-            <div class="backg_sdiv">
-                <h1>{{ $agency->name }}</h1>
-                <div class="main_bar">
-
-                </div>
-            </div>
+<div class="mn_divz">
+      <div class="backgz">
+        <div class="backg_sdivz">
+          <h1>heading</h1>
         </div>
+      </div>
     </div>
 @endsection
 
 @section('content')
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
-
-
+<meta name="csrf-token" content="{{ csrf_token() }}" />
     <div class="detailSection">
         <div class="right_side">
             <div class="agencyDetails">
@@ -81,7 +73,6 @@
             <h2>Contact Us</h2>
             <Button class="showNumber">
                 {{ $agency->user->phone }}
-
             </Button>
             <hr />
             <div class="innerContactform">
@@ -99,9 +90,7 @@
                 </form>
             </div>
         </div>
-
     </div>
-
     <div class="maindivAgent">
         <hr />
         <div class="secdiv">
@@ -136,7 +125,6 @@
                         </div>
                     </li>
                 @endforeach
-
             </ul>
             <div class="sliderBtnRight col-1 m-auto">
                 <i class="scroll-right bi bi-arrow-right-circle-fill"></i>
@@ -144,9 +132,4 @@
         </div>
     </div>
     <!-- AGENTS END -->
-
-
-
-
-
 @endsection

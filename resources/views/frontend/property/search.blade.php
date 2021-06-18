@@ -48,31 +48,116 @@
                 </div>
                 <div class="d-flex flex-column mt-4">
                     <div class="d-flex justify-content-between">
-                        <select class="py-2 w-100 px-2 mx-3 border-0" name="" id="">
-                            <option value="">Karachi</option>
+                        <select class="py-2 w-100 px-2 mx-3 border-0" name="property_type" id="">
+                            <option selected disabled value="">Property Type </option>
+
+                            @foreach ($propertytype as $item)
+                            <option   value="{{ $item->id }}">{{ $item->name }}</option>
+
+
+                            @endforeach
+
                         </select>
-                        <select class="py-2 w-100 px-2 mx-3 border-0" name="" id="">
-                            <option value="">Karachi</option>
+                        <select class="py-2 w-100 px-2 mx-3 border-0" name="area_type" id="">
+                            <option selected disabled value="">Area Type </option>
+                            <option value="Residential">Residential</option>
+                            <option value="Commercial">Commercial</option>
+                            <option value="Industrial">Industrial</option>
+
+
                         </select>
-                        <select class="py-2 w-100 px-2 mx-3 border-0" name="" id="">
-                            <option value="">Karachi</option>
+                        <select class="py-2 w-100 px-2 mx-3 border-0" name="bed" id="">
+                            <option selected disabled value="">Beds </option>
+
                         </select>
-                        <select class="py-2 w-100 px-2 mx-3 border-0" name="" id="">
-                            <option value="">Karachi</option>
+                        <select class="py-2 w-100 px-2 mx-3 border-0" name="bath" id="">
+                            <option selected disabled value="">Bath </option>
+
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="+10">+10</option>
+
                         </select>
                     </div>
                     <div class="d-flex justify-content-between mt-4">
-                        <select class="py-2 w-100 px-2 mx-3 border-0" name="" id="">
-                            <option value="">Karachi</option>
+                        <select class="py-2 w-100 px-2 mx-3 border-0" name="min_price" id="">
+                            <option selected disabled value="">Min Price </option>
+
+                            <option value="500000">500,000</option>
+                            <option value="1000000">1,000,000</option>
+                            <option value="2000000">2,000,000</option>
+                            <option value="3500000">3,500,000</option>
+                            <option value="5000000">5,000,000</option>
+                            <option value="6500000">6,500,000</option>
+                            <option value="8000000">8,000,000</option>
+                            <option value="10000000">10,000,000</option>
+                            <option value="12500000">12,500,000</option>
+                            <option value="15000000">15,000,000</option>
+                            <option value="17500000">17,500,000</option>
+                            <option value="20000000">20,000,000</option>
+                            <option value="30000000">30,000,000</option>
+                            <option value="40000000">40,000,000</option>
+                            <option value="50000000">50,000,000</option>
+                            <option value="75000000">75,000,000</option>
+                            <option value="100000000">100,000,000</option>
+                            <option value="250000000">250,000,000</option>
+                            <option value="500000000">500,000,000</option>
+                            <option value="1000000000">1,000,000,000</option>
                         </select>
-                        <select class="py-2 w-100 px-2 mx-3 border-0" name="" id="">
-                            <option value="">Karachi</option>
+                        <select class="py-2 w-100 px-2 mx-3 border-0" name="max_price" id="">
+                            <option selected disabled value="">Max Price </option>
+
+                            <option value="500000">500,000</option>
+                            <option value="1000000">1,000,000</option>
+                            <option value="2000000">2,000,000</option>
+                            <option value="3500000">3,500,000</option>
+                            <option value="5000000">5,000,000</option>
+                            <option value="6500000">6,500,000</option>
+                            <option value="8000000">8,000,000</option>
+                            <option value="10000000">10,000,000</option>
+                            <option value="12500000">12,500,000</option>
+                            <option value="15000000">15,000,000</option>
+                            <option value="17500000">17,500,000</option>
+                            <option value="20000000">20,000,000</option>
+                            <option value="30000000">30,000,000</option>
+                            <option value="40000000">40,000,000</option>
+                            <option value="50000000">50,000,000</option>
+                            <option value="75000000">75,000,000</option>
+                            <option value="100000000">100,000,000</option>
+                            <option value="250000000">250,000,000</option>
+                            <option value="500000000">500,000,000</option>
+                            <option value="1000000000">1,000,000,000</option>
                         </select>
-                        <select class="py-2 w-100 px-2 mx-3 border-0" name="" id="">
-                            <option value="">Karachi</option>
+                        <select class="py-2 w-100 px-2 mx-3 border-0" name="area_min" id="">
+                            <option selected disabled value="">Area Min </option>
+                            <option value="500">500</option>
+                            <option value="1000">1000</option>
+                            <option value="1500">1500</option>
+                            <option value="2000">2000</option>
+                            <option value="2500">2500</option>
+                            <option value="3000">3000</option>
+                            <option value="3500">3500</option>
+                            <option value="4000">4000</option>
+
+
                         </select>
-                        <select class="py-2 w-100 px-2 mx-3 border-0" name="" id="">
-                            <option value="">Karachi</option>
+                        <select class="py-2 w-100 px-2 mx-3 border-0" name="area_max" id="">
+                             <option selected disabled value="">Area Max </option>
+                            <option value="500">500</option>
+                            <option value="1000">1000</option>
+                            <option value="1500">1500</option>
+                            <option value="2000">2000</option>
+                            <option value="2500">2500</option>
+                            <option value="3000">3000</option>
+                            <option value="3500">3500</option>
+                            <option value="4000">4000</option>
                         </select>
                     </div>
                 </div>
