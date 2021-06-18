@@ -248,23 +248,6 @@
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script src="assets/js/index.js"></script>
     <!-- EXTERNAL LINKS END -->
-    <script>
-        // == CAROUSEL START
-        var scrolled = 0;
-        $(".scroll-left").on("click", function() {
-            scrolled = scrolled - 300;
-            $("#box-wrapper").animate({
-                scrollLeft: scrolled,
-            });
-        });
-        $(".scroll-right").on("click", function() {
-            scrolled = scrolled + 300;
-            $("#box-wrapper").animate({
-                scrollLeft: scrolled,
-            });
-        });
-        // == CAROUSEL END
 
-    </script>
 @endsection
 

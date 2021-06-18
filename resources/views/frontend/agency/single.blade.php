@@ -107,8 +107,13 @@
                     <li class="scroll-img-list ms-3 me-1 p-2">
                         <div class="maindivAgentCard">
                             <div class="imgContainer">
-                                <img src="https://images.unsplash.com/photo-1606787364406-a3cdf06c6d0c?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                                @if($item->user->thumbnail != null)
+                                <img src="https://chhatt.s3.ap-south-1.amazonaws.com/users/{{$item->user->thumbnail}}"
                                     alt="" />
+                                @else
+                                <img src="https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png"
+                                alt="" />
+                                @endif
                             </div>
                             <div class="card_body text-center">
                                 <h3>{{ $item->user->name }}</h3>
