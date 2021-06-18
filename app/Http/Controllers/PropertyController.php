@@ -127,9 +127,11 @@ class PropertyController extends Controller
 
         $properties=Property::paginate(28);
         $agencies = Agency::paginate(10);
+        $city=City::all();
 
 
-        return view('frontend.property.index',compact('properties','agencies'));
+
+        return view('frontend.property.index',compact('properties','agencies','city'));
 
     }
 
