@@ -55,7 +55,18 @@ class PropertyController extends Controller
 
     public function singleProperty($id)
     {
-        dd($id);
+
+        $properties = Property::find($id);
+        $propertyimage = PropertyImage::where('property_id',$id)->get();
+        $property = Property::where('area_one_id',$properties->area_one_id)
+        ->where('size',$properties->size)
+        ->where('size_type',$properties->size_type)
+        ->paginate(10);
+
+
+
+
+        return view("frontend.property.single", compact(['property','properties','propertyimage']));
     }
 
     /**
@@ -91,7 +102,7 @@ class PropertyController extends Controller
         $city=City::all();
 
 
-        $property=Property::paginate(28);
+        $property=Property::orderBy('created_at' , 'desc')->paginate(25);
         return view('frontend.home.index',compact('property','city'));
     }
 

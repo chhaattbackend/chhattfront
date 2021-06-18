@@ -52,7 +52,7 @@
                 <div class="bottom_section">
                     <div class="left_side">
                         <div>
-                            Agents : {{ $agency->agents()->count() }}
+                            Agents : {{ $agency->agents()->count()}}
 
                         </div>
                         <div>
@@ -104,15 +104,16 @@
             <ul id="box-wrapper" class="boxWrapper ps-0">
                 <!--apply loop on this li-->
                 @foreach ($agents as $item)
-                    <li class="scroll-img-list ms-3 me-1 p-2">
+                    <li class="scroll-img-list ms-3 me-1 px-2 py-5">
                         <div class="maindivAgentCard">
                             <div class="imgContainer">
-                                <img src="https://images.unsplash.com/photo-1606787364406-a3cdf06c6d0c?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                                <img src="https://chhatt.s3.ap-south-1.amazonaws.com/users/{{$item->user->image}}"
                                     alt="" />
                             </div>
                             <div class="card_body text-center">
                                 <h3>{{ $item->user->name }}</h3>
-                                <h6>{{ $item->agency->name }}</h6>
+                                <h6 style="white-space: break-spaces">{{ $item->agency->name }}</h6>
+                               <h6>Properties :{{count($item->user->properties)}}</h6>
                                 <div class="icons">
                                     <div class="icon_container">
                                         <i class="bi bi-telephone-fill icon"></i>

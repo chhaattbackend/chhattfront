@@ -15,7 +15,7 @@ function convert_rupee($amount)
 @endphp
 
 @forelse ($properties as $item)
-    <div class="col-sm-4 col-lg-3 mb-4">
+    <div onclick="window.location='{{ route('single.property', $item->id ) }}'" class="col-sm-4 col-lg-3 mb-4">
         <!-- property card start -->
         <div class="propertyCard p-2">
             <a class="text-decoration-none position-relative" href="#">

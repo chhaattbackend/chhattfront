@@ -20,6 +20,7 @@ Route::get('/result', 'PropertyController@search')->name('property.search');
 
 Route::get('/agency', 'AgencyController@index')->name('agency');
 Route::get('/agency/{id}', 'AgencyController@singleAgency')->name('single.agency');
+Route::get('/property/{id}', 'PropertyController@singleProperty')->name('single.property');
 Route::post('/agency/ajax', 'AgencyController@ajax');
 
 Route::get('/contact', function () {
@@ -34,7 +35,7 @@ Route::get('/contact', function () {
 
 
 Route::get('/wanted', function () {
-    return view('frontend.property.singleprop');
+    return view('frontend.property.single');
 })->name('wanted');
 
 // Route::get('property', function () {
