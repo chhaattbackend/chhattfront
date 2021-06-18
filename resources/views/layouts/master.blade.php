@@ -27,13 +27,11 @@
 
 <body>
 
-    <div id="root">
+    <div>
         <!-- HEADER START -->
         @include('layouts.header')
         <!-- HEADER END -->
         @yield('content')
-
-
 
         <br />
 
@@ -52,15 +50,6 @@
 
 
     </div>
-
-
-    <!-- two-cards start -->
-
-    <!-- tow cards end -->
-
-    <!-- == NEWSLETTER START == -->
-
-    <!-- == NEWSLETTER END == -->
 
 
     <!-- footr start -->
@@ -150,7 +139,7 @@
 
     </script>
 
-    
+
 </body>
 
 </html>
