@@ -24,16 +24,16 @@
                             <!-- search field start  -->
                             <!-- search start -->
                             <div class="autoComplete_wrapper">
-                                <input id="autoComplete" type="text" tabindex="1" />
+                                <input id="autoComplete" autocomplete="off" type="text" tabindex="1" />
                             </div>
                             <!-- city select start -->
-                        <select id="citiesSelect" onchange="changecity()" class="form-select"
-                            aria-label="Default select example">
-                            @foreach ($city as $item)
-                                <option value="{{ $item->name }}">{{ $item->name }} </option>
-                            @endforeach
-                        </select>
-                        <!-- city select end -->
+                            <select id="citiesSelect" onchange="changecity()" class="form-select"
+                                aria-label="Default select example">
+                                @foreach ($city as $item)
+                                    <option value="{{ $item->name }}">{{ $item->name }} </option>
+                                @endforeach
+                            </select>
+                            <!-- city select end -->
                             <!-- search end -->
                             <!-- city lagana h -->
                             <button type="submit" onclick="changeFunc(event)">
@@ -212,11 +212,11 @@
                         // Modify Results Item Content
                         item.innerHTML =
                             `<span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ${data.match}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    </span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    <span style="margin-left:15px;display:inline-block;width:160px;text-align:right;align-items: center; font-size: 13px; font-weight: 100; text-transform: uppercase; color: rgba(0,0,0,.2); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    ${data.value.parent}
-                                                                                                                                                                                                                                                           </span>`;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ${data.match}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        <span style="margin-left:15px;display:inline-block;width:160px;text-align:right;align-items: center; font-size: 13px; font-weight: 100; text-transform: uppercase; color: rgba(0,0,0,.2); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        ${data.value.parent}
+                                                                                                                                                                                                                                                               </span>`;
                     },
                     highlight: true
                 },
@@ -271,16 +271,18 @@
             </div>
             <div class="sul">
                 <ul>
-                    <li title="All" >
-                        <button id="all" class="themebtnUnPressed active_bestProperties" onclick="allProperties()">All</button>
+                    <li title="All">
+                        <button id="all" class="themebtnUnPressed active_bestProperties"
+                            onclick="allProperties()">All</button>
                     </li>
-                    <li title="Residential" >
-                        <button class="themebtnUnPressed" id="resBtn" onclick="residential()" variant="contained">Residential</button>
+                    <li title="Residential">
+                        <button class="themebtnUnPressed" id="resBtn" onclick="residential()"
+                            variant="contained">Residential</button>
                     </li>
-                    <li title="Commercial" >
+                    <li title="Commercial">
                         <button id="comBtn" class="themebtnUnPressed" onclick="commercial()">Commercial</button>
                     </li>
-                    <li title="Industrial" >
+                    <li title="Industrial">
                         <button id="indBtn" class="themebtnUnPressed" onclick="industrial()">Industrial</button>
                     </li>
                     <li title="View all" class="viewall">
@@ -340,58 +342,59 @@
 
     @include('layouts.explorer')
 
-<script>
-    const btn1 = document.getElementById("all");
-  const btn2 = document.getElementById("resBtn");
-  const btn3 = document.getElementById("comBtn");
-  const btn4 = document.getElementById("indBtn");
-  const allProperties = () => {
-    getListdata('All');
-    btn1.classList.add("active_bestProperties");
-    btn2.classList.remove("active_bestProperties");
-    btn3.classList.remove("active_bestProperties");
-    btn4.classList.remove("active_bestProperties");
-  };
-  const residential = () => {
-    getListdata("residential");
-    btn2.classList.add("active_bestProperties");
-    btn1.classList.remove("active_bestProperties");
-    btn3.classList.remove("active_bestProperties");
-    btn4.classList.remove("active_bestProperties");
-  };
-  const commercial = () => {
-    getListdata("commercial");
-    btn3.classList.add("active_bestProperties");
-    btn1.classList.remove("active_bestProperties");
-    btn2.classList.remove("active_bestProperties");
-    btn4.classList.remove("active_bestProperties");
-  };
-  const industrial = () => {
-    getListdata("industrial");
-    btn4.classList.add("active_bestProperties");
-    btn1.classList.remove("active_bestProperties");
-    btn2.classList.remove("active_bestProperties");
-    btn3.classList.remove("active_bestProperties");
-  };
-  var serch_option = document.getElementById("serch_option_show");
-    var view = document.getElementById("view_more");
-    var drop = document.getElementById("drop_show");
-    var view_more_bool = false
-    view.addEventListener("click", () => {
-      view_more_bool = !view_more_bool
-      if (view_more_bool === true) {
-        serch_option.style.height = "200px";
-        drop.style.opacity = "1";
-        drop.style.transition = "500ms 300ms";
-      } else if (view_more_bool === false) {
-        serch_option.style.height = "120px";
-        drop.style.transition = "100ms";
-        drop.style.opacity = "0";
-      }
-    });
-    function getListdata(type) {
-    $('#list').addClass('animate__animated animate__fadeOut');
-    $.ajax({
+    <script>
+        const btn1 = document.getElementById("all");
+        const btn2 = document.getElementById("resBtn");
+        const btn3 = document.getElementById("comBtn");
+        const btn4 = document.getElementById("indBtn");
+        const allProperties = () => {
+            getListdata('All');
+            btn1.classList.add("active_bestProperties");
+            btn2.classList.remove("active_bestProperties");
+            btn3.classList.remove("active_bestProperties");
+            btn4.classList.remove("active_bestProperties");
+        };
+        const residential = () => {
+            getListdata("residential");
+            btn2.classList.add("active_bestProperties");
+            btn1.classList.remove("active_bestProperties");
+            btn3.classList.remove("active_bestProperties");
+            btn4.classList.remove("active_bestProperties");
+        };
+        const commercial = () => {
+            getListdata("commercial");
+            btn3.classList.add("active_bestProperties");
+            btn1.classList.remove("active_bestProperties");
+            btn2.classList.remove("active_bestProperties");
+            btn4.classList.remove("active_bestProperties");
+        };
+        const industrial = () => {
+            getListdata("industrial");
+            btn4.classList.add("active_bestProperties");
+            btn1.classList.remove("active_bestProperties");
+            btn2.classList.remove("active_bestProperties");
+            btn3.classList.remove("active_bestProperties");
+        };
+        var serch_option = document.getElementById("serch_option_show");
+        var view = document.getElementById("view_more");
+        var drop = document.getElementById("drop_show");
+        var view_more_bool = false
+        view.addEventListener("click", () => {
+            view_more_bool = !view_more_bool
+            if (view_more_bool === true) {
+                serch_option.style.height = "200px";
+                drop.style.opacity = "1";
+                drop.style.transition = "500ms 300ms";
+            } else if (view_more_bool === false) {
+                serch_option.style.height = "120px";
+                drop.style.transition = "100ms";
+                drop.style.opacity = "0";
+            }
+        });
+
+        function getListdata(type) {
+            $('#list').addClass('animate__animated animate__fadeOut');
+            $.ajax({
                 type: "get",
                 url: "/property",
                 dataType: 'JSON',
@@ -405,11 +408,12 @@
                     $('#list').removeClass('animate__animated animate__fadeOut');
                     $('#list').html(responese.data);
                     $('#box-wrapper').removeClass('animate__animated animate__fadeOut');
-                    // $('#list').addClass('animate__animated animate__fadeIn');
+                    $('#list').addClass('animate__animated animate__fadeIn');
 
                 },
             });
 
-          }
-</script>
+        }
+
+    </script>
 @endsection

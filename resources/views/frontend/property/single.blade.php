@@ -22,7 +22,7 @@
     <div class="mn_divz">
         <div class="backgz">
             <div class="backg_sdivz">
-                <h1>heading</h1>
+                <h1>{{ @$properties->property_type }} {{ @$properties->property_for }} in {{ @$properties->areaTwo->name }} {{ @$properties->areaOne->name }}</h1>
             </div>
         </div>
     </div>
@@ -170,7 +170,7 @@
                     <!--  HIDDEN FOR MAP PAGE START  -->
                     <div class='saleTagContainer'>
                         <h2>
-                            {{ @$properties->property_type }} {{ @$properties->property_for }} in
+                            {{ @$properties->property_type }} {{ @$properties->property_for }} in {{ @$properties->areaTwo->name }}
                             {{ @$properties->areaOne->name }}
                         </h2>
                         <h2>
