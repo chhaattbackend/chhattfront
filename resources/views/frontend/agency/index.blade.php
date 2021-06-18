@@ -1,27 +1,21 @@
 @extends('layouts.master')
 
 @section('style')
-    <link rel="stylesheet" type="text/css" href="./styles/home/home.css" />
     <link rel="stylesheet" type="text/css" href="./styles/agency/agency.css" />
 @endsection
 
 @section('headercontent')
-    <div class="mn_div">
-        <div class="backg">
-            <div class="backg_sdiv">
-                <h1>Find the Best Real Estate Agencies</h1>
-                <div class="main_bar">
-
-                </div>
-            </div>
+<div class="mn_divz">
+      <div class="backgz">
+        <div class="backg_sdivz">
+          <h1>heading</h1>
         </div>
+      </div>
     </div>
 @endsection
 
 @section('content')
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-
-
     <div>
         <div class="agency-search">
             <div class="secdiv">
@@ -47,20 +41,17 @@
         </div>
     </div>
     <!-- agency search end -->
-
     <!-- AGENCIES START -->
     <!-- propertylist start -->
     <div id="bestProperty" class="propertylist mapCardContainer">
         <h6 id="total" class="text-end fw-bold">Showing {{ $agencies->total() }} Results</h6>
         <br />
         <!--  property slider -->
-
         <!-- PROPERTY CARD START -->
         <div class="mapCardContainer">
             <div class="container-fluid px-0">
                 <div id="list" class="row">
                     @include('frontend.agency.list')
-
                 </div>
                 <div id="wow" class="justify-content-center pagination">
                     {{ $agencies->links() }}
@@ -69,12 +60,9 @@
                 <hr class="bg-dark" />
                 <br />
             </div>
-
         </div>
         <!--  PROPERTY CARD START  -->
     </div>
-
-
     <script>
         $('#keyword').on('keyup', function() {
             var value = $(this).val();
@@ -83,9 +71,6 @@
             // console.log(value);
             ajaxSearch(value)
         });
-
-
-
         function ajaxSearch(value, page) {
             $.ajax({
                 type: "POST",
@@ -98,13 +83,10 @@
                     keyword: value,
                 },
                 success: function(responese) {
-
-
                     // console.log(responese.pagination)
                     $('#list').removeClass('animate__animated animate__fadeOut');
 
                     // console.log(responese.pagination)
-
                     $('#list').html(responese.data);
                     $('#list').addClass('animate__animated animate__fadeIn');
                     $('#wow').html(responese.pagination);
@@ -113,7 +95,6 @@
             });
         }
         //   {{-- ajaxSearch --}}
-
         //   {{-- ajaxPagination --}}
         $(document).on('click', '.pagination a', function(event) {
             event.preventDefault();
@@ -121,12 +102,7 @@
             var href = $(this).attr('href');
             var page = $(this).attr('href').split('page=')[1];
             $('#list').addClass('animate__animated animate__fadeOut');
-
-            // console.log(href);
             ajaxSearch(value, page)
         });
-
     </script>
-
-
 @endsection

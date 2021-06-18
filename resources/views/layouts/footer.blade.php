@@ -1,15 +1,33 @@
-<div class="newsletterContainer">
-        <div class="innerNewsletter d-flex justify-content-between align-items-center text-white">
-          <div>
-            <h3>Newsletter</h2>
-            <h6>Subscribe for newsletter and receive latest updates and trends about chhatt.com</h5>
-          </div>
-          <div class="inpContainer d-flex">
-            <input type="text" name="" id="" placeholder="search">
-            <button>Subscribe</button>
-          </div>
+ <!-- == NEWSLETTER START == -->
+ <div class="newsletter_div">
+      <div class="sdiv">
+        <div class="f_div">
+          <h4>Newsletter</h4>
+          <p>
+            Subscribe for newsletter and receive latest updates and trends about
+            chhatt.com
+          </p>
+        </div>
+        <div class="input_div">
+          <form class="sdiv" onSubmit="">
+            <div>
+              <input style="border: 2px solid #fff" size='50' placeholder='Enter your Email' type='email'
+                name='email' />
+              <div class="inpErrors">
+                error
+              </div>
+            </div>
+            <div>
+              <!--  <button type='submit'>Subscribe</button>  -->
+              <button type='submit'>
+                Subscribe
+              </button>
+            </div>
+          </form>
         </div>
       </div>
+    </div>
+    <!-- == NEWSLETTER END == -->
 
 <footer class="main_foter">
         <div class="sub_div">

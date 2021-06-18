@@ -1,0 +1,266 @@
+@media (max-width: 1270px) {
+    .mainSlide_Div {
+        max-width: 650px !important;
+    }
+}
+
+@media (max-width: 1400px) {
+    .autoComplete_wrapper > ul {
+        width: 680px !important;
+    }
+    .exp {
+        padding: 10px 50px;
+    }
+}
+
+/* explorer end */
+@media (max-width: 1270px) {
+    .mainSlide_Div {
+        max-width: 650px !important;
+    }
+}
+
+@media (max-width: 1400px) {
+    .exp {
+        padding: 10px 50px;
+    }
+}
+@media screen and (max-width: 1050px) {
+    .maindiv {
+        padding: 0px 30px;
+    }
+    .maindiv .secOne h1 {
+        font-size: 2rem;
+        max-width: 250px;
+    }
+    .secTwo {
+        font-size: 0.9rem;
+        width: 450px;
+    }
+    .secThree button {
+        padding: 10px 25px !important;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .maindiv .secOne h1 {
+        font-size: 1.8rem;
+    }
+    .maindiv .secTwo {
+        letter-spacing: 1.2px;
+    }
+    .maindiv .secThree button {
+        padding: 12px 40px;
+    }
+}
+@media (max-width: 1400px) {
+    .exp {
+        padding: 10px 50px;
+    }
+}
+
+@media (max-width: 1300px) {
+    .two-card {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .two-card .fdiv {
+        margin-right: 0px;
+        width: 80%;
+        margin-bottom: 20px;
+    }
+    .two-card .sdiv {
+        width: 80%;
+    }
+}
+@media screen and (max-width: 1400px) {
+    .main_div .s_div .logo img {
+        width: 120px;
+        height: auto;
+    }
+    .main_div .s_div .signin .signin_icn {
+        padding: 8px;
+    }
+    .main_div .s_div .signin .addprod button {
+        font-size: 13px;
+    }
+    .main_div .s_div .tabss ul li {
+        font-size: 15px;
+    }
+    .backg .backg_sdiv .searchdiv {
+        margin-top: 15px;
+        height: 52px;
+    }
+    .backg .backg_sdiv .main_bar {
+        max-width: 680px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .backg .backg_sdiv .searchdiv {
+        margin-top: 15px;
+        height: 52px;
+    }
+    .backg .backg_sdiv .main_bar {
+        max-width: 600px;
+    }
+    .backg .backg_sdiv h1 {
+        font-size: 38px;
+    }
+}
+@media screen and (max-width: 1400px) {
+    .propertylist .secdiv .secdivtxt {
+        font-size: 29px;
+    }
+    .propertylist .secdiv .sul > ul > li > button {
+        font-size: 15px;
+    }
+    .propertylist .secdiv .sul {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 1230px) {
+    .mainSlide_Div {
+        max-width: 1115px;
+    }
+}
+
+.mapCardContainer {
+    min-width: 1007px;
+}
+
+@media screen and (min-width: 1100px) {
+    .mapCardContainer {
+        margin: auto;
+        max-width: 1305px;
+    }
+}
+@media screen and (max-width: 1400px) {
+    .property_main .s_div .logo img {
+        width: 120px;
+        height: auto;
+    }
+    .property_main .s_div .signin .signin_icn {
+        padding: 8px;
+    }
+    .property_main .s_div .signin .addprod button {
+        font-size: 13px;
+    }
+    .property_main .s_div .tabss ul li {
+        font-size: 15px;
+    }
+    .backg .backg_sdiv h1 {
+        font-size: 44px;
+        margin-bottom: 15px;
+        color: #fff;
+        font-size: 34px;
+        padding: 0;
+        font-weight: 900;
+        letter-spacing: 1.3px;
+        word-spacing: 1px;
+        width: 580px;
+    }
+    .backg .backg_sdiv p {
+        font-size: 20px;
+    }
+    .backg .backg_sdiv .searchdiv {
+        margin-top: 8px;
+        height: 52px;
+    }
+    .backg .backg_sdiv .main_bar {
+        max-width: 680px;
+    }
+    .secategories .selectBoxes .leftSide label,
+    .secategories .selectBoxes .rightSide label {
+        font-size: 13px;
+    }
+    .secategories .VMBtn button {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .visit_maindiv {
+        padding: 0px 30px;
+    }
+    .visit_maindiv .secOne h1 {
+        font-size: 2rem;
+        max-width: 250px;
+    }
+    .secTwo {
+        font-size: 0.9rem;
+        width: 450px;
+    }
+    .secThree button {
+        padding: 10px 25px !important;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
+}
+@media screen and (max-width: 1400px) {
+    .visit_maindiv .secOne h1 {
+        font-size: 1.8rem;
+    }
+    .visit_maindiv .secTwo {
+        letter-spacing: 1.2px;
+    }
+    .visit_maindiv .secThree button {
+        padding: 12px 40px;
+    }
+}
+@media screen and (max-width: 1200px) {
+    .backgz.backg_sdivz h1 {
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .agencies_main_div .s_div .logo img {
+        width: 120px;
+        height: auto;
+    }
+    .agencies_main_div .s_div .signin .signin_icn {
+        padding: 8px;
+    }
+    .agencies_main_div .s_div .signin .addprod button {
+        font-size: 13px;
+    }
+    .agencies_main_div .s_div .tabss ul li {
+        font-size: 15px;
+    }
+    .backgz.backg_sdivz .searchdiv {
+        margin-top: 15px;
+        height: 52px;
+    }
+    .backgz.backg_sdivz .main_bar {
+        max-width: 680px;
+    }
+    .backgz.backg_sdivz .searchdiv span {
+        width: 7%;
+    }
+}
+@media screen and (max-width: 1060px) {
+    .addprod {
+        margin-left: 17px;
+    }
+    .addprod button {
+        font-size: 15px !important;
+        width: 120px;
+        height: 44px;
+        padding: 0px 0px !important;
+    }
+}
+@media screen and (max-width: 1330px) {
+    .detailSection {
+        display: flex;
+        flex-direction: column;
+        margin: 70px 0px;
+    }
+    .detailSection .right_side {
+        width: 100%;
+    }
+}
