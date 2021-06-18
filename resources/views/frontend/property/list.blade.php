@@ -37,7 +37,7 @@ function convert_rupee($amount)
                             <h6 class="lightColor">{{ $item->type }}</h6>
                             <h6 class="lightColor">{{ $item->updated_at->diffForHumans() }}</h6>
                         </div>
-                        <div class="mt-2">
+                        <div class="mt-2 ellipse">
                             <strong class="mt-5">{{ $item->property_for }}in {{ optional($item->areaThree)->name }},
                                 {{ optional($item->areaTwo)->name }},
                                 {{ optional($item->areaOne)->name }}</strong>

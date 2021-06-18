@@ -16,7 +16,7 @@ Route::get('/', 'PropertyController@home')->name('home');
 
 Route::get('/property', 'PropertyController@index')->name('property');
 // Route::get('/property/{id}', 'PropertyController@index')->name('single.property');
-Route::get('/search', 'PropertyController@search')->name('property.search');
+Route::get('/result', 'PropertyController@search')->name('property.search');
 
 Route::get('/agency', 'AgencyController@index')->name('agency');
 Route::get('/agency/{id}', 'AgencyController@singleAgency')->name('single.agency');
