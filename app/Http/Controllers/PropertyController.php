@@ -39,6 +39,7 @@ class PropertyController extends Controller
         $pagination = $properties->appends(array(
             'search_areas' => $request->search_areas
         ));
+        $city=City::all();
         // $currentURL = url()->current();
         // $currentURL = url()->full();
         // $url = url()->previous();
@@ -49,7 +50,7 @@ class PropertyController extends Controller
         //     'data' => $properties
         // ]);
 
-        return view('frontend.property.search',compact('properties','propertytype'));
+        return view('frontend.property.search',compact('properties','propertytype','city'));
     }
 
     public function singleProperty($id)
@@ -126,9 +127,11 @@ class PropertyController extends Controller
 
         $properties=Property::paginate(28);
         $agencies = Agency::paginate(10);
+        $city=City::all();
 
 
-        return view('frontend.property.index',compact('properties','agencies'));
+
+        return view('frontend.property.index',compact('properties','agencies','city'));
 
     }
 

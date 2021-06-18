@@ -61,7 +61,7 @@
                         </div>
                     </div>
                     <div class="right_side">
-                        <MdVerifiedUser style="font-size: 20p; color: #43b243" />
+                        {{-- <MdVerifiedUser style="font-size: 20p; color: #43b243" /> --}}
                         &nbsp;Verified
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                     <textarea rows="5"></textarea>
                     <br />
                     <Button type="submit">
-                        <MdEmail class="text-white" style="font-size: 17px" />
+                        {{-- <MdEmail class="text-white" style="font-size: 17px" /> --}}
                         &nbsp;Submit
                     </Button>
                 </form>
