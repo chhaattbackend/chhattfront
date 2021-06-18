@@ -58,8 +58,8 @@ class PropertyController extends Controller
         $properties = Property::find($id);
         $propertyimage = PropertyImage::where('property_id',$id)->get();
         $property = Property::where('area_one_id',$properties->area_one_id)
-        ->orWhere('size',$properties->size)
-        ->orWhere('size_type',$properties->size_type)
+        ->where('size',$properties->size)
+        ->where('size_type',$properties->size_type)
         ->paginate(10);
 
 

@@ -35,7 +35,7 @@ Route::get('/contact', function () {
 
 
 Route::get('/wanted', function () {
-    return view('frontend.property.singleprop');
+    return view('frontend.property.single');
 })->name('wanted');
 
 // Route::get('property', function () {
