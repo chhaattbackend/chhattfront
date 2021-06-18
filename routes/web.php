@@ -20,6 +20,7 @@ Route::get('/search', 'PropertyController@search')->name('property.search');
 
 Route::get('/agency', 'AgencyController@index')->name('agency');
 Route::get('/agency/{id}', 'AgencyController@singleAgency')->name('single.agency');
+Route::get('/property/{id}', 'PropertyController@singleProperty')->name('single.property');
 Route::post('/agency/ajax', 'AgencyController@ajax');
 
 Route::get('/contact', function () {
