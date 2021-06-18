@@ -70,7 +70,9 @@ class AgencyController extends Controller
         }
         $agencyproperties=$agency->properties->count();
         $totalproperties= $agencyproperties+$agentproperties;
+
         
+
         return view("frontend.agency.single", compact(['agency','agents','totalproperties']));
 
         // return view('frontend.agency.single',compact('agency'));
