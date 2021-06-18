@@ -7,7 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    </link>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <!-- image gallery start -->
@@ -47,8 +46,8 @@
             <div class="share_div">
 
                 <!--  <button>
-                <MdFavoriteBorder /> Favorite
-              </button>  -->
+                    <MdFavoriteBorder /> Favorite
+                  </button>  -->
                 <!--  <button>Print</button>  -->
             </div>
         </div>
@@ -65,10 +64,11 @@
                         <!-- Add images to <div class="fotorama"></div> -->
                         <div class="fotorama mt-5" data-nav="thumbs" data-width="100%" data-allowfullscreen="true">
                             <!-- ↑ The same as data-ratio="4/3"
-                   or data-ratio="1.3333333333". -->
+                       or data-ratio="1.3333333333". -->
                             @foreach ($propertyimage as $item)
 
-                                <a href=""><img src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ @$item->name }}"
+                                <a href=""><img
+                                        src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ @$item->name }}"
                                         width="130" height="96"></a>
 
 
@@ -267,4 +267,4 @@
 
     </script>
 @endsection
-d
+

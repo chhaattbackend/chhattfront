@@ -1,6 +1,3 @@
-
-
-
 @foreach ($property as $item)
 
 
