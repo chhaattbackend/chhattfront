@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('style')
-    <link rel="stylesheet" type="text/css" href="./styles/home/home.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="./styles/home/home.css" /> -->
     <link rel="stylesheet" type="text/css" href="./styles/property/property.css" />
 
 @endsection
@@ -115,16 +115,16 @@
             <div class="sul">
                 <ul>
                     <li title="All" >
-                        <button id="all" class="active_bestProperties" onclick="allProperties()">All</button>
+                        <button id="all" class="themebtnUnPressed active_bestProperties" onclick="allProperties()">All</button>
                     </li>
                     <li title="Residential" >
-                        <button id="resBtn" onclick="residential()" variant="contained">Residential</button>
+                        <button class="themebtnUnPressed" id="resBtn" onclick="residential()" variant="contained">Residential</button>
                     </li>
                     <li title="Commercial" >
-                        <button id="comBtn" onclick="commercial()">Commercial</button>
+                        <button id="comBtn" class="themebtnUnPressed" onclick="commercial()">Commercial</button>
                     </li>
                     <li title="Industrial" >
-                        <button id="indBtn" onclick="industrial()">Industrial</button>
+                        <button id="indBtn" class="themebtnUnPressed" onclick="industrial()">Industrial</button>
                     </li>
                     <li title="View all" class="viewall">
                         <button>View all</button>
@@ -151,7 +151,7 @@
             @include('layouts.featuredproject')
         </div>
         <br><br><br>
-        <div class="maindiv marginTop">
+        <div class="visit_maindiv">
             <div class="innerDiv">
                 <div class="secOne">
                     <h2>Visit Our Construction Site</h2>
@@ -216,8 +216,6 @@
     btn2.classList.remove("active_bestProperties");
     btn3.classList.remove("active_bestProperties");
   };
-
-
   var serch_option = document.getElementById("serch_option_show");
     var view = document.getElementById("view_more");
     var drop = document.getElementById("drop_show");
@@ -234,13 +232,7 @@
         drop.style.opacity = "0";
       }
     });
-
-</script>
-
-    <script>
-
-
-function getListdata(type) {
+    function getListdata(type) {
     $('#list').addClass('animate__animated animate__fadeOut');
     $.ajax({
                 type: "get",
@@ -261,86 +253,6 @@ function getListdata(type) {
                 },
             });
 
-
-
-            // $('#box-wrapper').addClass('animate__animated animate__fadeOut');
-            // $.ajax({
-            //     type: "get",
-            //     url: "/",
-            //     dataType: 'JSON',
-            //     headers: {
-            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            //     },
-            //     data: {
-            //         type: type
-            //     },
-            //     success: function(responese) {
-            //         $('#box-wrapper').removeClass('animate__animated animate__fadeOut');
-            //         $('#box-wrapper').html(responese.data);
-            //         $('#box-wrapper').addClass('animate__animated animate__fadeIn');
-
-            //     },
-            // });
-        }
-
-        // function getListdata(type) {
-        //     console.log(type);
-
-
-
-
-
-            // $.ajax({
-            //     type: "get",
-            //     url: "/property",
-            //     dataType: 'JSON',
-            //     headers: {
-            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            //     },
-            //     data: {
-            //         type: type
-
-            //     },
-            //     success: function(responese) {
-            //         // $('#tick').show();
-            //         // setTimeout(function() {
-            //         //     $('#tick').hide();
-            //         // }, 3000);
-            //         // alert("#visit_date".id)
-            //         // alert(date)
-            //         // console.log(responese.data);
-
-            //         $('#list').html(responese.data);
-
-            //         // $("#visit_date"+id).text(date);
-            //         // $("#visit_date" + id).text('{{ date('D, d-m-Y', strtotime('responese.date')) }}');
-            //         // // $("#visit_date" + id).color('green');
-            //         // $("#visit_date2" + id).show();
-            //         // $("#visit_date2" + id).text('{{ date('h:i A', strtotime('responese.date')) }}');
-
-
-
-
-
-
-            //         // setTimeout(function(){ $("#tick").css("display", "block"); },2000);
-            //     },
-            // });
-
-            // axios.get('/property')
-            //     .then(function(response) {
-            //         // handle success
-
-            //     })
-            //     .catch(function(error) {
-            //         // handle error
-            //         console.log(error);
-            //     })
-            //     .then(function() {
-            //         // always executed
-            //     });
-        // }
-
-    </script>
-
+          }
+</script>
 @endsection

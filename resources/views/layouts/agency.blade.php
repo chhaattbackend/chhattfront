@@ -1,4 +1,4 @@
-<div>
+<div class="mapCardContainer">
     <div class="d-flex justify-content-between">
         <h2 class="fw-bold">Agencies</h2>
         <div class="d-flex">
@@ -47,8 +47,6 @@
                                 </h6>
                             </div>
                         </div>
-
-
                     </a>
                 </li>
             @endforeach

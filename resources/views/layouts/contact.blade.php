@@ -3,7 +3,7 @@
 @section('style')
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('styles/index.css') }}" /> --}}
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('styles/home/home.css') }}" />
+    <!-- <link rel="stylesheet" type="text/css" href="{{ asset('styles/home/home.css') }}" /> -->
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/contact.css') }}" />
     <style>
         .mn_div {
@@ -13,15 +13,12 @@
 @endsection
 
 @section('headercontent')
-    <div class="mn_div">
-        <div class="backg">
-            <div class="backg_sdiv">
-                <h1>Contact Us</h1>
-                <div class="main_bar">
-
-                </div>
-            </div>
+<div class="mn_divz">
+      <div class="backgz">
+        <div class="backg_sdivz">
+          <h1>heading</h1>
         </div>
+      </div>
     </div>
 @endsection
 

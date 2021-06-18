@@ -1,6 +1,5 @@
 /* HEADER START */
 
-
 /* input start */
 
 .autoComplete_wrapper {
@@ -8,7 +7,7 @@
     margin-right: 10px !important;
 }
 
-.autoComplete_wrapper>input {
+.autoComplete_wrapper > input {
     width: 100% !important;
     height: 52px !important;
     padding-left: 8px !important;
@@ -19,7 +18,7 @@
     background-color: transparent !important;
 }
 
-.autoComplete_wrapper>ul {
+.autoComplete_wrapper > ul {
     position: absolute;
     max-height: 340px !important;
     width: 750px !important;
@@ -37,10 +36,9 @@
     outline: 0;
 }
 
-.autoComplete_wrapper>ul>li mark {
+.autoComplete_wrapper > ul > li mark {
     color: #007bff !important;
 }
-
 
 /* input end */
 
@@ -330,7 +328,6 @@
     height: 200px !important;
 }
 
-
 /* style for city select start*/
 
 .nice-select {
@@ -349,7 +346,6 @@
     color: red;
     background: none;
 }
-
 
 /* style for city select end*/
 
@@ -437,14 +433,14 @@
     font-weight: bold;
 }
 
-.secategories .secategories_sec_div>ul {
+.secategories .secategories_sec_div > ul {
     padding-top: 10px;
     display: flex;
     justify-content: space-between;
     margin: 0;
 }
 
-.secategories .secategories_sec_div>ul li>button {
+.secategories .secategories_sec_div > ul li > button {
     font-size: 16px;
     padding: 6px 12px;
     border-radius: 3px;
@@ -471,7 +467,6 @@
     position: relative;
     left: 2px;
 }
-
 
 /* explorer start */
 
@@ -536,7 +531,7 @@
 }
 
 @media (max-width: 1400px) {
-    .autoComplete_wrapper>ul {
+    .autoComplete_wrapper > ul {
         width: 680px !important;
     }
     .exp {
@@ -544,9 +539,7 @@
     }
 }
 
-
 /* explorer end */
-
 
 /* two-cards start */
 
@@ -574,7 +567,7 @@
     justify-content: space-around;
 }
 
-.two-card .fdiv .fdiv_fch>p {
+.two-card .fdiv .fdiv_fch > p {
     font-size: 30px;
     font-weight: bolder;
     color: white;
@@ -603,7 +596,7 @@
     justify-content: space-around;
 }
 
-.two-card .sdiv .sdiv_fch>p {
+.two-card .sdiv .sdiv_fch > p {
     font-size: 30px;
     font-weight: bolder;
     color: white;
@@ -636,9 +629,7 @@
     }
 }
 
-
 /* two-cards end */
-
 
 /* footer start */
 
@@ -831,7 +822,6 @@
     border-radius: 100%;
 }
 
-
 /* footer end */
 
 @media screen and (max-width: 1400px) {
@@ -858,7 +848,7 @@
 }
 
 @media screen and (max-width: 1200px) {
-    .autoComplete_wrapper>ul {
+    .autoComplete_wrapper > ul {
         width: 600px !important;
     }
     .backg .backg_sdiv .searchdiv {
@@ -873,9 +863,7 @@
     }
 }
 
-
 /* HEADER END */
-
 
 /* TWO CARDS START */
 
@@ -904,9 +892,7 @@
     width: 85%;
 }
 
-
 /* TWO CARDS END */
-
 
 /* SLIDER START */
 
@@ -985,16 +971,20 @@
     color: rgba(0, 0, 0, 0.3);
 }
 
-
 /* SLIDER END */
-
 
 /* <!-- == TEXT CONTENT START == --> */
 
 .textContent {
     width: 100%;
     color: #fff;
-    background-image: linear-gradient( to bottom, rgba(0, 0, 0, 0.8) 30%, rgba(0, 0, 0, 0.8) 100%, transparent), url(../../assets/etienne-beauregard-riverin-B0aCvAVSX8E-unsplash.webp);
+    background-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.8) 30%,
+            rgba(0, 0, 0, 0.8) 100%,
+            transparent
+        ),
+        url(../../assets/etienne-beauregard-riverin-B0aCvAVSX8E-unsplash.webp);
     background-position: center center;
     background-size: cover;
 }
@@ -1006,9 +996,7 @@
     padding: 2rem 0rem;
 }
 
-
 /* <!-- == TEXT CONTENT END == --> */
-
 
 /* <!-- == NEWSLETTER START == --> */
 
@@ -1054,18 +1042,15 @@
     font-weight: 700;
 }
 
-
 /* <!-- == NEWSLETTER END == --> */
-
 
 /* <!-- == ACTIVE NAV START == --> */
 
 .active_bestProperties {
-    background-color: #007BFF !important;
+    background-color: #007bff !important;
     color: #fff !important;
     border-radius: 3px !important;
 }
-
 
 /* <!-- == EXPLORE START == --> */
 
@@ -1114,12 +1099,9 @@
     margin-bottom: 0px;
 }
 
-
 /* <!-- == EXPLORE END == --> */
 
-
 /* lol */
-
 
 /* explorer start */
 
@@ -1184,7 +1166,7 @@
 }
 
 @media (max-width: 1400px) {
-    .autoComplete_wrapper>ul {
+    .autoComplete_wrapper > ul {
         width: 680px !important;
     }
     .exp {
@@ -1192,8 +1174,6 @@
     }
 }
 
-
 /* explorer end */
-
 
 /* <!-- == ACTIVE NAV END == --> */

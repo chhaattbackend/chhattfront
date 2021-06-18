@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('style')
-    <link rel="stylesheet" type="text/css" href="./styles/home/customhome.css" />
+    <link rel="stylesheet" type="text/css" href="./styles/home/home.css" />
     <!-- EXTERNAL LINKS START -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -101,6 +101,7 @@
             const autoCompleteJS = new autoComplete({
                 data: {
                     src: async () => {
+                        console.log(areas)
                         try {
                             // Loading placeholder text
                             document
@@ -116,7 +117,7 @@
                                 .getElementById("autoComplete")
                                 .setAttribute("placeholder", autoCompleteJS.placeHolder);
                             // Returns Fetched data
-                            console.log(areas.data)
+                            // console.log(areas.data)
                             return areas.data;
                         } catch (error) {
                             return error;
@@ -125,6 +126,7 @@
                     keys: ["name"],
                     cache: true,
                     filter: (list) => {
+
                         // Filter duplicates
                         // incase of multiple data keys usage
                         const filteredResults = Array.from(
@@ -252,7 +254,7 @@
                     <h2 class="fw-bold">Best properties for you</h2>
                     <div class="d-flex">
                         <div>
-                            <button onclick="allProperties()" class="active_bestProperties px-3 py-1" id="allBtn">All</button>
+                            <button onclick="allProperties()" class="themebtnUnPressed active_bestProperties px-3 py-1" id="allBtn">All</button>
                             <button onclick="residential()"
                                 class="themebtnUnPressed px-3 py-1 ms-1" id="resBtn">Residential</button>
                             <button onclick="commercial()"
