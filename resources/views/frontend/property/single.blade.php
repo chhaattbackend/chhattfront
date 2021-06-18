@@ -23,7 +23,8 @@
     <div class="mn_divz">
         <div class="backgz">
             <div class="backg_sdivz">
-                <h1>heading</h1>
+                <h1>Beautiful {{ @$properties->size }} {{ @$properties->size_type }} {{ @$properties->property_type }}
+                    {{ @$properties->property_for }} in {{ @$properties->areaOne->name }},{{ @$properties->areaOne->city->name }}</h1>
             </div>
         </div>
     </div>
@@ -248,23 +249,6 @@
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script src="assets/js/index.js"></script>
     <!-- EXTERNAL LINKS END -->
-    <script>
-        // == CAROUSEL START
-        var scrolled = 0;
-        $(".scroll-left").on("click", function() {
-            scrolled = scrolled - 300;
-            $("#box-wrapper").animate({
-                scrollLeft: scrolled,
-            });
-        });
-        $(".scroll-right").on("click", function() {
-            scrolled = scrolled + 300;
-            $("#box-wrapper").animate({
-                scrollLeft: scrolled,
-            });
-        });
-        // == CAROUSEL END
-
-    </script>
+    
 @endsection
-d
+
