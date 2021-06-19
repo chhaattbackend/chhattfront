@@ -14,8 +14,15 @@
     margin: auto;
     padding: 22px 38px;
     background-color: #f6f7fb;
+    /* border: 1px solid red; */
+    height: 111px;
+    transition: height 500ms ease-in-out;
 }
-
+#drop_show,
+#drop_showl {
+    opacity: 0;
+    /* transition:all 2000ms; */
+}
 .agency-search .secdiv h3 {
     margin-bottom: 30px;
 }
@@ -103,3 +110,21 @@
     color: #007bff !important;
 }
 /* input end */
+.view_more_main {
+    color: #007bff;
+    font-size: 15px;
+    font-weight: 800;
+    text-align: right;
+    padding-bottom: 10px;
+}
+
+.view_more_main span {
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.view_more_main .sspan {
+    display: inline-block !important;
+    margin-right: 15px;
+}

@@ -21,9 +21,8 @@
     <!-- agency search start -->
     <div>
         <div class="agency-search">
-            <div class="secdiv">
+            <div class="secdiv" id="serch_option_show">
                 <!-- ============================  SEARCH BOX START  ================================  -->
-                <h3>Agencies Search</h3>
                 <div class="searchdiv">
                     <div class="leftSec">
                           <form onSubmit="" class="searchdivL">
@@ -55,31 +54,29 @@
                     </form>
                     </div>
                 </div>
-                <div class="d-flex flex-column mt-4">
-                    <div class="d-flex justify-content-between">
+                <div class="d-flex flex-column mt-2"  >
+                <div class="view_more_main">
+                                    <span>Reset</span>
+                                    <span class="sspan" id="view_more">View More</span>
+                                </div>
+                    <div class="d-flex justify-content-between" id="drop_show" >
                         <select class="py-2 w-100 px-2 mx-3 border-0" name="property_type" id="">
                             <option selected disabled value="">Property Type </option>
-
                             @foreach ($propertytype as $item)
                             <option   value="{{ $item->id }}">{{ $item->name }}</option>
                             @endforeach
-
                         </select>
                         <select class="py-2 w-100 px-2 mx-3 border-0" name="area_type" id="">
                             <option selected disabled value="">Area Type </option>
                             <option value="Residential">Residential</option>
                             <option value="Commercial">Commercial</option>
                             <option value="Industrial">Industrial</option>
-
-
                         </select>
                         <select class="py-2 w-100 px-2 mx-3 border-0" name="bed" id="">
                             <option selected disabled value="">Beds </option>
-
                         </select>
                         <select class="py-2 w-100 px-2 mx-3 border-0" name="bath" id="">
                             <option selected disabled value="">Bath </option>
-
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -90,13 +87,11 @@
                             <option value="8">8</option>
                             <option value="9">9</option>
                             <option value="+10">+10</option>
-
                         </select>
                     </div>
-                    <div class="d-flex justify-content-between mt-4">
+                    <div class="d-flex justify-content-between mt-4" id="drop_showl">
                         <select class="py-2 w-100 px-2 mx-3 border-0" name="min_price" id="">
                             <option selected disabled value="">Min Price </option>
-
                             <option value="500000">500,000</option>
                             <option value="1000000">1,000,000</option>
                             <option value="2000000">2,000,000</option>
@@ -118,9 +113,8 @@
                             <option value="500000000">500,000,000</option>
                             <option value="1000000000">1,000,000,000</option>
                         </select>
-                        <select class="py-2 w-100 px-2 mx-3 border-0" name="max_price" id="">
+                        <select class="py-2 w-100 px-2 mx-3 border-0" name="max_price" >
                             <option selected disabled value="">Max Price </option>
-
                             <option value="500000">500,000</option>
                             <option value="1000000">1,000,000</option>
                             <option value="2000000">2,000,000</option>
@@ -242,9 +236,7 @@
             // areas = "";
             search(city);
         }
-
         function search() {
-
             const autoCompleteJS = new autoComplete({
                 data: {
                     src: async () => {
@@ -342,7 +334,27 @@
         }
         // SUBMIT END
         // == SEARCH AREA DROPDOWN END
-
+        var serch_option = document.getElementById("serch_option_show");
+    var view = document.getElementById("view_more");
+    var drop = document.getElementById("drop_show");
+    var drop1 = document.getElementById("drop_showl");
+    var view_more_bool = false
+    view.addEventListener("click", () => {
+      view_more_bool = !view_more_bool
+      if (view_more_bool === true) {
+        serch_option.style.height = "230px";
+        drop.style.opacity = "1";
+        drop.style.transition = "500ms 300ms";
+        drop1.style.opacity = "1";
+        drop1.style.transition = "500ms 300ms";
+      } else if (view_more_bool === false) {
+        serch_option.style.height = "111px";
+        drop.style.transition = "400ms";
+        drop.style.opacity = "0";
+        drop1.style.transition = "300ms";
+        drop1.style.opacity = "0";
+      }
+    });
     </script>
 
 @endsection

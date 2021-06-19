@@ -1,5 +1,4 @@
 @extends('layouts.master')
-
 @section('style')
     <link rel="stylesheet" type="text/css" href="./styles/home/home.css" />
     <!-- EXTERNAL LINKS START -->
@@ -10,10 +9,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.1.3/dist/css/autoComplete.01.min.css">
-
+        <!-- Add the slick-theme.css if you want default styling -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- EXTERNAL LINKS END -->
 @endsection
-
 @section('headercontent')
     <div class="mn_div">
         <div class="backg">
@@ -51,12 +51,10 @@
             </div>
         </div>
     </div>
-
-
-
-
+  
 @endsection
 @section('personalscripts')
+
     <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.1.3/dist/autoComplete.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
@@ -64,14 +62,48 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
         integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous">
     </script>
-    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.1.0.js"></script> -->
     <!-- EXTERNAL LINKS END -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
+        $('.responsive').slick({
+  dots: false,
+  infinite: false,
+  arrows:true,
+  speed: 300,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
         var city = $('#citiesSelect').children("option:selected").val();
-
         search('karachi');
-
         // function citiesData() {
         // CITIES START
         //     axios.get('https://uat.chhatt.com/api/cities').then((prev) =>
@@ -83,11 +115,9 @@
         //     )
         // }
         // CITIES END
-
         // == SEARCH AREA DROPDOWN START
         var areas;
         var city;
-
         function changecity() {
             // var city = $('#citiesSelect').children("option:selected").val();
             city = $('#citiesSelect').children("option:selected").val();
@@ -95,9 +125,7 @@
             // areas = "";
             search(city);
         }
-
         function search() {
-
             const autoCompleteJS = new autoComplete({
                 data: {
                     src: async () => {
@@ -181,9 +209,7 @@
                     }
                 }
             });
-
         }
-
         // SUBMIT START
         function changeFunc(e) {
             e.preventDefault()
@@ -204,16 +230,34 @@
         }
         // SUBMIT END
         // == SEARCH AREA DROPDOWN END
-
     </script>
-
 @endsection
 @section('content')
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-
-
+    <div class="container">
+    <div class="row responsive" data-slick='{"slidesToShow": 4, "slidesToScroll": 4}'>
+  <div><h3>1</h3></div>
+  <div><h3>2</h3></div>
+  <div><h3>3</h3></div>
+  <div><h3>4</h3></div> 
+  <div><h3>5</h3></div>
+  <div><h3>6</h3></div>
+  <div><h3>7</h3></div>
+  <div><h3>8</h3></div>
+  <div><h3>9</h3></div>
+  <div><h3>10</h3></div>
+  <div><h3>11</h3></div>
+  <div><h3>12</h3></div>
+  <div><h3>13</h3></div>
+  <div><h3>14</h3></div>
+  <div><h3>15</h3></div>
+  <div><h3>16</h3></div>
+  <div><h3>17</h3></div>
+  <div><h3>18</h3></div>
+</div>
+    </div>
+    
     <div class="pageContainer">
-
         <div class="container-fluid">
             <!-- TW CARDS START -->
             <div class="twoCards mt-5 text-center">
@@ -224,7 +268,6 @@
                             <a href="{{ route('agency') }}">
                                 <img src="assets/propertyhigh.webp" alt="propertyhigh">
                             </a>
-
                         </div>
                         <a class="mt-5 text-decoration-none text-dark">
                             <h4 class="mt-2 fw-bold">Realtor</h4>
@@ -235,7 +278,6 @@
                             <a href="{{ route('property') }}">
                                 <img src="assets/realtorhigh.webp" alt="propertyhigh">
                             </a>
-
                         </div>
                         <a class="text-decoration-none text-dark">
                             <h4 class="mt-2 fw-bold">Property</h4>
@@ -247,7 +289,6 @@
             <br>
             <hr>
             <br>
-
             <!-- BEST PROPERTY START -->
             <div>
                 <div class="d-flex justify-content-between">
@@ -274,7 +315,6 @@
                     <!--image allary list-->
                     <ul id="box-wrapper" class="boxWrapper ps-0">
                         @include('frontend.home.list')
-
                     </ul>
                     <div class="sliderBtnRight col-1 m-auto">
                         <i class="scroll-right bi bi-arrow-right-circle-fill"></i>
@@ -285,17 +325,11 @@
         </div>
     </div>
 
-
-
     @include('layouts.explorer')
     <br>
     @include('layouts.textcontent')
     @include('layouts.twocard')
-
     <script>
-
-
-
         function getListdata(type) {
             $('#box-wrapper').addClass('animate__animated animate__fadeOut');
             $.ajax({
@@ -312,12 +346,9 @@
                     $('#box-wrapper').removeClass('animate__animated animate__fadeOut');
                     $('#box-wrapper').html(responese.data);
                     $('#box-wrapper').addClass('animate__animated animate__fadeIn');
-
                 },
             });
         }
-
-
   // FOR INNER PAGE NAVIGATION START
   const btn1 = document.getElementById("allBtn");
   const btn2 = document.getElementById("resBtn");
@@ -351,11 +382,5 @@
     btn2.classList.remove("active_bestProperties");
     btn3.classList.remove("active_bestProperties");
   };
-
-
-
-
-
     </script>
-
 @endsection

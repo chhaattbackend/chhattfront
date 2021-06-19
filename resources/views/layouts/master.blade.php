@@ -24,6 +24,7 @@
 
 
 
+
 </head>
 
 <body>
@@ -70,6 +71,7 @@
     <!-- JavaScript Bundle with Popper -->
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+   
     @yield('personalscripts')
     <script>
         // FOR STICKY HEADER START
