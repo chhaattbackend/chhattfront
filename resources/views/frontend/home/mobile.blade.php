@@ -108,7 +108,7 @@
             <div class="top">
                 <p>Best Properties For You</p>
                 <p>
-                    <a href=""> View All </a>
+                    <a href="{{ route('allproperties',['All']) }}"> View All </a>
                 </p>
             </div>
             <div class="sdiv">
@@ -119,7 +119,7 @@
                             <div>
                                 <!-- card start -->
                                 <a href="" class="card_main_div text-decoration-none">
-                                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ $item->images[0]->name }}"
+                                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ @$item->images[0]->name }}"
                                         class="propertyImg" alt="" />
                                     <p class="mb-0"> {{ $item->type }} </p>
                                     <b>
@@ -159,11 +159,11 @@
                         <!-- featured card start -->
                         <a href="" class="text-decoration-none">
                             <div class="featured_card_main_div">
-                                <img src="./assets/images/welcomeCenter.webp" class="propertyImg" alt="" />
+                                <img src="{{asset('assets/welcomeCenter.webp')}}" class="propertyImg" alt="" />
                                 <p class="mb-0">Karachi</p>
-                                <b> name </b>
+                                <b> Welcome Center </b>
                                 <p>
-                                    <small> desc </small>
+                                    <small> Highway Developers and Builders </small>
                                 </p>
                             </div>
                         </a>

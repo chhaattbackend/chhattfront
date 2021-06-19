@@ -381,7 +381,7 @@
                     <li>
                         <div>
                             <a href="" class="property_card_main_div text-decoration-none">
-                                <img src="https://www.jagahonline.com/blog/wp-content/uploads/2020/09/Main-Header_11-1094x560-1.jpg"
+                                <img src="{{asset('assets/welcomeCenter.webp')}}"
                                     class="propertyImg" alt="" />
                                 <p> Karachi </p>
                                 <b>

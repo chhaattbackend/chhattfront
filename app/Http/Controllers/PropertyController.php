@@ -30,43 +30,56 @@ class PropertyController extends Controller
 
     public function search(Request $request)
     {
-        $str = explode(',', $request->search_areas);
-        $area = $str[0];
-        $area_id = $str[1];
-        $propertytype = PropertyType::all();
+        // dd($request->all());
+        if (isset($request->search_areas)) {
+            $str = explode(',', $request->search_areas);
+            $area = $str[0];
+            $area_id = $str[1];
+            $propertytype = PropertyType::all();
+            $devicecheck = is_numeric(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'mobile'));
 
-        $properties = Property::where($area, $area_id)->paginate(25)->setPath('');
-        $pagination = $properties->appends(array(
-            'search_areas' => $request->search_areas
-        ));
-        $city=City::all();
-        // $currentURL = url()->current();
-        // $currentURL = url()->full();
-        // $url = url()->previous();
+            if ($devicecheck == 1) {
 
-            // dd($currentURL);
+                $properties = Property::where($area, $area_id)->paginate(10)->setPath('');
+            } else {
+                $properties = Property::where($area, $area_id)->paginate(24)->setPath('');
+            }
 
-        // return response()->json([
-        //     'data' => $properties
-        // ]);
+            $pagination = $properties->appends(array(
+                'search_areas' => $request->search_areas
+            ));
+            $city = City::all();
+            return view('frontend.property.search', compact('properties', 'propertytype', 'city'));
+        }
 
-        return view('frontend.property.search',compact('properties','propertytype','city'));
+        if ($request->All == null) {
+            // dd('lind le');
+
+            $devicecheck = is_numeric(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'mobile'));
+            if ($devicecheck == 1) {
+                $properties = Property::orderBy('created_at', 'desc')->paginate(10);
+            } else {
+                $properties = Property::orderBy('created_at', 'desc')->paginate(24);
+            }
+
+            $city = City::all();
+            $propertytype = PropertyType::all();
+
+            return view('frontend.property.search', compact('properties', 'propertytype', 'city'));
+        }
     }
 
     public function singleProperty($id)
     {
 
         $properties = Property::find($id);
-        $propertyimage = PropertyImage::where('property_id',$id)->get();
-        $property = Property::where('area_one_id',$properties->area_one_id)
-        ->where('size',$properties->size)
-        ->where('size_type',$properties->size_type)
-        ->paginate(10);
+        $propertyimage = PropertyImage::where('property_id', $id)->get();
+        $property = Property::where('area_one_id', $properties->area_one_id)
+            ->where('size', $properties->size)
+            ->where('size_type', $properties->size_type)
+            ->paginate(10);
 
-
-
-
-        return view("frontend.property.single", compact(['property','properties','propertyimage']));
+        return view("frontend.property.single", compact(['property', 'properties', 'propertyimage']));
     }
 
     /**
@@ -80,30 +93,29 @@ class PropertyController extends Controller
     {
 
         if (isset($request->type)) {
-            if($request->type == 'All'){
+            if ($request->type == 'All') {
 
                 $property = Property::paginate(28);
-        $data= view('frontend.home.list',compact('property'))->render();
+                $data = view('frontend.home.list', compact('property'))->render();
                 return response()->json([
-            'data' => $data,
-            // 'pagination' => (string) $areas->links()
-        ]);
+                    'data' => $data,
+                    // 'pagination' => (string) $areas->links()
+                ]);
             }
-        $property=Property::where('type',$request->type)->paginate(28);
-        $data= view('frontend.home.list',compact('property'))->render();
+            $property = Property::where('type', $request->type)->paginate(28);
+            $data = view('frontend.home.list', compact('property'))->render();
 
-        return response()->json([
-            'data' => $data,
-            // 'pagination' => (string) $areas->links()
-        ]);
-
+            return response()->json([
+                'data' => $data,
+                // 'pagination' => (string) $areas->links()
+            ]);
         }
 
-        $city=City::all();
+        $city = City::all();
 
 
-        $property=Property::orderBy('created_at' , 'desc')->paginate(25);
-        return view('frontend.home.index',compact('property','city'));
+        $property = Property::orderBy('created_at', 'desc')->paginate(25);
+        return view('frontend.home.index', compact('property', 'city'));
     }
 
 
@@ -112,15 +124,13 @@ class PropertyController extends Controller
 
         if (isset($request->agency)) {
 
-                $agencies = Agency::paginate(10);
-                $data= view('frontend.property.mobile.agencylist',compact('agencies'))->render();
-                return response()->json([
+            $agencies = Agency::paginate(10);
+            $data = view('frontend.property.mobile.agencylist', compact('agencies'))->render();
+            return response()->json([
                 'data' => $data,
-                     // 'pagination' => (string) $areas->links()
-                ]);
-
+                // 'pagination' => (string) $areas->links()
+            ]);
         }
-
     }
 
 
@@ -130,35 +140,34 @@ class PropertyController extends Controller
     {
         if (isset($request->type)) {
 
-            if($request->type == 'All'){
+            if ($request->type == 'All') {
 
                 $properties = Property::paginate(10);
                 $agencies = Agency::paginate(10);
-                $data= view('frontend.property.list',compact('properties'))->render();
+                $data = view('frontend.property.list', compact('properties'))->render();
                 return response()->json([
-                'data' => $data,
-                     // 'pagination' => (string) $areas->links()
+                    'data' => $data,
+                    // 'pagination' => (string) $areas->links()
                 ]);
             }
-        $properties=Property::where('type',$request->type)->paginate(10);
-        $agencies = Agency::paginate(10);
-        $data= view('frontend.property.list',compact('properties'))->render();
+            $properties = Property::where('type', $request->type)->paginate(10);
+            $agencies = Agency::paginate(10);
+            $data = view('frontend.property.list', compact('properties'))->render();
 
-        return response()->json([
-            'data' => $data,
-            // 'pagination' => (string) $areas->links()
-        ]);
-
+            return response()->json([
+                'data' => $data,
+                // 'pagination' => (string) $areas->links()
+            ]);
         }
 
-        $properties=Property::paginate(28);
+
+        $properties = Property::paginate(28);
         $agencies = Agency::paginate(10);
-        $city=City::all();
+        $city = City::all();
 
 
 
-        return view('frontend.property.index',compact('properties','agencies','city'));
-
+        return view('frontend.property.index', compact('properties', 'agencies', 'city'));
     }
 
     /**
@@ -177,7 +186,7 @@ class PropertyController extends Controller
         $propertytype = PropertyType::all();
         $propertySocialTypes = SocialType::all();
         $propertySocialGroups = PropertyGroup::all();
-        return view('admin.property.create', compact(['users','city', 'area_one', 'area_two', 'area_three', 'propertyfor', 'propertytype', 'propertySocialTypes', 'propertySocialGroups']));
+        return view('admin.property.create', compact(['users', 'city', 'area_one', 'area_two', 'area_three', 'propertyfor', 'propertytype', 'propertySocialTypes', 'propertySocialGroups']));
     }
 
     /**
@@ -188,19 +197,19 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
-        $request->platform = 'Web | '. auth()->user()->email;
+        $request->platform = 'Web | ' . auth()->user()->email;
         $marker = 1;
-        if($request->type == 'Residential'){
+        if ($request->type == 'Residential') {
             $marker = 4;
         }
-        if($request->type == 'Commercial'){
+        if ($request->type == 'Commercial') {
             $marker = 3;
         }
-        if($request->type == 'Industrial'){
+        if ($request->type == 'Industrial') {
             $marker = 1;
         }
 
-       $property = Property::create($request->except('images','platform')+['platform'=>$request->platform]);
+        $property = Property::create($request->except('images', 'platform') + ['platform' => $request->platform]);
 
         return redirect()->route('properties.index');
     }
@@ -237,7 +246,7 @@ class PropertyController extends Controller
         $city = City::all();
         $link = url()->previous();
 
-       return view('admin.property.edit', compact(['city','property', 'users', 'area_one', 'area_two', 'area_three', 'propertyfor','link','propertytype','propertySocialTypes', 'propertySocialGroups']));
+        return view('admin.property.edit', compact(['city', 'property', 'users', 'area_one', 'area_two', 'area_three', 'propertyfor', 'link', 'propertytype', 'propertySocialTypes', 'propertySocialGroups']));
     }
 
     /**

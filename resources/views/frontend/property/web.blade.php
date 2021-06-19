@@ -262,7 +262,7 @@
 @section('content')
     {{-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> --}}
 
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta hidden name="csrf-token" content="{{ csrf_token() }}" />
 
     <div id="bestProperty" class="propertylist">
         <div class="secdiv">

@@ -22,7 +22,7 @@ function convert_rupee($amount)
                 <div class="imageSection">
                     @if (!$item->images->isEmpty())
                         <img class="slideImg"
-                            src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ $item->images[0]->name }}"
+                            src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ @$item->images[0]->name }}"
                             alt="" />
                     @else
                         <img src="https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"

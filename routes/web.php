@@ -45,6 +45,7 @@ Route::get('/wanted', function () {
 // mobile start
 
 Route::post('propertymobile', 'PropertyController@mobile');
+Route::get('results', 'PropertyController@search')->name('allproperties');
 
 
 // mobile end
