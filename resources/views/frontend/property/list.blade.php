@@ -15,10 +15,10 @@ function convert_rupee($amount)
 @endphp
 
 @forelse ($properties as $item)
-    <div onclick="window.location='{{ route('single.property', $item->id ) }}'" class="col-sm-4 col-lg-3 mb-4">
+    <div  class="col-sm-4 col-lg-3 mb-4">
         <!-- property card start -->
         <div class="propertyCard p-2">
-            <a class="text-decoration-none position-relative" href="#">
+            <a class="text-decoration-none position-relative" href="{{ route('single.property', $item->id ) }}">
                 <div class="imageSection">
                     @if (!$item->images->isEmpty())
                         <img class="slideImg"

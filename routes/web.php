@@ -35,7 +35,7 @@ Route::get('/contact', function () {
 
 
 Route::get('/wanted', function () {
-    return view('frontend.property.single');
+    return view('layouts.mobile.master');   
 })->name('wanted');
 
 // Route::get('property', function () {

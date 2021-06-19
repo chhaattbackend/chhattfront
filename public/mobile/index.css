@@ -1,0 +1,182 @@
+/* header start */
+
+.mobile_home_main_div {
+    background-color: #007bff;
+    color: #fff;
+    padding: 15px 20px 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.menu {
+    right: 3%;
+    top: 0;
+    width: 0vw;
+    height: 0vh;
+    clip-path: circle(22.3% at 100% 0);
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    transition: 0.5s all;
+    opacity: 0;
+    transform-origin: top;
+    transition-timing-function: cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+.menu a {
+    color: #fff;
+}
+
+.menu li {
+    text-align: center;
+    color: #fff;
+    margin: 0.5rem;
+}
+
+.menuOpen {
+    position: fixed;
+    right: 0;
+    background-color: #007bff;
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
+    clip-path: circle(79.9% at 50% 50%);
+}
+
+
+/* header end */
+
+.nav_container {
+    position: fixed;
+    width: 100%;
+    left: 0%;
+    bottom: 0%;
+}
+
+.main_container {
+    position: relative;
+    width: 100%;
+}
+
+.navigation_main_div {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+    padding: 0.5rem 0rem 0rem 0rem;
+    background: #fff;
+    box-shadow: 0px 0px 10px #ccc;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+}
+
+.navigation_main_div .each_navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navigation_main_div .each_navigation .NavIcon {
+    color: #007bff;
+    padding: 0.4rem;
+    border-radius: 50%;
+    font-size: 2rem;
+}
+
+.navigation_main_div .each_navigation h6 {
+    font-size: 0.7rem;
+    color: #000;
+    font-weight: 600;
+}
+
+.addBtn {
+    position: absolute;
+    top: -18%;
+    left: 48%;
+    width: fit-content;
+    transform: translate(-50%);
+}
+
+.addBtn span {
+    background-color: #007bff;
+    padding: 8px 14px 14px 13px;
+    border-radius: 50%;
+    font-size: 1.6rem;
+    color: #fff;
+}
+
+.active .NavIcon {
+    background-color: #007bff 17;
+}
+
+
+/* mobile footer start */
+
+.mobile_footer_main_div {
+    margin-bottom: 70px;
+}
+
+.mobile_footer_main_div .linksContainer {
+    background-color: rgba(0, 0, 0, 0.87);
+    padding: 10px 0px;
+}
+
+.mobile_footer_main_div .play_app_icons {
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px 0px;
+}
+
+.mobile_footer_main_div .play_app_icons img:nth-child(1),
+.mobile_footer_main_div .play_app_icons img:nth-child(2) {
+    height: 30px;
+    width: auto;
+}
+
+.mobile_footer_main_div .innerLinks {
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+    max-width: 230px;
+    color: #fff;
+}
+
+.mobile_footer_main_div .innerLinks a {
+    color: #fff;
+}
+
+.mobile_footer_main_div .shareIcons {
+    display: flex;
+    justify-content: center;
+    margin: 8px 0px;
+}
+
+.mobile_footer_main_div .shareIcons a {
+    background: rgba(0, 123, 255, 0.3);
+    /* margin-right: 10px; */
+    padding: 3px 5px;
+}
+
+.mobile_footer_main_div .shareIcons .sIcon {
+    margin-right: 10px;
+}
+
+.mobile_footer_main_div .copyright_line {
+    text-align: center;
+    font-size: 13px;
+    margin-top: 15px;
+    color: #fff;
+}
+
+
+/* mobile footer end */
+
+
+/* bottom navigation end */

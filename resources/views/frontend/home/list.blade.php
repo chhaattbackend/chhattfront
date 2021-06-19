@@ -20,7 +20,7 @@ function convert_rupee($amount)
 
 
     <li class="scroll-img-list ms-3 me-1 p-2">
-        <a class="text-decoration-none position-relative" href="#">
+        <a class="text-decoration-none position-relative" href="{{ route('single.property', $item->id ) }}">
             <div class="imageSection">
 
 
