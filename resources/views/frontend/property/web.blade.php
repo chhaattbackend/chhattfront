@@ -12,7 +12,7 @@
             <div class="backg_sdiv">
                 <h1>Search Your Desire Property</h1>
                 <div class="main_bar">
-                    <form onSubmit="" class="frm">
+                    <form id="form11" action="" class="frm">
                         <div class="searchdiv">
                             <span class="searchIcon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="23" height="25" fill="currentColor"
@@ -43,58 +43,140 @@
                         <div class="serch_bottom" id="serch_option_show">
                             <div class="d-flex flex-column">
                                 <div class="view_more_main">
-                                    <span>Reset</span>
+                                    <input class="view_more_main" style="padding-right: 6px" type="reset" value="Reset" />
                                     <span class="sspan" id="view_more">View More</span>
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <div class="slct1 slct w-100 mx-3">
                                         <div class="pb-1">Property Type</div>
-                                        <select class="py-2 w-100 px-2  border-0" name="">
-                                            <option value="">Karachi</option>
+                                        <select class="py-2 w-100 px-2  border-0" name="property_type">
+                                            <option selected disabled value="">Property Type </option>
+                                            @foreach ($propertytype as $item)
+                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="slct1 slct w-100 mx-3">
                                         <div class="pb-1">Area Type</div>
-                                        <select class="py-2 w-100 px-2  border-0" name="">
-                                            <option value="">Karachi</option>
+                                        <select class="py-2 w-100 px-2  border-0" name="area_type">
+                                            <option selected disabled value="">Area Type </option>
+                                            <option value="Residential">Residential</option>
+                                            <option value="Commercial">Commercial</option>
+                                            <option value="Industrial">Industrial</option>
                                         </select>
                                     </div>
                                     <div class="slct1 slct w-100 mx-3">
                                         <div class="pb-1">Beds</div>
-                                        <select class="py-2 w-100 px-2  border-0" name="">
-                                            <option value="">Karachi</option>
+                                        <select class="py-2 w-100 px-2  border-0" name="bed">
+                                            <option selected disabled value="">Beds </option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="+10">+10</option>
                                         </select>
                                     </div>
                                     <div class="slct1 slct w-100 mx-3">
                                         <div class="pb-1">Baths</div>
-                                        <select class="py-2 w-100 px-2  border-0" name="">
-                                            <option value="">Karachi</option>
+                                        <select class="py-2 w-100 px-2  border-0" name="beth">
+                                            <option selected disabled value="">Bath </option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="+10">+10</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between mt-3" id="drop_show">
                                     <div class="slct1 slct w-100 mx-3">
                                         <div class="pb-1">Price Min</div>
-                                        <select class="py-2 w-100 px-2  border-0" name="">
-                                            <option value="">Karachi</option>
+                                        <select class="py-2 w-100 px-2  border-0" name="min_price">
+                                            <option selected disabled value="">Min Price </option>
+                                            <option value="500000">500,000</option>
+                                            <option value="1000000">1,000,000</option>
+                                            <option value="2000000">2,000,000</option>
+                                            <option value="3500000">3,500,000</option>
+                                            <option value="5000000">5,000,000</option>
+                                            <option value="6500000">6,500,000</option>
+                                            <option value="8000000">8,000,000</option>
+                                            <option value="10000000">10,000,000</option>
+                                            <option value="12500000">12,500,000</option>
+                                            <option value="15000000">15,000,000</option>
+                                            <option value="17500000">17,500,000</option>
+                                            <option value="20000000">20,000,000</option>
+                                            <option value="30000000">30,000,000</option>
+                                            <option value="40000000">40,000,000</option>
+                                            <option value="50000000">50,000,000</option>
+                                            <option value="75000000">75,000,000</option>
+                                            <option value="100000000">100,000,000</option>
+                                            <option value="250000000">250,000,000</option>
+                                            <option value="500000000">500,000,000</option>
+                                            <option value="1000000000">1,000,000,000</option>
                                         </select>
                                     </div>
                                     <div class="slct1 slct w-100 mx-3">
                                         <div class="pb-1">Price Max</div>
-                                        <select class="py-2 w-100 px-2  border-0" name="">
-                                            <option value="">Karachi</option>
+                                        <select class="py-2 w-100 px-2  border-0" name="max_price">
+                                            <option selected disabled value="">Max Price </option>
+                                            <option value="500000">500,000</option>
+                                            <option value="1000000">1,000,000</option>
+                                            <option value="2000000">2,000,000</option>
+                                            <option value="3500000">3,500,000</option>
+                                            <option value="5000000">5,000,000</option>
+                                            <option value="6500000">6,500,000</option>
+                                            <option value="8000000">8,000,000</option>
+                                            <option value="10000000">10,000,000</option>
+                                            <option value="12500000">12,500,000</option>
+                                            <option value="15000000">15,000,000</option>
+                                            <option value="17500000">17,500,000</option>
+                                            <option value="20000000">20,000,000</option>
+                                            <option value="30000000">30,000,000</option>
+                                            <option value="40000000">40,000,000</option>
+                                            <option value="50000000">50,000,000</option>
+                                            <option value="75000000">75,000,000</option>
+                                            <option value="100000000">100,000,000</option>
+                                            <option value="250000000">250,000,000</option>
+                                            <option value="500000000">500,000,000</option>
+                                            <option value="1000000000">1,000,000,000</option>
                                         </select>
                                     </div>
                                     <div class="slct1 slct w-100 mx-3">
                                         <div class="pb-1">Area Min</div>
-                                        <select class="py-2 w-100 px-2  border-0" name="">
-                                            <option value="">Karachi</option>
+                                        <select class="py-2 w-100 px-2  border-0" name="area_min">
+                                            <option selected disabled value="">Area Min </option>
+                                            <option value="500">500</option>
+                                            <option value="1000">1000</option>
+                                            <option value="1500">1500</option>
+                                            <option value="2000">2000</option>
+                                            <option value="2500">2500</option>
+                                            <option value="3000">3000</option>
+                                            <option value="3500">3500</option>
+                                            <option value="4000">4000</option>
                                         </select>
                                     </div>
                                     <div class="slct1 slct w-100 mx-3">
                                         <div class="pb-1">Area Max</div>
-                                        <select class="py-2 w-100 px-2  border-0" name="">
-                                            <option value="">Karachi</option>
+                                        <select class="py-2 w-100 px-2  border-0" name="area_max">
+                                            <option selected disabled value="">Area Max </option>
+                                            <option value="500">500</option>
+                                            <option value="1000">1000</option>
+                                            <option value="1500">1500</option>
+                                            <option value="2000">2000</option>
+                                            <option value="2500">2500</option>
+                                            <option value="3000">3000</option>
+                                            <option value="3500">3500</option>
+                                            <option value="4000">4000</option>
                                         </select>
                                     </div>
                                 </div>
@@ -212,11 +294,11 @@
                         // Modify Results Item Content
                         item.innerHTML =
                             `<span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ${data.match}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        </span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        <span style="margin-left:15px;display:inline-block;width:160px;text-align:right;align-items: center; font-size: 13px; font-weight: 100; text-transform: uppercase; color: rgba(0,0,0,.2); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        ${data.value.parent}
-                                                                                                                                                                                                                                                               </span>`;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ${data.match}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <span style="margin-left:15px;display:inline-block;width:160px;text-align:right;align-items: center; font-size: 13px; font-weight: 100; text-transform: uppercase; color: rgba(0,0,0,.2); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ${data.value.parent}
+                                                                                                                                                                                                            </span>`;
                     },
                     highlight: true
                 },
@@ -243,8 +325,11 @@
                 const filteredArea = areas.data.filter((prev) => prev.name === inpVal.value)
                 if (filteredArea.length) {
                     // console.log(filteredArea[0].key)
-                    var url = '{{ route('property.search', 'search_areas=:key') }}';
+                    var formData = $('#form11').serialize();
+                    var url = '{{ route('property.search', 'search_areas=:key:word:formdata') }}';
                     url = url.replace(':key', filteredArea[0].key);
+                    url = url.replace(':word', '&');
+                    url = url.replace(':formdata', formData);
                     document.location.href = url;
                 } else {
                     // console.log(inpVal.value)

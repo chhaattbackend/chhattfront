@@ -388,7 +388,7 @@
                                     Welcome Center
                                 </b>
                                 <p>
-                                    <b class="text-dark fw-light">Highway Developers and Builders</b>
+                                    <b class="text-dark fw-light"></b>
                                 </p>
                             </a>
                         </div>
