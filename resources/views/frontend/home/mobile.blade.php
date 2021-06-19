@@ -8,6 +8,7 @@
 
 
 @section('content')
+    @include('functions.convert_rupee')
 
     <div class="category_main_div">
         <div class="fdiv">
@@ -107,27 +108,40 @@
             <div class="top">
                 <p>Best Properties For You</p>
                 <p>
-                    View All
+                    <a href=""> View All </a>
                 </p>
             </div>
             <div class="sdiv">
                 <ul>
-                    <li>
-                        <div>
-                            <!-- card start -->
-                            <a href="" class="card_main_div text-decoration-none">
-                                <img src="./assets/images/welcomeCenter.webp" class="propertyImg" alt="" />
-                                <p class="mb-0"> area_type </p>
-                                <b>
-                                    property_type
-                                </b>
-                                <p>
-                                    <b>Rs : short_price</b>
-                                </p>
-                            </a>
-                            <!-- card end -->
-                        </div>
-                    </li>
+                    @foreach ($property as $item)
+
+                        <li>
+                            <div>
+                                <!-- card start -->
+                                <a href="" class="card_main_div text-decoration-none">
+                                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ $item->images[0]->name }}"
+                                        class="propertyImg" alt="" />
+                                    <p class="mb-0"> {{ $item->type }} </p>
+                                    <b>
+                                        {{ $item->property_for }} in
+                                        {{ optional($item->areaTwo)->name }},
+                                        {{ optional($item->areaOne)->name }}
+                                    </b>
+                                    <p>
+                                        <b>
+                                            @if ($item->price == null)
+                                                <span style="background: red;" class="badge badge-pill badge-danger">On
+                                                    Request</span>
+                                            @else
+                                                Rs: {{ convert_rupee($item->price) }}
+                                            @endif
+                                        </b>
+                                    </p>
+                                </a>
+                                <!-- card end -->
+                            </div>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>

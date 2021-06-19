@@ -35,9 +35,16 @@ Route::get('/contact', function () {
 
 
 Route::get('/wanted', function () {
-    return view('layouts.mobile.master');   
+    return view('layouts.mobile.master');
 })->name('wanted');
 
 // Route::get('property', function () {
 //     return view('property');
 // })->name('property');
+
+// mobile start
+
+Route::post('propertymobile', 'PropertyController@mobile');
+
+
+// mobile end

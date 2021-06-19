@@ -31,7 +31,7 @@
             <a href='{{ route('home') }}'>
                 <img src="{{ asset('assets/logow.png') }}" width='90px' alt='logo' />
             </a>
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list"
+            <svg href="" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list"
                 viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
@@ -50,7 +50,7 @@
     <div class="nav_container">
         <div class="main_container">
             <div class="navigation_main_div">
-                <a href="/" class="text-decoration-none">
+                <a href="{{ route('home') }}" class="text-decoration-none">
                     <div class="each_navigation">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="#007bff" height="22" viewBox="0 1 511 511.999"
                             width="22">
@@ -60,7 +60,7 @@
                         <h6>Home</h6>
                     </div>
                 </a>
-                <a href="/" class="text-decoration-none">
+                <a href="{{ route('property') }}" class="text-decoration-none">
                     <div class="each_navigation">
                         <svg xmlns="http://www.w3.org/2000/svg" height="25" fill="#007bff" viewBox="0 0 512 512"
                             width="25">
@@ -117,7 +117,7 @@
 
 
 
-    {{-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
@@ -125,7 +125,7 @@
     </script>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 
     @yield('personalscripts')
 

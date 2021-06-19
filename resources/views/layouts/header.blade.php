@@ -20,9 +20,9 @@
                         <li id="contact" onclick="window.location='{{ route('contact') }}'" style="color: #fff" class="lis">
                             <span>Contact Us</span>
                         </li>
-                        <li id="home" onclick="window.location='{{ route('wanted') }}'" style="color: #fff" class="lit">
+                        {{-- <li id="home" onclick="window.location='{{ route('wanted') }}'" style="color: #fff" class="lit">
                             <span>Wanted</span>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </div>

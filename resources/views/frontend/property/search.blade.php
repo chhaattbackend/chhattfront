@@ -5,14 +5,14 @@
     <link rel="stylesheet" type="text/css" href="./styles/property/properties.css" />
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.1.3/dist/css/autoComplete.01.min.css">
-        
+
 @endsection
 
 @section('headercontent')
 <div class="mn_divz">
       <div class="backgz">
         <div class="backg_sdivz">
-          <h1>heading</h1>
+          <h1>Find the best properties from top locations</h1>
         </div>
       </div>
     </div>
@@ -278,7 +278,7 @@
                 },
                 placeHolder: "Try Something 'Final'",
                 resultsList: {
-                   
+
                     // noResults: true,
                     maxResults: 100,
                     // tabSelect: true

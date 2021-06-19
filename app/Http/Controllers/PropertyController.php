@@ -107,6 +107,21 @@ class PropertyController extends Controller
     }
 
 
+    public function mobile(Request $request)
+    {
+
+        if (isset($request->agency)) {
+
+                $agencies = Agency::paginate(10);
+                $data= view('frontend.property.mobile.agencylist',compact('agencies'))->render();
+                return response()->json([
+                'data' => $data,
+                     // 'pagination' => (string) $areas->links()
+                ]);
+
+        }
+
+    }
 
 
 
@@ -119,11 +134,11 @@ class PropertyController extends Controller
 
                 $properties = Property::paginate(10);
                 $agencies = Agency::paginate(10);
-        $data= view('frontend.property.list',compact('properties'))->render();
+                $data= view('frontend.property.list',compact('properties'))->render();
                 return response()->json([
-            'data' => $data,
-            // 'pagination' => (string) $areas->links()
-        ]);
+                'data' => $data,
+                     // 'pagination' => (string) $areas->links()
+                ]);
             }
         $properties=Property::where('type',$request->type)->paginate(10);
         $agencies = Agency::paginate(10);
