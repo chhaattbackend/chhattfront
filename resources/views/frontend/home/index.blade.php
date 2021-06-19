@@ -1,3 +1,3 @@
 
-{{-- @include('frontend.home.web') --}}
-@include('frontend.home.mobile')
+@include('frontend.home.web')
+{{-- @include('frontend.home.mobile') --}}
