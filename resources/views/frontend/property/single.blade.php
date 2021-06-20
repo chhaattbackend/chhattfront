@@ -33,7 +33,7 @@
     <div class="breadcrumbs_main_div">
         <div class="inner_div">
             <div>
-                <a href="" title="Chhatt"> Chhatt </a>/
+                <a href="{{route('home')}}" title="Chhatt"> Chhatt </a>/
                 <a title=""
                     href="{{ route('property.search', ['city' => $properties->areaOne->city_id]) }}">{{ $properties->areaOne->city->name }}
                 </a>/
