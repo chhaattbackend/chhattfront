@@ -66,6 +66,7 @@ class PropertyController extends Controller
         $devicecheck = is_numeric(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'mobile'));
         $inputval = null;
         $inputcity_id = null;
+        $suggestedareas = null;
 
 
         if (isset($request->search_areas)) {
@@ -78,18 +79,23 @@ class PropertyController extends Controller
                 $one = AreaOne::find($area_id);
                 $inputval = $one->name;
                 $inputcity_id = $one->city_id;
+                $suggestedareas = AreaTwo::where('area_one_id', $area_id)->paginate(10);
+                // dd($suggestedareas);
             }
             if ($area == 'area_two_id') {
                 // dd('areatwo');
                 $two = AreaTwo::find($area_id);
                 // dd($two);
                 $one = AreaOne::find($two->area_one_id);
+                $suggestedareas = AreaTwo::where('area_one_id', $two->area_one_id)->paginate(10);
+
                 $inputval = $one->name . ' ' . $two->name;
                 $inputcity_id = $one->city_id;
             }
             if ($area == 'area_three_id') {
                 $inputval = AreaThree::find($area_id);
             }
+
 
             $properties = $properties->where($area, $area_id);
             $search = '';
@@ -163,11 +169,10 @@ class PropertyController extends Controller
         $properties->sortBy('priority');
         $pagination = $properties->appends($pagination_array);
 
-        // dd($inputval);
 
 
 
-        return view('frontend.property.search', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_id'));
+        return view('frontend.property.search', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_id', 'suggestedareas'));
     }
 
     public function singleProperty($id)

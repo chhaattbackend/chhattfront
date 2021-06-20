@@ -19,6 +19,7 @@
 @endsection
 @section('content')
     <!-- agency search start -->
+
     <div>
         <div class="agency-search">
             <div class="secdiv" id="serch_option_show">
@@ -44,7 +45,7 @@
                             <select id="citiesSelect" onchange="changecity()" class="form-select"
                                 aria-label="Default select example">
                                 @foreach ($city as $item)
-                                    <option @if (@$inputcity_id == @$item->id   ) selected @endif value="{{ $item->name }}">{{ $item->name }} </option>
+                                    <option @if (@$inputcity_id == @$item->id) selected @endif value="{{ $item->name }}">{{ $item->name }} </option>
                                 @endforeach
                             </select>
                             <!-- city select end -->
@@ -179,6 +180,18 @@
                 </form>
             </div>
         </div>
+
+        <div class="agency-search" style="padding-top: 10px !important; padding-bottom: 10% !important;">
+            <div class="secdiv">
+                <div class="d-flex flex-column mt-2">
+                    @foreach ($suggestedareas as $item)
+                        <p>{{ $item->name }} ({{ $item->properties->count() }})</p>
+                    @endforeach
+
+
+                </div>
+            </div>
+        </div>
     </div>
     <!-- agency search end -->
 
@@ -307,11 +320,11 @@
                         // Modify Results Item Content
                         item.innerHTML =
                             `<span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ${data.match}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <span style="margin-left:15px;display:inline-block;width:160px;text-align:right;align-items: center; font-size: 13px; font-weight: 100; text-transform: uppercase; color: rgba(0,0,0,.2); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ${data.value.parent}
-                                                                                                                                                                                                                                                                           </span>`;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ${data.match}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <span style="margin-left:15px;display:inline-block;width:160px;text-align:right;align-items: center; font-size: 13px; font-weight: 100; text-transform: uppercase; color: rgba(0,0,0,.2); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ${data.value.parent}
+                                                                                                                                                                                                                                                                                           </span>`;
                     },
                     highlight: true
                 },

@@ -189,161 +189,7 @@
     </div>
 
 @endsection
-@section('personalscripts')
-    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.1.3/dist/autoComplete.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
-        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous">
-    </script>
-    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-    <!-- EXTERNAL LINKS END -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-    <script>
-        var city = $('#citiesSelect').children("option:selected").val();
 
-        search('karachi');
-
-        // function citiesData() {
-        // CITIES START
-        //     axios.get('https://uat.chhatt.com/api/cities').then((prev) =>
-        //         $.each(prev.data, function(key, value) {
-        //             console,log()
-        //             $("#citiesSelect").append(`
-        //         <option value="${value.id}">${value.name}</option>`);
-        //         })
-        //     )
-        // }
-        // CITIES END
-
-        // == SEARCH AREA DROPDOWN START
-        var areas;
-        var city;
-
-        function changecity() {
-            // var city = $('#citiesSelect').children("option:selected").val();
-            city = $('#citiesSelect').children("option:selected").val();
-            // console.log(city);
-            // areas = "";
-            search(city);
-        }
-
-        function search() {
-
-            const autoCompleteJS = new autoComplete({
-                data: {
-                    src: async () => {
-                        console.log(areas)
-                        try {
-                            // Loading placeholder text
-                            document
-                                .getElementById("autoComplete")
-                                .setAttribute("placeholder", "Loading...");
-                            // Fetch External Data Source
-                            const source = await fetch(
-                                `http://uat.chhatt.com/api/allareas?city=${city}`
-                            );
-                            areas = await source.json();
-                            // Post Loading placeholder text
-                            document
-                                .getElementById("autoComplete")
-                                .setAttribute("placeholder", autoCompleteJS.placeHolder);
-                            // Returns Fetched data
-                            // console.log(areas.data)
-                            return areas.data;
-                        } catch (error) {
-                            return error;
-                        }
-                    },
-                    keys: ["name"],
-                    cache: true,
-                    filter: (list) => {
-
-                        // Filter duplicates
-                        // incase of multiple data keys usage
-                        const filteredResults = Array.from(
-                            new Set(list.map((value) => value.match))
-                        ).map((food) => {
-                            return list.find((value) => value.match === food);
-                        });
-                        return filteredResults;
-                    }
-                },
-                placeHolder: "Try Something 'Final'",
-                resultsList: {
-                    element: (list, data) => {
-                        const info = document.createElement("p");
-                        if (data.results.length > 0) {
-                            info.innerHTML = `Displaying <strong>${data.matches.length}</strong> results`;
-                        } else {
-                            info.innerHTML =
-                                `Found <strong>${data.matches.length}</strong> matching results for <strong>"${data.query}"</strong>`;
-                        }
-                        list.prepend(info);
-                    },
-                    // noResults: true,
-                    maxResults: 100,
-                    // tabSelect: true
-                },
-                resultItem: {
-                    element: (item, data) => {
-                        // console.log(data.match)
-                        // Modify Results Item Style
-                        item.style = "display: flex; justify-content: space-between;";
-                        // Modify Results Item Content
-                        item.innerHTML =
-                            `<span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ${data.match}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <span style="margin-left:15px;display:inline-block;width:160px;text-align:right;align-items: center; font-size: 13px; font-weight: 100; text-transform: uppercase; color: rgba(0,0,0,.2); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ${data.value.parent}
-                                                                                                                                                                                                            </span>`;
-                    },
-                    highlight: true
-                },
-                events: {
-                    input: {
-                        selection: (e) => {
-                            const selection = e.detail.selection.value;
-                            autoCompleteJS.input.value = selection.name;
-                        },
-                        focus: () => {
-                            if (autoCompleteJS.input.value.length) autoCompleteJS.start();
-                        }
-                    }
-                }
-            });
-
-        }
-
-        // SUBMIT START
-        function changeFunc(e) {
-            e.preventDefault()
-            const inpVal = document.getElementById("autoComplete");
-            if (areas) {
-                const filteredArea = areas.data.filter((prev) => prev.name === inpVal.value)
-                if (filteredArea.length) {
-                    // console.log(filteredArea[0].key)
-                    var formData = $('#form11').serialize();
-                    var url = '{{ route('property.search', 'search_areas=:key:word:formdata') }}';
-                    url = url.replace(':key', filteredArea[0].key);
-                    url = url.replace(':word', '&');
-                    url = url.replace(':formdata', formData);
-                    document.location.href = url;
-                } else {
-                    // console.log(inpVal.value)
-                }
-            } else {
-                // console.log("error")
-            }
-        }
-        // SUBMIT END
-        // == SEARCH AREA DROPDOWN END
-
-    </script>
-
-@endsection
 @section('content')
     {{-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> --}}
 
@@ -501,4 +347,159 @@
         }
 
     </script>
+@endsection
+@section('personalscripts')
+    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.1.3/dist/autoComplete.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <!-- EXTERNAL LINKS END -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script>
+        var city = $('#citiesSelect').children("option:selected").val();
+
+        search('karachi');
+
+        // function citiesData() {
+        // CITIES START
+        //     axios.get('https://uat.chhatt.com/api/cities').then((prev) =>
+        //         $.each(prev.data, function(key, value) {
+        //             console,log()
+        //             $("#citiesSelect").append(`
+        //         <option value="${value.id}">${value.name}</option>`);
+        //         })
+        //     )
+        // }
+        // CITIES END
+
+        // == SEARCH AREA DROPDOWN START
+        var areas;
+        var city;
+
+        function changecity() {
+            // var city = $('#citiesSelect').children("option:selected").val();
+            city = $('#citiesSelect').children("option:selected").val();
+            // console.log(city);
+            // areas = "";
+            search(city);
+        }
+
+        function search() {
+
+            const autoCompleteJS = new autoComplete({
+                data: {
+                    src: async () => {
+                        console.log(areas)
+                        try {
+                            // Loading placeholder text
+                            document
+                                .getElementById("autoComplete")
+                                .setAttribute("placeholder", "Loading...");
+                            // Fetch External Data Source
+                            const source = await fetch(
+                                `http://uat.chhatt.com/api/allareas?city=${city}`
+                            );
+                            areas = await source.json();
+                            // Post Loading placeholder text
+                            document
+                                .getElementById("autoComplete")
+                                .setAttribute("placeholder", autoCompleteJS.placeHolder);
+                            // Returns Fetched data
+                            // console.log(areas.data)
+                            return areas.data;
+                        } catch (error) {
+                            return error;
+                        }
+                    },
+                    keys: ["name"],
+                    cache: true,
+                    filter: (list) => {
+
+                        // Filter duplicates
+                        // incase of multiple data keys usage
+                        const filteredResults = Array.from(
+                            new Set(list.map((value) => value.match))
+                        ).map((food) => {
+                            return list.find((value) => value.match === food);
+                        });
+                        return filteredResults;
+                    }
+                },
+                placeHolder: "Try Something 'Final'",
+                resultsList: {
+                    element: (list, data) => {
+                        const info = document.createElement("p");
+                        if (data.results.length > 0) {
+                            info.innerHTML = `Displaying <strong>${data.matches.length}</strong> results`;
+                        } else {
+                            info.innerHTML =
+                                `Found <strong>${data.matches.length}</strong> matching results for <strong>"${data.query}"</strong>`;
+                        }
+                        list.prepend(info);
+                    },
+                    // noResults: true,
+                    maxResults: 100,
+                    // tabSelect: true
+                },
+                resultItem: {
+                    element: (item, data) => {
+                        // console.log(data.match)
+                        // Modify Results Item Style
+                        item.style = "display: flex; justify-content: space-between;";
+                        // Modify Results Item Content
+                        item.innerHTML =
+                            `<span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ${data.match}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <span style="margin-left:15px;display:inline-block;width:160px;text-align:right;align-items: center; font-size: 13px; font-weight: 100; text-transform: uppercase; color: rgba(0,0,0,.2); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ${data.value.parent}
+                                                                                                                                                                                                            </span>`;
+                    },
+                    highlight: true
+                },
+                events: {
+                    input: {
+                        selection: (e) => {
+                            const selection = e.detail.selection.value;
+                            autoCompleteJS.input.value = selection.name;
+                        },
+                        focus: () => {
+                            if (autoCompleteJS.input.value.length) autoCompleteJS.start();
+                        }
+                    }
+                }
+            });
+
+        }
+
+        // SUBMIT START
+        function changeFunc(e) {
+            e.preventDefault()
+            const inpVal = document.getElementById("autoComplete");
+            if (areas) {
+                const filteredArea = areas.data.filter((prev) => prev.name === inpVal.value)
+                if (filteredArea.length) {
+                    // console.log(filteredArea[0].key)
+                    var formData = $('#form11').serialize();
+                    var url = '{{ route('property.search', 'search_areas=:key:word:formdata') }}';
+                    url = url.replace(':key', filteredArea[0].key);
+                    url = url.replace(':word', '&');
+                    url = url.replace(':formdata', formData);
+                    document.location.href = url;
+                } else {
+                    // console.log(inpVal.value)
+                }
+            } else {
+                // console.log("error")
+            }
+        }
+        // SUBMIT END
+        // == SEARCH AREA DROPDOWN END
+
+    </script>
+
 @endsection
