@@ -2,7 +2,7 @@
 
     <li>
         <div>
-            <a href="" class="property_card_main_div text-decoration-none">
+            <a href="{{ route('single.agency', $item->id ) }}" class="property_card_main_div text-decoration-none">
                 <img src="https://chhatt.s3.ap-south-1.amazonaws.com/agencies/{{ @$item->image }}"
                     class="propertyImg" alt="" />
                 <p> {{ @$item->areaOne->city->name }} </p>

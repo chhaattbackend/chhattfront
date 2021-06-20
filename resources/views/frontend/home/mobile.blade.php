@@ -2,7 +2,6 @@
 
 @section('style')
     <link rel="stylesheet" type="text/css" href="./mobile/home.css" />
-
 @endsection
 
 

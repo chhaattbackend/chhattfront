@@ -1,9 +1,9 @@
 @foreach ($agencies as $item)
 
-    <div onclick="window.location='{{ route('single.agency', $item->id ) }}'" class="col-sm-4 col-lg-3 mb-4">
+    <div class="col-sm-4 col-lg-3 mb-4">
         <!-- property card start -->
         <div class="propertyCard p-2">
-            <a class="text-decoration-none position-relative" href="#">
+            <a class="text-decoration-none position-relative" href="{{ route('single.agency', $item->id ) }}">
                 <div class="imageSection">
                     <img class="slideImg"
                         src='https://chhatt.s3.ap-south-1.amazonaws.com/agencies/{{ $item->image }}' alt="" />

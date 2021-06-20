@@ -1,0 +1,142 @@
+.topContainer {
+    display: flex;
+    padding: 1rem 1rem;
+    justify-content: space-around;
+    background: #f6f7fb;
+}
+.topContainer .lightColor {
+    color: #7d7d7d;
+    font-size: 14px;
+}
+.topContainer .numbers {
+    color: #000;
+    font-weight: 600;
+    font-size: 14px;
+}
+.topContainer .verified {
+    display: flex;
+    align-items: center;
+    color: #0ed678;
+}
+/* TOP END */
+
+/* IMAGE AND DETAILS SECTION START  */
+.imageContainer {
+    padding: 1rem;
+    box-shadow: 0px 5px 10px #e6e6e6;
+}
+.imageContainer .agencyImageContainer {
+    width: 100%;
+}
+.imageContainer .agencyImageContainer img {
+    width: 100%;
+    height: 100%;
+    max-height: 190px;
+}
+.imageContainer .agencyDUpper {
+    color: #7d7d7d;
+    font-weight: 600;
+    font-size: 13px;
+}
+.imageContainer .fetchedData {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+/* IMAGE AND DETAILS SECTION END */
+
+/* AGENTS SECTION START */
+.agentsContainerMobile {
+    margin-top: 15px;
+    background-color: #fff;
+    padding: 15px;
+    box-shadow: 1px 1px 20px #e6e6e6;
+}
+.agentsContainerMobile .fdiv .sdiv {
+    overflow-x: auto;
+    width: 100%;
+}
+.agentsContainerMobile .fdiv ul {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    margin-top: 5px;
+    width: 100%;
+    min-width: 400px;
+}
+.agentsContainerMobile .fdiv ul li {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+}
+.top {
+    display: flex;
+    justify-content: space-between;
+}
+.top p:nth-child(1) {
+    font-size: 20px;
+    font-weight: 900;
+}
+.top p:nth-child(2) {
+    color: #007bff;
+}
+
+.agentCard {
+    width: 220px;
+    height: 195px;
+    border-radius: 10px;
+    margin: 35px 8px 10px 10px;
+    padding: 10px 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f3f4f8;
+}
+.agentCard .imgContainer {
+    position: absolute;
+    left: 29%;
+    top: -18%;
+}
+.agentCard .imgContainer img {
+    width: 94px;
+    border-radius: 50%;
+    padding: 3px;
+    box-shadow: 1px 1px 10px #c1c1c1;
+    height: 90px;
+}
+.agentcard_body {
+    margin-top: 62px;
+    text-align: center;
+}
+.agentcard_body h3 {
+    font-size: 18px;
+}
+.agentcard_body h6 {
+    color: #a1a1a1;
+    font-size: 13px;
+}
+.agentcard_body h5 {
+    padding: 0rem 18px;
+    font-size: 0.8rem;
+    line-height: 18px;
+}
+.agentcard_body .icons {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+.agentcard_body .icons .icon_container {
+    margin: 0px 6px;
+}
+.agentcard_body .icons .icon_container .icon {
+    padding: 10px;
+    font-size: 40px;
+    color: #fff;
+    border-radius: 50%;
+}
+
+/* AGENTS SECTION END */
+
+/* MOBILE END */
