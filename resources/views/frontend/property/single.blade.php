@@ -22,7 +22,8 @@
     <div class="mn_divz">
         <div class="backgz">
             <div class="backg_sdivz">
-                <h1>{{ @$properties->property_type }} {{ @$properties->property_for }} in {{ @$properties->areaTwo->name }} {{ @$properties->areaOne->name }}</h1>
+                <h1>{{ @$properties->property_type }} {{ @$properties->property_for }} in
+                    {{ @$properties->areaTwo->name }} {{ @$properties->areaOne->name }}</h1>
             </div>
         </div>
     </div>
@@ -31,23 +32,31 @@
     <!-- breadcrumbs start -->
     <div class="breadcrumbs_main_div">
         <div class="inner_div">
-            {{-- <div>
-        <a href="" title="Chhatt"> Chhatt </a>
-        &nbsp;
-        <a title="" href="">lol </a>
-        &nbsp;
-        <a title="" href=""> lol </a>
-        &nbsp;
-        <a title="" href=""> lol </a>
-        <a title="" to=""> lol </a>
-        <a title="" to=""> lol </a>
-        &nbsp;
-      </div> --}}
+            <div>
+                <a href="" title="Chhatt"> Chhatt </a>/
+                <a title=""
+                    href="{{ route('property.search', ['city' => $properties->areaOne->city_id]) }}">{{ $properties->areaOne->city->name }}
+                </a>/
+                <a title="" href="{{ route('property.search', ['area_type' => $properties->type,'city' => $properties->areaOne->city_id]) }}">
+                    {{ @$properties->type }} </a>/
+                <a title="" href="{{ route('property.search', ['property_type' => $properties->property_type,'city' => $properties->areaOne->city_id]) }}">
+                    {{ @$properties->property_type }} </a>/
+                <a title="" href="{{ route('property.search', ['property_for' => $properties->property_for,'city' => $properties->areaOne->city_id]) }}">
+                    {{ @$properties->property_for }} </a>/
+                <a title="" href="{{ route('property.search', ['search_areas' => 'area_one_id,'.$properties->areaOne->id ]) }}">
+                    {{ $properties->areaOne->name }} </a>/
+                <a title="" href="{{ route('property.search', ['search_areas' => 'area_two_id,'.$properties->areaTwo->id]) }}">
+                    {{ $properties->areaTwo->name }} </a>/
+                <a disabled> {{ $properties->id }} </a>
+
+
+                &nbsp;
+            </div>
             <div class="share_div">
 
                 <!--  <button>
-                    <MdFavoriteBorder /> Favorite
-                  </button>  -->
+                            <MdFavoriteBorder /> Favorite
+                          </button>  -->
                 <!--  <button>Print</button>  -->
             </div>
         </div>
@@ -64,7 +73,7 @@
                         <!-- Add images to <div class="fotorama"></div> -->
                         <div class="fotorama mt-5" data-nav="thumbs" data-width="100%" data-allowfullscreen="true">
                             <!-- ↑ The same as data-ratio="4/3"
-                       or data-ratio="1.3333333333". -->
+                               or data-ratio="1.3333333333". -->
                             @foreach ($propertyimage as $item)
 
                                 <a href=""><img
@@ -170,7 +179,8 @@
                     <!--  HIDDEN FOR MAP PAGE START  -->
                     <div class='saleTagContainer'>
                         <h2>
-                            {{ @$properties->property_type }} {{ @$properties->property_for }} in {{ @$properties->areaTwo->name }}
+                            {{ @$properties->property_type }} {{ @$properties->property_for }} in
+                            {{ @$properties->areaTwo->name }}
                             {{ @$properties->areaOne->name }}
                         </h2>
                         <h2>
@@ -250,4 +260,3 @@
     <!-- EXTERNAL LINKS END -->
 
 @endsection
-

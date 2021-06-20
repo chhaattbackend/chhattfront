@@ -26,21 +26,13 @@ Route::post('/agency/ajax', 'AgencyController@ajax');
 Route::get('/contact', function () {
     return view('layouts.contact');
 })->name('contact');
-// Route::get('/wanted', 'PropertyController@home')->name('wanted');
-
-
-
-// Route::resource('properties', 'PropertyController');
-
 
 
 Route::get('/wanted', function () {
     return view('layouts.mobile.master');
 })->name('wanted');
 
-// Route::get('property', function () {
-//     return view('property');
-// })->name('property');
+
 
 // mobile start
 

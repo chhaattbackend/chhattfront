@@ -64,6 +64,8 @@ class PropertyController extends Controller
         });
         $pagination_array = array();
         $devicecheck = is_numeric(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'mobile'));
+        $inputval = null;
+        $inputcity_id = null;
 
 
         if (isset($request->search_areas)) {
@@ -82,10 +84,8 @@ class PropertyController extends Controller
                 $two = AreaTwo::find($area_id);
                 // dd($two);
                 $one = AreaOne::find($two->area_one_id);
-                $inputval = $one->name .' ' . $two->name;
+                $inputval = $one->name . ' ' . $two->name;
                 $inputcity_id = $one->city_id;
-
-
             }
             if ($area == 'area_three_id') {
                 $inputval = AreaThree::find($area_id);
@@ -147,6 +147,11 @@ class PropertyController extends Controller
             $pagination_array = $this->array_push_assoc($pagination_array, 'min_area', $request->min_area);
             $pagination_array = $this->array_push_assoc($pagination_array, 'max_area', $request->max_area);
         }
+        if (isset($request->city)) {
+            $search = $request->city;
+            $properties = $global->searchRelation($properties, 'areaOne', 'city_id', $search);
+            $pagination_array = $this->array_push_assoc($pagination_array, 'city', $request->city);
+        }
 
 
         if ($devicecheck == 1) {
@@ -162,7 +167,7 @@ class PropertyController extends Controller
 
 
 
-        return view('frontend.property.search', compact('properties', 'propertytype', 'city', 'inputval','inputcity_id'));
+        return view('frontend.property.search', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_id'));
     }
 
     public function singleProperty($id)
