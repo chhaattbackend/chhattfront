@@ -43,7 +43,7 @@
                         <div class="serch_bottom" id="serch_option_show">
                             <div class="d-flex flex-column">
                                 <div class="view_more_main">
-                                    <input class="view_more_main" style="padding-right: 6px" type="reset" value="Reset" />
+                                    <input class="view_more_main" style="padding-right: 6px; background: none" type="reset" value="Reset" />
                                     <span class="sspan" id="view_more">View More</span>
                                 </div>
                                 <div class="d-flex justify-content-between">

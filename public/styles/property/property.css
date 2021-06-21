@@ -38,7 +38,7 @@
     font-size: 15px;
     font-weight: 800;
     text-align: right;
-    padding-bottom: 10px;
+    /* padding-bottom: 10px; */
 }
 
 .frm .serch_bottom .view_more_main span {
