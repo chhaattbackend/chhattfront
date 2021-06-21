@@ -1,0 +1,181 @@
+/* Top Btns start */
+.shareBtns {
+    padding: 1rem;
+    display: flex;
+}
+.shareBtns button {
+    width: 100%;
+    padding: 0.3rem 0;
+    border-radius: 2px;
+    font-size: 14px;
+    font-weight: 600;
+}
+/* Top Btns end */
+
+.addressMobile {
+    width: 100%;
+    background-color: #fff;
+    padding: 15px 0 0 10px;
+}
+
+.priceTagMobile {
+    font-size: 30px;
+    text-align: center;
+    background-color: #f6f7fb;
+    padding: 1.2rem;
+    font-weight: 600;
+}
+
+.overViewContainerMobile {
+    padding: 0.8rem 0.8rem;
+    box-shadow: 0px 0px 20px #ccc;
+}
+.overViewContainerMobile h3 {
+    font-size: 24px;
+    margin-left: -5px;
+    margin-bottom: 15px;
+}
+.overViewContainerMobile .overviewItems {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.overViewContainerMobile .overviewItems .upperContent,
+.overViewContainerMobile .overviewItems .lowerContent {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.overViewContainerMobile .overviewItems .upperContent .middle,
+.overViewContainerMobile .overviewItems .lowerContent .middle {
+    width: 30%;
+}
+.overViewContainerMobile .overviewItems .upperContent div:nth-last-child(1),
+.overViewContainerMobile .overviewItems .lowerContent div:nth-last-child(1) {
+    width: 15%;
+}
+.overViewContainerMobile .overviewItems span {
+    border: 1px solid #f2f2f2;
+}
+.overViewContainerMobile .overviewItems h5 {
+    font-size: 13px;
+    color: #d2d2d2;
+}
+.overViewContainerMobile .overviewItems h4 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* ==== DESCRIPTION STYLING START */
+.descriptionContainerMob {
+    padding: 1rem 0.8rem;
+    box-shadow: 0px 0px 10px #ccc;
+    margin: 20px 0px;
+}
+.descriptionContainerMob h1 {
+    font-size: 25px;
+    font-weight: 600;
+    margin-left: -5px;
+}
+.descriptionContainerMob div {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 18px;
+}
+/* ==== DESCRIPTION STYLING END */
+
+/* best property start */
+.bestprperty_main_div {
+    margin-top: 15px;
+    background-color: #f2f2f4;
+    padding: 15px;
+}
+.bestprperty_main_div .fdiv .sdiv {
+    overflow-x: auto;
+    width: 100%;
+}
+.bestprperty_main_div .fdiv ul {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    margin-top: 5px;
+    width: 100%;
+    min-width: 400px;
+}
+.bestprperty_main_div .fdiv ul li {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+}
+.top {
+    display: flex;
+    justify-content: space-between;
+}
+.top p:nth-child(1) {
+    font-weight: 900;
+}
+.top p:nth-child(2) {
+    color: #007bff;
+}
+/* best property end */
+/* property card start */
+.card_main_div {
+    color: #000;
+}
+.card_main_div b {
+    display: block;
+    width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #000;
+}
+.card_main_div p:nth-of-type(1) {
+    font-size: 14px;
+    opacity: 0.5;
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 3px;
+    color: #000;
+}
+.card_main_div p:nth-of-type(2) {
+    opacity: 0.7;
+    margin: 0;
+    padding-top: 3px;
+    padding-bottom: 10px;
+}
+.card_main_div p:nth-of-type(2) b {
+    color: #c90000;
+}
+.propertyImg {
+    width: 185px;
+    height: 140px;
+    border-radius: 10px;
+}
+/* property card end */
+
+/* CALL NOW BTN START */
+.CEContainer {
+    padding: 1rem 1.5rem 1rem 1.2rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    box-shadow: 1px 1px 5px #ccc;
+}
+
+.CEContainer a {
+    width: 100%;
+    background: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+/* CALL NOW BTN END */
+
+/* MOBILE END */

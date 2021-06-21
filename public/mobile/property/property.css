@@ -53,6 +53,7 @@
 }
 
 .main_div .fdiv ul {
+    padding-left: 0px;
     display: flex;
     justify-content: space-around;
     margin: 0;

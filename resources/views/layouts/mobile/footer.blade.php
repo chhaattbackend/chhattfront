@@ -5,11 +5,11 @@
     </div>
     <div class="linksContainer">
         <div class="innerLinks">
-            <a href='' class="text-decoration-none">
+            <a href='{{route('property')}}' class="text-decoration-none">
                 Property
             </a>
             |
-            <a href='' class="text-decoration-none">
+            <a href='{{route('agency')}}' class="text-decoration-none">
                 Agencies
             </a>
         </div>

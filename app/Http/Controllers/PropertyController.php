@@ -100,6 +100,7 @@ class PropertyController extends Controller
             $properties = $properties->where($area, $area_id);
             $search = '';
 
+            // for properties with images only
             // $properties = $properties->whereHas('images', function ($query) use ($search) {
             //     $query->where('name', '!=', null);
             // });
@@ -110,7 +111,6 @@ class PropertyController extends Controller
             $pagination_array = $this->array_push_assoc($pagination_array, 'bed', $request->bed);
         }
         if (isset($request->property_for)) {
-
             $properties->where('property_for', $request->property_for);
             $pagination_array = $this->array_push_assoc($pagination_array, 'property_for', $request->property_for);
         }

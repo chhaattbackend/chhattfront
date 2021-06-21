@@ -328,9 +328,9 @@
         <div class="fdiv">
             <div class="top">
                 <p>Best Properties For You </p>
-                <p onClick="">
+                <a href="{{ route('allproperties',['All']) }}">
                     View All
-                </p>
+                </a>
             </div>
             <div class="sdiv">
                 <ul>
