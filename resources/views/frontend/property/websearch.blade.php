@@ -182,18 +182,18 @@
         </div>
 
 
-        @if($suggestedareas != null)
+        @if ($suggestedareas != null)
 
 
-        <div class="agency-search" style="padding-top: 10px !important; padding-bottom: 10% !important;">
-            <div class="secdiv">
-                <div class="d-flex flex-column mt-2">
-                    @foreach ($suggestedareas as $item)
-                        <p>{{ $item->name }} ({{ $item->properties->count() }})</p>
-                    @endforeach
+            <div class="agency-search" style="padding-top: 10px !important; padding-bottom: 10% !important;">
+                <div class="secdiv">
+                    <div class="d-flex flex-column mt-2">
+                        @foreach ($suggestedareas as $item)
+                            <p>{{ $item->name }} ({{ $item->properties->count() }})</p>
+                        @endforeach
+                    </div>
                 </div>
             </div>
-        </div>
         @endif
 
     </div>
@@ -251,7 +251,7 @@
         //         $.each(prev.data, function(key, value) {
         //             console,log()
         //             $("#citiesSelect").append(`
-        //         <option value="${value.id}">${value.name}</option>`);
+    //         <option value="${value.id}">${value.name}</option>`);
         //         })
         //     )
         // }
@@ -391,7 +391,6 @@
                 drop1.style.opacity = "0";
             }
         });
-
     </script>
 
 @endsection

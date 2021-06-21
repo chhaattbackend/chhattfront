@@ -51,7 +51,8 @@
     margin-top: 15px;
     background-color: #fff;
     padding: 15px;
-    box-shadow: 1px 1px 20px #e6e6e6;
+    box-shadow: 1px 1px 20px #e6e6e6;   
+    margin-bottom: 4rem;
 }
 .agentsContainerMobile .fdiv .sdiv {
     overflow-x: auto;
