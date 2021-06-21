@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('style')
-    <title>Chhatt</title>
+    {{-- <title>Chhatt</title>
     <link rel="canonical" href="https://chhatt.com/" data-react-helmet="true">
     <meta name="description"
-        content="{{$city[0]->name }}">
+        content="{{$city[0]->name }}"> --}}
     <link rel="stylesheet" type="text/css" href="./styles/property/property.css" />
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.1.3/dist/css/autoComplete.01.min.css">
