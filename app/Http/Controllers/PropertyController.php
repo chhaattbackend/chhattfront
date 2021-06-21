@@ -237,6 +237,17 @@ class PropertyController extends Controller
                 // 'pagination' => (string) $areas->links()
             ]);
         }
+
+        if (isset($request->search)) {
+
+            $city = City::all();
+            $propertytype = PropertyType::all();
+            $data = view('frontend.property.mobile.btnsearch.ajax', compact('city','propertytype'))->render();
+            return response()->json([
+                'data' => $data,
+                // 'pagination' => (string) $areas->links()
+            ]);
+        }
     }
 
 
