@@ -1,5 +1,9 @@
 @extends('layouts.master')
 @section('style')
+    <title>Chhatt</title>
+    <link rel="canonical" href="https://chhatt.com/" data-react-helmet="true">
+    <meta name="description"
+        content="{{$city[0]->name }}">
     <link rel="stylesheet" type="text/css" href="./styles/property/property.css" />
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.1.3/dist/css/autoComplete.01.min.css">
@@ -43,7 +47,8 @@
                         <div class="serch_bottom" id="serch_option_show">
                             <div class="d-flex flex-column">
                                 <div class="view_more_main">
-                                    <input class="view_more_main" style="padding-right: 6px; background: none" type="reset" value="Reset" />
+                                    <input class="view_more_main" style="padding-right: 6px; background: none" type="reset"
+                                        value="Reset" />
                                     <span class="sspan" id="view_more">View More</span>
                                 </div>
                                 <div class="d-flex justify-content-between">
@@ -345,7 +350,6 @@
             });
 
         }
-
     </script>
 @endsection
 @section('personalscripts')
@@ -370,7 +374,7 @@
         //         $.each(prev.data, function(key, value) {
         //             console,log()
         //             $("#citiesSelect").append(`
-        //         <option value="${value.id}">${value.name}</option>`);
+    //         <option value="${value.id}">${value.name}</option>`);
         //         })
         //     )
         // }
@@ -499,7 +503,6 @@
         }
         // SUBMIT END
         // == SEARCH AREA DROPDOWN END
-
     </script>
 
 @endsection

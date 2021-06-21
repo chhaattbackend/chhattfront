@@ -18,6 +18,16 @@
     height: 111px;
     transition: height 500ms ease-in-out;
 }
+
+.secdiv2{
+    width: 100%;
+    max-width: 1300px;
+    margin: auto;
+    padding: 22px 38px;
+    background-color: #f6f7fb;
+    /* border: 1px solid red; */
+    transition: height 500ms ease-in-out;
+}
 #drop_show,
 #drop_showl {
     opacity: 0;

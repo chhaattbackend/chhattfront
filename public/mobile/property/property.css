@@ -119,6 +119,7 @@
     justify-content: space-between;
     margin: 0;
     margin-top: 5px;
+        padding-left: 0px;
     width: 100%;
     min-width: 400px;
 }
