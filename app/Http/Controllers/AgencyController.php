@@ -65,13 +65,18 @@ class AgencyController extends Controller
         $agency = Agency::find($id);
         $agents = Agent::where('agency_id', $agency->id)->get();
         $agentproperties = 0;
+        // dd($agents);
         foreach($agents as $agent) {
-            $agentproperties += count($agent->user->properties);
+            // dd($agent->properties);
+            // if ($agent->user->properties != null) {
+            //     # code...
+            // }
+            $agentproperties += count($agent->properties);
         }
         $agencyproperties=$agency->properties->count();
         $totalproperties= $agencyproperties+$agentproperties;
 
-        
+
 
         return view("frontend.agency.single", compact(['agency','agents','totalproperties']));
 

@@ -104,9 +104,12 @@
             <ul id="box-wrapper" class="boxWrapper ps-0">
                 <!--apply loop on this li-->
                 @foreach ($agents as $item)
+
+                {{-- @dd($item->user->thumbnail) --}}
                     <li class="scroll-img-list ms-3 me-1 p-2">
                         <div class="maindivAgentCard">
                             <div class="imgContainer">
+
                                 @if($item->user->thumbnail != null)
                                 <img src="https://chhatt.s3.ap-south-1.amazonaws.com/users/{{$item->user->thumbnail}}"
                                     alt="" />

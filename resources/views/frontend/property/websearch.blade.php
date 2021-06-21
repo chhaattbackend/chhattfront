@@ -181,17 +181,21 @@
             </div>
         </div>
 
+
+        @if($suggestedareas != null)
+
+
         <div class="agency-search" style="padding-top: 10px !important; padding-bottom: 10% !important;">
             <div class="secdiv">
                 <div class="d-flex flex-column mt-2">
                     @foreach ($suggestedareas as $item)
                         <p>{{ $item->name }} ({{ $item->properties->count() }})</p>
                     @endforeach
-
-
                 </div>
             </div>
         </div>
+        @endif
+
     </div>
     <!-- agency search end -->
 
