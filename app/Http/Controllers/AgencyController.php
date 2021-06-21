@@ -62,7 +62,9 @@ class AgencyController extends Controller
     public function singleAgency($id)
     {
 
-        $agency = Agency::find($id);
+        
+        $id=explode('-',$id);
+        $agency = Agency::find(end($id));
         $agents = Agent::where('agency_id', $agency->id)->get();
         $agentproperties = 0;
         // dd($agents);

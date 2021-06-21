@@ -3,10 +3,14 @@
     <div class="col-sm-4 col-lg-3 mb-4">
         <!-- property card start -->
         <div class="propertyCard p-2">
-            <a class="text-decoration-none position-relative" href="{{ route('single.agency', $item->id ) }}">
+            @php
+                $a = str_replace('(', '', str_replace(' ', '-', strtolower($item->name))) . '-' . strtolower($item->areaOne->city->name) . '-' . $item->id;
+            @endphp
+            <a class="text-decoration-none position-relative"
+                href="{{ route('single.agency', [str_replace(')', '', $a)]) }}">
                 <div class="imageSection">
-                    <img class="slideImg"
-                        src='https://chhatt.s3.ap-south-1.amazonaws.com/agencies/{{ $item->image }}' alt="" />
+                    <img class="slideImg" src='https://chhatt.s3.ap-south-1.amazonaws.com/agencies/{{ $item->image }}'
+                        alt="" />
                 </div>
                 <div class="text-dark paraContainer">
                     <div class="mt-1">
