@@ -62,7 +62,7 @@ class AgencyController extends Controller
     public function singleAgency($id)
     {
 
-        
+
         $id=explode('-',$id);
         $agency = Agency::find(end($id));
         $agents = Agent::where('agency_id', $agency->id)->get();
@@ -82,7 +82,6 @@ class AgencyController extends Controller
 
         return view("frontend.agency.single", compact(['agency','agents','totalproperties']));
 
-        // return view('frontend.agency.single',compact('agency'));
     }
 
     public function index(Request $request)

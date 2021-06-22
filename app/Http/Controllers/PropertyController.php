@@ -225,7 +225,7 @@ class PropertyController extends Controller
     }
 
 
-    public function mobile(Request $request)
+    public function mobile(Request $request, $for)
     {
 
         if (isset($request->agency)) {
@@ -242,12 +242,17 @@ class PropertyController extends Controller
 
             $city = City::all();
             $propertytype = PropertyType::all();
-            $data = view('frontend.property.mobile.btnsearch.ajax', compact('city','propertytype'))->render();
+            $data = view('frontend.property.mobile.btnsearch.ajax', compact('city', 'propertytype'))->render();
             return response()->json([
                 'data' => $data,
                 // 'pagination' => (string) $areas->links()
             ]);
         }
+
+
+        $city = City::all();
+        $propertytype = PropertyType::all();
+        return view('frontend.property.mobile.btnsearch.search', compact('city', 'propertytype'));
     }
 
 

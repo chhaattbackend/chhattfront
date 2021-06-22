@@ -51,7 +51,7 @@
             @foreach ($properties as $item)
 
 
-                <a href="#" class="card_div text-decoration-none">
+                <a href="{{ route('single.property', $item->id ) }}" class="card_div text-decoration-none">
 
                     @if (!$item->images->isEmpty())
                         <img class="propertyImg"

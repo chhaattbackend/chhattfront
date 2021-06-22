@@ -31,13 +31,13 @@
 
     <section>
         <div class="buy_rent_main_div">
-            <a id="btnbuy" class="for-sale ">
+            <a href="{{ route('filter', 'buy') }}" id="btnbuy" class="for-sale ">
                 <button onclick="search('buy')">Buy</button>
             </a>
-            <a id="btnrent" class="for-rent ">
+            <a href="{{ route('filter', 'rent') }}" id="btnrent" class="for-rent">
                 <button onclick="search('rent')">Rent</button>
             </a>
-            <a id="btnbooking" class="for-booking ">
+            <a href="{{ route('filter', 'booking') }}" id="btnbooking" class="for-booking ">
                 <button onclick="search('booking')">Booking</button>
             </a>
         </div>
@@ -348,7 +348,7 @@
 
                             <li>
                                 <div>
-                                    <a href="" class="property_card_main_div text-decoration-none">
+                                    <a href="{{ route('single.property', $item->id ) }}" class="property_card_main_div text-decoration-none">
                                         <img src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ @$item->images[0]->name }}"
                                             class="propertyImg" alt="" />
                                         <p> {{ $item->type }} </p>
@@ -383,8 +383,8 @@
                 <div class="top">
                     <p>Featured Projects</p>
                     <!-- <p onClick="">
-                                                                                                                            View All
-                                                                                                                          </p> -->
+                                                                                                                                View All
+                                                                                                                              </p> -->
                 </div>
                 <div class="sdiv">
                     <ul>
@@ -465,57 +465,56 @@
             });
         }
 
-        function search(btn) {
-            if (btn == 'buy') {
-                $('#btnbuy').addClass('activeBtn');
-                $('#btnrent').removeClass('activeBtn');
-                $('#btnbooking').removeClass('activeBtn');
-                $('#content').addClass('animate__animated animate__fadeOut');
-                changePage('buy');
+        // function search(btn) {
+        //     if (btn == 'buy') {
+        //         $('#btnbuy').addClass('activeBtn');
+        //         $('#btnrent').removeClass('activeBtn');
+        //         $('#btnbooking').removeClass('activeBtn');
+        //         $('#content').addClass('animate__animated animate__fadeOut');
+        //         changePage('buy');
 
-            }
-            if (btn == 'rent') {
+        //     }
+        //     if (btn == 'rent') {
 
-                $('#btnrent').addClass('activeBtn');
-                $('#btnbuy').removeClass('activeBtn');
-                $('#btnbooking').removeClass('activeBtn');
-                $('#content').addClass('animate__animated animate__fadeOut');
-                changePage('rent');
+        //         $('#btnrent').addClass('activeBtn');
+        //         $('#btnbuy').removeClass('activeBtn');
+        //         $('#btnbooking').removeClass('activeBtn');
+        //         $('#content').addClass('animate__animated animate__fadeOut');
+        //         changePage('rent');
 
-            }
-            if (btn == 'booking') {
-                $('#btnbooking').addClass('activeBtn');
-                $('#btnrent').removeClass('activeBtn');
-                $('#btnbuy').removeClass('activeBtn');
-                $('#content').addClass('animate__animated animate__fadeOut');
+        //     }
+        //     if (btn == 'booking') {
+        //         $('#btnbooking').addClass('activeBtn');
+        //         $('#btnrent').removeClass('activeBtn');
+        //         $('#btnbuy').removeClass('activeBtn');
+        //         $('#content').addClass('animate__animated animate__fadeOut');
 
-                changePage('booking');
+        //         changePage('booking');
 
-            }
-        }
+        //     }
+        // }
 
 
-        function changePage(c) {
+        // function changePage(c) {
 
-            $.ajax({
-                type: "POST",
-                url: "propertymobile",
-                dataType: 'JSON',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                data: {
-                    search: true
-                },
-                success: function(responese) {
-                    $('#content').removeClass('animate__animated animate__fadeOut');
-                    $('#content').addClass('animate__animated animate__fadeIn');
-                    $('#content').html(responese.data);
-                },
-            });
+        //     $.ajax({
+        //         type: "POST",
+        //         url: "propertymobile",
+        //         dataType: 'JSON',
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         },
+        //         data: {
+        //             search: true
+        //         },
+        //         success: function(responese) {
+        //             $('#content').removeClass('animate__animated animate__fadeOut');
+        //             $('#content').addClass('animate__animated animate__fadeIn');
+        //             $('#content').html(responese.data);
+        //         },
+        //     });
 
-        }
-
+        // }
     </script>
 
 @endsection

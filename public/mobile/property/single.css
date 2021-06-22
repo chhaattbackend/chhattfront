@@ -4,6 +4,8 @@
     display: flex;
 }
 .shareBtns button {
+    border: none;
+    outline: none;
     width: 100%;
     padding: 0.3rem 0;
     border-radius: 2px;
@@ -178,4 +180,89 @@
 }
 /* CALL NOW BTN END */
 
+/* CONTACT FORM START */
+.contactContainer {
+  width: 100%;
+  background-color: #f6f7fb;
+  padding: 18px 28px;
+  height: 100%;
+}
+.contactContainer .contactUser {
+  width: 200px;
+  margin: auto;
+  margin-bottom: 1.2rem;
+}
+.contactContainer .contactUser .imageContainer {
+  width: 60px;
+  margin: auto;
+}
+.contactContainer .contactUser .imageContainer img {
+  width: 60px;
+  height: 58px;
+  border-radius: 50%;
+}
+.contactContainer .contactUser h5 {
+  text-align: center;
+  font-size: 16px;
+}
+.contactContainer h2 {
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: 600;
+}
+.contactContainer .showNumber, .contactContainer button[type="submit"] {
+border: none;
+outline: none;
+border-radius: 6px;
+  width: 100%;
+  padding: 8px;
+  letter-spacing: 1.2px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.contactContainer .showNumber {
+  background: #43b243;
+  color: white;
+}
+.contactContainer button[type="submit"] {
+border-radius: 6px;
+
+    border: none;
+outline: none;
+  background-color: #007bff;
+  color: white;
+}
+.contactContainer .innerContactform {
+  display: block;
+  width: 100%;
+}
+.contactContainer .innerContactform input, .contactContainer .innerContactform textarea {
+  width: 100%;
+}
+.contactContainer .innerContactform .inpC {
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+}
+.contactContainer .innerContactform .inpC:focus {
+  outline: none;
+  border: none;
+}
+.contactContainer .innerContactform textarea {
+  padding: 10px;
+  border-radius: 4px;
+  margin: 20px auto;
+  border: none;
+}
+.contactContainer .innerContactform .inpErrors {
+  margin-bottom: -5px;
+  color: red;
+  font-size: 14px;
+  letter-spacing: 1.1px;
+  font-weight: 600;
+}
+/* CONTACT FORM END */
+
 /* MOBILE END */
+

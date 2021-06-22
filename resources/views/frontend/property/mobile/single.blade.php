@@ -1,4 +1,4 @@
-@extends('layouts.mobile.master')
+@extends('layouts.mobile.master2')
 
 @section('style')
     <link rel="stylesheet" type="text/css" href="{{ asset('mobile/index.css') }}" />
@@ -41,7 +41,7 @@
         <!-- Add images to <div class="fotorama"></div> -->
         <div class="fotorama" data-nav="thumbs" data-width="100%" data-allowfullscreen="true">
             <!-- ↑ The same as data-ratio="4/3"
-                                                 or data-ratio="1.3333333333". -->
+                                                     or data-ratio="1.3333333333". -->
             @foreach ($propertyimage as $item)
 
                 <a href=""><img src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ @$item->name }}" width="130"
@@ -137,8 +137,8 @@
             <div class="sdiv">
                 <ul>
                     @foreach ($property as $item)
-                    <li>
-                        <div>
+                        <li>
+                            <div>
 
                                 <a href="" class="card_main_div text-decoration-none">
                                     @if (!$item->images->isEmpty())
@@ -171,7 +171,7 @@
 
                             </div>
                         </li>
-                        @endforeach
+                    @endforeach
                 </ul>
             </div>
         </div>

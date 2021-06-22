@@ -30,7 +30,7 @@ Route::get('/contact', function () {
 
 
 Route::get('/wanted', function () {
-    return view('layouts.mobile.master');
+    return view('frontend.property.mobile.btnsearch.search');
 })->name('wanted');
 
 
@@ -38,6 +38,7 @@ Route::get('/wanted', function () {
 // mobile start
 
 Route::post('propertymobile', 'PropertyController@mobile');
+Route::get('filter/{for}', 'PropertyController@mobile')->name('filter');
 Route::get('results', 'PropertyController@search')->name('allproperties');
 
 

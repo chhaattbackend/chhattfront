@@ -92,7 +92,7 @@
                         <h6>Property</h6>
                     </div>
                 </a>
-                <a href="" class='text-decoration-none'>
+                <a href="{{ route('filter','buy') }}" class='text-decoration-none'>
                     <div class="each_navigation">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="#007bff" height="25" viewBox="0 0 512 512"
                             width="30">

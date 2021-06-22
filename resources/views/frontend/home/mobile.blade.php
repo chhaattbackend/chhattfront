@@ -117,7 +117,7 @@
                         <li>
                             <div>
                                 <!-- card start -->
-                                <a href="" class="card_main_div text-decoration-none">
+                                <a href="{{ route('single.property', $item->id ) }}" class="card_main_div text-decoration-none">
                                     <img src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ @$item->images[0]->name }}"
                                         class="propertyImg" alt="" />
                                     <p class="mb-0"> {{ $item->type }} </p>
@@ -173,6 +173,7 @@
         </div>
     </div>
     <br>
+    
 
     @include('layouts.mobile.footer')
 @endsection
