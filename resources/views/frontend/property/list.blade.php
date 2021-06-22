@@ -15,10 +15,10 @@ function convert_rupee($amount)
 @endphp
 
 @forelse ($properties as $item)
-    <div  class="col-sm-4 col-lg-3 mb-4">
+    <div class="col-sm-4 col-lg-3 mb-4">
         <!-- property card start -->
         <div class="propertyCard p-2">
-            <a class="text-decoration-none position-relative" href="{{ route('single.property', $item->id ) }}">
+            <a class="text-decoration-none position-relative" href="{{ route('single.property', $item->id) }}">
                 <div class="imageSection">
                     @if (!$item->images->isEmpty())
                         <img class="slideImg"
@@ -26,7 +26,7 @@ function convert_rupee($amount)
                             alt="" />
                     @else
                         <img src="https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"
-                            alt="" class="slideImg"/>
+                            alt="" class="slideImg" />
 
                     @endif
 
@@ -43,12 +43,27 @@ function convert_rupee($amount)
                                 {{ optional($item->areaOne)->name }}</strong>
                         </div>
                         <h6 class="mt-2">
-                            @if ($item->price == null || $item->price == 0 )
+                            @if ($item->price == null || $item->price == 0)
                                 <span style="background: red;" class="badge badge-pill badge-danger">On Request</span>
                             @else
                                 <strong> Rs: {{ convert_rupee($item->price) }} </strong>
                             @endif
                         </h6>
+                        <div class="d-flex justify-content-lg-around">
+                            @if ($item->bed != null)
+
+                            <div><img class="m-2" src="{{ asset('assets/bed.png') }}" width="15"
+                                    height="15">{{ $item->bed }}</div>|
+                            @endif
+
+                            @if ($item->bath != null)
+
+                            <div><img class="m-2" src="{{ asset('assets/bath.png') }}" width="15" height="15">
+                                {{ $item->bath }}</div>|
+                            @endif
+                            <div><i class="fas fa-landmark"></i> 500 sq</div>
+                            <i class="fab fa-accusoft"></i>
+                        </div>
                     </div>
                     <div class="d-flex justify-content-between mt-3">
                         <button class="w-100 themebtn py-1 text-white">View more</button>

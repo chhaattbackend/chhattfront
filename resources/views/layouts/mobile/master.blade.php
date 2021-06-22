@@ -31,8 +31,8 @@
             <a href='{{ route('home') }}'>
                 <img src="{{ asset('assets/logow.png') }}" width='90px' alt='logo' />
             </a>
-            <svg href="" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list"
-                viewBox="0 0 16 16">
+            <svg href="" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                class="bi bi-list" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
             </svg>
@@ -92,7 +92,7 @@
                         <h6>Property</h6>
                     </div>
                 </a>
-                <a href="{{ route('filter','buy') }}" class='text-decoration-none'>
+                <a href="{{ route('filter', 'buy') }}" class='text-decoration-none'>
                     <div class="each_navigation">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="#007bff" height="25" viewBox="0 0 512 512"
                             width="30">

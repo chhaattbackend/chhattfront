@@ -348,7 +348,8 @@
 
                             <li>
                                 <div>
-                                    <a href="{{ route('single.property', $item->id ) }}" class="property_card_main_div text-decoration-none">
+                                    <a href="{{ route('single.property', $item->id) }}"
+                                        class="property_card_main_div text-decoration-none">
                                         <img src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ @$item->images[0]->name }}"
                                             class="propertyImg" alt="" />
                                         <p> {{ $item->type }} </p>
@@ -383,8 +384,8 @@
                 <div class="top">
                     <p>Featured Projects</p>
                     <!-- <p onClick="">
-                                                                                                                                View All
-                                                                                                                              </p> -->
+                                                                                                                                    View All
+                                                                                                                                  </p> -->
                 </div>
                 <div class="sdiv">
                     <ul>

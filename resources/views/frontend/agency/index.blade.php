@@ -5,12 +5,12 @@
 @endsection
 
 @section('headercontent')
-<div class="mn_divz">
-      <div class="backgz">
-        <div class="backg_sdivz">
-          <h1>Find the Best Real Estate Agencies</h1>
+    <div class="mn_divz">
+        <div class="backgz">
+            <div class="backg_sdivz">
+                <h1>Find the Best Real Estate Agencies</h1>
+            </div>
         </div>
-      </div>
     </div>
 @endsection
 
@@ -71,6 +71,7 @@
             // console.log(value);
             ajaxSearch(value)
         });
+
         function ajaxSearch(value, page) {
             $.ajax({
                 type: "POST",
