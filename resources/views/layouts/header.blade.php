@@ -14,7 +14,7 @@
                             class="lis">
                             <span>Property</span>
                         </li>
-                        <li id="home" onclick="window.location='{{ route('construction') }}'" style="color: #fff"
+                        <li id="home" onclick="window.location='{{ route('construction.home') }}'" style="color: #fff"
                             class="lis">
                             <span>Construction</span>
                         </li>

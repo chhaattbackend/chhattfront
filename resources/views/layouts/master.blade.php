@@ -8,6 +8,7 @@
     <meta name="theme-color" content="#007BFF" />
 
     @yield('style')
+
     <link rel="stylesheet" type="text/css" href="./styles/index.css" />
     <link rel="stylesheet" type="text/css" href="./styles/mediaquery.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -22,6 +23,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="./assets/fonticons/font/flaticon.css" />
+
 
 
 

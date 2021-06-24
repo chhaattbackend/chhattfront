@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ACategory;
 use App\BCategory;
+use App\ConstructionCCategory;
 use Illuminate\Http\Request;
 
 class ConstructionBCategoryController extends Controller
@@ -15,21 +16,9 @@ class ConstructionBCategoryController extends Controller
      */
     public function index(Request $request)
     {
-        if(!$request->keyword){
-            $bcategories=BCategory::paginate(25);
-            }
-            else{
-
-                $bcategories=BCategory::where('name','like','%'.$request->keyword.'%')
-                ->paginate(25)->setPath ( '' );
-
-                $pagination = $bcategories->appends ( array (
-                    'keyword' => $request->keyword
-            ) );
-
-            }
-
-        return view('admin.b_category.index', compact('bcategories'));
+        $ccategories = ConstructionCCategory::where('b_category_id',$request->id)->get();
+        // dd($ccategories);
+        return view('frontend.construction.home.ccategory',compact('ccategories'));
     }
 
 

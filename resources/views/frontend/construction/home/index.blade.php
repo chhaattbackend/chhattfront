@@ -81,7 +81,7 @@
 
 
 @section('content')
-@include('functions.convert_rupee')
+    @include('functions.convert_rupee')
 
     <br />
     <br />
@@ -101,43 +101,52 @@
                 <div class="main_slide_div">
                     <div style="margin: auto;" class="slider">
                         @foreach ($bcategories as $item)
+                            @php
+                                $id = str_replace(str_split('\\/:*?"<>|() '), '-', strtolower($item->name));
+                            @endphp
 
                             <div>
                                 <li class="scroll-img-list   p-2 my-3">
-                                    <a class="text-decoration-none position-relative" href="#">
-                                        <div class="imageSection">
-                                            <img class="slideImg"
-                                                src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
-                                                alt="" />
-                                        </div>
-                                        <div class="text-dark paraContainer">
-                                            <div class="mt-1">
-                                                <div class="mt-2 elipse">
-                                                    <strong class="mt-5">{{ $item->name }}</strong>
-                                                </div>
-                                                <ul style="list-style-type: disc; ">
-                                                    @php
-                                                        $i = 0;
-                                                    @endphp
-                                                    @foreach ($item->subcategories as $subItem)
+                                    <form id="main_div_form" action="{{ route('construction.bcat', ['id' => $id]) }}"
+                                        method="get">
+                                        @csrf
+                                        <input type="hidden" value="{{ $item->id }}" name="id">
+                                        <div class="text-decoration-none position-relative">
+                                            <button onclick="formSubmit()" class="imageSection">
+                                                <img class="slideImg"
+                                                    src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
+                                                    alt="" />
+                                            </button>
+                                            <div class="text-dark paraContainer">
+                                                <div class="mt-1">
+                                                    <div class="mt-2 elipse">
+                                                        <strong class="mt-5">{{ $item->name }}</strong>
+                                                    </div>
+                                                    <ul style="list-style-type: disc; ">
                                                         @php
-                                                            $i++;
+                                                            $i = 0;
                                                         @endphp
-                                                        @if ($i < 6)
-                                                            <li style="list-style-position: inside;">
-                                                                {{ $subItem->name }}
-                                                            </li>
-                                                        @endif
-                                                    @endforeach
+                                                        @foreach ($item->subcategories as $subItem)
+                                                            @php
+                                                                $i++;
+                                                            @endphp
+                                                            @if ($i < 6)
+                                                                <li style="list-style-position: inside;">
+                                                                    {{ $subItem->name }}
+                                                                </li>
+                                                            @endif
+                                                        @endforeach
 
-                                                </ul>
-                                            </div>
-                                            <div class="d-flex justify-content-between mt-3">
-                                                <button class="w-100 themebtn py-1 text-white">View more</button>
-                                                <button class="w-100 ">Contact Us</button>
+                                                    </ul>
+                                                </div>
+                                                <div class="d-flex justify-content-between mt-3">
+                                                    <button class="w-100 themebtn py-1 text-white"
+                                                        onclick="formSubmit()">View more</button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </a>
+                                    </form>
+
                                 </li>
                             </div>
                         @endforeach
@@ -176,41 +185,41 @@
     <div class="mapCardContainer">
         <div class="container-fluid">
             <div class="row px-2">
-                @foreach ($products as $item )
+                @foreach ($products as $item)
 
-                <div class="col-sm-4 col-lg-3 mb-4">
-                    <!-- property card start -->
-                    <div class="propertyCard p-2">
-                        <a class="text-decoration-none position-relative" href="#">
-                            <div class="imageSection">
-                                <img class="slideImg"
-                                    src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
-                                    alt="" />
-                            </div>
-                            <div class="text-dark paraContainer">
-                                <div class="mt-1">
-                                    <div class="d-flex justify-content-between">
-                                        <h6 class="lightColor">{{ $item->a_category->name }}</h6>
-                                        <h6 class="lightColor">{{ $item->b_category->name }}</h6>
-                                    </div>
-                                    <div class="mt-2">
-                                        <strong class="mt-5">{{ $item->name }}</strong>
-                                    </div>
-                                    <h6 class="mt-2">
-                                        <strong>
-                                            Rs: {{ convert_rupee($item->price) }}
-                                        </strong>
-                                    </h6>
+                    <div class="col-sm-4 col-lg-3 mb-4">
+                        <!-- property card start -->
+                        <div class="propertyCard p-2">
+                            <a class="text-decoration-none position-relative" href="#">
+                                <div class="imageSection">
+                                    <img class="slideImg"
+                                        src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
+                                        alt="" />
                                 </div>
-                                <div class="d-flex justify-content-between mt-3">
-                                    <button class="w-100 themebtn py-1 text-white">View more</button>
-                                    <button class="w-100 ms-3">Contact Us</button>
+                                <div class="text-dark paraContainer">
+                                    <div class="mt-1">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="lightColor">{{ $item->a_category->name }}</h6>
+                                            <h6 class="lightColor">{{ $item->b_category->name }}</h6>
+                                        </div>
+                                        <div class="mt-2">
+                                            <strong class="mt-5">{{ $item->name }}</strong>
+                                        </div>
+                                        <h6 class="mt-2">
+                                            <strong>
+                                                Rs: {{ convert_rupee($item->price) }}
+                                            </strong>
+                                        </h6>
+                                    </div>
+                                    <div class="d-flex justify-content-between mt-3">
+                                        <button class="w-100 themebtn py-1 text-white">View more</button>
+                                        <button class="w-100 ms-3">Contact Us</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
+                        <!-- property card end -->
                     </div>
-                    <!-- property card end -->
-                </div>
 
                 @endforeach
 
@@ -252,6 +261,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
         integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        function formSubmit() {
+            $('#main_div_form').submit();
+        }
+    </script>
+
+
     <!-- EXTERNAL LINKS END -->
     <script>
         // slick slider start

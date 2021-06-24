@@ -18,21 +18,7 @@ class ConstructionACategoryController extends Controller
     {
         $bcategories=ConstructionBCategory::all();
         $products=ConstructionProduct::orderBy('id','desc')->paginate(8);
-        // dd($acategories);
-        // if(!$request->keyword){
-        //     }
-        //     else{
-
-        //         $acategories=ConstructionACategory::where('name','like','%'.$request->keyword.'%')
-        //         ->paginate(10)->setPath ( '' );
-
-        //         $pagination = $acategories->appends ( array (
-        //             'keyword' => $request->keyword
-        //     ) );
-
-        //     }
-
-        return view('frontend.construction.web.home.index', compact('bcategories','products'));
+        return view('frontend.construction.home.index', compact('bcategories','products'));
     }
 
     /**
