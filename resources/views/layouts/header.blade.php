@@ -10,19 +10,23 @@
                         <li id="home" onclick="window.location='{{ route('home') }}'" style="color: #fff" class="lif">
                             <span>Home</span>
                         </li>
-                        <li id="property" onclick="window.location='{{ route('property') }}'" style="color: #fff" class="lis">
+                        <li id="property" onclick="window.location='{{ route('property') }}'" style="color: #fff"
+                            class="lis">
                             <span>Property</span>
                         </li>
 
-                        <li id="agencies" onclick="window.location='{{ route('agency') }}'" style="color: #fff" class="lis">
+                        <li id="agencies" onclick="window.location='{{ route('agency') }}'" style="color: #fff"
+                            class="lis">
                             <span>Agencies</span>
                         </li>
-                        <li id="contact" onclick="window.location='{{ route('contact') }}'" style="color: #fff" class="lis">
+                        <li id="contact" onclick="window.location='{{ route('contact') }}'" style="color: #fff"
+                            class="lis">
                             <span>Contact Us</span>
                         </li>
-                        {{-- <li id="home" onclick="window.location='{{ route('wanted') }}'" style="color: #fff" class="lit">
-                            <span>Wanted</span>
-                        </li> --}}
+                        <li id="home" onclick="window.location='{{ route('wanted') }}'" style="color: #fff"
+                            class="lit">
+                            <span>Contruction</span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -66,6 +70,5 @@
         //     btn2.classList.remove("active_bestProperties");
         //     btn3.classList.remove("active_bestProperties");
         // };
-
     </script>
 </header>

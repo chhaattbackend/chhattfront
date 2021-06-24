@@ -852,7 +852,6 @@ h5 {
     background-color: #fff;
     border-radius: 6px;
     box-shadow: 0 0 10px 5px #eee;
-    height: 336px;
 }
 
 .propertyCard .imageSection {
@@ -870,7 +869,6 @@ h5 {
 .propertyCard .paraContainer h6 {
     margin-bottom: 0px;
 }
-
 
 /* PROPERTY END */
 

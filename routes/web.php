@@ -29,9 +29,11 @@ Route::get('/contact', function () {
 })->name('contact');
 
 
-Route::get('/wanted', function () {
-    return view('frontend.property.mobile.btnsearch.search');
-})->name('wanted');
+// Route::get('/wanted', function () {
+//     return view('frontend.property.mobile.btnsearch.search');
+// })->name('wanted');
+Route::get('/wanted','ConstructionACategoryController@index')->name('wanted');
+
 
 
 

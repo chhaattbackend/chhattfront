@@ -37,12 +37,12 @@ function convert_rupee($amount)
                             <h6 class="lightColor">{{ $item->type }}</h6>
                             <h6 class="lightColor">{{ $item->updated_at->diffForHumans() }}</h6>
                         </div>
-                        <div class="mt-2 ellipse">
+                        <div style="text-align: left" class="mt-2 ellipse">
                             <strong class="mt-5">{{ $item->property_for }} in {{ optional($item->areaThree)->name }}
                                 {{ optional($item->areaTwo)->name }},
                                 {{ optional($item->areaOne)->name }}</strong>
                         </div>
-                        <h6 class="mt-2">
+                        <h6 style="text-align: left" class="mt-1 mb-2">
                             @if ($item->price == null || $item->price == 0)
                                 <span style="background: red;" class="badge badge-pill badge-danger">On Request</span>
                             @else
@@ -52,18 +52,22 @@ function convert_rupee($amount)
                         <div class="d-flex justify-content-lg-around">
                             @if ($item->bed != null)
 
-                            <div><img class="m-2" src="{{ asset('assets/bed.png') }}" width="15"
-                                    height="15">{{ $item->bed }}</div>|
+                                <div><img class="m-2" src="{{ asset('assets/bed.png') }}" width="18"
+                                        height="17">{{ $item->bed }}</div>|
                             @endif
 
                             @if ($item->bath != null)
 
-                            <div><img class="m-2" src="{{ asset('assets/bath.png') }}" width="15" height="15">
-                                {{ $item->bath }}</div>|
+                                <div><img class="m-2" src="{{ asset('assets/bath.png') }}" width="18" height="17">
+                                    {{ $item->bath }}</div>|
                             @endif
-                            <div><i class="fas fa-landmark"></i> 500 sq</div>
-                            <i class="fab fa-accusoft"></i>
+                            @if ($item->size != null)
+                                <div><img class="m-2" src="{{ asset('assets/sq.png') }}" width="18" height="17">
+                                    {{ $item->size }} {{ $item->size_type }}
+                                </div>
+                            @endif
                         </div>
+
                     </div>
                     <div class="d-flex justify-content-between mt-3">
                         <button class="w-100 themebtn py-1 text-white">View more</button>
