@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\ConstructionACategory;
+use App\ConstructionBCategory;
+use App\ConstructionProduct;
 use Illuminate\Http\Request;
 
 class ConstructionACategoryController extends Controller
@@ -14,9 +16,9 @@ class ConstructionACategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $acategories=ConstructionACategory::paginate(10);
-        dd($acategories);
-
+        $bcategories=ConstructionBCategory::all();
+        $products=ConstructionProduct::orderBy('id','desc')->paginate(8);
+        // dd($acategories);
         // if(!$request->keyword){
         //     }
         //     else{
@@ -30,7 +32,7 @@ class ConstructionACategoryController extends Controller
 
         //     }
 
-        return view('admin.a_category.index', compact('acategories'));
+        return view('frontend.construction.web.home.index', compact('bcategories','products'));
     }
 
     /**

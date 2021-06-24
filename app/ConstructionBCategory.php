@@ -16,4 +16,8 @@ class ConstructionBCategory extends Model
     public function category(){
         return $this->belongsTo(ConstructionACategory::class,'a_category_id');
     }
+    public function subcategories(){
+        return $this->hasMany(ConstructionCCategory::class, 'b_category_id');
+    }
+
 }

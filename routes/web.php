@@ -32,7 +32,7 @@ Route::get('/contact', function () {
 // Route::get('/wanted', function () {
 //     return view('frontend.property.mobile.btnsearch.search');
 // })->name('wanted');
-Route::get('/wanted','ConstructionACategoryController@index')->name('wanted');
+Route::get('/construction','ConstructionACategoryController@index')->name('construction');
 
 
 

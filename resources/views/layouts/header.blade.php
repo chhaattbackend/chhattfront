@@ -14,7 +14,10 @@
                             class="lis">
                             <span>Property</span>
                         </li>
-
+                        <li id="home" onclick="window.location='{{ route('construction') }}'" style="color: #fff"
+                            class="lis">
+                            <span>Construction</span>
+                        </li>
                         <li id="agencies" onclick="window.location='{{ route('agency') }}'" style="color: #fff"
                             class="lis">
                             <span>Agencies</span>
@@ -22,10 +25,6 @@
                         <li id="contact" onclick="window.location='{{ route('contact') }}'" style="color: #fff"
                             class="lis">
                             <span>Contact Us</span>
-                        </li>
-                        <li id="home" onclick="window.location='{{ route('wanted') }}'" style="color: #fff"
-                            class="lit">
-                            <span>Contruction</span>
                         </li>
                     </ul>
                 </div>

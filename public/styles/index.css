@@ -1098,6 +1098,20 @@ h5 {
     color: #fff;
     font-size: 17px;
 }
+/* slick slider start */
+.slick-next:before {
+  content: "→";
+  color: black;
+  font-size: 30px;
+}
+/* slick slider end */
+.slick-prev:before {
+  content: "←";
+  color: black;
+  font-size: 30px;
+  display: inline-block;
+  margin-left: -9px;
+}
 
 
 /* website end */
