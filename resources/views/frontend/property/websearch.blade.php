@@ -12,7 +12,7 @@
     <div class="mn_divz">
         <div class="backgz">
             <div class="backg_sdivz">
-                <h1>Find the best properties from top locations</h1>
+                <h1 class="fw-bolder">Find the best properties from top locations</h1>
             </div>
         </div>
     </div>

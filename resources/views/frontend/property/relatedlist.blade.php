@@ -1,10 +1,15 @@
 @foreach ($property as $item)
 
+    @php
+        $id = @$item->areaOne->city->name . '-' . @$item->type . '-' . @$item->property_type . '-' . @$item->property_for . '-' . @$item->areaOne->name . '-' . @$item->areaTwo->name . '-' . $item->id;
+        $id = str_replace(str_split('\\/:*?"<>|()'), '-', strtolower($id));
+        $id = str_replace(str_split(' '), '_', strtolower($id));
+        $id = strtolower($id);
+    @endphp
+
     <li class="scroll-img-list ms-3 me-1 p-2">
-        <a class="text-decoration-none position-relative" href="{{ route('single.property', $item->id ) }}">
+        <a class="text-decoration-none position-relative" href="{{ route('single.property', $id) }}">
             <div class="imageSection">
-
-
                 @if (!$item->images->isEmpty())
                     <img class="slideImg"
                         src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ $item->images[0]->name }}"
@@ -37,7 +42,7 @@
                     </h6>
                 </div>
                 <div class="d-flex justify-content-between mt-3">
-                    <button class="w-100 themebtn py-1 text-white">View more</button>
+                    <button class="w-100 themebtn py-1 text-white" href="{{ route('single.property', $id) }}" >View more</button>
                     <button class="w-100 ms-3">Contact Us</button>
                 </div>
             </div>

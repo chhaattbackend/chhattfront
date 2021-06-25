@@ -8,7 +8,7 @@
     <div class="mn_divz">
         <div class="backgz">
             <div class="backg_sdivz">
-                <h1>Find the Best Real Estate Agencies</h1>
+                <h1 class="fw-bolder">Find the Best Real Estate Agencies</h1>
             </div>
         </div>
     </div>

@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'PropertyController@home')->name('home');
 Route::get('/property', 'PropertyController@index')->name('property');
 Route::get('/result', 'PropertyController@search')->name('property.search');
-Route::get('/agency', 'AgencyController@index')->name('agency');
+Route::get('/real-estate-agencies', 'AgencyController@index')->name('agency');
 Route::get('/agency/{id}', 'AgencyController@singleAgency')->name('single.agency');
-Route::get('/property/{id}', 'PropertyController@singleProperty')->name('single.property');
+Route::get('/propertyDetail/{id}', 'PropertyController@singleProperty')->name('single.property');
 Route::post('/agency/ajax', 'AgencyController@ajax');
-Route::get('/contact', function () {
+Route::get('/contact-us', function () {
     return view('layouts.contact');
 })->name('contact');
 
@@ -28,8 +28,11 @@ Route::get('/contact', function () {
 // construction
 Route::prefix('construction')->group(function () {
 Route::get('/','ConstructionACategoryController@index')->name('construction.home');
-Route::post('/{id}','ConstructionBCategoryController@index')->name('construction.bcat');
-// Route::get('/{id}','ConstructionACategoryController@index')->name('construction.ccat');
+
+Route::post('/{id}','ConstructionBCategoryController@index')->name('construction.bcat'); // for ccat click on homepage
+Route::get('/{id}','ConstructionBCategoryController@byCategory')->name('construction.bcat'); // for reload that current ccat page
+
+
 });
 // construction
 

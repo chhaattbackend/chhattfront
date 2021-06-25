@@ -15,10 +15,16 @@ function convert_rupee($amount)
 @endphp
 
 @forelse ($properties as $item)
+    @php
+        $id = @$item->areaOne->city->name . '-' . @$item->type . '-' . @$item->property_type . '-' . @$item->property_for . '-' . @$item->areaOne->name . '-' . @$item->areaTwo->name . '-' . $item->id;
+        $id = str_replace(str_split('\\/:*?"<>|()'), '-', strtolower($id));
+        $id = str_replace(str_split(' '), '_', strtolower($id));
+        $id = strtolower($id);
+    @endphp
     <div class="col-sm-4 col-lg-3 mb-4">
         <!-- property card start -->
         <div class="propertyCard p-2">
-            <a class="text-decoration-none position-relative" href="{{ route('single.property', $item->id) }}">
+            <a class="text-decoration-none position-relative" href="{{ route('single.property', $id) }}">
                 <div class="imageSection">
                     @if (!$item->images->isEmpty())
                         <img class="slideImg"

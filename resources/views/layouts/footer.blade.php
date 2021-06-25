@@ -13,9 +13,9 @@
             <div>
               <input style="border: 2px solid #fff" size='50' placeholder='Enter your Email' type='email'
                 name='email' />
-              <div class="inpErrors">
+              {{-- <div class="inpErrors">
                 error
-              </div>
+              </div> --}}
             </div>
             <div>
               <!--  <button type='submit'>Subscribe</button>  -->
@@ -76,23 +76,23 @@
               <b>Company</b>
             </p>
             <ul>
-              <Link to="/">
+              <a href="{{ route('home') }}" >
                 <li>Home</li>
-              </Link>
+              </a>
                <!-- <li>
-                <Link to="/FeaturedProjectsPage">Projects</Link>
+                <a href="" to="/FeaturedProjectsPage">Projects</a>
               </li>  -->
               <li>
-                <Link to="/real-estate-agencies">Agencies</Link>
+                <a href="{{ route('agency') }}" >Agencies</a>
               </li>
               <!--  <li>
-                <Link to="/maps">Maps</Link>
+                <a href="" to="/maps">Maps</a>
               </li>  -->
+              {{-- <li>
+                <a href="" >About Us</a>
+              </li> --}}
               <li>
-                <Link to="/about-us">About Us</Link>
-              </li>
-              <li>
-                <Link to="/contact-us">Contact Us</Link>
+                <a href="{{ route('contact') }}" >Contact Us</a>
               </li>
             </ul>
           </div>
@@ -108,7 +108,7 @@
               <!--  <p>
                 <b>Search, Compare & Get</b>
               </p>  -->
-  
+
               <div class="playHeading">
                 <h4 class="font-weight-bold">Get in Touch</h4>
               </div>

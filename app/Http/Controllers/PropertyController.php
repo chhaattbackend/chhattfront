@@ -39,7 +39,6 @@ class PropertyController extends Controller
         // for mobile start
 
         if (isset($request->All)) {
-            dd('ALL');
 
             $devicecheck = is_numeric(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'mobile'));
             if ($devicecheck == 1) {
@@ -177,10 +176,13 @@ class PropertyController extends Controller
 
     public function singleProperty($id)
     {
+        $id=explode('-',$id);
 
-        $properties = Property::find($id);
-        $propertyimage = PropertyImage::where('property_id', $id)->get();
-        $property = Property::where('area_one_id', $properties->area_one_id)
+
+        $properties = Property::find(end($id));
+        $propertyimage = PropertyImage::where('property_id', end($id))->get();
+
+        $property = Property::where('area_one_id', $properties->areaOne->id)
             ->where('size', $properties->size)
             ->where('size_type', $properties->size_type)
             ->paginate(10);

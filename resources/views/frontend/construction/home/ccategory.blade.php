@@ -10,7 +10,12 @@
     <div class="mn_divz">
         <div class="backgz">
             <div class="backg_sdivz">
-                <h1>dfgfg</h1>
+                @if ($ccategories->isEmpty())
+                    <h1>Error</h1>
+                @else
+                    <h1>{{ $ccategories[0]->category->name }}</h1>
+
+                @endif
             </div>
         </div>
     </div>
@@ -20,9 +25,9 @@
 
 @section('content')
     <div id="websitec">
-        <h2 class="centr">
+        {{-- <h2 class="centr">
             Food Flavours, Colours, Additives and Preservatives
-        </h2>
+        </h2> --}}
         <div id="serch_option_show" class="main_divcons">
             <h5>Food Colors</h5>
             <div id="mainList">
@@ -30,19 +35,19 @@
 
                 <div class="list row m-auto">
 
-                    @foreach ($ccategories as $item )
+                    @foreach ($ccategories as $item)
 
-                    <div class="list1 col-md-3  mt-4">
-                        <div class="list1_div1">
-                            <img src="" width="115px" height="115px" alt="" />
+                        <div class="list1 col-md-3  mt-4">
+                            <div class="list1_div1">
+                                <img src="" width="115px" height="115px" alt="" />
+                            </div>
+                            <div class="list1_div2">
+                                <h6>
+                                    {{ $item->name }}<br /> Color
+                                </h6>
+                                <p>{{ $item->category->id }}</p>
+                            </div>
                         </div>
-                        <div class="list1_div2">
-                            <h6>
-                                {{ $item->name }}<br /> Color
-                            </h6>
-                            <p>{{ $item->category->id }}</p>
-                        </div>
-                    </div>
 
 
                     @endforeach

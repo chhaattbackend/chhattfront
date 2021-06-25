@@ -9,7 +9,7 @@
 <div class="mn_divz">
       <div class="backgz">
         <div class="backg_sdivz">
-          <h1>{{ $agency->name }} ({{ $agency->areaOne->city->name }})</h1>
+          <h2 class="fw-bolder">{{ $agency->name }} ({{ $agency->areaOne->city->name }})</h2>
         </div>
       </div>
     </div>

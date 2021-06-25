@@ -22,8 +22,8 @@
     <div class="mn_divz">
         <div class="backgz">
             <div class="backg_sdivz">
-                <h1>{{ @$properties->property_type }} {{ @$properties->property_for }} in
-                    {{ @$properties->areaTwo->name }} {{ @$properties->areaOne->name }}</h1>
+                <h2 class="fw-bolder">{{ @$properties->property_type }} {{ @$properties->property_for }} in
+                    {{ @$properties->areaTwo->name }} {{ @$properties->areaOne->name }}</h2>
             </div>
         </div>
     </div>
@@ -32,8 +32,8 @@
     <!-- breadcrumbs start -->
     <div class="breadcrumbs_main_div">
         <div class="inner_div">
-            <div>
-                <a href="{{route('home')}}" title="Chhatt"> Chhatt </a>/
+            <div class="breadcrum_none">
+                <a style="" href="{{route('home')}}" title="Chhatt"> Chhatt </a>/
                 <a title=""
                     href="{{ route('property.search', ['city' => $properties->areaOne->city_id]) }}">{{ $properties->areaOne->city->name }}
                 </a>/

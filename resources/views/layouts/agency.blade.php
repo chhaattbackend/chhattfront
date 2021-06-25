@@ -3,7 +3,8 @@
         <h2 class="fw-bold">Agencies</h2>
         <div class="d-flex">
             <div class="ms-4">
-                <button onclick="window.location='{{ route('agency') }}'"  class="themebtn2 px-3 py-1 ms-1">View all</button>
+                <button onclick="window.location='{{ route('agency') }}'" class="themebtn2 px-3 py-1 ms-1">View
+                    all</button>
             </div>
         </div>
     </div>
@@ -15,9 +16,12 @@
         <ul id="box-wrapper" class="boxWrapper ps-0">
             <!--apply loop on this li-->
             @foreach ($agencies as $item)
+                @php
+                    $a = str_replace('(', '', str_replace(' ', '-', strtolower($item->name))) . '-' . strtolower($item->areaOne->city->name) . '-' . $item->id;
+                @endphp
                 <li class="scroll-img-list ms-3 me-1 p-2">
 
-                    <a class="text-decoration-none position-relative" href="#">
+                    <a class="text-decoration-none position-relative" href="{{ route('single.agency', [str_replace(')', '', $a)]) }}">
 
                         <div class="imageSection">
 

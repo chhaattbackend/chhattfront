@@ -108,9 +108,9 @@
                             <div>
                                 <li class="scroll-img-list   p-2 my-3">
                                     <form id="main_div_form" action="{{ route('construction.bcat', ['id' => $id]) }}"
-                                        method="get">
+                                        method="post">
                                         @csrf
-                                        <input type="hidden" value="{{ $item->id }}" name="id">
+                                        {{-- <input type="hidden" value="{{ $item->id }}" name="id"> --}}
                                         <div class="text-decoration-none position-relative">
                                             <button onclick="formSubmit()" class="imageSection">
                                                 <img class="slideImg"
@@ -236,24 +236,7 @@
     <!-- visit construction start -->
     <br />
     <br />
-    <div class="visit_maindiv">
-        <div class="innerDiv">
-            <div class="secOne">
-                <h2>Visit Our Construction Site</h2>
-            </div>
-            <div class="secTwo">
-                Chhatt Media Pvt.ltd commonly known as chhatt.com is a powerful
-                platform which aims at connecting the realtors, builders,
-                developers, brokers with right kind of clientele for various types
-                of properties from various mediums.
-            </div>
-            <div class="secThree">
-                <!-- <Link to='/construction'> -->
-                <button>Visit Now</button>
-                <!-- </Link> -->
-            </div>
-        </div>
-    </div>
+   
     <!-- visit construction end -->
 @endsection
 
