@@ -3,7 +3,9 @@
         <div class="s_div navbarContainer">
             <div class="innerContainer">
                 <div class="logo" id="lgo">
-                    <img src="{{ asset('assets/logow.png') }}" alt="home" />
+                    <a href="{{ route('home') }}">
+                        <img src="{{ asset('assets/logow.png') }}" alt="home" />
+                    </a>
                 </div>
                 <div class="tabss">
                     <ul>

@@ -168,9 +168,6 @@ class PropertyController extends Controller
         $properties->sortBy('priority');
         $pagination = $properties->appends($pagination_array);
 
-
-
-
         return view('frontend.property.search', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_id', 'suggestedareas'));
     }
 

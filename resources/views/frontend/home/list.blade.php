@@ -15,12 +15,16 @@ function convert_rupee($amount)
 @endphp
 
 @foreach ($property as $item)
-
-
+    @php
+        $id = @$item->areaOne->city->name . '-' . @$item->type . '-' . @$item->property_type . '-' . @$item->property_for . '-' . @$item->areaOne->name . '-' . @$item->areaTwo->name . '-' . $item->id;
+        $id = str_replace(str_split('\\/:*?"<>|()'), '-', strtolower($id));
+        $id = str_replace(str_split(' '), '_', strtolower($id));
+        $id = strtolower($id);
+    @endphp
 
 
     <li class="scroll-img-list ms-3 me-1 p-2">
-        <a class="text-decoration-none position-relative" href="{{ route('single.property', $item->id ) }}">
+        <a class="text-decoration-none position-relative" href="{{ route('single.property', $id) }}">
             <div class="imageSection">
 
 
