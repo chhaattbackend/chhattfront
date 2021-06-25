@@ -176,7 +176,7 @@ class PropertyController extends Controller
 
     public function singleProperty($id)
     {
-        $id=explode('-',$id);
+        $id = explode('-', $id);
 
 
         $properties = Property::find(end($id));
@@ -254,7 +254,12 @@ class PropertyController extends Controller
 
         $city = City::all();
         $propertytype = PropertyType::all();
-        return view('frontend.property.mobile.btnsearch.search', compact('city', 'propertytype'));
+        $devicecheck = is_numeric(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'mobile'));
+        if ($devicecheck == 1) {
+            return view('frontend.property.mobile.btnsearch.search', compact('city', 'propertytype'));
+        } else {
+            return redirect()->route('property');
+        }
     }
 
 
