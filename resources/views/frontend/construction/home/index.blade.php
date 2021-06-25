@@ -106,7 +106,7 @@
                             @endphp
 
                             <div>
-                                <li class="scroll-img-list   p-2 my-3">
+                                <li class="scroll-img-list  p-2 my-3">
                                     <form id="main_div_form" action="{{ route('construction.bcat', ['id' => $id]) }}"
                                         method="post">
                                         @csrf
@@ -114,7 +114,7 @@
                                         <div class="text-decoration-none position-relative">
                                             <button onclick="formSubmit()" class="imageSection">
                                                 <img class="slideImg"
-                                                    src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
+                                                    src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $item->image }}"
                                                     alt="" />
                                             </button>
                                             <div class="text-dark paraContainer">
@@ -139,11 +139,11 @@
 
                                                     </ul>
                                                 </div>
-                                                <div class="d-flex justify-content-between mt-3">
-                                                    <button class="w-100 themebtn py-1 text-white"
-                                                        onclick="formSubmit()">View more</button>
-                                                </div>
                                             </div>
+                                        </div>
+                                        <div class="btn-viewmore d-flex justify-content-between mt-3">
+                                            <button class="w-100 themebtn py-1 text-white" onclick="formSubmit()">View
+                                                more</button>
                                         </div>
                                     </form>
 
@@ -236,7 +236,7 @@
     <!-- visit construction start -->
     <br />
     <br />
-   
+
     <!-- visit construction end -->
 @endsection
 

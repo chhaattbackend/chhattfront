@@ -25,7 +25,6 @@ class ConstructionBCategoryController extends Controller
         return view('frontend.construction.home.ccategory', compact('ccategories'));
     }
 
-
     public function byCategory($slug)
     {
 
@@ -41,6 +40,6 @@ class ConstructionBCategoryController extends Controller
     }
 
 
-    
+
 
 }
