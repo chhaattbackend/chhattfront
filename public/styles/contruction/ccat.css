@@ -3,7 +3,7 @@
   position: relative;
   min-width: 1007px;
 }
-.main_divcons {
+.main_div_list {
   /* position: absolute; */
   max-width: 1300px;
   margin: auto;
@@ -17,6 +17,11 @@
   overflow: hidden;
   transition: all 300ms linear !important;
   height: 150px;
+}
+#mainList1 {
+  overflow: hidden;
+  transition: all 300ms linear !important;
+  height: 250px;
 }
 .centr {
   max-width: 1300px;
@@ -40,6 +45,18 @@
 .list5 {
   display: flex;
   align-items: center;
+}
+.litsdj {
+  border-right: 1px solid;
+}
+.lit1,
+.lit2,
+.lit3,
+.lit4,
+.lit4,
+.lit5 {
+  /* display: flex;
+  align-items: center; */
 }
 .list1 .list1_div2,
 .list2 .list1_div2,

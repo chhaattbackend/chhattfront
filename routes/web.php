@@ -32,7 +32,8 @@ Route::get('/','ConstructionACategoryController@index')->name('construction.home
 Route::post('/{id}','ConstructionBCategoryController@index')->name('construction.bcat'); // for ccat click on homepage
 Route::get('/{id}','ConstructionBCategoryController@byCategory')->name('construction.bcat'); // for reload that current ccat page
 
-
+Route::get('/bcat/all','ConstructionBCategoryController@viewall')->name('construction.bcatlist');
+Route::get('/productlist/{id}','ConstructionBCategoryController@product')->name('construction.productlist');
 });
 // construction
 

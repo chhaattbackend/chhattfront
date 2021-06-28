@@ -93,7 +93,7 @@
                     <h2 class="fw-bold">Industrial Supplies</h2>
                     <div class="d-flex">
                         <div class="ms-4">
-                            <button class="themebtn2 px-3 py-1 ms-1">View all</button>
+                            <a href="{{ route('construction.bcatlist') }}" class="themebtn2 px-3 py-1 ms-1">View all</a>
                         </div>
                     </div>
                 </div>
@@ -103,6 +103,7 @@
                         @foreach ($bcategories as $item)
                             @php
                                 $id = str_replace(str_split('\\/:*?"<>|() '), '-', strtolower($item->name));
+                                $id = str_replace(',', '_' , $id);
                             @endphp
 
                             <div>
@@ -199,8 +200,8 @@
                                 <div class="text-dark paraContainer">
                                     <div class="mt-1">
                                         <div class="d-flex justify-content-between">
-                                            <h6 class="lightColor">{{ $item->a_category->name }}</h6>
-                                            <h6 class="lightColor">{{ $item->b_category->name }}</h6>
+                                            <h6 class="lightColor">{{ $item->a_category->name ?? 'A Category'}}</h6>
+                                            <h6 class="lightColor">{{ $item->b_category->name ?? 'B Category'}}</h6>
                                         </div>
                                         <div class="mt-2">
                                             <strong class="mt-5">{{ $item->name }}</strong>
@@ -213,7 +214,7 @@
                                     </div>
                                     <div class="d-flex justify-content-between mt-3">
                                         <button class="w-100 themebtn py-1 text-white">View more</button>
-                                        <button class="w-100 ms-3">Contact Us</button>
+                                        {{-- <button class="w-100 ms-3">Contact Us</button> --}}
                                     </div>
                                 </div>
                             </a>
