@@ -19,8 +19,9 @@ class ConstructionCCategory extends Model
     public function subcategories(){
         return $this->hasMany(ConstructionDCategory::class, 'c_category_id');
     }
-
     public function products(){
         return $this->hasMany(ConstructionProduct::class, 'c_category_id');
     }
+    
+
 }

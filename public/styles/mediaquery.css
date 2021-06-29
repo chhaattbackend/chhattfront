@@ -138,6 +138,10 @@
         margin: auto;
         max-width: 1305px;
     }
+    .mapCardContainer.newProduct {
+        margin: auto;
+        max-width: 1210px;
+    }
 }
 @media screen and (max-width: 1400px) {
     .property_main .s_div .logo img {

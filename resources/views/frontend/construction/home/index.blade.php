@@ -103,7 +103,7 @@
                         @foreach ($bcategories as $item)
                             @php
                                 $id = str_replace(str_split('\\/:*?"<>|() '), '-', strtolower($item->name));
-                                $id = str_replace(',', '_' , $id);
+                                $id = str_replace(',', '_', $id);
                             @endphp
 
                             <div>
@@ -183,235 +183,284 @@
     </div>
     <!-- BEST PROPERTY END -->
     <!-- PROPERTY CARD START -->
-    <div class="mapCardContainer">
+    <div class="mapCardContainer newProduct">
         <div class="container-fluid">
             <div class="row px-2">
                 @foreach ($products as $item)
+                    {{-- @dd($products) --}}
+                    {{-- @dd($item->randomproduct($item->id)) --}}
+                    @foreach ($item->randomproduct($item->id) as $key => $item)
+
+
+                        <div class="col-sm-4 col-lg-3 mb-4">
+
+                            <div class="propertyCard p-2">
+                                <a class="text-decoration-none position-relative" href="#">
+                                    <div class="imageSection">
+                                        <img class="slideImg"
+                                            src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}"
+                                            alt="" />
+                                    </div>
+                                    <div class="text-dark paraContainer">
+                                        <div class="mt-1">
+                                            <div class="d-flex justify-content-between">
+                                                <h6 class="lightColor">{{ $item->store->name ?? 'A Category' }}</h6>
+                                                <h6 class="lightColor">{{ $item->store->name ?? 'B Category' }}</h6>
+                                            </div>
+                                            <div class="mt-2 ellipse">
+                                                <strong class="mt-5">{{ $item->product->name }}</strong>
+                                            </div>
+                                            <h6 class="mt-2">
+                                                <strong>
+                                                    Rs: {{ $item->store_price }}
+                                                </strong>
+                                            </h6>
+                                        </div>
+                                        <div class="d-flex justify-content-between mt-3">
+                                            <button class="w-100 themebtn py-1 text-white">View more</button>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- property card end -->
+                        </div>
+
+                    @endforeach
+
+
+                @endforeach
+
+
+                {{-- @foreach ($products as $item)
+
+
+
+                    <p>{{ $item->store->name }}</p>
+                    <p>{{ $item->product_id }}</p>
+                    <p>{{ $item->store_price }}</p>
+                    <p>{{ $item->qty }}</p>
+                    <p>{{ $item->status }}</p>
+                    <p>{{ $item->unit_id }}</p>
 
                     <div class="col-sm-4 col-lg-3 mb-4">
-                        <!-- property card start -->
+
                         <div class="propertyCard p-2">
                             <a class="text-decoration-none position-relative" href="#">
                                 <div class="imageSection">
                                     <img class="slideImg"
-                                        src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
+                                        src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}"
                                         alt="" />
                                 </div>
                                 <div class="text-dark paraContainer">
                                     <div class="mt-1">
                                         <div class="d-flex justify-content-between">
-                                            <h6 class="lightColor">{{ $item->a_category->name ?? 'A Category'}}</h6>
-                                            <h6 class="lightColor">{{ $item->b_category->name ?? 'B Category'}}</h6>
+                                            <h6 class="lightColor">{{ $item->store->name ?? 'A Category' }}</h6>
+                                            <h6 class="lightColor">{{ $item->store->name ?? 'B Category' }}</h6>
                                         </div>
                                         <div class="mt-2">
-                                            <strong class="mt-5">{{ $item->name }}</strong>
+                                            <strong class="mt-5">{{ $item->product->name }}</strong>
                                         </div>
                                         <h6 class="mt-2">
                                             <strong>
-                                                Rs: {{ convert_rupee($item->price) }}
+                                                Rs: {{ $item->store_price }}
                                             </strong>
                                         </h6>
                                     </div>
                                     <div class="d-flex justify-content-between mt-3">
                                         <button class="w-100 themebtn py-1 text-white">View more</button>
-                                        {{-- <button class="w-100 ms-3">Contact Us</button> --}}
                                     </div>
                                 </div>
                             </a>
                         </div>
-                        <!-- property card end -->
                     </div>
-
-                @endforeach
-
+                @endforeach --}}
 
             </div>
         </div>
-    </div>
-    <!--  PROPERTY CARD START  -->
-    <!-- BEST PROPERTY START -->
-    <br />
-    <!-- <br /> -->
+        <!--  PROPERTY CARD START  -->
+        <!-- BEST PROPERTY START -->
+        <br />
+        <!-- <br /> -->
 
-    <!-- BEST PROPERTY END -->
-    <!-- visit construction start -->
-    <br />
-    <br />
+        <!-- BEST PROPERTY END -->
+        <!-- visit construction start -->
+        <br />
+        <br />
 
-    <!-- visit construction end -->
-@endsection
+        <!-- visit construction end -->
+    @endsection
 
-@section('personalscripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
-        integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        function formSubmit() {
-            $('#main_div_form').submit();
-        }
-    </script>
+    @section('personalscripts')
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+                integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            function formSubmit() {
+                $('#main_div_form').submit();
+            }
+        </script>
 
 
-    <!-- EXTERNAL LINKS END -->
-    <script>
-        // slick slider start
-        $('.slider').slick({
-            dots: false,
-            infinite: false,
-            speed: 300,
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            arrows: true,
-            responsive: [{
-                    breakpoint: 1300,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 1,
-                        infinite: false,
-                        dots: false
+        <!-- EXTERNAL LINKS END -->
+        <script>
+            // slick slider start
+            $('.slider').slick({
+                dots: false,
+                infinite: false,
+                speed: 300,
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                arrows: true,
+                responsive: [{
+                        breakpoint: 1300,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1,
+                            infinite: false,
+                            dots: false
+                        }
+                    },
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1,
+                            infinite: false,
+                            dots: false
+                        }
+                    },
+                ]
+            });
+
+            var areas;
+            const autoCompleteJS = new autoComplete({
+                data: {
+                    src: async () => {
+                        try {
+                            // Loading placeholder text
+                            document
+                                .getElementById("autoComplete")
+                                .setAttribute("placeholder", "Loading...");
+                            // Fetch External Data Source
+                            const source = await fetch(
+                                "https://uat.chhatt.com/api/allareas?city=karachi"
+                            );
+                            areas = await source.json();
+                            // Post Loading placeholder text
+                            document
+                                .getElementById("autoComplete")
+                                .setAttribute("placeholder", autoCompleteJS.placeHolder);
+                            // Returns Fetched data
+                            return areas.data;
+                        } catch (error) {
+                            return error;
+                        }
+                    },
+                    keys: ["name"],
+                    cache: true,
+                    filter: (list) => {
+                        // Filter duplicates
+                        // incase of multiple data keys usage
+                        const filteredResults = Array.from(
+                            new Set(list.map((value) => value.match))
+                        ).map((food) => {
+                            return list.find((value) => value.match === food);
+                        });
+                        return filteredResults;
                     }
                 },
-                {
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 1,
-                        infinite: false,
-                        dots: false
-                    }
+                placeHolder: "Try Something 'Final'",
+                resultsList: {
+                    element: (list, data) => {
+                        const info = document.createElement("p");
+                        if (data.results.length > 0) {
+                            info.innerHTML = `Displaying <strong>${data.matches.length}</strong> results`;
+                        } else {
+                            info.innerHTML =
+                                `Found <strong>${data.matches.length}</strong> matching results for <strong>"${data.query}"</strong>`;
+                        }
+                        list.prepend(info);
+                    },
+                    noResults: true,
+                    maxResults: 10000,
+                    tabSelect: true
                 },
-            ]
-        });
-
-        var areas;
-        const autoCompleteJS = new autoComplete({
-            data: {
-                src: async () => {
-                    try {
-                        // Loading placeholder text
-                        document
-                            .getElementById("autoComplete")
-                            .setAttribute("placeholder", "Loading...");
-                        // Fetch External Data Source
-                        const source = await fetch(
-                            "https://uat.chhatt.com/api/allareas?city=karachi"
-                        );
-                        areas = await source.json();
-                        // Post Loading placeholder text
-                        document
-                            .getElementById("autoComplete")
-                            .setAttribute("placeholder", autoCompleteJS.placeHolder);
-                        // Returns Fetched data
-                        return areas.data;
-                    } catch (error) {
-                        return error;
-                    }
-                },
-                keys: ["name"],
-                cache: true,
-                filter: (list) => {
-                    // Filter duplicates
-                    // incase of multiple data keys usage
-                    const filteredResults = Array.from(
-                        new Set(list.map((value) => value.match))
-                    ).map((food) => {
-                        return list.find((value) => value.match === food);
-                    });
-                    return filteredResults;
-                }
-            },
-            placeHolder: "Try Something 'Final'",
-            resultsList: {
-                element: (list, data) => {
-                    const info = document.createElement("p");
-                    if (data.results.length > 0) {
-                        info.innerHTML = `Displaying <strong>${data.matches.length}</strong> results`;
-                    } else {
-                        info.innerHTML =
-                            `Found <strong>${data.matches.length}</strong> matching results for <strong>"${data.query}"</strong>`;
-                    }
-                    list.prepend(info);
-                },
-                noResults: true,
-                maxResults: 10000,
-                tabSelect: true
-            },
-            resultItem: {
-                element: (item, data) => {
-                    // Modify Results Item Style
-                    item.style = "display: flex; justify-content: space-between;";
-                    // Modify Results Item Content
-                    item.innerHTML = `
+                resultItem: {
+                    element: (item, data) => {
+                        // Modify Results Item Style
+                        item.style = "display: flex; justify-content: space-between;";
+                        // Modify Results Item Content
+                        item.innerHTML = `
      <span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
        ${data.match}
      </span>
      <span style="margin-left:15px;display:inline-block;width:160px;text-align:right;align-items: center; font-size: 13px; font-weight: 100; text-transform: uppercase; color: rgba(0,0,0,.2); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
        ${data.value.parent}
      </span>`;
-                },
-                highlight: true
-            },
-            events: {
-                input: {
-                    selection: (e) => {
-                        const selection = e.detail.selection.value;
-                        autoCompleteJS.input.value = selection.name;
                     },
-                    focus: () => {
-                        if (autoCompleteJS.input.value.length) autoCompleteJS.start();
+                    highlight: true
+                },
+                events: {
+                    input: {
+                        selection: (e) => {
+                            const selection = e.detail.selection.value;
+                            autoCompleteJS.input.value = selection.name;
+                        },
+                        focus: () => {
+                            if (autoCompleteJS.input.value.length) autoCompleteJS.start();
+                        }
                     }
                 }
-            }
-        });
-        // SUBMIT START
-        function changeFunc(e) {
-            e.preventDefault()
-            const inpVal = document.getElementById("autoComplete");
-            if (areas) {
-                const filteredArea = areas.data.filter((prev) => prev.name === inpVal.value)
-                if (filteredArea.length) {
-                    // console.log(filteredArea[0].key)
+            });
+            // SUBMIT START
+            function changeFunc(e) {
+                e.preventDefault()
+                const inpVal = document.getElementById("autoComplete");
+                if (areas) {
+                    const filteredArea = areas.data.filter((prev) => prev.name === inpVal.value)
+                    if (filteredArea.length) {
+                        // console.log(filteredArea[0].key)
+                    } else {
+                        // console.log(inpVal.value)
+                    }
                 } else {
-                    // console.log(inpVal.value)
+                    // console.log("error")
                 }
-            } else {
-                // console.log("error")
             }
-        }
-        // SUBMIT END
-        // == SEARCH AREA DROPDOWN END
+            // SUBMIT END
+            // == SEARCH AREA DROPDOWN END
 
-        // PROPERTY CAROUSEL START
-        var scrolled = 0;
-        $(".scroll-left").on("click", function() {
-            scrolled = scrolled - 300;
-            $("#box-wrapper").animate({
-                scrollLeft: scrolled,
+            // PROPERTY CAROUSEL START
+            var scrolled = 0;
+            $(".scroll-left").on("click", function() {
+                scrolled = scrolled - 300;
+                $("#box-wrapper").animate({
+                    scrollLeft: scrolled,
+                });
             });
-        });
-        $(".scroll-right").on("click", function() {
-            scrolled = scrolled + 300;
-            $("#box-wrapper").animate({
-                scrollLeft: scrolled,
+            $(".scroll-right").on("click", function() {
+                scrolled = scrolled + 300;
+                $("#box-wrapper").animate({
+                    scrollLeft: scrolled,
+                });
             });
-        });
-        // PROPERTY CAROUSEL END
+            // PROPERTY CAROUSEL END
 
-        // == EXPLORE CAROUSEL START
-        var scrolled = 0;
-        $(".scroll-leftExplore").on("click", function() {
-            scrolled = scrolled - 300;
-            $("#box-wrapperExplore").animate({
-                scrollLeft: scrolled,
+            // == EXPLORE CAROUSEL START
+            var scrolled = 0;
+            $(".scroll-leftExplore").on("click", function() {
+                scrolled = scrolled - 300;
+                $("#box-wrapperExplore").animate({
+                    scrollLeft: scrolled,
+                });
             });
-        });
-        $(".scroll-rightExplore").on("click", function() {
-            scrolled = scrolled + 300;
-            $("#box-wrapperExplore").animate({
-                scrollLeft: scrolled,
+            $(".scroll-rightExplore").on("click", function() {
+                scrolled = scrolled + 300;
+                $("#box-wrapperExplore").animate({
+                    scrollLeft: scrolled,
+                });
             });
-        });
-        // slick slider end
-    </script>
+            // slick slider end
+        </script>
 
-@endsection
+    @endsection

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ConstructionStoreProduct extends Model
 {
     protected $connection = 'mysql2';
-    protected $table = 'stores_products';
+    protected $table = 'store_products';
     protected $fillable =[
         'id',
         'store_id',
@@ -17,7 +17,6 @@ class ConstructionStoreProduct extends Model
         'status',
         'unit_id',
     ];
-
     public function store(){
         return $this->belongsTo(ConstructionStore::class,'store_id');
     }
@@ -33,4 +32,10 @@ class ConstructionStoreProduct extends Model
     public function unit(){
         return $this->belongsTo(ConstructionUnit::class,'unit_id');
     }
+
+    // public function randomproduct($id){
+    //     return ConstructionStoreProduct::where('product_id',$id)->inRandomOrder()->limit(1)->get();
+    // }
+
+
 }

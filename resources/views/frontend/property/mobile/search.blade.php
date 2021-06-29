@@ -4,18 +4,19 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('mobile/property/properties.css') }}" />
     <style>
         li.page-item {
-                display: none;
-            }
-
-            .page-item:first-child,
-            .page-item:nth-child(2),
-            .page-item:nth-last-child(2),
-            .page-item:last-child,
-            .page-item.active,
-            .page-item.disabled {
-                display: block;
-            }
+            display: none;
         }
+
+        .page-item:first-child,
+        .page-item:nth-child(2),
+        .page-item:nth-last-child(2),
+        .page-item:last-child,
+        .page-item.active,
+        .page-item.disabled {
+            display: block;
+        }
+        }
+
     </style>
 @endsection
 
@@ -49,9 +50,15 @@
         </div>
         <div class="cards_container">
             @foreach ($properties as $item)
+                @php
+                    $id = @$item->areaOne->city->name . '-' . @$item->type . '-' . @$item->property_type . '-' . @$item->property_for . '-' . @$item->areaOne->name . '-' . @$item->areaTwo->name . '-' . $item->id;
+                    $id = str_replace(str_split('\\/:*?"<>|()'), '-', strtolower($id));
+                    $id = str_replace(str_split(' '), '_', strtolower($id));
+                    $id = strtolower($id);
+                @endphp
 
 
-                <a href="{{ route('single.property', $item->id ) }}" class="card_div text-decoration-none">
+                <a href="{{ route('single.property', $id) }}" class="card_div text-decoration-none">
 
                     @if (!$item->images->isEmpty())
                         <img class="propertyImg"
@@ -86,7 +93,7 @@
 
         <div class="d-flex justify-content-center ">
             <nav aria-label="Page navigation example">
-                {{$properties->links()}}
+                {{ $properties->links() }}
             </nav>
         </div>
     </div>

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ConstructionStoreService extends Model
 {
     protected $connection = 'mysql2';
-    protected $table = 'stores_services';
+    protected $table = 'store_services';
     public function store(){
         return $this->belongsTo(ConstructionStore::class,'store_id');
     }

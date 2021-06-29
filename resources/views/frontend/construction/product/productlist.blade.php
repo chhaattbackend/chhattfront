@@ -3,6 +3,15 @@
 @section('style')
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/index.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/contruction/productlist.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+        integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+        integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 @endsection
 
 @section('headercontent')
@@ -18,7 +27,7 @@
 
 
 @section('content')
-<div class="main_div_productlist container-fluid">
+    <div class="main_div_list container-fluid">
         <!-- breadcrumbs start -->
         <div>
             <a>IndiaMART</a><span> ></span>
@@ -123,47 +132,49 @@
             </div>
             <!-- left div end -->
             <!-- right div start -->
-            <div class="main_div_content_2 ml-3 border">
-                <h5 class="font-weight-bolder mt-3">Popular N95 Mask Products</h5>
+            <div class="main_div_content_2 ml-3 ">
+                <h5 class="font-weight-bolder mt-3">Popular {{ $ccategories[0]->category->name }} Category</h5>
                 <!-- card start -->
-                <div class="card_div d-flex ">
-                        {{-- @dd($ccategory) --}}
-
+                <!-- slider -->
+                <div class="main_slide_div">
+                    <div class="card_div slide">
                     @foreach ($ccategories as $item)
-                    <div class="card p-2 mr-2">
-                        <div class="img_div">
-                            <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/ccategories/{{ $item->image }}" />
-                            <a href="" class="pt-2">
-                                {{ $item->name }}
-                            </a>
-                        </div>
-                        {{-- <div class="rs">Rs 10</div> --}}
-                        {{-- <div class="brand">hamza developer</div> --}}
-                    </div>
-                    @endforeach
 
+                        <div class="card p-2 mr-2">
+                            <div class="img_div">
+                                <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/ccategories/{{ $item->image }}" />
+                                <a href="" class="pt-2 ellipse" style="width: 130px;display: inline-block;">
+                                     {{ $item->name }}
+                                </a>
+                            </div>
+                            <div class="rs">RS 10</div>
+                            <div class="brand">hamza developer</div>
+                        </div>
+
+                        @endforeach
+
+                    </div>
                 </div>
+                <!-- slider -->
                 <!-- card end -->
                 <!-- product card detail start -->
-                @foreach ($ccategory->products as $item )
-
                 <div class="product_detail_card_div_main_div p-2 mt-2">
                     <div class="product_detail_card_div  d-flex">
                         <div class="frst_div">
-                            <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->image }}" />
+                            <img src="./assets/images/construction.webp" />
                         </div>
                         <div class="ml-3 sec_div">
-                            <h5 class="font-weight-bold">{{$item->name}}</h5>
-                            <span class="d-inline-block mr-3">RS {{$item->price}} </span>
+                            <h5 class="font-weight-bold">Dr. Fresh Reusable N95 Face Mask, Number of Layers: 5 Layers of
+                                Layers: 5 Layersof Layers: 5 Layers</h5>
+                            <span class="d-inline-block mr-3">RS 5</span>
                             <a href=""> Get Export Price</a>
                             <ul class="mb-0">
-                                {{-- <li><span>Brand:</span><span>Dr. Fresh</span></li>
                                 <li><span>Brand:</span><span>Dr. Fresh</span></li>
                                 <li><span>Brand:</span><span>Dr. Fresh</span></li>
                                 <li><span>Brand:</span><span>Dr. Fresh</span></li>
                                 <li><span>Brand:</span><span>Dr. Fresh</span></li>
-                                <li><span>Brand:</span><span>Dr. Fresh</span></li> --}}
-                                {{$item->description}}
+                                <li><span>Brand:</span><span>Dr. Fresh</span></li>
+                                <li><span>Brand:</span><span>Dr. Fresh</span></li>
                                 <li><a href="">read more...</a></li>
                             </ul>
                         </div>
@@ -227,8 +238,6 @@
                         </div>
                     </div>
                 </div>
-                @endforeach
-
                 <!-- product card detail end -->
 
             </div>
@@ -239,6 +248,38 @@
 @endsection
 
 @section('personalscripts')
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+        integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        // slick slider start
+        $('.slide').slick({
+            dots: false,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            responsive: [{
+                    breakpoint: 1300,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        infinite: false,
+                        dots: false
+                    }
+                },
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        infinite: false,
+                        dots: false
+                    }
+                },
+            ]
+        });
+        // slick slider end
+    </script>
 @endsection
-

@@ -7,6 +7,7 @@ use App\BCategory;
 use App\ConstructionBCategory;
 use App\ConstructionCCategory;
 use App\ConstructionProduct;
+use App\ConstructionStoreProduct;
 use Illuminate\Http\Request;
 
 class ConstructionBCategoryController extends Controller
@@ -51,10 +52,12 @@ class ConstructionBCategoryController extends Controller
     public function product($id)
     {
 
-        // dd($id);
         $ccategory = ConstructionCCategory::find($id);
+
+        // dd($ccategory->products[0]->name);
+        $products = ConstructionProduct::where('c_category_id',$id)->get();
+        dd($products[0]->id);
         $ccategories= ConstructionCCategory::where('b_category_id',$ccategory->category->id)->get();
-        // dd($ccategories);
 
         return view('frontend.construction.product.productlist', compact('ccategory','ccategories'));
     }

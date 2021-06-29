@@ -345,10 +345,16 @@
                 <div class="sdiv">
                     <ul>
                         @foreach ($properties as $item)
+                            @php
+                                $id = @$item->areaOne->city->name . '-' . @$item->type . '-' . @$item->property_type . '-' . @$item->property_for . '-' . @$item->areaOne->name . '-' . @$item->areaTwo->name . '-' . $item->id;
+                                $id = str_replace(str_split('\\/:*?"<>|()'), '-', strtolower($id));
+                                $id = str_replace(str_split(' '), '_', strtolower($id));
+                                $id = strtolower($id);
+                            @endphp
 
                             <li>
                                 <div>
-                                    <a href="{{ route('single.property', $item->id) }}"
+                                    <a href="{{ route('single.property', $id) }}"
                                         class="property_card_main_div text-decoration-none">
                                         <img src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ @$item->images[0]->name }}"
                                             class="propertyImg" alt="" />
@@ -384,8 +390,8 @@
                 <div class="top">
                     <p>Featured Projects</p>
                     <!-- <p onClick="">
-                                                                                                                                    View All
-                                                                                                                                  </p> -->
+                                                                                                                                        View All
+                                                                                                                                      </p> -->
                 </div>
                 <div class="sdiv">
                     <ul>

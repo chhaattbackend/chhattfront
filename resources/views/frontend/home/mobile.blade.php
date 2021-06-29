@@ -107,17 +107,24 @@
             <div class="top">
                 <p>Best Properties For You</p>
                 <p>
-                    <a href="{{ route('allproperties',['All']) }}"> View All </a>
+                    <a href="{{ route('allproperties', ['All']) }}"> View All </a>
                 </p>
             </div>
             <div class="sdiv">
                 <ul>
                     @foreach ($property as $item)
+                        @php
+                            $id = @$item->areaOne->city->name . '-' . @$item->type . '-' . @$item->property_type . '-' . @$item->property_for . '-' . @$item->areaOne->name . '-' . @$item->areaTwo->name . '-' . $item->id;
+                            $id = str_replace(str_split('\\/:*?"<>|()'), '-', strtolower($id));
+                            $id = str_replace(str_split(' '), '_', strtolower($id));
+                            $id = strtolower($id);
+                        @endphp
 
                         <li>
                             <div>
                                 <!-- card start -->
-                                <a href="{{ route('single.property', $item->id ) }}" class="card_main_div text-decoration-none">
+                                <a href="{{ route('single.property', $id) }}"
+                                    class="card_main_div text-decoration-none">
                                     <img src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ @$item->images[0]->name }}"
                                         class="propertyImg" alt="" />
                                     <p class="mb-0"> {{ $item->type }} </p>
@@ -158,7 +165,7 @@
                         <!-- featured card start -->
                         <a href="" class="text-decoration-none">
                             <div class="featured_card_main_div">
-                                <img src="{{asset('assets/welcomeCenter.webp')}}" class="propertyImg" alt="" />
+                                <img src="{{ asset('assets/welcomeCenter.webp') }}" class="propertyImg" alt="" />
                                 <p class="mb-0">Karachi</p>
                                 <b> Welcome Center </b>
                                 <p>
@@ -173,7 +180,7 @@
         </div>
     </div>
     <br>
-    
+
 
     @include('layouts.mobile.footer')
 @endsection

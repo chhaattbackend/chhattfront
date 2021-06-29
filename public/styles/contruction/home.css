@@ -4,6 +4,7 @@
   width: 100% !important;
   margin-right: 10px !important;
 }
+
 .autoComplete_wrapper > input {
   width: 100% !important;
   height: 52px !important;
@@ -1147,6 +1148,7 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
+
   border-radius: 6px;
 }
 #box-wrapperExplore .scroll-img-list .paraContainer {
@@ -1194,4 +1196,10 @@
   border-radius: 3px;
 }
 .elipse {
+}
+.propertyCard .imageSection .slideImg {
+    height: 100%;
+    width: 100%;
+    object-fit: contain !important;
+    border-radius: 6px;
 }
