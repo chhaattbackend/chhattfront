@@ -622,8 +622,12 @@
         margin: auto;
     }
     .breadcrum_none > a {
-
+        color: #006adb;
         text-decoration: none;
+    }
+
+    .breadcrum_none > p{
+        color: black;
     }
     /* RELATED PROPERTIES END */
     /* image gallery end */

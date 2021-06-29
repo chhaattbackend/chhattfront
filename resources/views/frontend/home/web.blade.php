@@ -136,7 +136,6 @@
             const autoCompleteJS = new autoComplete({
                 data: {
                     src: async () => {
-                        console.log(areas)
                         try {
                             // Loading placeholder text
                             document
@@ -293,7 +292,7 @@
                         </div>
                         <div class="ms-4">
                             <button class="themebtn2 px-3 py-1 ms-1"><a class="text-decoration-none"
-                                    href="{{ route('property') }}">View All</a></button>
+                                    href="{{ route('allproperties', ['All']) }}">View All</a></button>
                         </div>
                     </div>
                 </div>
@@ -512,7 +511,10 @@
                 if (filteredArea.length) {
                     // console.log(filteredArea[0].key)
                     var url = '{{ route('property.search', 'search_areas=:key') }}';
+
                     url = url.replace(':key', filteredArea[0].key);
+
+
                     document.location.href = url;
 
 

@@ -32,21 +32,21 @@
     <!-- breadcrumbs start -->
     <div class="breadcrumbs_main_div">
         <div class="inner_div">
-            <div class="breadcrum_none">
-                <a style="" href="{{route('home')}}" title="Chhatt"> Chhatt </a>/
+            <div class="breadcrum_none" style="color: black;font-size: 13px;font-weight: bold ">
+                <a style="" href="{{route('home')}}" title="Chhatt"> Chhatt </a> >
                 <a title=""
                     href="{{ route('property.search', ['city' => $properties->areaOne->city_id]) }}">{{ $properties->areaOne->city->name }}
-                </a>/
+                </a> >
                 <a title="" href="{{ route('property.search', ['area_type' => $properties->type,'city' => $properties->areaOne->city_id]) }}">
-                    {{ @$properties->type }} </a>/
+                    {{ @$properties->type }} </a> >
                 <a title="" href="{{ route('property.search', ['property_type' => $properties->property_type,'city' => $properties->areaOne->city_id]) }}">
-                    {{ @$properties->property_type }} </a>/
+                    {{ @$properties->property_type }} </a> >
                 <a title="" href="{{ route('property.search', ['property_for' => $properties->property_for,'city' => $properties->areaOne->city_id]) }}">
-                    {{ @$properties->property_for }} </a>/
+                    {{ @$properties->property_for }} </a> >
                 <a title="" href="{{ route('property.search', ['search_areas' => 'area_one_id,'.$properties->areaOne->id ]) }}">
-                    {{ $properties->areaOne->name }} </a>/
+                    {{ $properties->areaOne->name }} </a> >
                 <a title="" href="{{ route('property.search', ['search_areas' => 'area_two_id,'.$properties->areaTwo->id]) }}">
-                    {{ $properties->areaTwo->name }} </a>/
+                    {{ $properties->areaTwo->name }} </a> >
                 <a disabled> {{ $properties->id }} </a>
 
 

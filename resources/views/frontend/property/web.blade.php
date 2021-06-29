@@ -221,9 +221,9 @@
                     <li title="Industrial">
                         <button id="indBtn" class="themebtnUnPressed" onclick="industrial()">Industrial</button>
                     </li>
-                    <li title="View all" class="viewall">
+                    {{-- <li title="View all" class="viewall">
                         <button>View all</button>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </div>
@@ -338,7 +338,8 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 data: {
-                    type: type
+                    type: type,
+                    p : true
                 },
                 success: function(responese) {
                     $('#list').removeClass('animate__animated animate__fadeOut');

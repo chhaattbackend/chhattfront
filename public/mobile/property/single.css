@@ -20,6 +20,15 @@
     padding: 15px 0 0 10px;
 }
 
+.breadcrum_none > a {
+    color: #ededed;
+    text-decoration: none;
+}
+
+.breadcrums_mob{
+    background-color: #007bff;
+}
+
 .priceTagMobile {
     font-size: 30px;
     text-align: center;

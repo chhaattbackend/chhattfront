@@ -267,8 +267,14 @@ class PropertyController extends Controller
         if (isset($request->type)) {
 
             if ($request->type == 'All') {
+                if (isset($request->p)) {
+                    $properties = Property::paginate(24);
 
-                $properties = Property::paginate(10);
+
+                } else {
+                    $properties = Property::paginate(10);
+
+                }
                 $agencies = Agency::paginate(10);
                 $data = view('frontend.property.list', compact('properties'))->render();
                 return response()->json([
@@ -276,8 +282,17 @@ class PropertyController extends Controller
                     // 'pagination' => (string) $areas->links()
                 ]);
             }
-            $properties = Property::where('type', $request->type)->paginate(10);
+
             $agencies = Agency::paginate(10);
+
+            if (isset($request->p)) {
+
+                $properties = Property::where('type', $request->type)->paginate(24);
+
+            } else {
+            $properties = Property::where('type', $request->type)->paginate(10);
+
+            }
             $data = view('frontend.property.list', compact('properties'))->render();
 
             return response()->json([

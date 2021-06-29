@@ -16,6 +16,8 @@
     <!-- Fotorama from CDNJS, 19 KB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
 @endsection
 
 
@@ -23,7 +25,30 @@
     @include('functions.convert_rupee')
     <!-- MOBILE START -->
     <!-- SHARE BTNS START -->
+    <div class="breadcrums_mob m-1 pt-1 pb-1 p-2 rounded-pill">
+        <div class="breadcrum_none" style="color: rgb(255, 255, 255);font-size: 11px;font-weight: bold ">
+            <a style="" href="{{route('home')}}" title="Chhatt"> Chhatt </a><i class="fad fa-angle-right"></i>
+            <a title=""
+                href="{{ route('property.search', ['city' => $properties->areaOne->city_id]) }}">{{ $properties->areaOne->city->name }}
+            </a><i class="fad fa-angle-right"></i>
+            <a title="" href="{{ route('property.search', ['area_type' => $properties->type,'city' => $properties->areaOne->city_id]) }}">
+                {{ @$properties->type }} </a><i class="fad fa-angle-right"></i>
+            <a title="" href="{{ route('property.search', ['property_type' => $properties->property_type,'city' => $properties->areaOne->city_id]) }}">
+                {{ @$properties->property_type }} </a><i class="fad fa-angle-right"></i>
+            <a title="" href="{{ route('property.search', ['property_for' => $properties->property_for,'city' => $properties->areaOne->city_id]) }}">
+                {{ @$properties->property_for }} </a><i class="fad fa-angle-right"></i>
+            <a title="" href="{{ route('property.search', ['search_areas' => 'area_one_id,'.$properties->areaOne->id ]) }}">
+                {{ $properties->areaOne->name }} </a><i class="fad fa-angle-right"></i>
+            <a title="" href="{{ route('property.search', ['search_areas' => 'area_two_id,'.$properties->areaTwo->id]) }}">
+                {{ $properties->areaTwo->name }} </a><i class="fad fa-angle-right"></i>
+            <a disabled> {{ $properties->id }} </a>
+
+
+            &nbsp;
+        </div>
+    </div>
     <div class="shareBtns">
+
         <button>
             <i class="fas fa-share"></i>
             Share
