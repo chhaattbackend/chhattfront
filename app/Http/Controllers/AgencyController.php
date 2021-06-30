@@ -41,9 +41,9 @@ class AgencyController extends Controller
             })->orWhereHas('areaTwo', function ($query) use ($seacrh) {
                 $query->where('name', 'like', '%' . $seacrh . '%');
             })->orWhereHas('user', function ($query) use ($seacrh) {
-                $query->where('phone',$seacrh);
+                $query->where('phone', $seacrh);
             })->orWhere('name', 'like', '%' . $seacrh . '%')
-            ->paginate(24)->setPath('');
+                ->paginate(24)->setPath('');
 
             $pagination = $agencies->appends(array(
                 'keyword' => $request->keyword
@@ -63,32 +63,30 @@ class AgencyController extends Controller
     {
 
 
-        $id=explode('-',$id);
+        $id = explode('-', $id);
         $agency = Agency::find(end($id));
         $agents = Agent::where('agency_id', $agency->id)->get();
         $agentproperties = 0;
         // dd($agents);
-        foreach($agents as $agent) {
+        foreach ($agents as $agent) {
             // dd($agent->properties);
             // if ($agent->user->properties != null) {
             //     # code...
             // }
             $agentproperties += count($agent->properties);
         }
-        $agencyproperties=$agency->properties->count();
-        $totalproperties= $agencyproperties+$agentproperties;
+        $agencyproperties = $agency->properties->count();
+        $totalproperties = $agencyproperties + $agentproperties;
 
 
 
-        return view("frontend.agency.single", compact(['agency','agents','totalproperties']));
-
+        return view("frontend.agency.single", compact(['agency', 'agents', 'totalproperties']));
     }
 
     public function index(Request $request)
     {
         if (!$request->keyword) {
-                        $agencies = Agency::paginate(24);
-
+            $agencies = Agency::paginate(24);
         } else {
 
             $seacrh = $request->keyword;
@@ -101,9 +99,9 @@ class AgencyController extends Controller
             })->orWhereHas('areaTwo', function ($query) use ($seacrh) {
                 $query->where('name', 'like', '%' . $seacrh . '%');
             })->orWhereHas('user', function ($query) use ($seacrh) {
-                $query->where('phone',$seacrh);
+                $query->where('phone', $seacrh);
             })->orWhere('name', 'like', '%' . $seacrh . '%')
-            ->paginate(24)->setPath('');
+                ->paginate(24)->setPath('');
 
             $pagination = $agencies->appends(array(
                 'keyword' => $request->keyword
@@ -113,8 +111,7 @@ class AgencyController extends Controller
 
 
 
-         return view('frontend.agency.index',compact('agencies'));
-
+        return view('frontend.agency.index', compact('agencies'));
     }
 
 
@@ -148,18 +145,17 @@ class AgencyController extends Controller
     {
 
         // dd($request->all());
-        $this->validate($request,[
+        $this->validate($request, [
             'user_id' => 'required',
             'area_one_id' => 'required',
             'name' => 'required',
             'area_two_id' => 'required',
-            ]);
+        ]);
 
         if ($request->file('image')) {
             $filename = $this->globalclass->storeS3($request->file('image'), 'agencies');
             Agency::create($request->except('image') + ["image" => $filename]);
-        }
-        else{
+        } else {
             Agency::create($request->except('image'));
         }
         return redirect()->route('agencies.index');
@@ -176,15 +172,14 @@ class AgencyController extends Controller
         $agents = Agent::where('agency_id', $agency->id)->get();
         $agentproperties = 0;
 
-        foreach($agents as $agent) {
+        foreach ($agents as $agent) {
             $agentproperties += count($agent->properties);
-
         }
-        $agencyproperties=$agency->properties->count();
-        $totalproperties= $agencyproperties+$agentproperties;
+        $agencyproperties = $agency->properties->count();
+        $totalproperties = $agencyproperties + $agentproperties;
 
 
-        return view("admin.agency.show", compact(['agency','agents','totalproperties']));
+        return view("admin.agency.show", compact(['agency', 'agents', 'totalproperties']));
     }
 
     /**
@@ -233,7 +228,7 @@ class AgencyController extends Controller
      */
     public function destroy($id)
     {
-        if(auth()->user()->email == 'chhattofficial@chhatt.com'){
+        if (auth()->user()->email == 'chhattofficial@chhatt.com') {
 
             $item = Agency::find($id);
             $item->delete();

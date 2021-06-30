@@ -1,11 +1,11 @@
 <div class="position-relative">
     <div class="search_container">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row" >
                 <div class="col-12 mt-3">
                     <label class="fw-bold mb-1" htmlFor="location"> Location </label>
                     <br />
-                    <input class="w-100" type="text" placeholder="search" />
+                    <input class="w-100" style="border: 1px solid rgb(252, 252, 252)" type="text" placeholder="search" />
                 </div>
                 <div class="col-6 mt-3">
                     <label class="fw-bold mb-1" htmlFor="location"> Property Type </label>
