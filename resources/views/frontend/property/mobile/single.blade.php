@@ -26,7 +26,7 @@
     <!-- MOBILE START -->
     <!-- SHARE BTNS START -->
     <div class="breadcrums_mob m-1 pt-1 pb-1 p-1 rounded-pill">
-        <div class="breadcrum_none" style="color: rgb(53, 49, 49);font-size: 14px;font-weight: bold ">
+        <div class="breadcrum_none" style="color: rgb(53, 49, 49);font-size: 13px;font-weight: bold ">
             <a style="" href="{{route('home')}}" title="Chhatt"> Chhatt </a><i class="fad fa-angle-right"></i>
             <a title=""
                 href="{{ route('property.search', ['city' => $properties->areaOne->city_id]) }}">{{ $properties->areaOne->city->name }}
@@ -40,9 +40,9 @@
             <a title="" href="{{ route('property.search', ['search_areas' => 'area_one_id,'.$properties->areaOne->id ]) }}">
                 {{ $properties->areaOne->name }} </a><i class="fad fa-angle-right"></i>
             <a title="" href="{{ route('property.search', ['search_areas' => 'area_two_id,'.$properties->areaTwo->id]) }}">
-                {{ $properties->areaTwo->name }} </a><i class="fad fa-angle-right"></i>
-            <a disabled> {{ @$properties->property_type }} {{ @$properties->property_for }} in
-                    {{ @$properties->areaTwo->name }} {{ @$properties->areaOne->name }} </a>
+                {{ $properties->areaTwo->name }} </a>
+            {{-- <a disabled> {{ @$properties->property_type }} {{ @$properties->property_for }} in
+                    {{ @$properties->areaTwo->name }} {{ @$properties->areaOne->name }} </a> --}}
             &nbsp;
         </div>
     </div>
