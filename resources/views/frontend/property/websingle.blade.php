@@ -47,7 +47,8 @@
                     {{ $properties->areaOne->name }} </a> >
                 <a title="" href="{{ route('property.search', ['search_areas' => 'area_two_id,'.$properties->areaTwo->id]) }}">
                     {{ $properties->areaTwo->name }} </a> >
-                <a disabled> {{ $properties->id }} </a>
+                <a disabled> {{ @$properties->property_type }} {{ @$properties->property_for }} in
+                    {{ @$properties->areaTwo->name }} {{ @$properties->areaOne->name }} </a>
 
 
                 &nbsp;

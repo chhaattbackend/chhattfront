@@ -18,7 +18,7 @@
     <div class="mn_divz">
         <div class="backgz">
             <div class="backg_sdivz">
-                <h1>ASAS</h1>
+                <h1>{{ $dcategory->name }} {{ $dcategory->category->name }} </h1>
             </div>
         </div>
     </div>
@@ -30,15 +30,23 @@
     <div class="main_div_list container-fluid">
         <!-- breadcrumbs start -->
         <div>
-            <a>IndiaMART</a><span> ></span>
-            <a>IndiaMART</a><span> ></span>
-            <a>IndiaMART</a><span> ></span>
-            <a>IndiaMART</a>
+
+
+            <a href="{{ route('home') }}">Chhatt</a><span> ></span>
+            {{-- <a href="{{ route('construction.home') }}">Construction</a><span> ></span> --}}
+            <a
+                href="{{ route('construction.bcatlist') }}">{{ $dcategory->category->category->category->name }}</a><span>
+                ></span>
+            <a
+                href="{{ route('construction.bcat', ['id' => str_replace(',', '_', str_replace(str_split('\\/:*?"<>|() '), '-', strtolower($dcategory->category->category->name)))]) }}">{{ $dcategory->category->category->name }}</a><span>
+                ></span>
+            <a href="{{ route('construction.bcatlist') }}">{{ $dcategory->category->name }}</a><span> ></span>
+            <a disabled>{{ $dcategory->name }}</a>
         </div>
         <!-- breadcrumbs end -->
         <!-- heading start -->
         <div class="title_div">
-            <h1 class="title_div_1">N95 KN95 FFP2 Respirator Mask <span>(24108 products available) </span> </h1>
+            <h1 class="title_div_1">{{ $dcategory->name }} {{ $dcategory->category->name }}<span>({{ $dcategory->subcategories->count()  }} products available) </span> </h1>
             <div>
                 <span class="title_div_1_sp1">View by : </span>
                 <span class="title_div_1_sp2"> Product </span>
@@ -132,24 +140,27 @@
             </div>
             <!-- left div end -->
             <!-- right div start -->
-            <div class="main_div_content_2 ml-3 ">
-                <h5 class="font-weight-bolder mt-3">Popular {{ $ccategories[0]->category->name }} Category</h5>
+            <div class="main_div_content_2 ms-3 ">
+                <h5 class="font-weight-bolder mt-3">Popular {{ $dcategories[0]->category->name }} Category</h5>
                 <!-- card start -->
                 <!-- slider -->
                 <div class="main_slide_div">
                     <div class="card_div slide">
-                    @foreach ($ccategories as $item)
+                        @foreach ($dcategories as $item)
 
-                        <div class="card p-2 mr-2">
-                            <div class="img_div">
-                                <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/ccategories/{{ $item->image }}" />
-                                <a href="" class="pt-2 ellipse" style="width: 130px;display: inline-block;">
-                                     {{ $item->name }}
-                                </a>
+                            <div class="card p-2 m-1">
+                                <div  class="img_div">
+                                    <img
+                                        src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/{{ $item->image }}" />
+                                    <a href="{{ route('construction.productlist', ['id' => $item->id]) }}" class="pt-2 ellipse" style="width: 130px;display: inline-block;">
+                                        {{ $item->name }}
+                                    </a>
+                                </div>
+                                <div class="rs">RS 10</div>
+                                <div class="brand">hamza developer</div>
                             </div>
-                            <div class="rs">RS 10</div>
-                            <div class="brand">hamza developer</div>
-                        </div>
+
+
 
                         @endforeach
 
@@ -157,88 +168,74 @@
                 </div>
                 <!-- slider -->
                 <!-- card end -->
-                <!-- product card detail start -->
-                <div class="product_detail_card_div_main_div p-2 mt-2">
-                    <div class="product_detail_card_div  d-flex">
-                        <div class="frst_div">
-                            <img src="./assets/images/construction.webp" />
-                        </div>
-                        <div class="ml-3 sec_div">
-                            <h5 class="font-weight-bold">Dr. Fresh Reusable N95 Face Mask, Number of Layers: 5 Layers of
-                                Layers: 5 Layersof Layers: 5 Layers</h5>
-                            <span class="d-inline-block mr-3">RS 5</span>
-                            <a href=""> Get Export Price</a>
-                            <ul class="mb-0">
-                                <li><span>Brand:</span><span>Dr. Fresh</span></li>
-                                <li><span>Brand:</span><span>Dr. Fresh</span></li>
-                                <li><span>Brand:</span><span>Dr. Fresh</span></li>
-                                <li><span>Brand:</span><span>Dr. Fresh</span></li>
-                                <li><span>Brand:</span><span>Dr. Fresh</span></li>
-                                <li><span>Brand:</span><span>Dr. Fresh</span></li>
-                                <li><a href="">read more...</a></li>
-                            </ul>
-                        </div>
-                        <div class="th_div">
-                            <h5 class="font-weight-light m-0">Machine World</h5>
-                            <span>China Town, </span>
-                            <span>Kolkata</span>
-                            <div class="mt-2">
-                                <span class="ls-img d-inline-block"></span>
-                                <span class="d-inline-block ind">Industry Leader</span>
-                                <span class="ls-img1 d-inline-block ml-4"></span>
-                                <span class="d-inline-block ind">Industry Leader</span>
-                            </div>
-                            <div class="mt-1">
-                                <span class="ls-img2 d-inline-block"></span>
-                                <span class="d-inline-block ind">Industry Leader</span>
-                            </div>
-                            <div class="mr-auto mt-4 text-center curs">
+                @foreach ($storeproducts as $item)
+                    <!-- product card detail start -->
+                    <div class="product_detail_card_div_main_div p-2 m-2">
+                        <div class="product_detail_card_div  d-flex">
+                            <div class="frst_div">
                                 <img
-                                    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNC43NSIgaGVpZ2h0PSIxNC41MTMiIHZpZXdCb3g9IjAgMCAxNC43NSAxNC41MTMiPjxkZWZzPjxzdHlsZT4uYXtmaWxsOiMwNjgwNzY7fTwvc3R5bGU+PC9kZWZzPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKC05MDguMjkxIC0zNjUuMTk1KSI+PHBhdGggY2xhc3M9ImEiIGQ9Ik05MTcuOSwzNzkuNzA4YTIuMjE3LDIuMjE3LDAsMCwwLDEuMzQ1LS40MTJjLjU1Mi0uMzk0LDEuMDgzLS44MjEsMS42LTEuMjYyYS44MjkuODI5LDAsMCwwLS4wMTYtMS4xMzRjLS41NzMtLjU5LTEuMTUzLTEuMTc0LTEuNzQ5LTEuNzQxYTEuMTA4LDEuMTA4LDAsMCwwLTEuNDA2LS4wNDVjLS4zMjQuMjI3LS42NTcuNDQ1LS45NTguN2EuNzY5Ljc2OSwwLDAsMS0uOTMxLjA4OSwzLjM1MSwzLjM1MSwwLDAsMS0uNzYtLjVjLS44NzUtLjgzMS0xLjczMi0xLjY4LTIuNTgzLTIuNTM2YTIuMzc1LDIuMzc1LDAsMCwxLS4zNjktLjU1NS45MTguOTE4LDAsMCwxLC4wOS0xLjFjLjI0Mi0uMy40Ni0uNjE5LjY4NS0uOTMzYTEuMDg2LDEuMDg2LDAsMCwwLS4xLTEuNDQxcS0uOC0uODE0LTEuNjE5LTEuNjEzYS44NzguODc4LDAsMCwwLTEuMzYuMDQzYy0uMzYxLjQxLS43LjgzOS0xLjAyNiwxLjI4YTIuMjUxLDIuMjUxLDAsMCwwLS4zLDIuMTkxLDkuOTc0LDkuOTc0LDAsMCwwLDEuODE1LDMuMDc2LDI2LjA0NywyNi4wNDcsMCwwLDAsNS4yMTUsNC45MTNBNC45NDUsNC45NDUsMCwwLDAsOTE3LjksMzc5LjcwOFoiLz48cGF0aCBjbGFzcz0iYSIgZD0iTTkxNi4wNzksMzY4LjhhNC4xMTksNC4xMTksMCwwLDEsMy4zNTYsMy4zNTUuNDI5LjQyOSwwLDAsMCwuNDI2LjM1OS40NDguNDQ4LDAsMCwwLC4wNzMtLjAwNy40MzMuNDMzLDAsMCwwLC4zNTYtLjUsNC45ODMsNC45ODMsMCwwLDAtNC4wNi00LjA2LjQzNC40MzQsMCwwLDAtLjUuMzUyLjQyOC40MjgsMCwwLDAsLjM0OS41Wm0wLDAiLz48cGF0aCBjbGFzcz0iYSIgZD0iTTkyMy4wMzQsMzcxLjg4N2E4LjIsOC4yLDAsMCwwLTYuNjg2LTYuNjg2LjQzMi40MzIsMCwwLDAtLjE0MS44NTIsNy4zMzEsNy4zMzEsMCwwLDEsNS45NzUsNS45NzUuNDMuNDMsMCwwLDAsLjQyNi4zNTkuNjIuNjIsMCwwLDAsLjA3NC0uMDA3LjQyNC40MjQsMCwwLDAsLjM1Mi0uNDkzWm0wLDAiLz48L2c+PC9zdmc+" />
-                                <span style="color: #068076; font-size: 14px;" class="font-weight-bold">
-                                    View Mobile Number
-                                </span>
+                                    src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}" />
                             </div>
-                            <div class="border text-center btns_contact mt-3 curs">
-                                <h6 class="m-0 font-weight-bold">Contact Supplier</h6>
-                                <p class="m-0">Request a Quote</p>
+                            <div class="ml-3 sec_div">
+                                <h5 class="font-weight-bold">{{ $item->product->name }}</h5>
+                                <span class="d-inline-block mr-3">RS {{ $item->product->price }}</span>
+                                <a href=""> Get Export Price</a>
+                                <ul class="mb-0 me-3">
+                                    <li><span>Brand:</span><span>Dr. Fresh</span></li>
+                                    {{ $item->product->description }}
+                                    <li><a href="">read more...</a></li>
+                                </ul>
+                            </div>
+                            <div class="th_div">
+                                <h5 class="font-weight-light m-0">{{ $item->store->name }}</h5>
+                                <span>DHA, </span>
+                                <span>Karachi</span>
+                                <div class="mt-2">
+                                    <span class="ls-img d-inline-block"></span>
+                                    <span class="d-inline-block ind">Industry Leader</span>
+                                    <span class="ls-img1 d-inline-block ml-4"></span>
+                                    <span class="d-inline-block ind">Industry Leader</span>
+                                </div>
+                                <div class="mt-1">
+                                    <span class="ls-img2 d-inline-block"></span>
+                                    <span class="d-inline-block ind">Industry Leader</span>
+                                </div>
+                                <div class="mr-auto mt-4 text-center curs">
+                                    <img
+                                        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNC43NSIgaGVpZ2h0PSIxNC41MTMiIHZpZXdCb3g9IjAgMCAxNC43NSAxNC41MTMiPjxkZWZzPjxzdHlsZT4uYXtmaWxsOiMwNjgwNzY7fTwvc3R5bGU+PC9kZWZzPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKC05MDguMjkxIC0zNjUuMTk1KSI+PHBhdGggY2xhc3M9ImEiIGQ9Ik05MTcuOSwzNzkuNzA4YTIuMjE3LDIuMjE3LDAsMCwwLDEuMzQ1LS40MTJjLjU1Mi0uMzk0LDEuMDgzLS44MjEsMS42LTEuMjYyYS44MjkuODI5LDAsMCwwLS4wMTYtMS4xMzRjLS41NzMtLjU5LTEuMTUzLTEuMTc0LTEuNzQ5LTEuNzQxYTEuMTA4LDEuMTA4LDAsMCwwLTEuNDA2LS4wNDVjLS4zMjQuMjI3LS42NTcuNDQ1LS45NTguN2EuNzY5Ljc2OSwwLDAsMS0uOTMxLjA4OSwzLjM1MSwzLjM1MSwwLDAsMS0uNzYtLjVjLS44NzUtLjgzMS0xLjczMi0xLjY4LTIuNTgzLTIuNTM2YTIuMzc1LDIuMzc1LDAsMCwxLS4zNjktLjU1NS45MTguOTE4LDAsMCwxLC4wOS0xLjFjLjI0Mi0uMy40Ni0uNjE5LjY4NS0uOTMzYTEuMDg2LDEuMDg2LDAsMCwwLS4xLTEuNDQxcS0uOC0uODE0LTEuNjE5LTEuNjEzYS44NzguODc4LDAsMCwwLTEuMzYuMDQzYy0uMzYxLjQxLS43LjgzOS0xLjAyNiwxLjI4YTIuMjUxLDIuMjUxLDAsMCwwLS4zLDIuMTkxLDkuOTc0LDkuOTc0LDAsMCwwLDEuODE1LDMuMDc2LDI2LjA0NywyNi4wNDcsMCwwLDAsNS4yMTUsNC45MTNBNC45NDUsNC45NDUsMCwwLDAsOTE3LjksMzc5LjcwOFoiLz48cGF0aCBjbGFzcz0iYSIgZD0iTTkxNi4wNzksMzY4LjhhNC4xMTksNC4xMTksMCwwLDEsMy4zNTYsMy4zNTUuNDI5LjQyOSwwLDAsMCwuNDI2LjM1OS40NDguNDQ4LDAsMCwwLC4wNzMtLjAwNy40MzMuNDMzLDAsMCwwLC4zNTYtLjUsNC45ODMsNC45ODMsMCwwLDAtNC4wNi00LjA2LjQzNC40MzQsMCwwLDAtLjUuMzUyLjQyOC40MjgsMCwwLDAsLjM0OS41Wm0wLDAiLz48cGF0aCBjbGFzcz0iYSIgZD0iTTkyMy4wMzQsMzcxLjg4N2E4LjIsOC4yLDAsMCwwLTYuNjg2LTYuNjg2LjQzMi40MzIsMCwwLDAtLjE0MS44NTIsNy4zMzEsNy4zMzEsMCwwLDEsNS45NzUsNS45NzUuNDMuNDMsMCwwLDAsLjQyNi4zNTkuNjIuNjIsMCwwLDAsLjA3NC0uMDA3LjQyNC40MjQsMCwwLDAsLjM1Mi0uNDkzWm0wLDAiLz48L2c+PC9zdmc+" />
+                                    <span style="color: #068076; font-size: 14px;" class="font-weight-bold">
+                                        View Mobile Number
+                                    </span>
+                                </div>
+                                <div class="border text-center btns_contact mt-3 curs">
+                                    <h6 class="m-0 font-weight-bold">Contact Supplier</h6>
+                                    <p class="m-0">Request a Quote</p>
+                                </div>
                             </div>
                         </div>
+                        {{-- <p>{{ $storeproducts[0]->getrelatedcategory($storeproducts[0]->product->c_category->id,$storeproducts[0]->product->id) }}</p> --}}
+
+                        <div class="botom_div_main  d-flex mt-3 flex-wrap justify-content-start">
+                            @foreach ($item->getrelatedcategory() as $suggesteditem)
+                                <div class="d-flex div1 mr-2">
+                                    <div>
+                                        <img width="80px" height="72px" style=" object-fit: cover;"
+                                            src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $suggesteditem->image }}" />
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <p class="m-0 txt">{{ $suggesteditem->name }}</p>
+                                        <p class="m-0 txt1">RS {{ $suggesteditem->price }}</p>
+                                        <a class="anc" href="">Get Quote</a>
+                                    </div>
+                                </div>
+
+
+                            @endforeach
+                        </div>
+
                     </div>
-                    <div class="botom_div_main  d-flex mt-3 flex-wrap justify-content-around">
-                        <div class="d-flex div1 mr-2">
-                            <div>
-                                <img width="80px" height="72px" src="./assets/images/AboutUs.webp" />
-                            </div>
-                            <div class="d-flex flex-column justify-content-center">
-                                <p class="m-0 txt">Fresh Breathe Reusable Tricolour N95 Mask</p>
-                                <p class="m-0 txt1">RS 5</p>
-                                <a class="anc" href="">Get Quote</a>
-                            </div>
-                        </div>
-                        <div class="d-flex div1 mr-2">
-                            <div>
-                                <img width="80px" height="72px" src="./assets/images/AboutUs.webp" />
-                            </div>
-                            <div class="d-flex flex-column justify-content-center">
-                                <p class="m-0 txt">Fresh Breathe Reusable Tricolour N95 Mask</p>
-                                <p class="m-0 txt1">RS 5</p>
-                                <a class="anc" href="">Get Quote</a>
-                            </div>
-                        </div>
-                        <div class="d-flex div1 div3">
-                            <div>
-                                <img width="80px" height="72px" src="./assets/images/AboutUs.webp" />
-                            </div>
-                            <div class="d-flex flex-column justify-content-center">
-                                <p class="m-0 txt">Fresh Breathe Reusable Tricolour N95 Mask</p>
-                                <p class="m-0 txt1">RS 5</p>
-                                <a class="anc" href="">Get Quote</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- product card detail end -->
+                    <!-- product card detail end -->
+                @endforeach
 
             </div>
             <!-- right div end -->

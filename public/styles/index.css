@@ -153,8 +153,10 @@ h5 {
     margin-top: 18px;
 }
 
-.main_div .s_div .tabss ul .home {
+.main_div .s_div .tabss ul .activeNav {
     background-color: #007bff;
+    margin-right: 15px;
+
 }
 
 .main_div .s_div .tabss ul .lif {

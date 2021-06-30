@@ -16,4 +16,10 @@ class ConstructionDCategory extends Model
     public function category(){
         return $this->belongsTo(ConstructionCCategory::class,'c_category_id');
     }
+    public function subcategories(){
+        return $this->hasMany(ConstructionECategory::class, 'd_category_id');
+    }
+   public function products(){
+        return $this->hasMany(ConstructionProduct::class, 'd_category_id');
+    }
 }

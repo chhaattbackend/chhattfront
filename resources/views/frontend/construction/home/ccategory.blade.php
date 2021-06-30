@@ -2,7 +2,7 @@
 
 @section('style')
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/index.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('styles/contruction/ccat.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/contruction/ccat1.css') }}" />
 @endsection
 
 
@@ -24,55 +24,63 @@
 
 @section('content')
 
-@php
-    $count=0;
-@endphp
-    <div id="websitec">
-        {{-- <h2 class="centr">
-            Food Flavours, Colours, Additives and Preservatives
-        </h2> --}}
+    @php
+    $count = 0;
+    @endphp
+    @foreach ($ccategories as $item)
+
         <div id="serch_option_show" class="main_div_list">
-            @if ($ccategories->isEmpty())
-                    <h5>No Item</h5>
-                @else
-                    <h5>{{ $ccategories[0]->category->name }}</h5>
+            <div class="mainList1">
 
-                @endif
-            <div id="mainList">
-                <div class="list row m-auto">
-
-
-                    @foreach ($ccategories as $key => $item)
-                    @php
-                        $count++;
-                    @endphp
-                        <div class="list1 col-md-3  mt-4">
-                            <div class="list1_div1">
-                                <img src="" width="115px" height="115px" alt="" />
-                            </div>
-                            <div class="list1_div2">
-                                <h6>
-                                    {{ $item->name }}<br /> Color
-                                </h6>
-                                <p>{{ $item->category->id }}</p>
-                            </div>
+                <div id="main_List{{ $item->id }}" class="lst_div d-flex" style="height: 220px; overflow: hidden;">
+                    <div class="litsdj col-md-2 pt-2 mt-4">
+                        <div class="list1_div1">
+                            <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/ccategories/{{ $item->image }}"
+                                width="115px" height="115px" alt="" />
                         </div>
+                        <div class="list1_div2">
+                            <h6>
+                                <br>
+                                {{ $item->name }}
+                            </h6>
+                            <p>({{ $item->subcategories->count() }})</p>
+                        </div>
+                    </div>
+                    <div class="list row m-auto flex-wrap">
+                        @foreach ($item->subcategories as $key => $subItem)
+                            @php
+                                $count++;
+                            @endphp
 
+                            <div class="lit1 col-md-3 p-0  mt-4">
+                                <div class="list1_div1">
+                                    <a href="{{ route('construction.productlist', ['id' => $subItem->id]) }}">
 
-                    @endforeach
+                                        <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/{{ $subItem->image }}"
+                                            width="115px" height="115px" alt="" />
+                                    </a>
+                                </div>
+                                <div class="list1_div2">
+                                    <h6 class="ellipse">
+                                        <br>
+                                        {{ $subItem->name }}
+                                    </h6>
+                                    <p>({{ $subItem->subcategories->count() ?? 'no category' }})</p>
+                                </div>
+                            </div>
+                        @endforeach
 
-
-
+                    </div>
                 </div>
             </div>
-            {{-- @if ($count > 4) --}}
-            <button id="view_more" class="btns">
-                View More
-            </button>
-            {{-- @endif --}}
+            @if ($count > 4)
+                <button onclick="changewidth({{ $item->id }})" class="btns">
+                    View More
+                </button>
+                <input hidden type="text" id="view_more{{ $item->id }}" value="true">
+            @endif
         </div>
-
-    </div>
+    @endforeach
 
 
 @endsection
@@ -81,18 +89,29 @@
 
 @section('personalscripts')
     <script>
-        // var mobile = document.getElementById("mobile");
-        var website = document.getElementById("website");
-        var serch_option = document.getElementById("mainList");
-        var view = document.getElementById("view_more");
-        var view_more_bool = false
-        view.addEventListener("click", () => {
-            view_more_bool = !view_more_bool
-            if (view_more_bool === true) {
-                serch_option.style.height = "300px";
-            } else if (view_more_bool === false) {
-                serch_option.style.height = "150px";
+        function changewidth(id) {
+
+            var serch_option1 = document.getElementById("main_List" + id);
+            // console.log(serch_option1)
+
+            var view1 = document.getElementById("view_more" + id);
+            // console.log(view1)
+
+            if (view1.value == 'true') {
+                serch_option1.style.transition = "300ms";
+                serch_option1.style.height = "auto";
+                view1.value = 'false';
+
+
+            } else if (view1.value == 'false') {
+                // console.log('false')
+                view1.value = 'true';
+
+                serch_option1.style.transition = "300ms";
+                serch_option1.style.height = "220px";
             }
-        });
+            // console.log(id)
+
+        }
     </script>
 @endsection

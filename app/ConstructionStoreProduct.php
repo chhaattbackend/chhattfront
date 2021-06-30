@@ -33,9 +33,9 @@ class ConstructionStoreProduct extends Model
         return $this->belongsTo(ConstructionUnit::class,'unit_id');
     }
 
-    // public function randomproduct($id){
-    //     return ConstructionStoreProduct::where('product_id',$id)->inRandomOrder()->limit(1)->get();
-    // }
+    public function getrelatedcategory(){
+        return ConstructionProduct::where('c_category_id',$this->product->c_category->id)->where('id', '!=',$this->product->id)->get();
+    }
 
 
 }

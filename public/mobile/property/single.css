@@ -1,6 +1,7 @@
 /* Top Btns start */
 .shareBtns {
-    padding: 1rem;
+    padding: 12px;
+    padding-top: 0;
     display: flex;
 }
 .shareBtns button {
@@ -21,13 +22,13 @@
 }
 
 .breadcrum_none > a {
-    color: #ededed;
+    color: #007bff;
     text-decoration: none;
 }
 
-.breadcrums_mob{
+/* .breadcrums_mob{
     background-color: #007bff;
-}
+} */
 
 .priceTagMobile {
     font-size: 30px;

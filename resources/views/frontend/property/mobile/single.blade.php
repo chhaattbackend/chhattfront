@@ -25,8 +25,8 @@
     @include('functions.convert_rupee')
     <!-- MOBILE START -->
     <!-- SHARE BTNS START -->
-    <div class="breadcrums_mob m-1 pt-1 pb-1 p-2 rounded-pill">
-        <div class="breadcrum_none" style="color: rgb(255, 255, 255);font-size: 11px;font-weight: bold ">
+    <div class="breadcrums_mob m-1 pt-1 pb-1 p-1 rounded-pill">
+        <div class="breadcrum_none" style="color: rgb(53, 49, 49);font-size: 14px;font-weight: bold ">
             <a style="" href="{{route('home')}}" title="Chhatt"> Chhatt </a><i class="fad fa-angle-right"></i>
             <a title=""
                 href="{{ route('property.search', ['city' => $properties->areaOne->city_id]) }}">{{ $properties->areaOne->city->name }}
@@ -41,9 +41,8 @@
                 {{ $properties->areaOne->name }} </a><i class="fad fa-angle-right"></i>
             <a title="" href="{{ route('property.search', ['search_areas' => 'area_two_id,'.$properties->areaTwo->id]) }}">
                 {{ $properties->areaTwo->name }} </a><i class="fad fa-angle-right"></i>
-            <a disabled> {{ $properties->id }} </a>
-
-
+            <a disabled> {{ @$properties->property_type }} {{ @$properties->property_for }} in
+                    {{ @$properties->areaTwo->name }} {{ @$properties->areaOne->name }} </a>
             &nbsp;
         </div>
     </div>
