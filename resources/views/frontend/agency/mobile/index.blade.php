@@ -21,6 +21,8 @@
 @endsection
 
 @section('content')
+    <meta hidden name="csrf-token" content="{{ csrf_token() }}" />
+
     @include('functions.convert_rupee')
 
     <!-- BUTTONS START -->
@@ -28,8 +30,8 @@
         <div class="container">
             <div class="row height d-flex justify-content-center align-items-center">
                 <div class="col-md-12">
-                     <input type="text" name="keyword" class="form-control p-2 "
-                            placeholder="Search Agency">
+                    <input autocomplete="off" type="text" id="keyword" name="keyword" class="form-control p-2 "
+                        placeholder="Search Agency">
 
                 </div>
             </div>
@@ -42,7 +44,55 @@
         <div class="top">
             <p> Find The Best Real Estate Agencies </p>
         </div>
-        @include('frontend.agency.mobile.list')
+        <div id="list">
+            @include('frontend.agency.mobile.list')
+        </div>
     </div>
 
+@endsection
+
+@section('personalscripts')
+
+    <script>
+        $('#keyword').on('keyup', function() {
+            var value = $(this).val();
+            $('#list').addClass('animate__animated animate__fadeOut');
+            // console.log(value);
+            ajaxSearch(value)
+        });
+
+        function ajaxSearch(value, page) {
+            $.ajax({
+                type: "POST",
+                url: "agency/mobileajax" + "?page=" + page,
+                dataType: 'JSON',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    keyword: value,
+                },
+                success: function(responese) {
+                    // console.log(responese.pagination)
+                    $('#list').removeClass('animate__animated animate__fadeOut');
+
+                    // console.log(responese.pagination)
+                    $('#list').html(responese.data);
+                    $('#list').addClass('animate__animated animate__fadeIn');
+                    $('#wow').html(responese.pagination);
+                    $('#total').html('Showing ' + responese.total + ' Results');
+                },
+            });
+        }
+        //   {{-- ajaxSearch --}}
+        //   {{-- ajaxPagination --}}
+        $(document).on('click', '.pagination a', function(event) {
+            event.preventDefault();
+            value = $('#keyword').val();
+            var href = $(this).attr('href');
+            var page = $(this).attr('href').split('page=')[1];
+            $('#list').addClass('animate__animated animate__fadeOut');
+            ajaxSearch(value, page)
+        });
+    </script>
 @endsection

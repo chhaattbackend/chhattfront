@@ -176,7 +176,7 @@
                     <div class="product_detail_card_div_main_div p-2 m-2">
                         <a class="text-decoration-none text-dark" href="{{ route('construction.singleproduct',['id'=>$item->id]) }}">
 
-                            <div class="product_detail_card_div  d-flex">
+                            <div class="product_detail_card_div d-flex">
                                 <div class="frst_div">
                                     <img
                                         src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}" />
@@ -221,8 +221,8 @@
                         </a>
                         {{-- <p>{{ $storeproducts[0]->getrelatedcategory($storeproducts[0]->product->c_category->id,$storeproducts[0]->product->id) }}</p> --}}
 
-                        <div class="botom_div_main  d-flex mt-3 flex-wrap justify-content-start">
-                            @foreach ($item->getrelatedcategory() as $suggesteditem)
+                        <div class="botom_div_main  d-flex mt-3 flex-wrap justify-content-start pr-3">
+                            @foreach ($item->getrelatedcategory(3) as $suggesteditem)
                                 <div class="d-flex div1 mr-2">
                                     <div>
                                         <img width="80px" height="72px" style=" object-fit: cover;"

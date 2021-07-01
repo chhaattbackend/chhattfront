@@ -15,7 +15,7 @@
 @endsection
 
 @section('content')
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta hidden name="csrf-token" content="{{ csrf_token() }}" />
     <div>
         <div class="agency-search">
             <div class="secdiv">

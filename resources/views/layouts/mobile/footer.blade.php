@@ -1,6 +1,9 @@
 <footer class="mobile_footer_main_div">
     <div class="play_app_icons">
-        <img src="{{ asset('assets/footer_play.png') }}" alt='playstore' />
+        <a href="https://play.google.com/store/apps/details?id=com.res.chhatt">
+
+            <img src="{{ asset('assets/footer_play.png') }}" alt='playstore' />
+        </a>
         <img src="{{ asset('assets/footer_app.png') }}" alt='appstore' />
     </div>
     <div class="linksContainer">

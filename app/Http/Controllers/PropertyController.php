@@ -224,7 +224,7 @@ class PropertyController extends Controller
     }
 
 
-    public function mobile(Request $request, $for)
+    public function mobile(Request $request)
     {
 
         if (isset($request->agency)) {

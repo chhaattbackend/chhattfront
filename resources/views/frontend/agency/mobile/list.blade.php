@@ -11,7 +11,7 @@
                 <img class="propertyImg"
                     src='https://chhatt.s3.ap-south-1.amazonaws.com/agencies/{{ $item->image }}' alt="" />
             </a>
-            <p> {{ $item->areaOne->city->name ?? 'Karachi' }}</p>
+            <p> {{ @$item->areaOne->city->name ?? 'Karachi' }}</p>
             <b>
                 {{ $item->name }}
             </b>

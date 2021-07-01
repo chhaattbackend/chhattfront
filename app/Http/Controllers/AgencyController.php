@@ -59,6 +59,41 @@ class AgencyController extends Controller
         ]);
     }
 
+    public function mobileajax(Request $request)
+    {
+
+        if ($request->keyword == null || $request->keyword == ' ') {
+            $agencies = Agency::paginate(10);
+        } else {
+
+            $seacrh = $request->keyword;
+            $agencies = Agency::where('id', '!=', null);
+
+            $agencies = $agencies->whereHas('user', function ($query) use ($seacrh) {
+                $query->where('name', 'like', '%' . $seacrh . '%');
+            })->orWhereHas('areaOne', function ($query) use ($seacrh) {
+                $query->where('name', 'like', '%' . $seacrh . '%');
+            })->orWhereHas('areaTwo', function ($query) use ($seacrh) {
+                $query->where('name', 'like', '%' . $seacrh . '%');
+            })->orWhereHas('user', function ($query) use ($seacrh) {
+                $query->where('phone', $seacrh);
+            })->orWhere('name', 'like', '%' . $seacrh . '%')
+                ->paginate(10)->setPath('');
+
+            $pagination = $agencies->appends(array(
+                'keyword' => $request->keyword
+            ));
+        }
+
+        $data = view('frontend.agency.mobile.list', compact('agencies'))->render();
+
+        return response()->json([
+            'data' => $data,
+            'total' => (string) $agencies->total(),
+            'pagination' => (string) $agencies->links()
+        ]);
+    }
+
     public function singleAgency($id)
     {
 

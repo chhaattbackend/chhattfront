@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ConstructionAttribute extends Model
 {
     protected $connection = 'mysql2';
-    protected $table = 'attribute';
+    protected $table = 'attributes';
     protected $fillable =[
         'id',
         'name'

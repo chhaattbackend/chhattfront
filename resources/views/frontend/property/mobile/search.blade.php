@@ -25,17 +25,17 @@
 
     <!-- BUTTONS START -->
     <div class="brb_buttons">
-        <a href="">
+        <a href="{{ route('filter', 'buy') }}">
             <button>
                 Buy
             </button>
         </a>
-        <a href="">
+        <a href="{{ route('filter', 'rent') }}">
             <button>
                 Rent
             </button>
         </a>
-        <a href="">
+        <a href="{{ route('filter', 'booking') }}">
             <button>
                 Booking
             </button>

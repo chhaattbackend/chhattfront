@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('style')
-<link rel="stylesheet" href="{{ asset('styles/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/index.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/contruction/singleproduct.css') }}">
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" /> --}}
@@ -27,7 +27,7 @@
     <div class="mn_divz">
         <div class="backgz">
             <div class="backg_sdivz">
-                <h1>single product </h1>
+                <h1>{{ $storeproduct->product->name }} </h1>
             </div>
         </div>
     </div>
@@ -45,56 +45,15 @@
                     <div class="galleryContainer">
                         <!-- Add images to <div class="fotorama"></div> -->
                         <div class="fotorama" data-nav="thumbs" data-width="100%" data-allowfullscreen="true">
-                            <!-- ↑ The same as data-ratio="4/3"
-                                                                                  or data-ratio="1.3333333333". -->
-                            <a
-                                href="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"><img
-                                    src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-                                    width="130" height="96"></a>
-                            <a
-                                href="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"><img
-                                    src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-                                    width="130" height="96"></a>
-                            <a
-                                href="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"><img
-                                    src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-                                    width="130" height="96"></a>
-                            <a
-                                href="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"><img
-                                    src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-                                    width="130" height="96"></a>
-                            <a
-                                href="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"><img
-                                    src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-                                    width="130" height="96"></a>
-                            <a
-                                href="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"><img
-                                    src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-                                    width="130" height="96"></a>
-                            <a
-                                href="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"><img
-                                    src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-                                    width="130" height="96"></a>
-                            <a
-                                href="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"><img
-                                    src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-                                    width="130" height="96"></a>
-                            <a
-                                href="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"><img
-                                    src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-                                    width="130" height="96"></a>
-                            <a
-                                href="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"><img
-                                    src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-                                    width="130" height="96"></a>
-                            <a
-                                href="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"><img
-                                    src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-                                    width="130" height="96"></a>
-                            <a
-                                href="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"><img
-                                    src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-                                    width="130" height="96"></a>
+                            <!-- ↑ The same as data-ratio="4/3" or data-ratio="1.3333333333". -->
+                            <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $storeproduct->product->image }}"
+                                width="130" height="96">
+
+                            {{-- <img src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+                                width="130" height="96"> --}}
+
+
+
                         </div>
                         <!-- Add images to <div class="fotorama"></div> -->
                     </div>
@@ -102,27 +61,15 @@
                 <div class="col-8 py-2">
                     <div class="row">
                         <div class="col-8">
-                            <h4>Abbott Triamcinolone Steroid Injection</h4>
-                            <h6 class="fw-bold text-decoration-underline">Get Latest Price</h6>
+                            {{-- <h4>{{ $storeproduct->product->name }}</h4> --}}
+                            <h6 class="pt-2 fw-bold text-decoration-underline">Get Latest Price</h6>
                             <div class="row mt-2">
-                                <div class="col-6 text-secondary">Packaging Size</div>
-                                <div class="col-6">1 Vial</div>
-                                <hr class="my-1 text-secondary">
-                                <div class="col-6">Manufacturer</div>
-                                <div class="col-6">Abbott</div>
-                                <hr class="my-1 text-secondary">
-                                <div class="col-6">Composition</div>
-                                <div class="col-6">Triamcinolone Acetonide</div>
-                                <hr class="my-1 text-secondary">
-                                <div class="col-6">Dosage Form</div>
-                                <div class="col-6">Injection</div>
-                                <hr class="my-1 text-secondary">
-                                <div class="col-6">Packaging Type</div>
-                                <div class="col-6">Vial</div>
-                                <hr class="my-1 text-secondary">
-                                <div class="col-6">Usage/Application</div>
-                                <div class="col-6">Usage/Application</div>
-                                <hr class="my-1">
+                                @foreach ($storeproduct->product->attributes as $item)
+                                    <div class="col-6">{{$item->attribute->name}}</div>
+                                    <div class="col-6">{{$item->desc }}</div>
+                                    <hr class="my-1 text-secondary">
+                                @endforeach
+
                             </div>
                             <div>
                                 <h6>View Complete Details</h6>
@@ -153,7 +100,7 @@
                                         src="https://images.unsplash.com/photo-1624314086699-6ee739bd29e3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
                                         alt="">
                                 </div>
-                                <h6 class="mt-5 mb-0 text-center fw-bold">Akhil Healthcare Private Limited</h6>
+                                <h6 class="mt-5 mb-0 text-center fw-bold">{{ $storeproduct->store->name }}</h6>
                                 <div class="text-center">
                                     <small>Exports to Pakistan</small>
                                 </div>
@@ -199,34 +146,35 @@
                 <div class="col-12 mt-5">
                     <div class="d-flex align-items-centers">
                         <h5 class="ms-3 me-3">Explore similar products</h5> |
-                        <h5 class="d-flex align-items-center ms-3">View all products in Steroid Injections <i
+                        <h5 class="d-flex align-items-center ms-3">View all products in {{ $storeproduct->product->name }} <i
                                 class="bi bi-chevron-right h5 mb-0"></i></h5>
                     </div>
 
                     <div class="mapCardContainer mt-4">
                         <div class="container-fluid px-0">
                             <div class="row px-2">
+                                @foreach ($storeproduct->getrelatedcategory(4) as $item)
                                 <div class="col-sm-4 col-lg-3 mb-4">
                                     <!-- property card start -->
                                     <div class="propertyCard p-2">
                                         <a class="text-decoration-none position-relative" href="#">
                                             <div class="imageSection">
                                                 <img class="slideImg"
-                                                    src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
+                                                    src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->image }}"
                                                     alt="" />
                                             </div>
                                             <div class="text-dark paraContainer">
                                                 <div class="mt-1">
                                                     <div class="d-flex justify-content-between">
-                                                        <h6 class="lightColor">Residential</h6>
-                                                        <h6 class="lightColor">an hour ago</h6>
+                                                        <h6 class="lightColor">{{$storeproduct->store->name}}</h6>
+                                                        <h6 class="lightColor">{{ $item->c_category->name }}</h6>
                                                     </div>
                                                     <div class="mt-2">
-                                                        <strong class="mt-5">Flat For Sale in DHA Phase 6</strong>
+                                                        <strong class="mt-5">{{ $item->name }}</strong>
                                                     </div>
                                                     <h6 class="mt-2">
                                                         <strong>
-                                                            Rs: 1.2 Cr.
+                                                            Rs. {{ $item->price }}
                                                         </strong>
                                                     </h6>
                                                 </div>
@@ -240,108 +188,8 @@
                                     </div>
                                     <!-- property card end -->
                                 </div>
-                                <div class="col-sm-4 col-lg-3 mb-4">
-                                    <!-- property card start -->
-                                    <div class="propertyCard p-2">
-                                        <a class="text-decoration-none position-relative" href="#">
-                                            <div class="imageSection">
-                                                <img class="slideImg"
-                                                    src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div class="text-dark paraContainer">
-                                                <div class="mt-1">
-                                                    <div class="d-flex justify-content-between">
-                                                        <h6 class="lightColor">Residential</h6>
-                                                        <h6 class="lightColor">an hour ago</h6>
-                                                    </div>
-                                                    <div class="mt-2">
-                                                        <strong class="mt-5">Flat For Sale in DHA Phase 6</strong>
-                                                    </div>
-                                                    <h6 class="mt-2">
-                                                        <strong>
-                                                            Rs: 1.2 Cr.
-                                                        </strong>
-                                                    </h6>
-                                                </div>
-                                                <div class="d-flex justify-content-between mt-3">
-                                                    <button class="w-100 themebtn py-1 text-white">View
-                                                        more</button>
-                                                    <button class="w-100 ms-3">Contact Us</button>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <!-- property card end -->
-                                </div>
-                                <div class="col-sm-4 col-lg-3 mb-4">
-                                    <!-- property card start -->
-                                    <div class="propertyCard p-2">
-                                        <a class="text-decoration-none position-relative" href="#">
-                                            <div class="imageSection">
-                                                <img class="slideImg"
-                                                    src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div class="text-dark paraContainer">
-                                                <div class="mt-1">
-                                                    <div class="d-flex justify-content-between">
-                                                        <h6 class="lightColor">Residential</h6>
-                                                        <h6 class="lightColor">an hour ago</h6>
-                                                    </div>
-                                                    <div class="mt-2">
-                                                        <strong class="mt-5">Flat For Sale in DHA Phase 6</strong>
-                                                    </div>
-                                                    <h6 class="mt-2">
-                                                        <strong>
-                                                            Rs: 1.2 Cr.
-                                                        </strong>
-                                                    </h6>
-                                                </div>
-                                                <div class="d-flex justify-content-between mt-3">
-                                                    <button class="w-100 themebtn py-1 text-white">View
-                                                        more</button>
-                                                    <button class="w-100 ms-3">Contact Us</button>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <!-- property card end -->
-                                </div>
-                                <div class="col-sm-4 col-lg-3 mb-4">
-                                    <!-- property card start -->
-                                    <div class="propertyCard p-2">
-                                        <a class="text-decoration-none position-relative" href="#">
-                                            <div class="imageSection">
-                                                <img class="slideImg"
-                                                    src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
-                                                    alt="" />
-                                            </div>
-                                            <div class="text-dark paraContainer">
-                                                <div class="mt-1">
-                                                    <div class="d-flex justify-content-between">
-                                                        <h6 class="lightColor">Residential</h6>
-                                                        <h6 class="lightColor">an hour ago</h6>
-                                                    </div>
-                                                    <div class="mt-2">
-                                                        <strong class="mt-5">Flat For Sale in DHA Phase 6</strong>
-                                                    </div>
-                                                    <h6 class="mt-2">
-                                                        <strong>
-                                                            Rs: 1.2 Cr.
-                                                        </strong>
-                                                    </h6>
-                                                </div>
-                                                <div class="d-flex justify-content-between mt-3">
-                                                    <button class="w-100 themebtn py-1 text-white">View
-                                                        more</button>
-                                                    <button class="w-100 ms-3">Contact Us</button>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <!-- property card end -->
-                                </div>
+                                @endforeach
+
                             </div>
                         </div>
                     </div>
@@ -360,35 +208,16 @@
 
                             <div class="row mt-4 px-4">
                                 <h5 class="mb-2">Product Specification</h5>
-                                <div class="col-6 text-secondary">Packaging Size</div>
-                                <div class="col-6">1 Vial</div>
-                                <hr class="my-1">
-                                <div class="col-6 text-secondary">Manufacturer</div>
-                                <div class="col-6">Abbott</div>
-                                <hr class="my-1">
-                                <div class="col-6 text-secondary">Composition</div>
-                                <div class="col-6">Triamcinolone Acetonide</div>
-                                <hr class="my-1">
-                                <div class="col-6 text-secondary">Dosage Form</div>
-                                <div class="col-6">Injection</div>
-                                <hr class="my-1">
-                                <div class="col-6 text-secondary">Packaging Type</div>
-                                <div class="col-6">Vial</div>
-                                <hr class="my-1">
-                                <div class="col-6 text-secondary">Usage/Application</div>
-                                <div class="col-6">Usage/Application</div>
-                                <hr class="my-1">
+                                 @foreach ($storeproduct->product->attributes as $item)
+                                    <div class="col-6">{{$item->attribute->name}}</div>
+                                    <div class="col-6">{{$item->desc }}</div>
+                                    <hr class="my-1 text-secondary">
+                                @endforeach
                             </div>
 
                             <div class="ms-3 mt-4">
                                 <h5>Product Description</h5>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, animi reiciendis.
-                                    Nam
-                                    pariatur, eum voluptatum exercitationem expedita nulla officia, illo qui,
-                                    aspernatur
-                                    quae dolorem quod rerum voluptas sequi earum tenetur nostrum eligendi quisquam
-                                    nemo
-                                    veritatis consectetur id iusto aspernatur.</p>
+                                <p>{{ $storeproduct->product->description }}</p>
                             </div>
 
                             <div class="ms-3 mt-3 p-4 bg-light d-flex justify-content-between">

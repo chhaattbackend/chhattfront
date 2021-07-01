@@ -20,6 +20,7 @@ Route::get('/real-estate-agencies', 'AgencyController@index')->name('agency');
 Route::get('/agency/{id}', 'AgencyController@singleAgency')->name('single.agency');
 Route::get('/propertyDetail/{id}', 'PropertyController@singleProperty')->name('single.property');
 Route::post('/agency/ajax', 'AgencyController@ajax');
+Route::post('/agency/mobileajax', 'AgencyController@mobileajax');
 Route::get('/contact-us', function () {
     return view('layouts.contact');
 })->name('contact');
