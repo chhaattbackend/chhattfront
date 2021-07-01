@@ -64,4 +64,10 @@ class ConstructionBCategoryController extends Controller
 
         return view('frontend.construction.product.productlist', compact('storeproducts', 'dcategory','dcategories'));
     }
+
+    public function singleproduct()
+    {
+        // dd('idhar');
+        return view('frontend.construction.product.singleproduct');
+    }
 }

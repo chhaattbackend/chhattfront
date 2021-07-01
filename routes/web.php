@@ -34,6 +34,7 @@ Route::get('/{id}','ConstructionBCategoryController@byCategory')->name('construc
 
 Route::get('/bcat/all','ConstructionBCategoryController@viewall')->name('construction.bcatlist');
 Route::get('/productlist/{id}','ConstructionBCategoryController@product')->name('construction.productlist');
+Route::get('/productDetail/{id}','ConstructionBCategoryController@singleproduct')->name('construction.singleproduct');
 });
 // construction
 
