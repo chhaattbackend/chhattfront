@@ -16,7 +16,8 @@
     <!-- Fotorama from CDNJS, 19 KB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
 @endsection
 
@@ -27,19 +28,24 @@
     <!-- SHARE BTNS START -->
     <div class="breadcrums_mob m-1 pt-2 pb-2 p-3 rounded-pill">
         <div class="breadcrum_none" style="color: rgb(53, 49, 49);font-size: 14px;font-weight: bold ">
-            <a style="" href="{{route('home')}}" title="Chhatt"> Chhatt </a><i class="fad fa-angle-right"></i>
+            <a style="" href="{{ route('home') }}" title="Chhatt"> Chhatt </a><i class="fad fa-angle-right"></i>
             <a title=""
                 href="{{ route('property.search', ['city' => $properties->areaOne->city_id]) }}">{{ $properties->areaOne->city->name }}
             </a><i class="fad fa-angle-right"></i>
-            <a title="" href="{{ route('property.search', ['area_type' => $properties->type,'city' => $properties->areaOne->city_id]) }}">
+            <a title=""
+                href="{{ route('property.search', ['area_type' => $properties->type, 'city' => $properties->areaOne->city_id]) }}">
                 {{ @$properties->type }} </a><i class="fad fa-angle-right"></i>
-            <a title="" href="{{ route('property.search', ['property_type' => $properties->property_type,'city' => $properties->areaOne->city_id]) }}">
+            <a title=""
+                href="{{ route('property.search', ['property_type' => $properties->property_type, 'city' => $properties->areaOne->city_id]) }}">
                 {{ @$properties->property_type }} </a><i class="fad fa-angle-right"></i>
-            <a title="" href="{{ route('property.search', ['property_for' => $properties->property_for,'city' => $properties->areaOne->city_id]) }}">
+            <a title=""
+                href="{{ route('property.search', ['property_for' => $properties->property_for, 'city' => $properties->areaOne->city_id]) }}">
                 {{ @$properties->property_for }} </a><i class="fad fa-angle-right"></i>
-            <a title="" href="{{ route('property.search', ['search_areas' => 'area_one_id,'.$properties->areaOne->id ]) }}">
+            <a title=""
+                href="{{ route('property.search', ['search_areas' => 'area_one_id,' . $properties->areaOne->id]) }}">
                 {{ $properties->areaOne->name }} </a><i class="fad fa-angle-right"></i>
-            <a title="" href="{{ route('property.search', ['search_areas' => 'area_two_id,'.$properties->areaTwo->id]) }}">
+            <a title=""
+                href="{{ route('property.search', ['search_areas' => 'area_two_id,' . $properties->areaTwo->id]) }}">
                 {{ $properties->areaTwo->name }} </a>
             {{-- <a disabled> {{ @$properties->property_type }} {{ @$properties->property_for }} in
                     {{ @$properties->areaTwo->name }} {{ @$properties->areaOne->name }} </a> --}}
@@ -65,11 +71,11 @@
         <!-- Add images to <div class="fotorama"></div> -->
         <div class="fotorama" data-nav="thumbs" data-width="100%" data-allowfullscreen="true">
             <!-- ↑ The same as data-ratio="4/3"
-                                                     or data-ratio="1.3333333333". -->
+                                                         or data-ratio="1.3333333333". -->
             @foreach ($propertyimage as $item)
 
-                <a href=""><img src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ @$item->name }}" width="130"
-                        height="96"></a>
+                <a href=""><img src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ @$item->name }}"
+                        width="130" height="96"></a>
 
 
             @endforeach
@@ -161,10 +167,16 @@
             <div class="sdiv">
                 <ul class="p-0">
                     @foreach ($property as $item)
+                        @php
+                            $id = @$item->areaOne->city->name . '-' . @$item->type . '-' . @$item->property_type . '-' . @$item->property_for . '-' . @$item->areaOne->name . '-' . @$item->areaTwo->name . '-' . $item->id;
+                            $id = str_replace(str_split('\\/:*?"<>|()'), '-', strtolower($id));
+                            $id = str_replace(str_split(' '), '_', strtolower($id));
+                            $id = strtolower($id);
+                        @endphp
                         <li>
                             <div>
 
-                                <a href="" class="card_main_div text-decoration-none">
+                                <a href="{{ route('single.property', $id) }}" class="card_main_div text-decoration-none">
                                     @if (!$item->images->isEmpty())
                                         <img class="propertyImg"
                                             src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ $item->images[0]->name }}"

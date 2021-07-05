@@ -2,6 +2,7 @@
 
 @section('style')
     <link rel="stylesheet" type="text/css" href="{{ asset('mobile/property/properties.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('mobile/index.css') }}" />
     <style>
         li.page-item {
             display: none;

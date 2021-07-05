@@ -34,6 +34,8 @@ class PropertyController extends Controller
         return $array;
     }
 
+
+
     public function search(Request $request)
     {
         // for mobile start
@@ -153,6 +155,7 @@ class PropertyController extends Controller
             $pagination_array = $this->array_push_assoc($pagination_array, 'max_area', $request->max_area);
         }
         if (isset($request->city)) {
+            
             $search = $request->city;
             $properties = $global->searchRelation($properties, 'areaOne', 'city_id', $search);
             $pagination_array = $this->array_push_assoc($pagination_array, 'city', $request->city);
@@ -171,19 +174,7 @@ class PropertyController extends Controller
         return view('frontend.property.search', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_id', 'suggestedareas'));
     }
 
-    public function explorer($property_type){
-        $inputval = null;
-        $city = City::all();
-        $propertytype = PropertyType::all();
-        $inputcity_id = null;
-        $suggestedareas = null;
-        $property_type = str_replace('-',' ',$property_type);
-        $properties = Property::where('property_type', $property_type)->paginate(24);
 
-
-
-        return view('frontend.property.search', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_id', 'suggestedareas'));
-    }
 
     public function singleProperty($id)
     {
@@ -550,5 +541,19 @@ class PropertyController extends Controller
         $area_one = AreaOne::where('id', 6)->first();
         $area_two = AreaTwo::where('area_one_id', 6);
         return view('admin.property.by_parent', compact('area_one', 'area_two', 'selecttag'));
+    }
+
+    public function explorer($property_type)
+    {
+        $inputval = null;
+        $city = City::all();
+        $propertytype = PropertyType::all();
+        $inputcity_id = null;
+        $suggestedareas = null;
+        $property_type = str_replace('-',' ',$property_type);
+        $properties = Property::where('property_type', $property_type)->paginate(24);
+
+
+        return view('frontend.property.search', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_id', 'suggestedareas'));
     }
 }
