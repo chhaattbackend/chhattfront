@@ -163,7 +163,7 @@
                         <h3> Google Map </h3>
                         <div>
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462116.6683962556!2d66.87527626848234!3d25.193559924666214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33e06651d4bbf%3A0x9cf92f44555a0c23!2sKarachi%2C%20Karachi%20City%2C%20Sindh%2C%20Pakistan!5e0!3m2!1sen!2s!4v1623671736343!5m2!1sen!2s"
+                                src="https://maps.google.com/?q={{ $properties->latitude }}LATITUDE-VALUE,{{ $properties->longitude }}"
                                 width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                         </div>
                     </div>

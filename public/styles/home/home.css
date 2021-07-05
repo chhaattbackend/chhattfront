@@ -310,15 +310,30 @@
 .scroll-img-list {
     display: inline-block;
     height: 100%;
-    width: 280px;
+    width: 270px;
     background-color: #fff;
     border-radius: 6px;
     box-shadow: 0 0 10px 5px #eee;
+    margin: 10px;
 }
 
 .scroll-img-list .imageSection {
     height: 200px;
     width: 100%;
+}
+.scroll-img-list .imageSection .cardTag h6 {
+    color: #fff;
+    margin-bottom: 0rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.scroll-img-list .imageSection .cardTag  {
+    top: 2%;
+    left: 2%;
+    background-color: #b00;
+    border-radius: 6px;
+    padding: 0.2rem 0.5rem;
 }
 
 .scroll-img-list .imageSection .slideImg {

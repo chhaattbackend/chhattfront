@@ -25,7 +25,7 @@ function convert_rupee($amount)
 
     <li class="scroll-img-list ms-3 me-1 p-2">
         <a class="text-decoration-none position-relative" href="{{ route('single.property', $id) }}">
-            <div class="imageSection">
+            <div class="imageSection position-relative">
 
 
                 @if (!$item->images->isEmpty())
@@ -37,6 +37,12 @@ function convert_rupee($amount)
                         alt="" class="slideImg">
 
                 @endif
+
+                <div class="cardTag position-absolute">
+                    <h6>
+                        {{ $item->property_for }}
+                    </h6>
+                </div>
             </div>
             <div class="text-dark paraContainer">
                 <div class="mt-1">
@@ -49,17 +55,38 @@ function convert_rupee($amount)
                             {{ optional($item->areaTwo)->name }},
                             {{ optional($item->areaOne)->name }}</strong>
                     </div>
-                    <h6 class="mt-2">
+                    <h6 class="mt-1">
                         <strong>
                             @if ($item->price == null)
                                 <span style="background: red;" class="badge badge-pill badge-danger">On Request</span>
                             @else
-                                Rs: {{ convert_rupee($item->price) }}
+                                <p style="color: rgb(228, 20, 20)">
+                                    Rs: {{ convert_rupee($item->price) }}
+                                </p>
                             @endif
                         </strong>
                     </h6>
+
+                    <div class="d-flex justify-content-lg-around mt-1">
+                        @if ($item->bed != null)
+
+                            <div><img class="m-2" src="{{ asset('assets/bed.png') }}" width="18"
+                                    height="17">{{ $item->bed }}</div>|
+                        @endif
+
+                        @if ($item->bath != null)
+
+                            <div><img class="m-2" src="{{ asset('assets/bath.png') }}" width="18" height="17">
+                                {{ $item->bath }}</div>|
+                        @endif
+                        @if ($item->size != null)
+                            <div><img class="m-2" src="{{ asset('assets/sq.png') }}" width="18" height="17">
+                                {{ $item->size }} {{ $item->size_type }}
+                            </div>
+                        @endif
+                    </div>
                 </div>
-                <div class="d-flex justify-content-between mt-3">
+                <div class="d-flex justify-content-between mt-1">
                     <button class="w-100 themebtn py-1 text-white">View more</button>
                     <button class="w-100 ms-3">Contact Us</button>
                 </div>

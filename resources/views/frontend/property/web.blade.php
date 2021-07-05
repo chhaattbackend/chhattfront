@@ -246,36 +246,36 @@
             @include('layouts.featuredproject')
         </div>
         <br><br><br>
-        <div class="visit_maindiv">
-            <div class="innerDiv">
-                <div class="secOne">
-                    <h2>Visit Our Construction Site</h2>
-                </div>
-                <div class="secTwo">
-                    Chhatt Media Pvt.ltd commonly known as chhatt.com is a powerful
-                    platform which aims at connecting the realtors, builders,
-                    developers, brokers with right kind of clientele for various types
-                    of properties from various mediums.
-                </div>
-                <div class="secThree">
-                    <!-- <Link to='/construction'> -->
-                    <button>Visit Now</button>
-                    <!-- </Link> -->
-                </div>
-            </div>
-        </div>
+
 
         <br>
 
-        @include('layouts.agency')
 
 
         <!--  PROPERTY CARD START  -->
 
     </div>
-
-
-
+    <div class="visit_maindiv">
+        <div class="innerDiv">
+            <div class="secOne">
+                <h2>Visit Our Construction Site</h2>
+            </div>
+            <div class="secTwo">
+                Chhatt Media Pvt.ltd commonly known as chhatt.com is a powerful
+                platform which aims at connecting the realtors, builders,
+                developers, brokers with right kind of clientele for various types
+                of properties from various mediums.
+            </div>
+            <div class="secThree">
+                <!-- <Link to='/construction'> -->
+                <button>Visit Now</button>
+                <!-- </Link> -->
+            </div>
+        </div>
+    </div>
+<br>
+    @include('layouts.agency')
+<br>
     @include('layouts.explorer')
 
     <script>
@@ -339,7 +339,7 @@
                 },
                 data: {
                     type: type,
-                    p : true
+                    p: true
                 },
                 success: function(responese) {
                     $('#list').removeClass('animate__animated animate__fadeOut');

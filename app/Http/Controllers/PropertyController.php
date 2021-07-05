@@ -171,6 +171,20 @@ class PropertyController extends Controller
         return view('frontend.property.search', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_id', 'suggestedareas'));
     }
 
+    public function explorer($property_type){
+        $inputval = null;
+        $city = City::all();
+        $propertytype = PropertyType::all();
+        $inputcity_id = null;
+        $suggestedareas = null;
+        $property_type = str_replace('-',' ',$property_type);
+        $properties = Property::where('property_type', $property_type)->paginate(24);
+
+
+
+        return view('frontend.property.search', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_id', 'suggestedareas'));
+    }
+
     public function singleProperty($id)
     {
         $id = explode('-', $id);

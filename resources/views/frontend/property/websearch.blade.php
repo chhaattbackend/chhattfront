@@ -2,7 +2,9 @@
 
 
 @section('style')
-    <link rel="stylesheet" type="text/css" href="./styles/property/properties.css" />
+<link rel="stylesheet" href="{{ asset('styles/index.css') }}">
+    {{-- <link rel="stylesheet" type="text/css" href="./styles/property/properties.css" /> --}}
+    <link rel="stylesheet" href="{{ asset('styles/property/properties.css') }}">
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.1.3/dist/css/autoComplete.01.min.css">
 

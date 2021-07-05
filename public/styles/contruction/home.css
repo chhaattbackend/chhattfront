@@ -695,8 +695,13 @@
   margin: auto !important;
 }
 .scroll-img-list .imageSection {
-  height: 200px;
-  width: 100%;
+    height: 200px;
+    width: 100%;
+}
+#box-wrapper .scroll-img-list .imageSection .cardTag {
+    top: 0%;
+    left: 0%;
+    background-color: #cf2321;
 }
 .scroll-img-list .imageSection .slideImg {
   height: 100%;

@@ -115,7 +115,7 @@
         //         $.each(prev.data, function(key, value) {
         //             console,log()
         //             $("#citiesSelect").append(`
-        //         <option value="${value.id}">${value.name}</option>`);
+    //         <option value="${value.id}">${value.name}</option>`);
         //         })
         //     )
         // }
@@ -236,7 +236,6 @@
         }
         // SUBMIT END
         // == SEARCH AREA DROPDOWN END
-
     </script>
 @endsection
 @section('content')
@@ -370,7 +369,6 @@
             btn2.classList.remove("active_bestProperties");
             btn3.classList.remove("active_bestProperties");
         };
-
     </script>
 @endsection
 
@@ -396,7 +394,7 @@
         //         $.each(prev.data, function(key, value) {
         //             console,log()
         //             $("#citiesSelect").append(`
-        //         <option value="${value.id}">${value.name}</option>`);
+    //         <option value="${value.id}">${value.name}</option>`);
         //         })
         //     )
         // }
@@ -532,7 +530,6 @@
         }
         // SUBMIT END
         // == SEARCH AREA DROPDOWN END
-
     </script>
 
 @endsection

@@ -19,7 +19,7 @@
                 @php
                     $a = str_replace('(', '', str_replace(' ', '-', strtolower($item->name))) . '-' . strtolower($item->areaOne->city->name) . '-' . $item->id;
                 @endphp
-                <li class="scroll-img-list ms-3 me-1 p-2">
+                <li class="scroll-img-list ms-3 me-1 p-2" style="width: 237px;">
 
                     <a class="text-decoration-none position-relative" href="{{ route('single.agency', [str_replace(')', '', $a)]) }}">
 
@@ -41,7 +41,7 @@
                                 <div class="d-flex justify-content-between">
                                     <h6 class="lightColor">{{ optional($item->areaOne->city)->name }}</h6>
                                 </div>
-                                <div class="mt-2">
+                                <div class="mt-2 ellipse">
                                     <strong class="mt-5">{{ optional($item)->name }}</strong>
                                 </div>
                                 <h6 class="mt-2">

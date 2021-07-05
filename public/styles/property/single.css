@@ -196,7 +196,9 @@
             width: 7%;
         }
     }
+
     /* header end*/
+
     /* breadcrumbs start */
 
     .breadcrumbs_main_div {
@@ -210,8 +212,7 @@
         cursor: pointer;
     }
 
-    .breadcrumbs_main_div a,
-    .breadcrumbs_main_div a:focus {
+    .breadcrumbs_main_div a, .breadcrumbs_main_div a:focus {
         color: #c7c7c7;
     }
 
@@ -241,7 +242,9 @@
             margin: 50px 20px 0px 20px;
         }
     }
+
     /* breadcrumbs end */
+
     /* image gallery start */
 
     .image_gallery_maindiv {
@@ -304,6 +307,7 @@
             margin: auto !important;
         }
     }
+
     /* SALE TAG START */
 
     .saleTagContainer {
@@ -331,7 +335,9 @@
             margin-top: 25px;
         }
     }
+
     /* SALE TAG END */
+
     /* CONTACT FORM START */
 
     .contactContainer {
@@ -369,8 +375,7 @@
         font-weight: 600;
     }
 
-    .contactContainer .showNumber,
-    .contactContainer button[type="submit"] {
+    .contactContainer .showNumber, .contactContainer button[type="submit"] {
         width: 100%;
         padding: 8px;
         letter-spacing: 1.2px;
@@ -393,8 +398,7 @@
         width: 100%;
     }
 
-    .contactContainer .innerContactform input,
-    .contactContainer .innerContactform textarea {
+    .contactContainer .innerContactform input, .contactContainer .innerContactform textarea {
         width: 100%;
     }
 
@@ -424,7 +428,9 @@
         letter-spacing: 1.1px;
         font-weight: 600;
     }
+
     /* CONTACT FORM END */
+
     /* OVERVIEW START */
 
     .overViewContainer {
@@ -512,7 +518,9 @@
     .icon {
         color: #007bff;
     }
+
     /* OVERVIEW END */
+
     /* DESCRIPTION START */
 
     .descriptionContainer {
@@ -522,7 +530,9 @@
         box-shadow: 1px 1px 10px rgb(230, 230, 230);
         border-radius: 6px;
     }
+
     /* DESCRIPTION END */
+
     /* MAP START */
 
     .mapContainer {
@@ -532,7 +542,9 @@
         box-shadow: 1px 1px 10px rgb(230, 230, 230);
         border-radius: 6px;
     }
+
     /* MAP END */
+
     /* SLIDER START */
 
     #box-wrapper {
@@ -577,8 +589,22 @@
         margin-bottom: 0px;
     }
 
-    .sliderBtnLeft,
-    .sliderBtnRight {
+    .scroll-img-list .imageSection .cardTag h6 {
+       color: #fff;
+    margin-bottom: 0rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    }
+
+    .scroll-img-list .imageSection .cardTag {
+        top: 2%;
+        left: 2%;
+        background-color: #b00;
+        border-radius: 6px;
+        padding: 0.2rem 0.5rem;
+    }
+
+    .sliderBtnLeft, .sliderBtnRight {
         cursor: pointer;
         font-size: 25px;
         line-height: 0.9;
@@ -602,8 +628,7 @@
         transform: translateY(-50%);
     }
 
-    .sliderBtnRight .bi-chevron-right::before,
-    .sliderBtnLeft .bi-chevron-left::before {
+    .sliderBtnRight .bi-chevron-right::before, .sliderBtnLeft .bi-chevron-left::before {
         color: #006adb;
     }
 
@@ -614,20 +639,25 @@
     .lightColor {
         color: rgba(0, 0, 0, 0.3);
     }
+
     /* SLIDER END */
+
     /* RELATED PROPERTIES START */
 
     .relatedProperties {
         max-width: 1280px;
         margin: auto;
     }
-    .breadcrum_none > a {
+
+    .breadcrum_none>a {
         color: #006adb;
         text-decoration: none;
     }
 
-    .breadcrum_none > p{
+    .breadcrum_none>p {
         color: black;
     }
+
     /* RELATED PROPERTIES END */
+
     /* image gallery end */

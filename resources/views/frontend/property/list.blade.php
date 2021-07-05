@@ -25,7 +25,7 @@ function convert_rupee($amount)
         <!-- property card start -->
         <div class="propertyCard p-2">
             <a class="text-decoration-none position-relative" href="{{ route('single.property', $id) }}">
-                <div class="imageSection">
+                <div class="imageSection position-relative">
                     @if (!$item->images->isEmpty())
                         <img class="slideImg"
                             src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ @$item->images[0]->name }}"
@@ -35,6 +35,12 @@ function convert_rupee($amount)
                             alt="" class="slideImg" />
 
                     @endif
+
+                    <div class="cardTag position-absolute">
+                        <h6>
+                            {{ $item->property_for }}
+                        </h6>
+                    </div>
 
                 </div>
                 <div class="text-dark paraContainer">
@@ -48,14 +54,18 @@ function convert_rupee($amount)
                                 {{ optional($item->areaTwo)->name }},
                                 {{ optional($item->areaOne)->name }}</strong>
                         </div>
-                        <h6 style="text-align: left" class="mt-1 mb-2">
+                        <h6 style="text-align: left" class="mt-1 mb-1">
                             @if ($item->price == null || $item->price == 0)
                                 <span style="background: red;" class="badge badge-pill badge-danger">On Request</span>
                             @else
-                                <strong> Rs: {{ convert_rupee($item->price) }} </strong>
+                                <strong>
+                                    <p style="color: rgb(228, 20, 20)">
+                                        Rs: {{ convert_rupee($item->price) }}
+                                    </p>
+                                </strong>
                             @endif
                         </h6>
-                        <div class="d-flex justify-content-lg-around">
+                        <div class="d-flex justify-content-lg-around mt-0">
                             @if ($item->bed != null)
 
                                 <div><img class="m-2" src="{{ asset('assets/bed.png') }}" width="18"
@@ -75,7 +85,7 @@ function convert_rupee($amount)
                         </div>
 
                     </div>
-                    <div class="d-flex justify-content-between mt-3">
+                    <div class="d-flex justify-content-between mt-1">
                         <button class="w-100 themebtn py-1 text-white">View more</button>
                         <button class="w-100 ms-3">Contact Us</button>
                     </div>

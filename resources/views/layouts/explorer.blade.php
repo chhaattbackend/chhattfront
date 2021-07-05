@@ -20,14 +20,14 @@
           <!--image allary list-->
           <ul id="box-wrapperExplore" class="boxWrapper ps-0">
             <!--apply loop on this li-->
-            <a href="{{ route('property.search', ['property_type' => 'flat']) }}">
+            <a href="{{ route('explorer.search', ['property_type' => 'flat']) }}">
                 <li class="scroll-img-list my-3 ms-3 me-1 py-4">
                   <i class="display-4 flaticon-flats"></i>
                   <h5>Flat</h5>
                 </li>
             </a>
 
-            <a href="{{ route('property.search', ['property_type' => 'villa']) }}">
+            <a href="{{ route('explorer.search', ['property_type' => 'villa']) }}">
                 <li class="scroll-img-list my-3 ms-3 me-1 py-4">
                   <i class="display-4 flaticon-villa"></i>
                   <h5>Villa</h5>
@@ -35,7 +35,7 @@
             </a>
 
 
-            <a href="{{ route('property.search', ['property_type' => 'plot']) }}">
+            <a href="{{ route('explorer.search', ['property_type' => 'plot']) }}">
 
                 <li class="scroll-img-list my-3 ms-3 me-1 py-4">
                   <i class="display-4 flaticon-building"></i>
@@ -43,7 +43,7 @@
                 </li>
             </a>
 
-            <a href="{{ route('property.search', ['property_type' => 'farm house']) }}">
+            <a href="{{ route('explorer.search', ['property_type' => 'farm-house']) }}">
 
                 <li class="scroll-img-list my-3 ms-3 me-1 py-4">
                   <i class="display-4 flaticon-field"></i>
@@ -51,7 +51,7 @@
                 </li>
             </a>
 
-            <a href="{{ route('property.search', ['property_type' => 'upper portion']) }}">
+            <a href="{{ route('explorer.search', ['property_type' => 'upper-portion']) }}">
 
                 <li class="scroll-img-list my-3 ms-3 me-3 py-4">
                   <i class="display-4 flaticon-building-1"></i>
@@ -59,7 +59,7 @@
                 </li>
             </a>
 
-            <a href="{{ route('property.search', ['property_type' => 'lower portion']) }}">
+            <a href="{{ route('explorer.search', ['property_type' => 'lower-portion']) }}">
                 <li class="scroll-img-list my-3 ms-3 me-3 py-4">
                   <i class="display-4 flaticon-building-1"></i>
                   <h5>Lower Portion</h5>
