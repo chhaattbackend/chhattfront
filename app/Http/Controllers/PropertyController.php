@@ -155,10 +155,11 @@ class PropertyController extends Controller
             $pagination_array = $this->array_push_assoc($pagination_array, 'max_area', $request->max_area);
         }
         if (isset($request->city)) {
-            
-            $search = $request->city;
+            $request->city = City::where('name',$request->city)->first();
+            $search = $request->city->id;
+            // dd($search);
             $properties = $global->searchRelation($properties, 'areaOne', 'city_id', $search);
-            $pagination_array = $this->array_push_assoc($pagination_array, 'city', $request->city);
+            $pagination_array = $this->array_push_assoc($pagination_array, 'city', $request->city->name);
         }
 
 

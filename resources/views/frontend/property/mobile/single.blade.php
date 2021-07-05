@@ -30,7 +30,7 @@
         <div class="breadcrum_none" style="color: rgb(53, 49, 49);font-size: 14px;font-weight: bold ">
             <a style="" href="{{ route('home') }}" title="Chhatt"> Chhatt </a><i class="fad fa-angle-right"></i>
             <a title=""
-                href="{{ route('property.search', ['city' => $properties->areaOne->city_id]) }}">{{ $properties->areaOne->city->name }}
+                href="{{ route('property.search', ['city' => $properties->areaOne->city->name]) }}">{{ $properties->areaOne->city->name }}
             </a><i class="fad fa-angle-right"></i>
             <a title=""
                 href="{{ route('property.search', ['area_type' => $properties->type, 'city' => $properties->areaOne->city_id]) }}">
@@ -71,7 +71,7 @@
         <!-- Add images to <div class="fotorama"></div> -->
         <div class="fotorama" data-nav="thumbs" data-width="100%" data-allowfullscreen="true">
             <!-- ↑ The same as data-ratio="4/3"
-                                                         or data-ratio="1.3333333333". -->
+                                                                 or data-ratio="1.3333333333". -->
             @foreach ($propertyimage as $item)
 
                 <a href=""><img src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ @$item->name }}"
@@ -127,9 +127,20 @@
 
     <div class="descriptionContainerMob">
         <h1>Google Map</h1>
-        <div><iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462116.6683976706!2d66.87527738393177!3d25.193559924293428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33e06651d4bbf%3A0x9cf92f44555a0c23!2sKarachi%2C%20Karachi%20City%2C%20Sindh%2C%20Pakistan!5e0!3m2!1sen!2s!4v1624009661477!5m2!1sen!2s"
-                width="100%" height="300px" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div>
+        <style>
+            #map {
+                height: 400px;
+                /* The height is 400 pixels */
+                width: 100%;
+                /* The width is the width of the web page */
+            }
+
+        </style>
+        <div>
+            <input hidden id="latitude" type="text" name="" value="{{ $properties->latitude }}">
+            <input hidden id="longitude" type="text" name="" value="{{ $properties->longitude }}">
+            <div id="map"></div>
+        </div>
     </div>
 
     <div class="contactContainer">
@@ -218,7 +229,7 @@
     <br>
     <br>
 
-    <div class="CEContainer"><a href="tel:923313829135"><span><svg stroke="currentColor" fill="currentColor"
+    <div class="CEContainer"><a href="tel:+{{ @$properties->user->phone }}"><span><svg stroke="currentColor" fill="currentColor"
                     stroke-width="0" viewBox="0 0 512 512" font-size="1.2rem" height="1em" width="1em"
                     xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -230,4 +241,44 @@
 
     <!-- MOBILE END -->
 
+@endsection
+
+
+@section('personalscripts')
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAdMS03mAk6qDSf4HUmZmcjvSkiSN7jIU&callback=initMap&libraries=&v=weekly"
+        async>
+    </script>
+    <script>
+        $(document).ready(function() {
+            var lat = $('#latitude').val();
+            var lng = $('#longitude').val();
+            var a = parseFloat(lat);
+            var b = parseFloat(lng);
+            // console.log(a)
+            mappp(a, b);
+
+        });
+
+
+        function mappp(latitude, longitude) {
+            // console.log(latitude)
+            // console.log(longitude)
+
+            const uluru = {
+                lat: latitude,
+                lng: longitude
+            };
+            // The map, centered at Uluru
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 16,
+                center: uluru,
+            });
+            // The marker, positioned at Uluru
+            const marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+            });
+        }
+    </script>
 @endsection

@@ -33,19 +33,24 @@
     <div class="breadcrumbs_main_div">
         <div class="inner_div">
             <div class="breadcrum_none" style="color: black;font-size: 13px;font-weight: bold ">
-                <a style="" href="{{route('home')}}" title="Chhatt"> Chhatt </a> >
+                <a style="" href="{{ route('home') }}" title="Chhatt"> Chhatt </a> >
                 <a title=""
-                    href="{{ route('property.search', ['city' => $properties->areaOne->city_id]) }}">{{ $properties->areaOne->city->name }}
+                    href="{{ route('property.search', ['city' => $properties->areaOne->city->name]) }}">{{ $properties->areaOne->city->name }}
                 </a> >
-                <a title="" href="{{ route('property.search', ['area_type' => $properties->type,'city' => $properties->areaOne->city_id]) }}">
+                <a title=""
+                    href="{{ route('property.search', ['area_type' => $properties->type, 'city' => $properties->areaOne->city_id]) }}">
                     {{ @$properties->type }} </a> >
-                <a title="" href="{{ route('property.search', ['property_type' => $properties->property_type,'city' => $properties->areaOne->city_id]) }}">
+                <a title=""
+                    href="{{ route('property.search', ['property_type' => $properties->property_type, 'city' => $properties->areaOne->city_id]) }}">
                     {{ @$properties->property_type }} </a> >
-                <a title="" href="{{ route('property.search', ['property_for' => $properties->property_for,'city' => $properties->areaOne->city_id]) }}">
+                <a title=""
+                    href="{{ route('property.search', ['property_for' => $properties->property_for, 'city' => $properties->areaOne->city_id]) }}">
                     {{ @$properties->property_for }} </a> >
-                <a title="" href="{{ route('property.search', ['search_areas' => 'area_one_id,'.$properties->areaOne->id ]) }}">
+                <a title=""
+                    href="{{ route('property.search', ['search_areas' => 'area_one_id,' . $properties->areaOne->id]) }}">
                     {{ $properties->areaOne->name }} </a> >
-                <a title="" href="{{ route('property.search', ['search_areas' => 'area_two_id,'.$properties->areaTwo->id]) }}">
+                <a title=""
+                    href="{{ route('property.search', ['search_areas' => 'area_two_id,' . $properties->areaTwo->id]) }}">
                     {{ $properties->areaTwo->name }} </a> >
                 <a disabled> {{ @$properties->property_type }} {{ @$properties->property_for }} in
                     {{ @$properties->areaTwo->name }} {{ @$properties->areaOne->name }} </a>
@@ -56,8 +61,8 @@
             <div class="share_div">
 
                 <!--  <button>
-                            <MdFavoriteBorder /> Favorite
-                          </button>  -->
+                                        <MdFavoriteBorder /> Favorite
+                                      </button>  -->
                 <!--  <button>Print</button>  -->
             </div>
         </div>
@@ -74,7 +79,7 @@
                         <!-- Add images to <div class="fotorama"></div> -->
                         <div class="fotorama mt-5" data-nav="thumbs" data-width="100%" data-allowfullscreen="true">
                             <!-- ↑ The same as data-ratio="4/3"
-                               or data-ratio="1.3333333333". -->
+                                           or data-ratio="1.3333333333". -->
                             @foreach ($propertyimage as $item)
 
                                 <a href=""><img
@@ -161,10 +166,19 @@
                     <!-- MAP START -->
                     <div class="mapContainer">
                         <h3> Google Map </h3>
+                        <style>
+                            #map {
+                                height: 400px;
+                                /* The height is 400 pixels */
+                                width: 100%;
+                                /* The width is the width of the web page */
+                            }
+
+                        </style>
                         <div>
-                            <iframe
-                                src="https://maps.google.com/?q={{ $properties->latitude }}LATITUDE-VALUE,{{ $properties->longitude }}"
-                                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            <input hidden id="latitude" type="text" name="" value="{{ $properties->latitude }}">
+                            <input hidden id="longitude" type="text" name="" value="{{ $properties->longitude }}">
+                            <div id="map"></div>
                         </div>
                     </div>
                     <!-- MAP END -->
@@ -196,7 +210,7 @@
                     <div class="contactContainer">
                         <h2>Contact Us</h2>
                         <Button class="showNumber">
-                           {{@$properties->user->phone}}
+                            {{ @$properties->user->phone }}
                         </Button>
                         <hr />
                         <div class="innerContactform">
@@ -260,4 +274,44 @@
     <script src="assets/js/index.js"></script>
     <!-- EXTERNAL LINKS END -->
 
+@endsection
+
+
+@section('personalscripts')
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAdMS03mAk6qDSf4HUmZmcjvSkiSN7jIU&callback=initMap&libraries=&v=weekly"
+        async>
+    </script>
+    <script>
+        $(document).ready(function() {
+            var lat = $('#latitude').val();
+            var lng = $('#longitude').val();
+            var a = parseFloat(lat);
+            var b = parseFloat(lng);
+            // console.log(a)
+            mappp(a, b);
+
+        });
+
+
+        function mappp(latitude, longitude) {
+            // console.log(latitude)
+            // console.log(longitude)
+
+            const uluru = {
+                lat: latitude,
+                lng: longitude
+            };
+            // The map, centered at Uluru
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 16,
+                center: uluru,
+            });
+            // The marker, positioned at Uluru
+            const marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+            });
+        }
+    </script>
 @endsection
