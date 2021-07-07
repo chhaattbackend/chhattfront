@@ -191,11 +191,10 @@
                     {{-- @dd($item->randomproduct($item->id)) --}}
                     @foreach ($item->randomproduct($item->id) as $key => $item)
 
-
                         <div class="col-sm-4 col-lg-3 mb-4">
-
+                            {{-- @dd($item); --}}
                             <div class="propertyCard p-2">
-                                <a class="text-decoration-none position-relative" href="#">
+                                <a class="text-decoration-none position-relative" href="">
                                     <div class="imageSection">
                                         <img class="slideImg"
                                             src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}"

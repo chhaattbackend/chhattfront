@@ -42,6 +42,7 @@ class ConstructionBCategoryController extends Controller
         return view('frontend.construction.home.ccategory', compact('ccategories'));
     }
 
+
     public function viewall()
     {
 
@@ -52,25 +53,23 @@ class ConstructionBCategoryController extends Controller
 
     public function product($id)
     {
-
-        $ids = [];
         $dcategory = ConstructionDCategory::find($id);
-        $product = ConstructionProduct::where('d_category_id', $id)->get();
+        $product = ConstructionProduct::where('d_category_id', $id)->first();
 
-        $storeproducts = ConstructionStoreProduct::where('product_id',$product[0]->id)->get();
+        if ($product == null) {
+            return redirect()->back();
+        }
+
+        $storeproducts = ConstructionStoreProduct::where('product_id', $product->id)->get();
         $dcategories = ConstructionDCategory::where('c_category_id', $dcategory->category->id)->get();
-        // dd($storeproducts[0]->product->c_category->id);
 
-
-        return view('frontend.construction.product.productlist', compact('storeproducts', 'dcategory','dcategories'));
+        return view('frontend.construction.product.productlist', compact('storeproducts', 'dcategory', 'dcategories'));
     }
 
     public function singleproduct($id)
     {
         $storeproduct = ConstructionStoreProduct::find($id);
 
-        // dd($storeproduct);
-
-        return view('frontend.construction.product.singleproduct',compact('storeproduct'));
+        return view('frontend.construction.product.singleproduct', compact('storeproduct'));
     }
 }

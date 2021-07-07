@@ -273,9 +273,9 @@
             </div>
         </div>
     </div>
-<br>
+    <br>
     @include('layouts.agency')
-<br>
+    <br>
     @include('layouts.explorer')
 
     <script>

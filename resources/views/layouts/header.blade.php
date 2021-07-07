@@ -15,7 +15,7 @@
                         <li id="home" onclick="window.location='{{ route('home') }}'" style="color: #fff" @if (Route::current()->getName() == 'home') class="activeNav" @endif class="lif">
                             <span>Home</span>
                         </li>
-                        <li id="property" onclick="window.location='{{ route('property') }}'" style="color: #fff" @if (Route::current()->getName() == 'property' || Route::current()->getName() == 'property.search' || Route::current()->getName() == 'single.property') class="activeNav" @endif class="lis">
+                        <li id="property" onclick="window.location='{{ route('property') }}'" style="color: #fff" @if (Route::current()->getName() == 'property' || Route::current()->getName() == 'explorer.search' || Route::current()->getName() == 'property.search' || Route::current()->getName() == 'single.property') class="activeNav" @endif class="lis">
                             <span>Property</span>
                         </li>
                         <li id="home" onclick="window.location='{{ route('construction.home') }}'" style="color: #fff"

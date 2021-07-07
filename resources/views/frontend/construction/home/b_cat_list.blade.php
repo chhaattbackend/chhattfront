@@ -39,8 +39,8 @@
 
                 <div id="main_List{{ $item->id }}" class="lst_div d-flex" style="height: 220px; overflow: hidden;">
                     <div class="litsdj col-md-2 pt-2 mt-4">
-                        <div class="list1_div1">
-                            <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $item->image }}"
+                        <div class="list1_div1 ">
+                            <img class="rounded" src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $item->image }}"
                                 width="115px" height="115px" alt="" />
                         </div>
                         <div class="list1_div2">
@@ -61,7 +61,7 @@
                                 <div class="list1_div1">
                                     <a href="{{ route('construction.productlist', ['id' => $subItem->id]) }}">
 
-                                        <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/ccategories/{{ $subItem->image }}"
+                                        <img class="rounded" src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/ccategories/{{ $subItem->image }}"
                                             width="115px" height="115px" alt="" />
                                     </a>
                                 </div>
@@ -78,13 +78,78 @@
                     </div>
                 </div>
             </div>
-            @if ($count > 4)
+            @if ($count > 5)
                 <button onclick="changewidth({{ $item->id }})" class="btns">
                     View More
                 </button>
                 <input hidden type="text" id="view_more{{ $item->id }}" value="true">
             @endif
         </div>
+    @endforeach
+
+
+    @foreach ($bcategories as $item)
+
+        @foreach ($item->subcategories as $item)
+
+            @php
+                $count = 0;
+            @endphp
+
+            <div id="serch_option_show" class="main_div_list">
+                <div class="mainList1">
+
+                    <div id="main_List{{ $item->id }}" class="lst_div d-flex" style="height: 220px; overflow: hidden;">
+                        <div class="litsdj col-md-2 pt-2 mt-4">
+                            <div class="list1_div1">
+                                <img class="rounded" src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/ccategories/{{ $item->image }}"
+                                    width="115px" height="115px" alt="" />
+                            </div>
+                            <div class="list1_div2">
+                                <h6>
+                                    <br>
+                                    {{ $item->name }}
+                                </h6>
+                                <p>({{ $item->subcategories->count() }})</p>
+                            </div>
+                        </div>
+                        <div class="list row m-auto flex-wrap">
+                            @foreach ($item->subcategories as $key => $subItem)
+                                @php
+                                    $count++;
+                                @endphp
+
+                                <div class="lit1 col-md-3 p-0  mt-4">
+                                    <div class="list1_div1">
+                                        <a href="{{ route('construction.productlist', ['id' => $subItem->id]) }}">
+
+                                            <img class="rounded" src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/{{ $subItem->image }}"
+                                                width="115px" height="115px" alt="" />
+                                        </a>
+                                    </div>
+                                    <div class="list1_div2">
+                                        <h6 class="ellipse">
+                                            <br>
+                                            {{ $subItem->name }}
+                                        </h6>
+                                        <p>({{ $subItem->subcategories->count() ?? 'no category' }})</p>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+                </div>
+                @if ($count > 5)
+                    <button onclick="changewidth({{ $item->id }})" class="btns">
+                        View More
+                    </button>
+                    <input hidden type="text" id="view_more{{ $item->id }}" value="true">
+                @endif
+            </div>
+        @endforeach
+
+
     @endforeach
 
 
@@ -95,46 +160,11 @@
 
 
 @section('personalscripts')
-    <script>
-        // var serch_option1 = document.getElementById("mainList1");
-        // var view1 = document.getElementById("view_more1");
-        // var view_more_bool1 = false
-        // view1.addEventListener("click", () => {
-        //     view_more_bool1 = !view_more_bool1
-        //     if (view_more_bool1 === true) {
-        //         serch_option1.style.transition = "300ms";
-        //         serch_option1.style.height = "auto";
-        //     } else if (view_more_bool1 === false) {
-        //         serch_option1.style.transition = "300ms";
-        //         serch_option1.style.height = "250px";
-        //     }
-        // });
 
 
 
-        function changewidth(id) {
-
-            var serch_option1 = document.getElementById("main_List"+id);
-            // console.log(serch_option1)
-
-            var view1 = document.getElementById("view_more"+id);
-            // console.log(view1)
-
-            if (view1.value == 'true') {
-                serch_option1.style.transition = "300ms";
-                serch_option1.style.height = "auto";
-                view1.value = 'false';
+    <script src="{{ asset('js/b_cat.js') }}">
 
 
-            } else if (view1.value == 'false') {
-                // console.log('false')
-                view1.value = 'true';
-
-                serch_option1.style.transition = "300ms";
-                serch_option1.style.height = "220px";
-            }
-            // console.log(id)
-
-        }
     </script>
 @endsection

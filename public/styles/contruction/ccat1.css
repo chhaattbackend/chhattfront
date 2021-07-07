@@ -3,12 +3,15 @@
   position: relative;
   min-width: 1007px;
 }
+body{
+    background-color: #eff1f1 !important;
+}
 .main_div_list {
   max-width: 1300px;
   margin: auto;
   margin-top: 20px;
   padding: 20px 20px;
-  background-color: #e8eaeb;
+  background-color: #fff;
   text-align: center;
 }
 #mainList {
@@ -70,7 +73,7 @@
   margin: 0;
 }
 .btns {
-  background-color: #2e4cff;
+  background-color: #007bff;
   font-size: 13px;
   padding: 7px 15px;
   color: #fff;

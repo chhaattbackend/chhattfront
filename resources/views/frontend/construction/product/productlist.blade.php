@@ -47,7 +47,7 @@
         <!-- heading start -->
         <div class="title_div">
             <h1 class="title_div_1">{{ $dcategory->name }}
-                {{ $dcategory->category->name }}<span>({{ $dcategory->subcategories->count() }} products available)
+                {{ $dcategory->category->name }}<span>({{ $dcategory->products->count() }} products available)
                 </span> </h1>
             <div>
                 <span class="title_div_1_sp1">View by : </span>
@@ -79,48 +79,39 @@
         <div class="main_div_content d-flex">
             <!-- left div start -->
             <div class="main_div_content_1 ">
-                <h6 class="font-weight-bolder mt-3 mb-0 border p-2 bg-light text-dark">Filter Results</h6>
+                {{-- <h6 class="font-weight-bolder mt-3 mb-0 border p-2 bg-light text-dark">Filter Results</h6>
                 <ul class="border">
                     <li class=" p-2">
-                        <input type="checkbox" /><span class="d-inline-block ml-2">Video</span>
+                        <input type="checkbox"/> <span class="d-inline-block ml-2">Video</span>
                     </li>
+                </ul> --}}
+                <h6 class="font-weight-bolder mt-3 mb-0 border p-2 bg-light text-dark" onclick="down('relatedcat')">Related Category</h6>
+                <ul id="relatedcat" class="border p-2">
+                    {{-- ->slice(0, 10) for limit --}}
+                    @foreach ($dcategory->category->category->subcategories as $item)
+
+                        <li class="p-1">
+                            <a href="{{ route('construction.bcat', ['id' => str_replace(',', '_', str_replace(str_split('\\/:*?"<>|() '), '-', strtolower($dcategory->category->category->name)))]) }}"
+                                class="filtertag">
+                                {{ $item->name }}
+                            </a>
+                        </li>
+                    @endforeach
+
                 </ul>
-                <h6 class="font-weight-bolder mt-3 mb-0 border p-2 bg-light text-dark">Filter Results</h6>
-                <ul class="border p-2">
-                    <li class="p-1">
-                        Video
-                    </li>
-                    <li class=" p-1">
-                        Video
-                    </li>
-                    <li class=" p-1">
-                        Video
-                    </li>
-                    <li class=" p-1">
-                        Video
-                    </li>
-                    <li class=" p-1">
-                        Video
-                    </li>
+
+
+                <h6 class="font-weight-bolder mt-3 mb-0 border p-2 bg-light text-dark" onclick="down('relatedbrand')">Related Brands</h6>
+                <ul id="relatedbrand" class="border p-2">
+                    @foreach ($dcategory->products as $item)
+
+                        <li class="p-1">
+                            {{ @$item->brand->name }}
+                        </li>
+                    @endforeach
+
                 </ul>
-                <h6 class="font-weight-bolder mt-3 mb-0 border p-2 bg-light text-dark">Filter Results</h6>
-                <ul class="border p-2">
-                    <li class="p-1">
-                        Video
-                    </li>
-                    <li class=" p-1">
-                        Video
-                    </li>
-                    <li class=" p-1">
-                        Video
-                    </li>
-                    <li class=" p-1">
-                        Video
-                    </li>
-                    <li class=" p-1">
-                        Video
-                    </li>
-                </ul>
+
                 <h6 class="font-weight-bolder mt-3 mb-0 border p-2 bg-light text-dark">Filter Results</h6>
                 <ul class="border p-2">
                     <li class="p-1">
@@ -143,13 +134,12 @@
             <!-- left div end -->
             <!-- right div start -->
             <div class="main_div_content_2 ms-3 ">
-                <h5 class="font-weight-bolder mt-3">Popular {{ $dcategories[0]->category->name }} Category</h5>
+                <h5 class="font-weight-bolder mt-3">Popular {{ $dcategory->category->name }} Category</h5>
                 <!-- card start -->
                 <!-- slider -->
                 <div class="main_slide_div">
                     <div class="card_div slide">
                         @foreach ($dcategories as $item)
-
                             <div class="card p-2 m-1">
                                 <div class="img_div">
                                     <img
@@ -163,8 +153,6 @@
                                 <div class="brand">hamza developer</div>
                             </div>
 
-
-
                         @endforeach
 
                     </div>
@@ -174,7 +162,8 @@
                 @foreach ($storeproducts as $item)
                     <!-- product card detail start -->
                     <div class="product_detail_card_div_main_div p-2 m-2">
-                        <a class="text-decoration-none text-dark" href="{{ route('construction.singleproduct',['id'=>$item->id]) }}">
+                        <a class="text-decoration-none text-dark"
+                            href="{{ route('construction.singleproduct', ['id' => $item->id]) }}">
 
                             <div class="product_detail_card_div d-flex">
                                 <div class="frst_div">
@@ -186,7 +175,8 @@
                                     <span class="d-inline-block mr-3">RS {{ $item->product->price }}</span>
                                     <a href=""> Get Export Price</a>
                                     <ul class="mb-0 me-3">
-                                        <li><span>Brand:</span><span>Dr. Fresh</span></li>
+                                        <li><strong>Brand</strong>:<span> {{ @$item->product->brand->name }}</span></li>
+                                        
                                         {{ $item->product->description }}
                                         <li><a href="">read more...</a></li>
                                     </ul>
@@ -225,7 +215,7 @@
                             @foreach ($item->getrelatedcategory(3) as $suggesteditem)
                                 <div class="d-flex div1 mr-2">
                                     <div>
-                                        <img width="80px" height="72px" style=" object-fit: cover;"
+                                        <img width="80px" height="72px" style=" object-fit: contain;"
                                             src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $suggesteditem->image }}" />
                                     </div>
                                     <div class="d-flex flex-column justify-content-center">
@@ -283,6 +273,15 @@
                 },
             ]
         });
+
+        function down(id) {
+            var x = document.getElementById(id);
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
         // slick slider end
     </script>
 @endsection

@@ -19,7 +19,10 @@ class ConstructionDCategory extends Model
     public function subcategories(){
         return $this->hasMany(ConstructionECategory::class, 'd_category_id');
     }
-   public function products(){
+    public function products(){
         return $this->hasMany(ConstructionProduct::class, 'd_category_id');
     }
+
+    
+
 }

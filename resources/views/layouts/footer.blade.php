@@ -88,9 +88,9 @@
               <!--  <li>
                 <a href="" to="/maps">Maps</a>
               </li>  -->
-              {{-- <li>
-                <a href="" >About Us</a>
-              </li> --}}
+              <li>
+                <a href="{{ route('construction.home') }}" >Construction</a>
+              </li>
               <li>
                 <a href="{{ route('contact') }}" >Contact Us</a>
               </li>
@@ -100,7 +100,7 @@
             <img src="./assets/chhattLogo.png" alt="Chhatt Logo" title="Chhatt" />
             <p>
               Chhatt is a powerful platform which aims at connecting
-              realtors,builders,developers,brokers with right kind of clientele
+              realtors, builders, developers, brokers with right kind of clientele
               for variouse types of properties from various mediums. It is a mix
               of a web platform as well as a mobile application(s)
             </p>

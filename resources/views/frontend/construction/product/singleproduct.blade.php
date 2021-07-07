@@ -146,35 +146,35 @@
                 <div class="col-12 mt-5">
                     <div class="d-flex align-items-centers">
                         <h5 class="ms-3 me-3">Explore similar products</h5> |
-                        <h5 class="d-flex align-items-center ms-3">View all products in {{ $storeproduct->product->name }} <i
+                        <h5 class="d-flex align-items-center ms-3">View all products in {{ $storeproduct->store->name }} <i
                                 class="bi bi-chevron-right h5 mb-0"></i></h5>
                     </div>
 
                     <div class="mapCardContainer mt-4">
                         <div class="container-fluid px-0">
                             <div class="row px-2">
-                                @foreach ($storeproduct->getrelatedcategory(4) as $item)
+                                @foreach ($storeproduct->getrelatedproduct(8) as $item)
                                 <div class="col-sm-4 col-lg-3 mb-4">
                                     <!-- property card start -->
                                     <div class="propertyCard p-2">
                                         <a class="text-decoration-none position-relative" href="#">
                                             <div class="imageSection">
                                                 <img class="slideImg"
-                                                    src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->image }}"
+                                                    src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}"
                                                     alt="" />
                                             </div>
                                             <div class="text-dark paraContainer">
                                                 <div class="mt-1">
                                                     <div class="d-flex justify-content-between">
-                                                        <h6 class="lightColor">{{$storeproduct->store->name}}</h6>
-                                                        <h6 class="lightColor">{{ $item->c_category->name }}</h6>
+                                                        <h6 class="lightColor">{{$item->store->name}}</h6>
+                                                        <h6 class="lightColor">{{ $item->product->c_category->name }}</h6>
                                                     </div>
                                                     <div class="mt-2">
-                                                        <strong class="mt-5">{{ $item->name }}</strong>
+                                                        <strong class="mt-5">{{ $item->product->name }}</strong>
                                                     </div>
                                                     <h6 class="mt-2">
                                                         <strong>
-                                                            Rs. {{ $item->price }}
+                                                            Rs. {{ $item->product->price }}
                                                         </strong>
                                                     </h6>
                                                 </div>
@@ -287,7 +287,7 @@
                             <div class="contactContainer position-sticky">
                                 <h2>Contact Us</h2>
                                 <Button class="showNumber">
-                                    268445848484
+                                    {{ $storeproduct->store->phone }}
                                 </Button>
                                 <hr />
                                 <div class="innerContactform">
