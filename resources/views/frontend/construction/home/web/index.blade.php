@@ -9,6 +9,7 @@
 @endsection
 
 @section('headercontent')
+
     <div class="mn_div">
         <div class="backg">
             <div class="backg_sdiv">
