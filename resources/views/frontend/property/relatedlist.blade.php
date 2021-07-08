@@ -35,7 +35,7 @@
                         <h6 class="lightColor">{{ $item->updated_at->diffForHumans() }}</h6>
                     </div>
                     <div class="mt-2 title ellipse">
-                        <strong class="mt-5">{{ $item->property_for }}in {{ optional($item->areaThree)->name }},
+                        <strong class="mt-5">{{ $item->property_for }} in {{ optional($item->areaThree)->name ?? ''  }},
                             {{ optional($item->areaTwo)->name }},
                             {{ optional($item->areaOne)->name }}</strong>
                     </div>
@@ -50,7 +50,7 @@
                             @endif
                         </strong>
                     </h6>
-                    
+
                 </div>
                 <div class="d-flex justify-content-between mt-3">
                     <button class="w-100 themebtn py-1 text-white" href="{{ route('single.property', $id) }}">View

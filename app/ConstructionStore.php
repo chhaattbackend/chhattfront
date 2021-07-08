@@ -25,6 +25,7 @@ class ConstructionStore extends Model
         'image',
         'thumbnail',
         'featured',
+        'slug',
     ];
 
     public function user(){

@@ -19,39 +19,12 @@ class ConstructionProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+
+    public function index()
     {
-        if (!$request->ajax()) {
-        if($request->page!=null && $request->keyword!=null){
-            $keyword=$request->keyword;
-            $products=Product::where('name','LIKE',"%{$request->keyword}%")
-            ->orWhere('price','LIKE',"%{$request->keyword}%")
-            ->paginate(25);
-            $products->withPath('?keyword=' . $request->keyword);
-            return view('admin.product.index',compact('products','keyword'));
-        }
-    }
-        if ($request->ajax()) {
-
-            if($request->keyword!=null){
-                $keyword=$request->keyword;
-                $products=Product::where('name','LIKE',"%{$request->keyword}%")
-                ->orWhere('price','LIKE',"%{$request->keyword}%")
-                ->paginate(25);
-                $products->withPath('?keyword=' . $request->keyword);
-        }
-        else{
-            $keyword = '';
-            $products=Product::paginate(25);
-        }
-
-        return view('admin.product.search',compact('products','keyword'));
-    }
-    $products=Product::paginate(25);
-
-        return view('admin.product.index',compact('products'));
 
     }
+
 
     /**
      * Show the form for creating a new resource.

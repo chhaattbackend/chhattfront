@@ -103,10 +103,10 @@
 
                 <h6 class="font-weight-bolder mt-3 mb-0 border p-2 bg-light text-dark" onclick="down('relatedbrand')">Related Brands</h6>
                 <ul id="relatedbrand" class="border p-2">
-                    @foreach ($dcategory->products as $item)
+                    @foreach ($storeproducts as $item)
 
                         <li class="p-1">
-                            {{ @$item->brand->name }}
+                            {{ @$item->name }}
                         </li>
                     @endforeach
 
@@ -176,7 +176,7 @@
                                     <a href=""> Get Export Price</a>
                                     <ul class="mb-0 me-3">
                                         <li><strong>Brand</strong>:<span> {{ @$item->product->brand->name }}</span></li>
-                                        
+
                                         {{ $item->product->description }}
                                         <li><a href="">read more...</a></li>
                                     </ul>

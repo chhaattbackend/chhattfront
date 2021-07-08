@@ -27,6 +27,16 @@ Route::get('/contact-us', function () {
 })->name('contact');
 
 
+Route::get('examplepage', function () {
+return view('frontend.construction.store.single');
+});
+
+
+
+
+
+
+
 // construction
 Route::prefix('construction')->group(function () {
 Route::get('/','ConstructionACategoryController@index')->name('construction.home');
@@ -37,6 +47,7 @@ Route::get('/{id}','ConstructionBCategoryController@byCategory')->name('construc
 Route::get('/bcat/all','ConstructionBCategoryController@viewall')->name('construction.bcatlist');
 Route::get('/productlist/{id}','ConstructionBCategoryController@product')->name('construction.productlist');
 Route::get('/productDetail/{id}','ConstructionBCategoryController@singleproduct')->name('construction.singleproduct');
+Route::get('/storeDetail/{store:slug}','ConstructionStoreController@index')->name('construction.singlestore');
 });
 // construction
 

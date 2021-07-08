@@ -23,7 +23,7 @@
         <div class="backgz">
             <div class="backg_sdivz">
                 <h2 class="fw-bolder">{{ @$properties->property_type }} {{ @$properties->property_for }} in
-                    {{ @$properties->areaTwo->name }} {{ @$properties->areaOne->name }}</h2>
+                    {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }} </h2>
             </div>
         </div>
     </div>
@@ -53,7 +53,7 @@
                     href="{{ route('property.search', ['search_areas' => 'area_two_id,' . $properties->areaTwo->id]) }}">
                     {{ $properties->areaTwo->name }} </a> >
                 <a disabled> {{ @$properties->property_type }} {{ @$properties->property_for }} in
-                    {{ @$properties->areaTwo->name }} {{ @$properties->areaOne->name }} </a>
+                   {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }}  </a>
 
 
                 &nbsp;

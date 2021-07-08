@@ -114,8 +114,10 @@
                                     <i class="bi bi-star-fill unFilledStar"></i> (176)
                                 </div>
                                 <div class="px-2">
-                                    <button class="w-100 py-2 rounded bg-transparent border border-1 border-dark"><i
-                                            class="bi bi-telephone-inbound-fill"></i> Vew mobile number</button>
+                                    <a href="{{ route('construction.singlestore',['store' => $storeproduct->store->slug]) }}">
+
+                                        <button class="w-100 py-2 rounded bg-transparent border border-1 border-dark"> Vew Store</button>
+                                    </a>
                                 </div>
                                 <div class="text-center">
                                     <small>67% Response Rate</small>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\ACategory;
 use App\BCategory;
 use App\City;
+use App\ConstructionStore;
+use App\ConstructionStoreProduct;
 use App\Store;
 use App\Unit;
 use App\User;
@@ -17,48 +19,9 @@ class ConstructionStoreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(ConstructionStore $store)
     {
-        if(auth()->user()->role->name=='admin'){
-
-                $stores=Store::where('user_id',auth()->user()->id)->paginate(25);
-        }
-        else{
-
-        if (!$request->ajax()) {
-        if($request->page!=null && $request->keyword!=null){
-            $keyword=$request->keyword;
-            $stores=Store::where('name','LIKE',"%{$request->keyword}%")
-            ->orWhere('phone','LIKE',"%{$request->keyword}%")
-            ->orWhere('email','LIKE',"%{$request->keyword}%")
-            ->orWhere('mobile','LIKE',"%{$request->keyword}%")
-            ->paginate(25);
-            $stores->withPath('?keyword=' . $request->keyword);
-            return view('admin.store.index',compact('stores','keyword'));
-        }
-    }
-        if ($request->ajax()){
-        if($request->keyword!=null){
-            $keyword=$request->keyword;
-            $stores=Store::where('name','LIKE',"%{$request->keyword}%")
-            ->orWhere('phone','LIKE',"%{$request->keyword}%")
-            ->orWhere('email','LIKE',"%{$request->keyword}%")
-            ->orWhere('mobile','LIKE',"%{$request->keyword}%")
-            ->paginate(25);
-            $stores->withPath('?keyword=' . $request->keyword);
-        }
-        else{
-            $keyword='';
-            $stores=Store::paginate(25);
-        }
-        return view('admin.store.search',compact('stores','keyword'));
-        }
-        $stores=Store::paginate(25);
-    }
-        return view('admin.store.index',compact('stores'));
-
-
-
+        return view('frontend.construction.store.single', compact('store'));
     }
 
     /**
@@ -68,12 +31,12 @@ class ConstructionStoreController extends Controller
      */
     public function create()
     {
-        $users=User::all();
-        $cities=City::all();
-        if(auth()->user()->role->name=='admin'){
-            $users=User::where('id',auth()->user()->id)->get();
+        $users = User::all();
+        $cities = City::all();
+        if (auth()->user()->role->name == 'admin') {
+            $users = User::where('id', auth()->user()->id)->get();
         }
-        return view("admin.store.create",compact('cities','users'));
+        return view("admin.store.create", compact('cities', 'users'));
     }
 
     /**
@@ -104,8 +67,8 @@ class ConstructionStoreController extends Controller
      */
     public function show($id)
     {
-        $store=Store::find($id);
-        return view('admin.store.show',compact('store'));
+        $store = Store::find($id);
+        return view('admin.store.show', compact('store'));
     }
 
     /**
@@ -116,11 +79,11 @@ class ConstructionStoreController extends Controller
      */
     public function edit($id)
     {
-        $store=Store::find($id);
-        $units=Unit::all();
-        $users=User::all();
-        $cities=City::all();
-        return view('admin.store.edit',compact('store','users','cities'));
+        $store = Store::find($id);
+        $units = Unit::all();
+        $users = User::all();
+        $cities = City::all();
+        return view('admin.store.edit', compact('store', 'users', 'cities'));
     }
 
     /**
@@ -132,7 +95,7 @@ class ConstructionStoreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $store=Store::find($id);
+        $store = Store::find($id);
         $store = Store::find($id);
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -154,7 +117,7 @@ class ConstructionStoreController extends Controller
      */
     public function destroy($id)
     {
-        $item=Store::find($id);
+        $item = Store::find($id);
         $item->delete();
         return redirect()->back();
     }
