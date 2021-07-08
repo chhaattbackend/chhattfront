@@ -186,7 +186,7 @@
     <div class="mapCardContainer newProduct">
         <div class="container-fluid">
             <div class="row px-2">
-                @foreach ($products as $item)
+                @foreach ($storeproducts as $item)
                     {{-- @dd($products) --}}
                     {{-- @dd($item->randomproduct($item->id)) --}}
                     @foreach ($item->randomproduct($item->id) as $key => $item)
@@ -194,7 +194,7 @@
                         <div class="col-sm-4 col-lg-3 mb-4">
                             {{-- @dd($item); --}}
                             <div class="propertyCard p-2">
-                                <a class="text-decoration-none position-relative" href="">
+                                <a class="text-decoration-none position-relative" href="{{ route('construction.singleproduct', ['id' => $item->id]) }}">
                                     <div class="imageSection">
                                         <img class="slideImg"
                                             src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}"

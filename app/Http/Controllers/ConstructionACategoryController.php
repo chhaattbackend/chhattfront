@@ -19,10 +19,10 @@ class ConstructionACategoryController extends Controller
     public function index(Request $request)
     {
         $bcategories = ConstructionBCategory::all();
-        $products=ConstructionStore::orderBy('id','desc')->get();
+        $storeproducts=ConstructionStore::orderBy('id','desc')->get();
         // $products = ConstructionStoreProduct::inRandomOrder()->limit(10)->get();
 
         // dd($products);
-        return view('frontend.construction.home.index', compact('bcategories', 'products'));
+        return view('frontend.construction.home.index', compact('bcategories', 'storeproducts'));
     }
 }
