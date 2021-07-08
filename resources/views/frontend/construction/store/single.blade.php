@@ -19,6 +19,7 @@
         <div class="backgz">
             <div class="backg_sdivz">
                 <h1>{{ $store->name }}</h1>
+                
             </div>
         </div>
     </div>
@@ -295,11 +296,13 @@
                     @foreach ($store->storeproducts as $item)
 
                         <div class="mt-4 col-md-2 p-2 border" style="width: 300px;">
-                            <img width="100%" height="200px"
-                                src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}" />
-                            <a href="" class="d-inline-block  text-decoration-none"
+
+                            <a href="{{route('construction.singleproduct',[$item->id])}}" class="d-inline-block  text-decoration-none"
                                 style="width: 250px; font-size: 17px; color: #007bff; font-weight: bolder;">
+                                <img width="100%" height="200px"
+                                src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}" />
                                 {{ $item->product->name }}
+
                             </a>
                             {{-- <a href="" class="d-inline-block  text-decoration-none"
                                 style="width: 250px; font-size: 17px; color: gray; ">
@@ -423,19 +426,20 @@
                             <div class="d-flex align-items-center"><i class="bi bi-geo-alt-fill me-2 h4"></i>
                                 <h5>
 
-                                    Maa
-                                    Kalika
-                                    Natural Stone Suppliers
+                                  {{$store->name}}
                                 </h5>
                             </div>
-                            <div class="small">Manpura, Chittaurgarh, Chittorgarh-312001, Rajasthan, India</div>
+                            {{-- <div class="small">Manpura, Chittaurgarh, Chittorgarh-312001, Rajasthan, India</div> --}}
+                            <div class="small">{{$store->address}}</div>
                             <button class="bg-transparent mt-2"><a href="">
                                     <i class="bi bi-arrow-return-right"></i> Get
                                     Directions
                                 </a>
                             </button>
-                            <div class="mt-3"><i class="bi bi-person-circle me-2 h4 mb-0"></i>Sanjay Kumar Rao
+                            {{-- <div class="mt-3"><i class="bi bi-person-circle me-2 h4 mb-0"></i>Sanjay Kumar Rao
                                 (Sanjay)
+                            </div> --}}
+                            <div class="mt-3"><i class="bi bi-person-circle me-2 h4 mb-0"></i>{{$store->user->name}}
                             </div>
                             <div class="d-flex mt-3">
                                 <div>
