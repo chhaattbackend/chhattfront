@@ -16,7 +16,7 @@
 <div class="mn_divz">
       <div class="backgz">
         <div class="backg_sdivz">
-          <h1>Contact Us</h1>
+          <h1 class="fw-bolder">Contact Us</h1>
         </div>
       </div>
     </div>
