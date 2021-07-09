@@ -53,7 +53,7 @@
                     href="{{ route('property.search', ['search_areas' => 'area_two_id,' . $properties->areaTwo->id]) }}">
                     {{ $properties->areaTwo->name }} </a> >
                 <a disabled> {{ @$properties->property_type }} {{ @$properties->property_for }} in
-                   {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }}  </a>
+                    {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }} </a>
 
 
                 &nbsp;
@@ -61,8 +61,8 @@
             <div class="share_div">
 
                 <!--  <button>
-                                        <MdFavoriteBorder /> Favorite
-                                      </button>  -->
+                                                                                    <MdFavoriteBorder /> Favorite
+                                                                                  </button>  -->
                 <!--  <button>Print</button>  -->
             </div>
         </div>
@@ -79,7 +79,7 @@
                         <!-- Add images to <div class="fotorama"></div> -->
                         <div class="fotorama mt-5" data-nav="thumbs" data-width="100%" data-allowfullscreen="true">
                             <!-- ↑ The same as data-ratio="4/3"
-                                           or data-ratio="1.3333333333". -->
+                                                                                       or data-ratio="1.3333333333". -->
                             @foreach ($propertyimage as $item)
 
                                 <a href=""><img
@@ -209,19 +209,55 @@
                     <!--  HIDDEN FOR MAP PAGE END  -->
                     <div class="contactContainer">
                         <h2>Contact Us</h2>
-                        <Button class="showNumber">
-                            {{ @$properties->user->phone }}
+                        <div class="Style_contactUser__3SauW">
+                            {{-- {{ $properties->user }} --}}
+                            @if ($properties->user->thumbnail != null)
+                                <div style="text-align: center">
+                                    <img width="60px" height="60px" style="border-radius: 50px"
+                                        src="https://chhatt.s3.ap-south-1.amazonaws.com/users/{!! $properties->user->thumbnail !!}"
+                                        alt="{{ $properties->user->name }}">
+                                    <h5 class="pt-2 pb-1">{!! $properties->user->name !!} </h5>
+                                </div>
+
+                            @else
+                                <div style="text-align: center">
+                                    <img width="60px" height="60px" style="border-radius: 50px"
+                                        src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
+                                        alt="M Akhlaq Khan">
+                                    <h5 class="pt-2 pb-1">{!! $properties->user->name !!} </h5>
+                                </div>
+                            @endif
+
+                        </div>
+                        <input hidden type="text" id="numberrrr" value="{{ @$properties->user->phone }}">
+                        <Button class="showNumber ripple" onclick="chnagenumb()">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
+                                class="text-white" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"
+                                style="font-size: 14px;">
+                                <path
+                                    d="M391 480c-19.52 0-46.94-7.06-88-30-49.93-28-88.55-53.85-138.21-103.38C116.91 298.77 93.61 267.79 61 208.45c-36.84-67-30.56-102.12-23.54-117.13C45.82 73.38 58.16 62.65 74.11 52a176.3 176.3 0 0128.64-15.2c1-.43 1.93-.84 2.76-1.21 4.95-2.23 12.45-5.6 21.95-2 6.34 2.38 12 7.25 20.86 16 18.17 17.92 43 57.83 52.16 77.43 6.15 13.21 10.22 21.93 10.23 31.71 0 11.45-5.76 20.28-12.75 29.81-1.31 1.79-2.61 3.5-3.87 5.16-7.61 10-9.28 12.89-8.18 18.05 2.23 10.37 18.86 41.24 46.19 68.51s57.31 42.85 67.72 45.07c5.38 1.15 8.33-.59 18.65-8.47 1.48-1.13 3-2.3 4.59-3.47 10.66-7.93 19.08-13.54 30.26-13.54h.06c9.73 0 18.06 4.22 31.86 11.18 18 9.08 59.11 33.59 77.14 51.78 8.77 8.84 13.66 14.48 16.05 20.81 3.6 9.53.21 17-2 22-.37.83-.78 1.74-1.21 2.75a176.49 176.49 0 01-15.29 28.58c-10.63 15.9-21.4 28.21-39.38 36.58A67.42 67.42 0 01391 480z">
+                                </path>
+                            </svg> <span id="changethis">Call Now</span>
                         </Button>
                         <hr />
                         <div class="innerContactform">
-                            <form>
-                                <input class="inpC" type="text" placeholder="Name" />
+                            <form action="{{ route('contact.form') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name='agent_id' value="{!!  $properties->user->agent->id !!}">
+                                <input class="inpC @error('name') is-invalid @enderror" type="text" name="name"
+                                    placeholder="Name" required />
+
                                 <br />
-                                <input class="inpC mt-4" type="text" name="email" placeholder="Email" />
+                                <input class="inpC mt-4 @error('email') is-invalid @enderror" type="email" name="email"
+                                    placeholder="Email" required />
+
                                 <br />
-                                <textarea rows="5"></textarea>
+                                <textarea required name="description" class="@error('description') is-invalid @enderror"
+                                    rows="5">I saw your ad on Chhatt.com (چھت).
+I am interested in your property {!! $properties->id !!} Please do give reference of Chhatt.com to the Realtor/Property Owner</textarea>
                                 <br />
-                                <Button type="submit">
+
+                                <Button type="submit" style="background: #4391f7;border-radius: 4px">
                                     <MdEmail class="text-white" style="font-size: 17px" />
                                     &nbsp;Submit
                                 </Button>
@@ -230,6 +266,15 @@
                     </div>
 
                     <br />
+                    @error('description')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    @error('email')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    @error('name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     <!--  <LoginForm />  -->
                 </div>
             </div>
@@ -312,6 +357,12 @@
                 position: uluru,
                 map: map,
             });
+        }
+
+        function chnagenumb() {
+
+            var number = $('#numberrrr').val();
+            $('#changethis').html(number)
         }
     </script>
 @endsection

@@ -344,7 +344,7 @@
         width: 100%;
         background-color: #f6f7fb;
         padding: 18px 28px;
-        height: 500px;
+        height: 605px;
     }
 
     .contactContainer .contactUser {
@@ -386,6 +386,13 @@
     .contactContainer .showNumber {
         background: #43b243;
         color: white;
+        border-radius: 4px;
+        transition: all 0.7s ease;
+    }
+
+    .contactContainer .showNumber:hover {
+        transition: all 0.7s ease;
+        box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
     }
 
     .contactContainer button[type="submit"] {
@@ -590,10 +597,10 @@
     }
 
     .scroll-img-list .imageSection .cardTag h6 {
-       color: #fff;
-    margin-bottom: 0rem;
-    font-size: 0.8rem;
-    font-weight: 600;
+        color: #fff;
+        margin-bottom: 0rem;
+        font-size: 0.8rem;
+        font-weight: 600;
     }
 
     .scroll-img-list .imageSection .cardTag {
@@ -656,6 +663,23 @@
 
     .breadcrum_none>p {
         color: black;
+    }
+
+    .ripple {
+        background-position: center;
+        transition: background 0.1s;
+    }
+
+    .ripple:hover {
+        transition: background 0.1s;
+
+        background: #43b243 radial-gradient(circle, transparent 1%, #43b243 1%) center/15000%;
+    }
+
+    .ripple:active {
+        background-color: #a2eba2;
+        background-size: 100%;
+        transition: background 0.1s;
     }
 
     /* RELATED PROPERTIES END */

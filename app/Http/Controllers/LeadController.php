@@ -9,6 +9,7 @@ use App\AreaTwo;
 use App\Callstatus;
 use App\GlobalClass;
 use App\Lead;
+use App\LeadAssign;
 use App\LeadProject;
 use App\LeadSource;
 use App\LeadType;
@@ -36,15 +37,16 @@ class LeadController extends Controller
 
 
         if (!$request->keyword) {
-            $leads = Lead::orderBy('id', 'desc')->where('status',0);
+            $leads = Lead::orderBy('id', 'desc')->where('status', 0);
 
             if (auth()->user()->role->name == 'Project Owner' || auth()->user()->role->name == 'Project Leader' || auth()->user()->role->name == 'Agent') {
                 if (auth()->user()->project == null) {
                     $project_id = auth()->user()->projectUser->project_id;
 
 
-                $user_ids = ProjectUser::where('project_id', $project_id)->select('user_id')->get()->toArray();
-                $leads = $globalclass->searchRelationIn($leads, 'created_by1', 'id', $user_ids);}
+                    $user_ids = ProjectUser::where('project_id', $project_id)->select('user_id')->get()->toArray();
+                    $leads = $globalclass->searchRelationIn($leads, 'created_by1', 'id', $user_ids);
+                }
             } else if (auth()->user()->role->name == 'Project Lead Staff') {
                 $leads->where('created_by', auth()->user()->id);
             }
@@ -54,7 +56,7 @@ class LeadController extends Controller
         } else {
 
             $search = $request->keyword;
-            $leads = Lead::where('id', '!=', null)->orderBy('created_at', 'desc')->where('status',0);
+            $leads = Lead::where('id', '!=', null)->orderBy('created_at', 'desc')->where('status', 0);
 
             $leads = $leads->where('name', 'like', '%' . $search . '%')
                 ->orWhere('email', 'like', '%' . $search . '%')
@@ -74,8 +76,8 @@ class LeadController extends Controller
         }
         $area_one = AreaOne::all();
         $area_two = AreaTwo::all();
-        $image='https://chhatt.com/static/media/realtorhigh.50c95b4c.webp';
-        return view('admin.lead.index', compact(['leads', 'callstatus', 'responsestatus', 'area_one', 'area_two','image']));
+        $image = 'https://chhatt.com/static/media/realtorhigh.50c95b4c.webp';
+        return view('admin.lead.index', compact(['leads', 'callstatus', 'responsestatus', 'area_one', 'area_two', 'image']));
     }
 
 
@@ -87,15 +89,16 @@ class LeadController extends Controller
 
 
         if (!$request->keyword) {
-            $leads = Lead::orderBy('id', 'desc')->where('status',1);
+            $leads = Lead::orderBy('id', 'desc')->where('status', 1);
 
             if (auth()->user()->role->name == 'Project Owner' || auth()->user()->role->name == 'Project Leader' || auth()->user()->role->name == 'Agent') {
                 if (auth()->user()->project == null) {
                     $project_id = auth()->user()->projectUser->project_id;
 
 
-                $user_ids = ProjectUser::where('project_id', $project_id)->select('user_id')->get()->toArray();
-                $leads = $globalclass->searchRelationIn($leads, 'created_by1', 'id', $user_ids);}
+                    $user_ids = ProjectUser::where('project_id', $project_id)->select('user_id')->get()->toArray();
+                    $leads = $globalclass->searchRelationIn($leads, 'created_by1', 'id', $user_ids);
+                }
             } else if (auth()->user()->role->name == 'Project Lead Staff') {
                 $leads->where('created_by', auth()->user()->id);
             }
@@ -105,7 +108,7 @@ class LeadController extends Controller
         } else {
 
             $search = $request->keyword;
-            $leads = Lead::where('id', '!=', null)->orderBy('created_at', 'desc')->where('status',1);
+            $leads = Lead::where('id', '!=', null)->orderBy('created_at', 'desc')->where('status', 1);
 
             $leads = $leads->where('name', 'like', '%' . $search . '%')
                 ->orWhere('email', 'like', '%' . $search . '%')
@@ -181,11 +184,33 @@ class LeadController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
+    }
+
+
+    public function formsubmit(Request $request)
+    {
         // dd($request->all());
-        Lead::create($request->all() + ['created_by' => auth()->user()->id]);
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            // 'phone' => 'required',
+        ]);
 
+        $lead = Lead::create([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'description' => $request->description,
+        ]);
 
-        return redirect()->route('leads.index');
+        // dd($lead->id);
+
+        LeadAssign::create([
+            'agent_id' => $request->agent_id,
+            'lead_id' => $lead->id
+        ]);
+        return redirect()->back();
     }
 
 
@@ -319,7 +344,7 @@ class LeadController extends Controller
             // dd('sort_by');
             // dd($request->all());
             $search = $request->keyword;
-            $leads = Lead::where('id', '!=', null)->orderBy($request->sort_from, $request->sort_by)->where('status',0);
+            $leads = Lead::where('id', '!=', null)->orderBy($request->sort_from, $request->sort_by)->where('status', 0);
 
             if ($search != null) {
                 $leads = $leads->where('name', 'like', '%' . $search . '%')
@@ -341,7 +366,7 @@ class LeadController extends Controller
 
                 ));
             } else {
-                $leads = Lead::orderBy($request->sort_from, $request->sort_by)->where('status',0);
+                $leads = Lead::orderBy($request->sort_from, $request->sort_by)->where('status', 0);
                 if (auth()->user()->role->name == 'Project Owner' || auth()->user()->role->name == 'Project Leader') {
                     if (auth()->user()->project == null) {
                         $project_id = auth()->user()->projectUser->project_id;
@@ -355,7 +380,7 @@ class LeadController extends Controller
             }
         } else {
             if ($request->keyword == null || $request->keyword == ' ') {
-                $leads = Lead::orderBy('created_at', 'desc')->where('status',0);
+                $leads = Lead::orderBy('created_at', 'desc')->where('status', 0);
                 if (auth()->user()->role->name == 'Project Owner' || auth()->user()->role->name == 'Project Leader') {
                     if (auth()->user()->project == null) {
                         $project_id = auth()->user()->projectUser->project_id;
@@ -372,7 +397,7 @@ class LeadController extends Controller
             } else {
 
                 $search = $request->keyword;
-                $leads = Lead::where('id', '!=', null)->orderBy('created_at', 'desc')->where('status',0);
+                $leads = Lead::where('id', '!=', null)->orderBy('created_at', 'desc')->where('status', 0);
 
                 $leads = $leads->where('name', 'like', '%' . $search . '%')
                     ->orWhere('email', 'like', '%' . $search . '%')
@@ -400,7 +425,7 @@ class LeadController extends Controller
                 $item = Lead::find($id);
                 $item->delete();
             }
-            $leads = Lead::orderBy('created_at', 'desc')->where('status',0);
+            $leads = Lead::orderBy('created_at', 'desc')->where('status', 0);
             if (auth()->user()->role->name == 'Project Owner' || auth()->user()->role->name == 'Project Leader') {
                 if (auth()->user()->project == null) {
                     $project_id = auth()->user()->projectUser->project_id;
@@ -456,13 +481,12 @@ class LeadController extends Controller
         }
         if (isset($request->responsestatus_id)) {
             $lead = Lead::find($request->responsestatus_id);
-             if ($request->responsestatus_val == "Intend to Buy") {
+            if ($request->responsestatus_val == "Intend to Buy") {
 
-            $lead->update([
-                'response_status' => $request->responsestatus_val,
-                'created_by' => auth()->user()->id,
-            ]);
-
+                $lead->update([
+                    'response_status' => $request->responsestatus_val,
+                    'created_by' => auth()->user()->id,
+                ]);
             } else {
 
                 $lead->update([

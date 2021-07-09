@@ -25,11 +25,14 @@ Route::get('/property/{property_type}','PropertyController@explorer')->name('exp
 Route::get('/contact-us', function () {
     return view('layouts.contact');
 })->name('contact');
+Route::post('sendform','LeadController@formsubmit')->name('contact.form');
 
 
 Route::get('examplepage', function () {
 return view('frontend.construction.store.single');
 });
+
+
 
 
 

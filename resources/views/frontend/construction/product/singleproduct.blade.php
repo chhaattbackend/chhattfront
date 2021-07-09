@@ -148,7 +148,7 @@
                 <div class="col-12 mt-5">
                     <div class="d-flex align-items-centers">
                         <h5 class="ms-3 me-3">Explore similar products</h5> |
-                        <h5 class="d-flex align-items-center ms-3">View all products in {{ $storeproduct->store->name }} <i
+                        <h5 class="d-flex align-items-center ms-3"><a href="{{ route('construction.singlestore',['store' => $storeproduct->store->slug ]) }}">View all products in {{ $storeproduct->store->name }}</a>  <i
                                 class="bi bi-chevron-right h5 mb-0"></i></h5>
                     </div>
 
@@ -168,8 +168,8 @@
                                             <div class="text-dark paraContainer">
                                                 <div class="mt-1">
                                                     <div class="d-flex justify-content-between">
-                                                        <h6 class="lightColor">{{$item->store->name}}</h6>
-                                                        <h6 class="lightColor">{{ $item->product->c_category->name }}</h6>
+                                                        <h6 class="lightColor">{!! $item->store->name !!}</h6>
+                                                        <h6 class="lightColor">{!! $item->product->c_category->name  !!} </h6>
                                                     </div>
                                                     <div class="mt-2">
                                                         <strong class="mt-5">{{ $item->product->name }}</strong>

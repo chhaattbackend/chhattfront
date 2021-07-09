@@ -71,7 +71,7 @@
         <!-- Add images to <div class="fotorama"></div> -->
         <div class="fotorama" data-nav="thumbs" data-width="100%" data-allowfullscreen="true">
             <!-- ↑ The same as data-ratio="4/3"
-                                                                 or data-ratio="1.3333333333". -->
+                                                                     or data-ratio="1.3333333333". -->
             @foreach ($propertyimage as $item)
 
                 <a href=""><img src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ @$item->name }}"
@@ -145,26 +145,61 @@
 
     <div class="contactContainer">
         <h2>Contact Us</h2>
-        <Button class="showNumber">
-            {{ @$properties->user->phone }}
+        <div class="Style_contactUser__3SauW">
+            {{-- {{ $properties->user }} --}}
+            @if ($properties->user->thumbnail != null)
+                <div style="text-align: center">
+                    <img width="60px" height="60px" style="border-radius: 50px"
+                        src="https://chhatt.s3.ap-south-1.amazonaws.com/users/{!! $properties->user->thumbnail !!}" alt="{{$properties->user->name  }}">
+                    <h5 class="pt-2 pb-1">{!! $properties->user->name !!} </h5>
+                </div>
 
-        </Button>
+            @else
+                <div style="text-align: center">
+                    <img width="60px" height="60px" style="border-radius: 50px"
+                        src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" >
+                    <h5 class="pt-2 pb-1">{!! $properties->user->name !!} </h5>
+                </div>
+            @endif
+
+        </div>
+        
         <hr />
         <div class="innerContactform">
-            <form>
-                <input class="inpC" type="text" placeholder="Name" />
+            <form action="{{ route('contact.form') }}" method="POST">
+                @csrf
+                <input type="hidden" name='agent_id' value="{!! $properties->user->agent->id !!}">
+                <input class="inpC @error('name') is-invalid @enderror" type="text" name="name" placeholder="Name"
+                    required />
+
                 <br />
-                <input class="inpC mt-4" type="text" name="email" placeholder="Email" />
+                <input class="inpC mt-4 @error('email') is-invalid @enderror" type="email" name="email" placeholder="Email"
+                    required />
+
                 <br />
-                <textarea rows="5"></textarea>
+                <textarea required name="description" class="@error('description') is-invalid @enderror"
+                    rows="5">I saw your ad on Chhatt.com (چھت).
+I am interested in your property {!! $properties->id !!} Please do give reference of Chhatt.com to the Realtor/Property Owner</textarea>
                 <br />
-                <Button type="submit">
+
+                <Button type="submit" style="background: #4391f7;border-radius: 4px">
                     <MdEmail class="text-white" style="font-size: 17px" />
                     &nbsp;Submit
                 </Button>
             </form>
         </div>
     </div>
+
+    <br />
+    @error('description')
+        <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+    @error('email')
+        <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+    @error('name')
+        <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
 
     <!-- bestprperty start -->
     <div class="bestprperty_main_div">
@@ -229,8 +264,8 @@
     <br>
     <br>
 
-    <div class="CEContainer"><a href="tel:+{{ @$properties->user->phone }}"><span><svg stroke="currentColor" fill="currentColor"
-                    stroke-width="0" viewBox="0 0 512 512" font-size="1.2rem" height="1em" width="1em"
+    <div class="CEContainer"><a href="tel:+{{ @$properties->user->phone }}"><span><svg stroke="currentColor"
+                    fill="currentColor" stroke-width="0" viewBox="0 0 512 512" font-size="1.2rem" height="1em" width="1em"
                     xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M426.666 330.667a250.385 250.385 0 0 1-75.729-11.729c-7.469-2.136-16-1.073-21.332 5.333l-46.939 46.928c-60.802-30.928-109.864-80-140.802-140.803l46.939-46.927c5.332-5.333 7.462-13.864 5.332-21.333-8.537-24.531-12.802-50.136-12.802-76.803C181.333 73.604 171.734 64 160 64H85.333C73.599 64 64 73.604 64 85.333 64 285.864 226.136 448 426.666 448c11.73 0 21.334-9.604 21.334-21.333V352c0-11.729-9.604-21.333-21.334-21.333z">
@@ -280,5 +315,7 @@
                 map: map,
             });
         }
+
+
     </script>
 @endsection

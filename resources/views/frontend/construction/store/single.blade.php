@@ -12,6 +12,7 @@
         integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+
 @endsection
 
 @section('headercontent')
@@ -19,7 +20,6 @@
         <div class="backgz">
             <div class="backg_sdivz">
                 <h1>{{ $store->name }}</h1>
-                
             </div>
         </div>
     </div>
@@ -164,6 +164,122 @@
                 <div class="main_slide_div">
                     <div style="margin: auto;" class="slider">
                         <div>
+                            <li class="scroll-img-list p-2 my-3">
+                                <a class="text-decoration-none position-relative" href="#">
+                                    <div class="imageSection">
+                                        <img class="slideImg"
+                                            src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
+                                            alt="" />
+                                    </div>
+                                    <div class="botom_div">
+                                        <div class="mt-1">
+                                            <div class="mt-0 text-center">
+                                                <div class="text-white text-center pt-2 p-3">Small Size Canopy</div>
+                                                <div class="pb-2">
+                                                    <a href="" class="d-inline-block opcty1 text-center">Get
+                                                        Best
+                                                        Quote</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </div>
+
+                          <div>
+                            <li class="scroll-img-list p-2 my-3">
+                                <a class="text-decoration-none position-relative" href="#">
+                                    <div class="imageSection">
+                                        <img class="slideImg"
+                                            src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
+                                            alt="" />
+                                    </div>
+                                    <div class="botom_div">
+                                        <div class="mt-1">
+                                            <div class="mt-0 text-center">
+                                                <div class="text-white text-center pt-2 p-3">Small Size Canopy</div>
+                                                <div class="pb-2">
+                                                    <a href="" class="d-inline-block opcty1 text-center">Get
+                                                        Best
+                                                        Quote</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </div>
+                          <div>
+                            <li class="scroll-img-list p-2 my-3">
+                                <a class="text-decoration-none position-relative" href="#">
+                                    <div class="imageSection">
+                                        <img class="slideImg"
+                                            src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
+                                            alt="" />
+                                    </div>
+                                    <div class="botom_div">
+                                        <div class="mt-1">
+                                            <div class="mt-0 text-center">
+                                                <div class="text-white text-center pt-2 p-3">Small Size Canopy</div>
+                                                <div class="pb-2">
+                                                    <a href="" class="d-inline-block opcty1 text-center">Get
+                                                        Best
+                                                        Quote</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </div>
+                          <div>
+                            <li class="scroll-img-list p-2 my-3">
+                                <a class="text-decoration-none position-relative" href="#">
+                                    <div class="imageSection">
+                                        <img class="slideImg"
+                                            src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
+                                            alt="" />
+                                    </div>
+                                    <div class="botom_div">
+                                        <div class="mt-1">
+                                            <div class="mt-0 text-center">
+                                                <div class="text-white text-center pt-2 p-3">Small Size Canopy</div>
+                                                <div class="pb-2">
+                                                    <a href="" class="d-inline-block opcty1 text-center">Get
+                                                        Best
+                                                        Quote</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </div>
+                          <div>
+                            <li class="scroll-img-list p-2 my-3">
+                                <a class="text-decoration-none position-relative" href="#">
+                                    <div class="imageSection">
+                                        <img class="slideImg"
+                                            src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
+                                            alt="" />
+                                    </div>
+                                    <div class="botom_div">
+                                        <div class="mt-1">
+                                            <div class="mt-0 text-center">
+                                                <div class="text-white text-center pt-2 p-3">Small Size Canopy</div>
+                                                <div class="pb-2">
+                                                    <a href="" class="d-inline-block opcty1 text-center">Get
+                                                        Best
+                                                        Quote</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </div>
+                          <div>
                             <li class="scroll-img-list p-2 my-3">
                                 <a class="text-decoration-none position-relative" href="#">
                                     <div class="imageSection">
@@ -471,4 +587,36 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
         integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script>
+              $('.slider').slick({
+            dots: false,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            arrows: true,
+            responsive: [
+                {
+                    breakpoint: 1300,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        infinite: false,
+                        dots: false
+                    }
+                },
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        infinite: false,
+                        dots: false
+                    }
+                },
+            ]
+        });
+        // slick sl
+        </script>
 @endsection

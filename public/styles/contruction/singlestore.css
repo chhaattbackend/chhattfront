@@ -243,4 +243,72 @@ body .form-group:not(:last-child) {
   background: var(--input-border-focus);
   color: white;
 }
+
+.boxWrapper {
+  white-space: nowrap;
+}
+.main_slide_div {
+  width: 100%;
+  min-width: 400px !important;
+  /* border: 1px solid; */
+}
+.slider {
+  text-align: center;
+  min-width: 500px !important;
+}
+
+.scroll-img-list {
+  display: inline-block;
+  text-align: left;
+  height: 100%;
+  width: 280px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 0 10px 5px #eee;
+  margin: auto !important;
+}
+.scroll-img-list .imageSection {
+  height: 200px;
+  width: 100%;
+}
+.scroll-img-list .imageSection .slideImg {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.scroll-img-list .paraContainer {
+  white-space: normal;
+}
+.scroll-img-list .paraContainer h6 {
+  margin-bottom: 0px;
+}
+
+.sliderBtnLeft,
+.sliderBtnRight {
+  cursor: pointer;
+  font-size: 25px;
+  line-height: 0.9;
+  border-radius: 3px;
+  padding: 6px;
+}
+
+.sliderBtnLeft {
+  position: absolute;
+  left: -3.5%;
+  top: 50%;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+.sliderBtnRight {
+  position: absolute;
+  right: -10%;
+  top: 50%;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+.main_slide_div .slick-next:before, .main_slide_div .slick-prev:before{
+    color: black ;
+}
 /* email  end */
