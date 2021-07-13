@@ -2,7 +2,7 @@
 
 
 @section('style')
-<link rel="stylesheet" href="{{ asset('styles/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/index.css') }}">
     {{-- <link rel="stylesheet" type="text/css" href="./styles/property/properties.css" /> --}}
     <link rel="stylesheet" href="{{ asset('styles/property/properties.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/mediaquery.css') }}">
@@ -187,22 +187,29 @@
         </div>
 
 
-        @if ($suggestedareas != null)
+        @unless($suggestedareas == null || $suggestedareasid=='a2' || $suggestedareasid=='a3')
+
             <div class="agency-search" style="padding-top: 10px !important;">
                 <div class="secdiv2">
                     <div class="container-fluid">
                         <div class="row">
                             @foreach ($suggestedareas as $item)
-                                <a href=""
-                                    class="col-4 col-xl-3 fw-bold text-decoration-none text-dark my-1">{{ $item->name }}
-                                    ({{ $item->properties->count() }})
-                                </a>
+
+                                @unless($suggestedareasid=='a2' || $suggestedareasid=='a3')
+                                    <a href="{{ route('property.search', ['search_areas' => 'a2-' . $item->id]) }}"
+                                        class="col-4 col-xl-3 fw-bold text-decoration-none text-dark my-1">{{ $item->name }}
+                                        ({{ $item->properties->count() }})
+                                    </a>
+                                @endunless
+
+
                             @endforeach
                         </div>
                     </div>
                 </div>
             </div>
-        @endif
+
+        @endunless
 
     </div>
     <!-- agency search end -->
@@ -365,8 +372,25 @@
                     // console.log(filteredArea[0].key)
                     var formData = $('#form11').serialize();
                     var url = '{{ route('property.search', 'search_areas=:key:word:formdata') }}';
-                    url = url.replace(':key', filteredArea[0].key);
-                    url = url.replace(':word', '&');
+                    array = filteredArea[0].key.split(",");
+                    area = array[0];
+                    if (area == "area_one_id") {
+                        area = 'a1';
+                    }
+                    if (area == "area_two_id") {
+                        area = 'a2';
+                    }
+                    if (area == "area_three_id") {
+                        area = 'a3';
+                    }
+                    key = area + ',' + array[1];
+                    // console.log(key)
+                    url = url.replace(':key', key);
+                    if (formData == null) {
+                        url = url.replace(':word', '&');
+                    } else {
+                        url = url.replace(':word', '');
+                    }
                     url = url.replace(':formdata', formData);
                     document.location.href = url;
                 } else {
@@ -394,6 +418,7 @@
                 drop1.style.opacity = "1";
                 drop1.style.transition = "500ms 300ms";
                 moreItems.style.display = "block";
+                view.innerText = "View Less"
             } else if (view_more_bool === false) {
                 moreItems.style.transition = "0ms";
                 serch_option.style.height = "111px";
@@ -402,6 +427,7 @@
                 drop1.style.transition = "300ms";
                 drop1.style.opacity = "0";
                 moreItems.style.display = "none";
+                view.innerText = "View More"
             }
         });
     </script>

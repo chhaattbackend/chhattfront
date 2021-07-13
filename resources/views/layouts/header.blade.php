@@ -12,22 +12,35 @@
                     @endif
                     <p></p>
                     <ul>
-                        <li id="home" onclick="window.location='{{ route('home') }}'" style="color: #fff" @if (Route::current()->getName() == 'home') class="activeNav" @endif class="lif">
-                            <span>Home</span>
-                        </li>
-                        <li id="property" onclick="window.location='{{ route('property') }}'" style="color: #fff" @if (Route::current()->getName() == 'property' || Route::current()->getName() == 'explorer.search' || Route::current()->getName() == 'property.search' || Route::current()->getName() == 'single.property') class="activeNav" @endif class="lis">
-                            <span>Property</span>
-                        </li>
-                        <li id="home" onclick="window.location='{{ route('construction.home') }}'" style="color: #fff"
-                            @if (Str::contains(Route::current()->getName(), 'construction')) class="activeNav" @endif class="lis">
-                            <span>Construction</span>
-                        </li>
-                        <li id="agencies" onclick="window.location='{{ route('agency') }}'" style="color: #fff" @if (Route::current()->getName() == 'agency' || Route::current()->getName() == 'single.agency') class="activeNav" @endif class="lis">
-                            <span>Agencies</span>
-                        </li>
-                        <li id="contact" onclick="window.location='{{ route('contact') }}'" style="color: #fff" @if (Route::current()->getName() == 'contact') class="activeNav" @endif class="lis">
-                            <span>Contact Us</span>
-                        </li>
+                        <a class="text-decoration-none" href="{{ route('home') }}">
+                            <li id="home" style="color: #fff" @if (Route::current()->getName() == 'home') class="activeNav" @endif class="lif">
+                                <span>Home</span>
+                            </li>
+                        </a>
+                        <a class="text-decoration-none" href="{{ route('property') }}">
+                            <li id="property"  style="color: #fff" @if (Route::current()->getName() == 'property' || Route::current()->getName() == 'explorer.search' || Route::current()->getName() == 'property.search' || Route::current()->getName() == 'single.property') class="activeNav" @endif class="lis">
+                                <span>Property</span>
+                            </li>
+                        </a>
+                        <a class="text-decoration-none" href="{{ route('construction.home') }}">
+                            <li id="home"  style="color: #fff"
+                                @if (Str::contains(Route::current()->getName(), 'construction')) class="activeNav" @endif class="lis">
+                                <span>Construction</span>
+                            </li>
+                        </a>
+
+                        <a class="text-decoration-none" href="{{ route('agency') }}">
+
+                            <li id="agencies"  style="color: #fff" @if (Route::current()->getName() == 'agency' || Route::current()->getName() == 'single.agency') class="activeNav" @endif class="lis">
+                                <span>Agencies</span>
+                            </li>
+                        </a>
+
+                        <a class="text-decoration-none" href="{{ route('contact') }}">
+                            <li id="contact"  style="color: #fff" @if (Route::current()->getName() == 'contact') class="activeNav" @endif class="lis">
+                                <span>Contact Us</span>
+                            </li>
+                        </a>
                     </ul>
                 </div>
             </div>

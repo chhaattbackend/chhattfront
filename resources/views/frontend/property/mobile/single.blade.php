@@ -42,10 +42,10 @@
                 href="{{ route('property.search', ['property_for' => $properties->property_for, 'city' => $properties->areaOne->city_id]) }}">
                 {{ @$properties->property_for }} </a><i class="fad fa-angle-right"></i>
             <a title=""
-                href="{{ route('property.search', ['search_areas' => 'area_one_id,' . $properties->areaOne->id]) }}">
+                href="{{ route('property.search', ['search_areas' => 'a1-' . $properties->areaOne->id]) }}">
                 {{ $properties->areaOne->name }} </a><i class="fad fa-angle-right"></i>
             <a title=""
-                href="{{ route('property.search', ['search_areas' => 'area_two_id,' . $properties->areaTwo->id]) }}">
+                href="{{ route('property.search', ['search_areas' => 'a2-' . $properties->areaTwo->id]) }}">
                 {{ $properties->areaTwo->name }} </a>
             {{-- <a disabled> {{ @$properties->property_type }} {{ @$properties->property_for }} in
                     {{ @$properties->areaTwo->name }} {{ @$properties->areaOne->name }} </a> --}}
@@ -163,7 +163,7 @@
             @endif
 
         </div>
-        
+
         <hr />
         <div class="innerContactform">
             <form action="{{ route('contact.form') }}" method="POST">

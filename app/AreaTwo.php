@@ -13,6 +13,7 @@ class AreaTwo extends Model
     {
         return $this->belongsTo(AreaOne::class, 'area_one_id');
     }
+    
     public function agencies()
     {
         return $this->hasMany(Agency::class, 'area_two_id')->limit(10);
@@ -22,7 +23,7 @@ class AreaTwo extends Model
     {
         return $this->hasMany(AreaThree::class, 'area_two_id');
     }
-    
+
 
     public function properties()
     {

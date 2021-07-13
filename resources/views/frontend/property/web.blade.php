@@ -88,7 +88,7 @@
                                     </div>
                                     <div class="slct1 slct w-100 mx-3">
                                         <div class="pb-1">Baths</div>
-                                        <select class="py-2 w-100 px-2  border-0" name="beth">
+                                        <select class="py-2 w-100 px-2  border-0" name="bath">
                                             <option selected disabled value="">Bath </option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -321,10 +321,12 @@
                 serch_option.style.height = "200px";
                 drop.style.opacity = "1";
                 drop.style.transition = "500ms 300ms";
+                view.innerText = "View Less";
             } else if (view_more_bool === false) {
                 serch_option.style.height = "120px";
                 drop.style.transition = "100ms";
                 drop.style.opacity = "0";
+                view.innerText = "View More";
             }
         });
 
@@ -398,7 +400,6 @@
             const autoCompleteJS = new autoComplete({
                 data: {
                     src: async () => {
-                        console.log(areas)
                         try {
                             // Loading placeholder text
                             document
@@ -491,8 +492,26 @@
                     // console.log(filteredArea[0].key)
                     var formData = $('#form11').serialize();
                     var url = '{{ route('property.search', 'search_areas=:key:word:formdata') }}';
-                    url = url.replace(':key', filteredArea[0].key);
-                    url = url.replace(':word', '&');
+                    // console.log(filteredArea[0].key)
+                    array = filteredArea[0].key.split(",");
+                    area = array[0];
+                    if (area == "area_one_id") {
+                        area = 'a1';
+                    }
+                    if (area == "area_two_id") {
+                        area = 'a2';
+                    }
+                    if (area == "area_three_id") {
+                        area = 'a3';
+                    }
+                    key = area + ',' + array[1];
+                    // console.log(key)
+                    url = url.replace(':key', key);
+                    if (formData == null) {
+                        url = url.replace(':word', '&');
+                    } else {
+                        url = url.replace(':word', '');
+                    }
                     url = url.replace(':formdata', formData);
                     document.location.href = url;
                 } else {

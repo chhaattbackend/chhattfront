@@ -46,11 +46,10 @@
                 <a title=""
                     href="{{ route('property.search', ['property_for' => $properties->property_for, 'city' => $properties->areaOne->city_id]) }}">
                     {{ @$properties->property_for }} </a> >
-                <a title=""
-                    href="{{ route('property.search', ['search_areas' => 'area_one_id,' . $properties->areaOne->id]) }}">
+                <a title="" href="{{ route('property.search', ['search_areas' => 'a1-' . $properties->areaOne->id]) }}">
                     {{ $properties->areaOne->name }} </a> >
-                <a title=""
-                    href="{{ route('property.search', ['search_areas' => 'area_two_id,' . $properties->areaTwo->id]) }}">
+
+                <a title="" href="{{ route('property.search', ['search_areas' => 'a2-' . $properties->areaTwo->id]) }}">
                     {{ $properties->areaTwo->name }} </a> >
                 <a disabled> {{ @$properties->property_type }} {{ @$properties->property_for }} in
                     {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }} </a>
@@ -61,8 +60,8 @@
             <div class="share_div">
 
                 <!--  <button>
-                                                                                    <MdFavoriteBorder /> Favorite
-                                                                                  </button>  -->
+                                                                                                        <MdFavoriteBorder /> Favorite
+                                                                                                      </button>  -->
                 <!--  <button>Print</button>  -->
             </div>
         </div>
@@ -78,15 +77,14 @@
                         {{-- <h3> Hello world </h3> --}}
                         <!-- Add images to <div class="fotorama"></div> -->
                         <div class="fotorama mt-5" data-nav="thumbs" data-width="100%" data-allowfullscreen="true">
-                            <!-- ↑ The same as data-ratio="4/3"
-                                                                                       or data-ratio="1.3333333333". -->
+                            <!-- ↑ The same as data-ratio="4/3"  or data-ratio="1.3333333333". -->
+                            {{-- @dd($propertyimage) --}}
                             @foreach ($propertyimage as $item)
 
-                                <a href=""><img
-                                        src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ @$item->name }}"
-                                        width="130" height="96"></a>
-
-
+                                <a href="">
+                                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ $item->name }}"
+                                        width="130" height="96">
+                                </a>
                             @endforeach
                         </div>
                         <!-- Add images to <div class="fotorama"></div> -->
@@ -243,7 +241,7 @@
                         <div class="innerContactform">
                             <form action="{{ route('contact.form') }}" method="POST">
                                 @csrf
-                                <input type="hidden" name='agent_id' value="{!!  $properties->user->agent->id !!}">
+                                <input type="hidden" name='agent_id' value="{!! $properties->user->agent->id !!}">
                                 <input class="inpC @error('name') is-invalid @enderror" type="text" name="name"
                                     placeholder="Name" required />
 
@@ -254,7 +252,7 @@
                                 <br />
                                 <textarea required name="description" class="@error('description') is-invalid @enderror"
                                     rows="5">I saw your ad on Chhatt.com (چھت).
-I am interested in your property {!! $properties->id !!} Please do give reference of Chhatt.com to the Realtor/Property Owner</textarea>
+                    I am interested in your property {!! $properties->id !!} Please do give reference of Chhatt.com to the Realtor/Property Owner</textarea>
                                 <br />
 
                                 <Button type="submit" style="background: #4391f7;border-radius: 4px">

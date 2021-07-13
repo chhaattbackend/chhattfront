@@ -38,7 +38,7 @@ class PropertyController extends Controller
 
     public function search(Request $request)
     {
-        // for mobile start
+        // dd($request->all());
 
         if (isset($request->All)) {
 
@@ -68,19 +68,39 @@ class PropertyController extends Controller
         $inputval = null;
         $inputcity_id = null;
         $suggestedareas = null;
+        $suggestedareasid = null;
+
 
 
         if (isset($request->search_areas)) {
-            $str = explode(',', $request->search_areas);
+            $contains = str_contains($request->search_areas, '-');
+            // dd($contains);
+            if ($contains) {
+                $str = explode('-', $request->search_areas);
+            } else {
+                $str = explode(',', $request->search_areas);
+            }
             $area = $str[0];
+            if ($area == 'a1') {
+                $area = 'area_one_id';
+            }
+            if ($area == 'a2') {
+                $area = 'area_two_id';
+            }
+            if ($area == 'a3') {
+                $area = 'area_three_id';
+            }
             $area_id = $str[1];
+            // dd($area_id);
+
             $pagination_array = array('search_areas' => $request->search_areas);
             if ($area == 'area_one_id') {
                 // dd('areaone');
                 $one = AreaOne::find($area_id);
                 $inputval = $one->name;
                 $inputcity_id = $one->city_id;
-                $suggestedareas = AreaTwo::where('area_one_id', $area_id)->paginate(10);
+                $suggestedareas = AreaTwo::where('area_one_id', $area_id)->take(12)->get();
+                $suggestedareasid = 'a1';
                 // dd($suggestedareas);
             }
             if ($area == 'area_two_id') {
@@ -88,13 +108,14 @@ class PropertyController extends Controller
                 $two = AreaTwo::find($area_id);
                 // dd($two);
                 $one = AreaOne::find($two->area_one_id);
-                $suggestedareas = AreaTwo::where('area_one_id', $two->area_one_id)->paginate(10);
-
+                $suggestedareas = AreaTwo::find($area_id)->take(12)->get();
                 $inputval = $one->name . ' ' . $two->name;
                 $inputcity_id = $one->city_id;
+                $suggestedareasid = 'a2';
             }
             if ($area == 'area_three_id') {
                 $inputval = AreaThree::find($area_id);
+                $inputval = $inputval->name;
             }
 
 
@@ -155,7 +176,7 @@ class PropertyController extends Controller
             $pagination_array = $this->array_push_assoc($pagination_array, 'max_area', $request->max_area);
         }
         if (isset($request->city)) {
-            $request->city = City::where('name',$request->city)->first();
+            $request->city = City::where('name', $request->city)->first();
             $search = $request->city->id;
             // dd($search);
             $properties = $global->searchRelation($properties, 'areaOne', 'city_id', $search);
@@ -172,7 +193,7 @@ class PropertyController extends Controller
         $properties->sortBy('priority');
         $pagination = $properties->appends($pagination_array);
 
-        return view('frontend.property.search', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_id', 'suggestedareas'));
+        return view('frontend.property.search', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_id', 'suggestedareas','suggestedareasid'));
     }
 
 
@@ -275,11 +296,8 @@ class PropertyController extends Controller
             if ($request->type == 'All') {
                 if (isset($request->p)) {
                     $properties = Property::paginate(24);
-
-
                 } else {
                     $properties = Property::paginate(10);
-
                 }
                 $agencies = Agency::paginate(10);
                 $data = view('frontend.property.list', compact('properties'))->render();
@@ -294,10 +312,8 @@ class PropertyController extends Controller
             if (isset($request->p)) {
 
                 $properties = Property::where('type', $request->type)->paginate(24);
-
             } else {
-            $properties = Property::where('type', $request->type)->paginate(10);
-
+                $properties = Property::where('type', $request->type)->paginate(10);
             }
             $data = view('frontend.property.list', compact('properties'))->render();
 
@@ -551,7 +567,7 @@ class PropertyController extends Controller
         $propertytype = PropertyType::all();
         $inputcity_id = null;
         $suggestedareas = null;
-        $property_type = str_replace('-',' ',$property_type);
+        $property_type = str_replace('-', ' ', $property_type);
         $properties = Property::where('property_type', $property_type)->paginate(24);
 
 

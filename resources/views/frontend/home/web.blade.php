@@ -18,6 +18,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- EXTERNAL LINKS END -->
 @endsection
+
 @section('headercontent')
     <div class="mn_div">
         <div class="backg">
@@ -225,7 +226,21 @@
                 if (filteredArea.length) {
                     // console.log(filteredArea[0].key)
                     var url = '{{ route('property.search', 'search_areas=:key') }}';
-                    url = url.replace(':key', filteredArea[0].key);
+                    array = filteredArea[0].key.split(",");
+                    area = array[0];
+                    if (area == "area_one_id") {
+                        area = 'a1';
+                    }
+                    if (area == "area_two_id") {
+                        area = 'a2';
+                    }
+                    if (area == "area_three_id") {
+                        area = 'a3';
+                    }
+                    key = area + ',' + array[1];
+                    // console.log(key)
+                    url = url.replace(':key', key);
+                    
                     document.location.href = url;
                 } else {
                     // console.log(inpVal.value)
@@ -238,6 +253,7 @@
         // == SEARCH AREA DROPDOWN END
     </script>
 @endsection
+
 @section('content')
     <meta hidden name="csrf-token" content="{{ csrf_token() }}" />
 
@@ -372,7 +388,7 @@
     </script>
 @endsection
 
-@section('personalscripts')
+{{-- @section('personalscripts')
     <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.1.3/dist/autoComplete.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
@@ -532,4 +548,4 @@
         // == SEARCH AREA DROPDOWN END
     </script>
 
-@endsection
+@endsection --}}

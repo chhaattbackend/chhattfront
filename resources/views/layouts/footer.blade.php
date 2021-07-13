@@ -97,7 +97,7 @@
             </ul>
           </div>
           <div class="tdiv">
-            <img src="./assets/chhattLogo.png" alt="Chhatt Logo" title="Chhatt" />
+            <img src="{{ asset('assets/chhattLogo.png') }}" alt="Chhatt Logo" title="Chhatt" />
             <p>
               Chhatt is a powerful platform which aims at connecting
               realtors, builders, developers, brokers with right kind of clientele
