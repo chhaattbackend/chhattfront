@@ -10,7 +10,6 @@
         li.page-item {
             display: none;
         }
-
         .page-item:first-child,
         .page-item:nth-child(2),
         .page-item:nth-last-child(2),
@@ -20,7 +19,6 @@
             display: block;
         }
         }
-
     </style>
 @endsection
 
