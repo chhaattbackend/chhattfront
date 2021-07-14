@@ -47,6 +47,8 @@ class ConstructionBCategoryController extends Controller
     {
 
         $bcategories = ConstructionBCategory::all();
+        // dd($bcategories[0]->subcategories[0]->subcategories[0]->products[0]->storeproduct);
+
         // $products=ConstructionProduct::orderBy('id','desc')->paginate(8);
         return view('frontend.construction.home.b_cat_list', compact('bcategories',));
     }
@@ -69,7 +71,6 @@ class ConstructionBCategoryController extends Controller
     public function singleproduct($id)
     {
         $storeproduct = ConstructionStoreProduct::find($id);
-
         return view('frontend.construction.product.singleproduct', compact('storeproduct'));
     }
 }

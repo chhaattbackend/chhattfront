@@ -51,7 +51,6 @@ class ConstructionProduct extends Model
         return $this->belongsTo(ConstructionBrand::class,'brand_id');
     }
     public function storeproduct(){
-        dd($this);
         return $this->hasMany(ConstructionStoreProduct::class,'product_id');
     }
 

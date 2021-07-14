@@ -29,7 +29,7 @@
     $count = 0;
     @endphp
 
-    @foreach ($bcategories as $item)
+    {{-- @foreach ($bcategories as $item)
         @php
             $count = 0;
         @endphp
@@ -85,7 +85,7 @@
                 <input hidden type="text" id="view_more{{ $item->id }}" value="true">
             @endif
         </div>
-    @endforeach
+    @endforeach --}}
 
 
     @foreach ($bcategories as $item)
@@ -102,7 +102,8 @@
                     <div id="main_List{{ $item->id }}" class="lst_div d-flex" style="height: 220px; overflow: hidden;">
                         <div class="litsdj col-md-2 pt-2 mt-4">
                             <div class="list1_div1">
-                                <img class="rounded" src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/ccategories/{{ $item->image }}"
+                                <img class="rounded"
+                                    src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/ccategories/{{ $item->image }}"
                                     width="115px" height="115px" alt="" />
                             </div>
                             <div class="list1_div2">
@@ -117,13 +118,15 @@
                             @foreach ($item->subcategories as $key => $subItem)
                                 @php
                                     $count++;
+                                    $ds=0;
                                 @endphp
 
                                 <div class="lit1 col-md-3 p-0  mt-4">
                                     <div class="list1_div1">
                                         <a href="{{ route('construction.productlist', ['id' => $subItem->id]) }}">
 
-                                            <img class="rounded" src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/{{ $subItem->image }}"
+                                            <img class="rounded"
+                                                src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/{{ $subItem->image }}"
                                                 width="115px" height="115px" alt="" />
                                         </a>
                                     </div>
@@ -132,7 +135,19 @@
                                             <br>
                                             {{ $subItem->name }}
                                         </h6>
-                                        <p>({{ $subItem->subcategories->count() ?? 'no category' }})</p>
+                                        <p>
+                                            @foreach ($subItem->products as $key => $p)
+                                                @if ($key == 0)
+                                                @php
+                                                    $ds=$p->storeproduct->count();
+                                                @endphp
+                                                    ({{ $p->storeproduct->count() }})
+                                                @endif
+                                            @endforeach
+                                        </p>
+                                        
+
+
                                     </div>
                                 </div>
                             @endforeach
