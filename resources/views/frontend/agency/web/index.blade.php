@@ -1,6 +1,11 @@
 @extends('layouts.master')
 
 @section('style')
+    <title>Browse the Best Real Estate Agencies in Karachi Pakistan | Chhatt.com</title>
+    <meta name="title" content="Browse the Best Real Estate Agencies in Karachi Pakistan | Chhatt.com">
+
+    <meta name="description"
+        content="Get in touch with the best real estate agencies in Karachi. And Choose yourbest properties like houses, flats, villas and commercial properties at Chhatt.com">
     <link rel="stylesheet" type="text/css" href="./styles/agency/agency.css" />
 @endsection
 

@@ -1,6 +1,15 @@
 @extends('layouts.mobile.master2')
 
 @section('style')
+    <title>Beautiful {{ @$properties->size }} {{ @$properties->size_type }} {{ @$properties->property_type }}
+        {{ @$properties->property_for }} In {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }}
+        {{ $properties->areaOne->city->name }} | Chhatt.com</title>
+    <meta name="title" content="Beautiful {{ @$properties->size }} {{ @$properties->size_type }} {{ @$properties->property_type }}
+            {{ @$properties->property_for }} In {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }}
+            {{ $properties->areaOne->city->name }} | Chhatt.com">
+
+    <meta name="description"
+        content="Find the {{ @$properties->size }} {{ @$properties->size_type }} {{ @$properties->property_type }} {{ @$properties->property_for }} In {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }} {{ $properties->areaOne->city->name }}. Chhatt.com provides you luxury apartments, flats and properties at best prices.">
     <link rel="stylesheet" type="text/css" href="{{ asset('mobile/index.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('mobile/property/single.css') }}" />
     <!-- EXTERNAL LINKS START -->
@@ -33,19 +42,17 @@
                 href="{{ route('property.search', ['city' => $properties->areaOne->city->name]) }}">{{ $properties->areaOne->city->name }}
             </a><i class="fad fa-angle-right"></i>
             <a title=""
-                href="{{ route('property.search', ['area_type' => $properties->type, 'city' => $properties->areaOne->city_id]) }}">
+                href="{{ route('property.search', ['area_type' => $properties->type, 'city' => $properties->areaOne->city->name]) }}">
                 {{ @$properties->type }} </a><i class="fad fa-angle-right"></i>
             <a title=""
-                href="{{ route('property.search', ['property_type' => $properties->property_type, 'city' => $properties->areaOne->city_id]) }}">
+                href="{{ route('property.search', ['property_type' => $properties->property_type, 'city' => $properties->areaOne->city->name]) }}">
                 {{ @$properties->property_type }} </a><i class="fad fa-angle-right"></i>
             <a title=""
-                href="{{ route('property.search', ['property_for' => $properties->property_for, 'city' => $properties->areaOne->city_id]) }}">
+                href="{{ route('property.search', ['property_for' => $properties->property_for, 'city' => $properties->areaOne->city->name]) }}">
                 {{ @$properties->property_for }} </a><i class="fad fa-angle-right"></i>
-            <a title=""
-                href="{{ route('property.search', ['search_areas' => 'a1-' . $properties->areaOne->id]) }}">
+            <a title="" href="{{ route('property.search', ['search_areas' => 'a1-' . $properties->areaOne->id]) }}">
                 {{ $properties->areaOne->name }} </a><i class="fad fa-angle-right"></i>
-            <a title=""
-                href="{{ route('property.search', ['search_areas' => 'a2-' . $properties->areaTwo->id]) }}">
+            <a title="" href="{{ route('property.search', ['search_areas' => 'a2-' . $properties->areaTwo->id]) }}">
                 {{ $properties->areaTwo->name }} </a>
             {{-- <a disabled> {{ @$properties->property_type }} {{ @$properties->property_for }} in
                     {{ @$properties->areaTwo->name }} {{ @$properties->areaOne->name }} </a> --}}
@@ -71,7 +78,7 @@
         <!-- Add images to <div class="fotorama"></div> -->
         <div class="fotorama" data-nav="thumbs" data-width="100%" data-allowfullscreen="true">
             <!-- ↑ The same as data-ratio="4/3"
-                                                                     or data-ratio="1.3333333333". -->
+                                                                                 or data-ratio="1.3333333333". -->
             @foreach ($propertyimage as $item)
 
                 <a href=""><img src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ @$item->name }}"
@@ -150,14 +157,15 @@
             @if ($properties->user->thumbnail != null)
                 <div style="text-align: center">
                     <img width="60px" height="60px" style="border-radius: 50px"
-                        src="https://chhatt.s3.ap-south-1.amazonaws.com/users/{!! $properties->user->thumbnail !!}" alt="{{$properties->user->name  }}">
+                        src="https://chhatt.s3.ap-south-1.amazonaws.com/users/{!! $properties->user->thumbnail !!}"
+                        alt="{{ $properties->user->name }}">
                     <h5 class="pt-2 pb-1">{!! $properties->user->name !!} </h5>
                 </div>
 
             @else
                 <div style="text-align: center">
                     <img width="60px" height="60px" style="border-radius: 50px"
-                        src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" >
+                        src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png">
                     <h5 class="pt-2 pb-1">{!! $properties->user->name !!} </h5>
                 </div>
             @endif
@@ -179,7 +187,7 @@
                 <br />
                 <textarea required name="description" class="@error('description') is-invalid @enderror"
                     rows="5">I saw your ad on Chhatt.com (چھت).
-I am interested in your property {!! $properties->id !!} Please do give reference of Chhatt.com to the Realtor/Property Owner</textarea>
+            I am interested in your property {!! $properties->id !!} Please do give reference of Chhatt.com to the Realtor/Property Owner</textarea>
                 <br />
 
                 <Button type="submit" style="background: #4391f7;border-radius: 4px">
@@ -315,7 +323,5 @@ I am interested in your property {!! $properties->id !!} Please do give referenc
                 map: map,
             });
         }
-
-
     </script>
 @endsection

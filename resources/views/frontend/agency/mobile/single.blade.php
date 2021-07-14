@@ -1,6 +1,11 @@
 @extends('layouts.mobile.master')
 
 @section('style')
+    <title>{{ $agency->name }} | Buy Sell and Build property at Chhatt.com</title>
+    <meta name="title" content="{{ $agency->name }} | Buy Sell and Build property at Chhatt.com">
+
+    <meta name="description"
+        content="Contact for {{ $agency->name }} {{ $agency->areaOne->city->name }}. And Getting latest updates for houses, flats, villas and commercial properties at leading property portal Chhatt.com">
     <link rel="stylesheet" type="text/css" href="{{ asset('mobile/index.css') }}" />
 
     <link rel="stylesheet" type="text/css" href="{{ asset('mobile/agency/single.css') }}" />

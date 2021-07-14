@@ -1,6 +1,10 @@
 @extends('layouts.mobile.master')
 
 @section('style')
+    <title>Pakistan Best Property Real Estate - Buy Sell and Build Properties | Chhatt.com</title>
+    <meta name="title" content="Pakistan Best Property Real Estate - Buy Sell and Build Properties | Chhatt.com">
+    <meta name="description"
+        content="Chhatt.com: The best property real estate and construction material providers in Pakistan. Buy, sell and rent properties, shops and commercial plots at best prices">
     <link rel="stylesheet" type="text/css" href="./mobile/home.css" />
 @endsection
 
@@ -16,7 +20,7 @@
             </div>
             <div class="sdiv">
                 <ul>
-                    <a style="text-decoration: inherit; color: black" href="{{route('agency')}}">
+                    <a style="text-decoration: inherit; color: black" href="{{ route('agency') }}">
 
                         <li onClick="historyPush">
                             <div>
@@ -126,8 +130,7 @@
                         <li>
                             <div>
                                 <!-- card start -->
-                                <a href="{{ route('single.property', $id) }}"
-                                    class="card_main_div text-decoration-none">
+                                <a href="{{ route('single.property', $id) }}" class="card_main_div text-decoration-none">
                                     <img src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ @$item->images[0]->name }}"
                                         class="propertyImg" alt="" />
                                     <p class="mb-0"> {{ $item->type }} </p>

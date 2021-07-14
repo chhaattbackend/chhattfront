@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('style')
-    {{-- <title>Chhatt</title>
-    <link rel="canonical" href="https://chhatt.com/" data-react-helmet="true">
+    <title>Buy and Sell Property on Pakistan’s Best Real Estate Portal | Chhatt.com</title>
+    <meta name="title" content="Buy and Sell Property on Pakistan’s Best Real Estate Portal | Chhatt.com">
     <meta name="description"
-        content="{{$city[0]->name }}"> --}}
+        content="Buy rent and sell your properties with Pakistan's best real estate portal at Chhatt.com. Find property dealers, developers and best property agents visit our website">
     <link rel="stylesheet" type="text/css" href="./styles/property/property.css" />
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.1.3/dist/css/autoComplete.01.min.css">

@@ -1,6 +1,10 @@
 @extends('layouts.mobile.master')
 
 @section('style')
+    <title>Buy and Sell Property on Pakistan’s Best Real Estate Portal | Chhatt.com</title>
+    <meta name="title" content="Buy and Sell Property on Pakistan’s Best Real Estate Portal | Chhatt.com">
+    <meta name="description"
+        content="Buy rent and sell your properties with Pakistan's best real estate portal at Chhatt.com. Find property dealers, developers and best property agents visit our website">
     <link rel="stylesheet" type="text/css" href="{{ asset('mobile/property/property.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('mobile/property/btnsearch.css') }}" />
 @endsection
@@ -59,7 +63,8 @@
                 <div class="sdiv">
                     <ul>
                         <li>
-                            <a href="{{ route('explorer.search', ['property_type' => 'flat']) }}" class="text-decoration-none">
+                            <a href="{{ route('explorer.search', ['property_type' => 'flat']) }}"
+                                class="text-decoration-none">
                                 <div>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="#007bff" height="25"
                                         viewBox="-35 0 512 512" width="25">
@@ -71,7 +76,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('explorer.search', ['property_type' => 'house']) }}" class="text-decoration-none">
+                            <a href="{{ route('explorer.search', ['property_type' => 'house']) }}"
+                                class="text-decoration-none">
                                 <div>
                                     <svg fill="#007bff" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
@@ -123,7 +129,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('explorer.search', ['property_type' => 'plot']) }}" class="text-decoration-none">
+                            <a href="{{ route('explorer.search', ['property_type' => 'plot']) }}"
+                                class="text-decoration-none">
                                 <div>
                                     <svg fill="#007bff" xmlns="http://www.w3.org/2000/svg" id="Capa_1"
                                         enable-background="new 0 0 609.619 609.619" height="25"
@@ -170,7 +177,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('explorer.search', ['property_type' => 'villa']) }}" class="text-decoration-none">
+                            <a href="{{ route('explorer.search', ['property_type' => 'villa']) }}"
+                                class="text-decoration-none">
                                 <div>
                                     <svg fill="#007bff" xmlns="http://www.w3.org/2000/svg" height="25"
                                         viewBox="0 -1 456 456" width="25">
@@ -196,7 +204,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('explorer.search', ['property_type' => 'farm-house']) }}" class="text-decoration-none">
+                            <a href="{{ route('explorer.search', ['property_type' => 'farm-house']) }}"
+                                class="text-decoration-none">
                                 <div>
                                     <svg fill="#007bff" xmlns="http://www.w3.org/2000/svg" id="Layer_1"
                                         enable-background="new 0 0 512 512" height="25" width="25" viewBox="0 0 512 512">
@@ -220,7 +229,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('explorer.search', ['property_type' => 'upper-portion']) }}" class="text-decoration-none">
+                            <a href="{{ route('explorer.search', ['property_type' => 'upper-portion']) }}"
+                                class="text-decoration-none">
                                 <div>
                                     <svg fill="#007bff" height="25" width="25" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
@@ -274,7 +284,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('explorer.search', ['property_type' => 'lower-portion']) }}" class="text-decoration-none">
+                            <a href="{{ route('explorer.search', ['property_type' => 'lower-portion']) }}"
+                                class="text-decoration-none">
                                 <div>
                                     <svg fill="#007bff" height="25" width="25" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
@@ -390,8 +401,8 @@
                 <div class="top">
                     <p>Featured Projects</p>
                     <!-- <p onClick="">
-                                                                                                                                            View All
-                                                                                                                                          </p> -->
+                                                                                                                                                View All
+                                                                                                                                              </p> -->
                 </div>
                 <div class="sdiv">
                     <ul>

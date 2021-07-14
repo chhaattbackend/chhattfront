@@ -1,6 +1,11 @@
 @extends('layouts.master')
 
 @section('style')
+    <title>Contact us – Buy Sell and Build Properties | Chhatt.com</title>
+    <meta name="title" content="Contact us – Buy Sell and Build Properties | Chhatt.com">
+
+    <meta name="description"
+        content="Contact us – Buy Build and Sell properties on Pakistan’s No.1 realestate portal. Must visit Chhatt.com and stay connected with the leading propertyportal">
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('styles/index.css') }}" /> --}}
 
     <!-- <link rel="stylesheet" type="text/css" href="{{ asset('styles/home/home.css') }}" /> -->
@@ -9,16 +14,17 @@
         .mn_div {
             background-image: url("../../assets/propertyCard.webp") !important;
         }
+
     </style>
 @endsection
 
 @section('headercontent')
-<div class="mn_divz">
-      <div class="backgz">
-        <div class="backg_sdivz">
-          <h1 class="fw-bolder">Contact Us</h1>
+    <div class="mn_divz">
+        <div class="backgz">
+            <div class="backg_sdivz">
+                <h1 class="fw-bolder">Contact Us</h1>
+            </div>
         </div>
-      </div>
     </div>
 @endsection
 
@@ -51,9 +57,5 @@
             </button>
         </div>
     </div>
-
-
-
-
 
 @endsection

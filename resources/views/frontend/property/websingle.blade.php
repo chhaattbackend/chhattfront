@@ -1,5 +1,13 @@
 @extends('layouts.master')
 @section('style')
+    <title>Beautiful {{ @$properties->size }} {{ @$properties->size_type }} {{ @$properties->property_type }}
+        {{ @$properties->property_for }} In {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }}
+        {{ $properties->areaOne->city->name }} | Chhatt.com</title>
+    <meta name="title" content="Beautiful {{ @$properties->size }} {{ @$properties->size_type }} {{ @$properties->property_type }}
+            {{ @$properties->property_for }} In {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }}
+            {{ $properties->areaOne->city->name }} | Chhatt.com">
+    <meta name="description"
+        content="Find the {{ @$properties->size }} {{ @$properties->size_type }} {{ @$properties->property_type }} {{ @$properties->property_for }} In {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }} {{ $properties->areaOne->city->name }}. Chhatt.com provides you luxury apartments, flats and properties at best prices.">
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/index.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/property/single.css') }}" />
     <!-- EXTERNAL LINKS START -->
@@ -38,13 +46,13 @@
                     href="{{ route('property.search', ['city' => $properties->areaOne->city->name]) }}">{{ $properties->areaOne->city->name }}
                 </a> >
                 <a title=""
-                    href="{{ route('property.search', ['area_type' => $properties->type, 'city' => $properties->areaOne->city_id]) }}">
+                    href="{{ route('property.search', ['area_type' => $properties->type, 'city' => $properties->areaOne->city->name]) }}">
                     {{ @$properties->type }} </a> >
                 <a title=""
-                    href="{{ route('property.search', ['property_type' => $properties->property_type, 'city' => $properties->areaOne->city_id]) }}">
+                    href="{{ route('property.search', ['property_type' => $properties->property_type, 'city' => $properties->areaOne->city->name]) }}">
                     {{ @$properties->property_type }} </a> >
                 <a title=""
-                    href="{{ route('property.search', ['property_for' => $properties->property_for, 'city' => $properties->areaOne->city_id]) }}">
+                    href="{{ route('property.search', ['property_for' => $properties->property_for, 'city' => $properties->areaOne->city->name]) }}">
                     {{ @$properties->property_for }} </a> >
                 <a title="" href="{{ route('property.search', ['search_areas' => 'a1-' . $properties->areaOne->id]) }}">
                     {{ $properties->areaOne->name }} </a> >
@@ -60,8 +68,8 @@
             <div class="share_div">
 
                 <!--  <button>
-                                                                                                        <MdFavoriteBorder /> Favorite
-                                                                                                      </button>  -->
+                                                                                                                <MdFavoriteBorder /> Favorite
+                                                                                                              </button>  -->
                 <!--  <button>Print</button>  -->
             </div>
         </div>
@@ -252,7 +260,7 @@
                                 <br />
                                 <textarea required name="description" class="@error('description') is-invalid @enderror"
                                     rows="5">I saw your ad on Chhatt.com (چھت).
-                    I am interested in your property {!! $properties->id !!} Please do give reference of Chhatt.com to the Realtor/Property Owner</textarea>
+                            I am interested in your property {!! $properties->id !!} Please do give reference of Chhatt.com to the Realtor/Property Owner</textarea>
                                 <br />
 
                                 <Button type="submit" style="background: #4391f7;border-radius: 4px">

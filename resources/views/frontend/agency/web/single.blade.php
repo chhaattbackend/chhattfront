@@ -1,22 +1,27 @@
 @extends('layouts.master')
 
 @section('style')
+    <title>{{ $agency->name }} | Buy Sell and Build property at Chhatt.com</title>
+    <meta name="title" content="{{ $agency->name }} | Buy Sell and Build property at Chhatt.com">
+
+    <meta name="description"
+        content="Contact for {{ $agency->name }} {{ $agency->areaOne->city->name }}. And Getting latest updates for houses, flats, villas and commercial properties at leading property portal Chhatt.com">
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/index.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/agency/singleagency.css') }}" />
 @endsection
 
 @section('headercontent')
-<div class="mn_divz">
-      <div class="backgz">
-        <div class="backg_sdivz">
-          <h2 class="fw-bolder">{{ $agency->name }} ({{ $agency->areaOne->city->name }})</h2>
+    <div class="mn_divz">
+        <div class="backgz">
+            <div class="backg_sdivz">
+                <h2 class="fw-bolder">{{ $agency->name }} {{ $agency->areaOne->city->name }}</h2>
+            </div>
         </div>
-      </div>
     </div>
 @endsection
 
 @section('content')
-<meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <div class="detailSection">
         <div class="right_side">
             <div class="agencyDetails">
@@ -105,17 +110,17 @@
                 <!--apply loop on this li-->
                 @foreach ($agents as $item)
 
-                {{-- @dd($item->user->thumbnail) --}}
+                    {{-- @dd($item->user->thumbnail) --}}
                     <li class="scroll-img-list ms-3 me-1 p-2">
                         <div class="maindivAgentCard">
                             <div class="imgContainer">
 
-                                @if($item->user->thumbnail != null)
-                                <img src="https://chhatt.s3.ap-south-1.amazonaws.com/users/{{$item->user->thumbnail}}"
-                                    alt="" />
+                                @if ($item->user->thumbnail != null)
+                                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/users/{{ $item->user->thumbnail }}"
+                                        alt="" />
                                 @else
-                                <img src="https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png"
-                                alt="" />
+                                    <img src="https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png"
+                                        alt="" />
                                 @endif
                             </div>
                             <div class="card_body text-center">

@@ -2,10 +2,10 @@
 
 
 @section('style')
-    <title>Find Out Best Properties in {{ @$inputcity_name }}, Pakistan | Chhatt.com</title>
-    <meta name="title" content="Find Out Best Properties in {{ @$inputcity_name }}, Pakistan | Chhatt.com">
+    <title>Browse The Luxury {{ ucfirst($property_type) }} in Pakistan | Chhaat.com</title>
+    <meta name="title" content="Browse The Luxury {{ ucfirst($property_type) }} in Pakistan | Chhaat.com">
     <meta name="description"
-        content="Browse the best properties in {{ @$inputcity_name }}, Pakistan. Find the latest apartments, plots, houses and commercial properties at leading property portal Chhatt.com">
+        content="Looking for the Luxury {{ ucfirst($property_type) }} in Pakistan? Must visit Chhatt.com and find the luxury flats, plots, villas, and apartments in your budget.">
     <link rel="stylesheet" href="{{ asset('styles/index.css') }}">
     {{-- <link rel="stylesheet" type="text/css" href="./styles/property/properties.css" /> --}}
     <link rel="stylesheet" href="{{ asset('styles/property/properties.css') }}">
