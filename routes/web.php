@@ -25,21 +25,9 @@ Route::get('/property/{property_type}','PropertyController@explorer')->name('exp
 Route::get('/contact-us', function () {
     return view('layouts.contact');
 })->name('contact');
-
 Route::post('sendform','LeadController@formsubmit')->name('contact.form');
-// Route::get('examplepage', function () {
-// return view('frontend.construction.store.single');
-// });
 
 
-
-
-
-
-
-
-
-// construction
 Route::prefix('construction')->group(function () {
 Route::get('/','ConstructionACategoryController@index')->name('construction.home');
 
@@ -51,9 +39,6 @@ Route::get('/productlist/{id}','ConstructionBCategoryController@product')->name(
 Route::get('/productDetail/{id}','ConstructionBCategoryController@singleproduct')->name('construction.singleproduct');
 Route::get('/storeDetail/{store:slug}','ConstructionStoreController@index')->name('construction.singlestore');
 });
-// construction
-
-
 
 
 // mobile

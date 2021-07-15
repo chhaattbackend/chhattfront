@@ -1,11 +1,7 @@
 @extends('layouts.master')
 @section('style')
-    <title>Beautiful {{ @$properties->size }} {{ @$properties->size_type }} {{ @$properties->property_type }}
-        {{ @$properties->property_for }} In {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }}
-        {{ $properties->areaOne->city->name }} | Chhatt.com</title>
-    <meta name="title" content="Beautiful {{ @$properties->size }} {{ @$properties->size_type }} {{ @$properties->property_type }}
-            {{ @$properties->property_for }} In {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }}
-            {{ $properties->areaOne->city->name }} | Chhatt.com">
+    <title>Beautiful {{ @$properties->size }} {{ @$properties->size_type }} {{ @$properties->property_type }} {{ @$properties->property_for }} In {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }} {{ $properties->areaOne->city->name }} | Chhatt.com</title>
+    <meta name="title" content="Beautiful {{ @$properties->size }} {{ @$properties->size_type }} {{ @$properties->property_type }}{{ @$properties->property_for }} In {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }} {{ $properties->areaOne->city->name }} | Chhatt.com">
     <meta name="description"
         content="Find the {{ @$properties->size }} {{ @$properties->size_type }} {{ @$properties->property_type }} {{ @$properties->property_for }} In {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }} {{ $properties->areaOne->city->name }}. Chhatt.com provides you luxury apartments, flats and properties at best prices.">
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/index.css') }}" />
@@ -30,7 +26,7 @@
     <div class="mn_divz">
         <div class="backgz">
             <div class="backg_sdivz">
-                <h2 class="fw-bolder">Beautiful  {{ @$properties->size }} {{ @$properties->size_type }}
+                <h2 class="fw-bolder">Beautiful {{ @$properties->size }} {{ @$properties->size_type }}
                     {{ @$properties->property_type }} {{ @$properties->property_for }} in
                     {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }} </h2>
             </div>
@@ -69,8 +65,8 @@
             <div class="share_div">
 
                 <!--  <button>
-                                                                                                                <MdFavoriteBorder /> Favorite
-                                                                                                              </button>  -->
+                                                                                                                    <MdFavoriteBorder /> Favorite
+                                                                                                                  </button>  -->
                 <!--  <button>Print</button>  -->
             </div>
         </div>
@@ -202,14 +198,13 @@
                     <div class='saleTagContainer'>
                         <h2>
                             {{ @$properties->property_type }} {{ @$properties->property_for }} in
-                            {{ @$properties->areaTwo->name }}
                             {{ @$properties->areaOne->name }}
                         </h2>
                         <h2>
-                            {{ @convert_rupee($properties->price) }}
+                            PKR {{ @convert_rupee($properties->price) }}
                         </h2>
                         <p>
-                            {{ @$properties->areaOne->name }}, {{ @$properties->areaOne->city->name }}
+                            {{ @$properties->address }}
                         </p>
                     </div>
                     <br />
@@ -236,6 +231,7 @@
                             @endif
 
                         </div>
+
                         <input hidden type="text" id="numberrrr" value="{{ @$properties->user->phone }}">
                         <Button class="showNumber ripple" onclick="chnagenumb()">
                             <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
@@ -261,7 +257,7 @@
                                 <br />
                                 <textarea required name="description" class="@error('description') is-invalid @enderror"
                                     rows="5">I saw your ad on Chhatt.com (چھت).
-                            I am interested in your property {!! $properties->id !!} Please do give reference of Chhatt.com to the Realtor/Property Owner</textarea>
+                                I am interested in your property {!! $properties->id !!} Please do give reference of Chhatt.com to the Realtor/Property Owner</textarea>
                                 <br />
 
                                 <Button type="submit" style="background: #4391f7;border-radius: 4px">

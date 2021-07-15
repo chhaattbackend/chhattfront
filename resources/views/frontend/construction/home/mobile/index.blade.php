@@ -77,8 +77,8 @@
                 </div>
                 <div class="sdiv">
                     <ul class="main_ul" style="padding-left: 0rem;">
-                        @foreach ($storeproducts as $item)
-                            @foreach ($item->randomproduct($item->id) as $key => $item)
+                        @foreach ($store as $item)
+                            @foreach ($item->randomproduct(1) as $key => $item)
                                 <li>
                                     <div>
                                         <!-- card start -->

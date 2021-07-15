@@ -48,7 +48,7 @@ class ConstructionStore extends Model
         return $this->hasMany(ConstructionStoreService::class,'store_id');
     }
 
-    public function randomproduct($id){
-        return ConstructionStoreProduct::where('store_id',$id)->inRandomOrder()->limit(1)->get();
+    public function randomproduct($limit){
+        return ConstructionStoreProduct::where('store_id',$this->id)->inRandomOrder()->limit($limit)->get();
     }
 }

@@ -187,9 +187,9 @@
     <div class="mapCardContainer newProduct">
         <div class="container-fluid">
             <div class="row px-2">
-                @foreach ($storeproducts as $item)
+                @foreach ($store as $item)
 
-                    @foreach ($item->randomproduct($item->id) as $key => $item)
+                    @foreach ($item->randomproduct(1) as $key => $item)
 
                         <div class="col-sm-4 col-lg-3 mb-4">
                             <div class="propertyCard p-2">

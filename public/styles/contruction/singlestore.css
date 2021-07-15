@@ -274,7 +274,7 @@ body .form-group:not(:last-child) {
 .scroll-img-list .imageSection .slideImg {
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 6px;
 }
 .scroll-img-list .paraContainer {

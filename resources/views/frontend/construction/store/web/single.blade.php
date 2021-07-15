@@ -163,145 +163,33 @@
                 <!-- slider -->
                 <div class="main_slide_div">
                     <div style="margin: auto;" class="slider">
-                        <div>
-                            <li class="scroll-img-list p-2 my-3">
-                                <a class="text-decoration-none position-relative" href="#">
-                                    <div class="imageSection">
-                                        <img class="slideImg"
-                                            src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
-                                            alt="" />
-                                    </div>
-                                    <div class="botom_div">
-                                        <div class="mt-1">
-                                            <div class="mt-0 text-center">
-                                                <div class="text-white text-center pt-2 p-3">Small Size Canopy</div>
-                                                <div class="pb-2">
-                                                    <a href="" class="d-inline-block opcty1 text-center">Get
-                                                        Best
-                                                        Quote</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </div>
+                        @foreach ($d_categories as $item)
 
-                          <div>
-                            <li class="scroll-img-list p-2 my-3">
-                                <a class="text-decoration-none position-relative" href="#">
-                                    <div class="imageSection">
-                                        <img class="slideImg"
-                                            src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
-                                            alt="" />
-                                    </div>
-                                    <div class="botom_div">
-                                        <div class="mt-1">
-                                            <div class="mt-0 text-center">
-                                                <div class="text-white text-center pt-2 p-3">Small Size Canopy</div>
-                                                <div class="pb-2">
-                                                    <a href="" class="d-inline-block opcty1 text-center">Get
-                                                        Best
-                                                        Quote</a>
+                            <div>
+                                <li class="scroll-img-list p-2 my-3">
+                                    <a class="text-decoration-none position-relative" href="#">
+                                        <div class="imageSection">
+                                            <img class="slideImg"
+                                                src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/{{ $item->image }}"
+                                                alt="" />
+                                        </div>
+                                        <div class="botom_div">
+                                            <div class="mt-1">
+                                                <div class="mt-0 text-center">
+                                                    <div class="text-white text-center pt-2 p-3">{{ $item->name }}</div>
+                                                    <div class="pb-2">
+                                                        <a href="" class="d-inline-block opcty1 text-center">Get
+                                                            Best
+                                                            Quote</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </div>
-                          <div>
-                            <li class="scroll-img-list p-2 my-3">
-                                <a class="text-decoration-none position-relative" href="#">
-                                    <div class="imageSection">
-                                        <img class="slideImg"
-                                            src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
-                                            alt="" />
-                                    </div>
-                                    <div class="botom_div">
-                                        <div class="mt-1">
-                                            <div class="mt-0 text-center">
-                                                <div class="text-white text-center pt-2 p-3">Small Size Canopy</div>
-                                                <div class="pb-2">
-                                                    <a href="" class="d-inline-block opcty1 text-center">Get
-                                                        Best
-                                                        Quote</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </div>
-                          <div>
-                            <li class="scroll-img-list p-2 my-3">
-                                <a class="text-decoration-none position-relative" href="#">
-                                    <div class="imageSection">
-                                        <img class="slideImg"
-                                            src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
-                                            alt="" />
-                                    </div>
-                                    <div class="botom_div">
-                                        <div class="mt-1">
-                                            <div class="mt-0 text-center">
-                                                <div class="text-white text-center pt-2 p-3">Small Size Canopy</div>
-                                                <div class="pb-2">
-                                                    <a href="" class="d-inline-block opcty1 text-center">Get
-                                                        Best
-                                                        Quote</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </div>
-                          <div>
-                            <li class="scroll-img-list p-2 my-3">
-                                <a class="text-decoration-none position-relative" href="#">
-                                    <div class="imageSection">
-                                        <img class="slideImg"
-                                            src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
-                                            alt="" />
-                                    </div>
-                                    <div class="botom_div">
-                                        <div class="mt-1">
-                                            <div class="mt-0 text-center">
-                                                <div class="text-white text-center pt-2 p-3">Small Size Canopy</div>
-                                                <div class="pb-2">
-                                                    <a href="" class="d-inline-block opcty1 text-center">Get
-                                                        Best
-                                                        Quote</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </div>
-                          <div>
-                            <li class="scroll-img-list p-2 my-3">
-                                <a class="text-decoration-none position-relative" href="#">
-                                    <div class="imageSection">
-                                        <img class="slideImg"
-                                            src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/74/dc/bb.jpg"
-                                            alt="" />
-                                    </div>
-                                    <div class="botom_div">
-                                        <div class="mt-1">
-                                            <div class="mt-0 text-center">
-                                                <div class="text-white text-center pt-2 p-3">Small Size Canopy</div>
-                                                <div class="pb-2">
-                                                    <a href="" class="d-inline-block opcty1 text-center">Get
-                                                        Best
-                                                        Quote</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </div>
+                                    </a>
+                                </li>
+                            </div>
+
+                        @endforeach
 
                     </div>
                 </div>
@@ -409,35 +297,36 @@
                 <span class="d-block" style="width: 40px; margin: auto; height: 3px; background-color: #007bff;">
                 </span>
                 <div class="p-2 product_div row flex-wrap justify-content-center text-center justify-content-between">
-                    @foreach ($store->storeproducts as $item)
+                    @foreach ($store->randomproduct(9) as $key => $item)
 
-                        <div class="mt-4 col-md-2 p-2 border" style="width: 300px;">
+                            <div class="mt-4 col-md-2 p-2 border" style="width: 300px;">
 
-                            <a href="{{route('construction.singleproduct',[$item->id])}}" class="d-inline-block  text-decoration-none"
-                                style="width: 250px; font-size: 17px; color: #007bff; font-weight: bolder;">
-                                <img width="100%" height="200px"
-                                src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}" />
-                                {{ $item->product->name }}
+                                <a href="{{ route('construction.singleproduct', [$item->id]) }}"
+                                    class="d-inline-block  text-decoration-none"
+                                    style="width: 250px; font-size: 17px; color: #007bff; font-weight: bolder;">
+                                    <img width="100%" height="200px"
+                                        src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}" />
+                                    {{ $item->product->name }}
 
-                            </a>
-                            {{-- <a href="" class="d-inline-block  text-decoration-none"
-                                style="width: 250px; font-size: 17px; color: gray; ">
-                                {{ $item->product->price }}
+                                </a>
+                                {{-- <a href="" class="d-inline-block  text-decoration-none"
+                                        style="width: 250px; font-size: 17px; color: gray; ">
+                                        {{ $item->product->price }}
 
-                            </a>
-                            <a href="" class="d-inline-block  text-decoration-none"
-                                style="width: 250px; font-size: 17px; color: gray; ">
-                                No response for the inquiry from sdmabgmk
-                            </a>
-                            <a href="" class="d-inline-block  text-decoration-none"
-                                style="width: 250px; font-size: 17px; color: gray; ">
-                                No response for the inquiry from sdmabgmk
-                            </a>
-                            <a href="" class="d-inline-block mt-2 text-decoration-none"
-                                style="width: 250px; font-size: 15px; color: #007bff;font-weight: bold; ">
-                                View Details >
-                            </a> --}}
-                        </div>
+                                        </a>
+                                        <a href="" class="d-inline-block  text-decoration-none"
+                                            style="width: 250px; font-size: 17px; color: gray; ">
+                                            No response for the inquiry from sdmabgmk
+                                        </a>
+                                        <a href="" class="d-inline-block  text-decoration-none"
+                                            style="width: 250px; font-size: 17px; color: gray; ">
+                                            No response for the inquiry from sdmabgmk
+                                        </a>
+                                        <a href="" class="d-inline-block mt-2 text-decoration-none"
+                                            style="width: 250px; font-size: 15px; color: #007bff;font-weight: bold; ">
+                                            View Details >
+                                    </a> --}}
+                            </div>
                     @endforeach
 
                 </div>
@@ -542,11 +431,11 @@
                             <div class="d-flex align-items-center"><i class="bi bi-geo-alt-fill me-2 h4"></i>
                                 <h5>
 
-                                  {{$store->name}}
+                                    {{ $store->name }}
                                 </h5>
                             </div>
                             {{-- <div class="small">Manpura, Chittaurgarh, Chittorgarh-312001, Rajasthan, India</div> --}}
-                            <div class="small">{{$store->address}}</div>
+                            <div class="small">{{ $store->address }}</div>
                             <button class="bg-transparent mt-2"><a href="">
                                     <i class="bi bi-arrow-return-right"></i> Get
                                     Directions
@@ -555,7 +444,7 @@
                             {{-- <div class="mt-3"><i class="bi bi-person-circle me-2 h4 mb-0"></i>Sanjay Kumar Rao
                                 (Sanjay)
                             </div> --}}
-                            <div class="mt-3"><i class="bi bi-person-circle me-2 h4 mb-0"></i>{{$store->user->name}}
+                            <div class="mt-3"><i class="bi bi-person-circle me-2 h4 mb-0"></i>{{ $store->user->name }}
                             </div>
                             <div class="d-flex mt-3">
                                 <div>
@@ -588,16 +477,15 @@
         integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        <script>
-              $('.slider').slick({
+    <script>
+        $('.slider').slick({
             dots: false,
             infinite: false,
             speed: 300,
             slidesToShow: 4,
             slidesToScroll: 1,
             arrows: true,
-            responsive: [
-                {
+            responsive: [{
                     breakpoint: 1300,
                     settings: {
                         slidesToShow: 3,
@@ -618,5 +506,5 @@
             ]
         });
         // slick sl
-        </script>
+    </script>
 @endsection

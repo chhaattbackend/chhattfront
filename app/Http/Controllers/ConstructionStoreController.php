@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\ACategory;
 use App\BCategory;
 use App\City;
+use App\ConstructionDCategory;
 use App\ConstructionStore;
 use App\ConstructionStoreProduct;
 use App\Store;
 use App\Unit;
 use App\User;
 use Illuminate\Http\Request;
+
+use function PHPSTORM_META\map;
 
 class ConstructionStoreController extends Controller
 {
@@ -21,7 +24,16 @@ class ConstructionStoreController extends Controller
      */
     public function index(ConstructionStore $store)
     {
-        return view('frontend.construction.store.single', compact('store'));
+        $d_categories = [];
+        foreach ($store->storeproducts as $item) {
+            if ($item->product->d_category != null) {
+                array_push($d_categories, ConstructionDCategory::find($item->product->d_category->id));
+            }
+        };
+        $d_categories = array_unique($d_categories);
+
+
+        return view('frontend.construction.store.single', compact('store', 'd_categories'));
     }
 
     /**
