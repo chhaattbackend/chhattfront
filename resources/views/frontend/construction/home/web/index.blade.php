@@ -188,12 +188,10 @@
         <div class="container-fluid">
             <div class="row px-2">
                 @foreach ($storeproducts as $item)
-                    {{-- @dd($products) --}}
-                    {{-- @dd($item->randomproduct($item->id)) --}}
+
                     @foreach ($item->randomproduct($item->id) as $key => $item)
 
                         <div class="col-sm-4 col-lg-3 mb-4">
-                            {{-- @dd($item); --}}
                             <div class="propertyCard p-2">
                                 <a class="text-decoration-none position-relative" href="{{ route('construction.singleproduct', ['id' => $item->id]) }}">
                                     <div class="imageSection">

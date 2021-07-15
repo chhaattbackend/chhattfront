@@ -30,7 +30,8 @@
     <div class="mn_divz">
         <div class="backgz">
             <div class="backg_sdivz">
-                <h2 class="fw-bolder">{{ @$properties->property_type }} {{ @$properties->property_for }} in
+                <h2 class="fw-bolder">Beautiful  {{ @$properties->size }} {{ @$properties->size_type }}
+                    {{ @$properties->property_type }} {{ @$properties->property_for }} in
                     {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }} </h2>
             </div>
         </div>

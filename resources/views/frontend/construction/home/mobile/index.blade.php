@@ -18,28 +18,48 @@
         <div class="indSupplies">
             <div class="fdiv">
                 <div class="top">
-                    <p>Industrial Supplies</p>
+                    <p>Construction Materials</p>
                     <p>
-                        View All
+                        <a href="{{ route('construction.bcatlist') }}" class="text-decoration-none t">
+                            View All
+                        </a>
                     </p>
                 </div>
                 <div class="sdiv">
-                    <ul class="main_ul">
-                        <li>
-                            <div>
-                                <!-- card start -->
-                                <a href="" class="card_main_div text-decoration-none text-dark text-decoration-none">
-                                    <img src="./assets/images/welcomeCenter.webp" class="propertyImg" alt="" />
-                                    <p class="mb-0 fw-bold text-black"> Cement </p>
-                                    <ol class="list-group">
-                                        <li class="small mb-0">lorem1</li>
-                                        <li class="small mb-0">lorem2</li>
-                                        <li class="small mb-0">lorem3</li>
-                                    </ol>
-                                </a>
-                                <!-- card end -->
-                            </div>
-                        </li>
+                    <ul class="main_ul" style="padding-left: 0rem">
+                        @foreach ($bcategories as $item)
+                            @php
+                                $id = str_replace(str_split('\\/:*?"<>|() '), '-', strtolower($item->name));
+                                $id = str_replace(',', '_', $id);
+                            @endphp
+
+                            <li>
+                                <div>
+                                    <!-- card start -->
+                                    <a href="{{ route('construction.bcat', ['id' => $id]) }}"
+                                        class="card_main_div text-decoration-none text-dark text-decoration-none">
+                                        <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $item->image }}"
+                                            class="propertyImg" alt="" />
+                                        <p class="mb-0 fw-bold text-black">{{ $item->name }}</p>
+                                        <ol class="list-group">
+                                            @php
+                                                $i = 0;
+                                            @endphp
+                                            @foreach ($item->subcategories as $subItem)
+                                                @php
+                                                    $i++;
+                                                @endphp
+                                                @if ($i < 6)
+                                                    <li class="small mb-0">{{ $subItem->name }}</li>
+                                                @endif
+                                            @endforeach
+                                        </ol>
+                                    </a>
+                                    <!-- card end -->
+                                </div>
+                            </li>
+                        @endforeach
+
                     </ul>
                 </div>
             </div>
@@ -50,27 +70,32 @@
         <div class="indSupplies mt-4">
             <div class="fdiv">
                 <div class="top">
-                    <p>Industrial Supplies</p>
+                    <p>New Product</p>
                     <p>
                         View All
                     </p>
                 </div>
                 <div class="sdiv">
-                    <ul class="main_ul">
-                        <li>
-                            <div>
-                                <!-- card start -->
-                                <a href="" class="card_main_div text-decoration-none text-dark text-decoration-none">
-                                    <img src="./assets/images/welcomeCenter.webp" class="propertyImg" alt="" />
-                                    <p class="mb-0 fw-bold text-black"> New Product </p>
-                                    <div class="list-group">
-                                        <h6 class="fw-bold mb-0">Amreli Xtreme Steel</h6>
-                                        <h6 class="fw-bold">Rs: 1.38 Lacs</h6>
+                    <ul class="main_ul" style="padding-left: 0rem;">
+                        @foreach ($storeproducts as $item)
+                            @foreach ($item->randomproduct($item->id) as $key => $item)
+                                <li>
+                                    <div>
+                                        <!-- card start -->
+                                        <a href="{{ route('construction.singleproduct', ['id' => $item->id]) }}"
+                                            class="card_main_div text-decoration-none text-dark text-decoration-none">
+                                            <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}" class="propertyImg" alt="" />
+                                            <p class="mb-0 fw-bold text-black"> {{ $item->store->name }} </p>
+                                            <div class="list-group">
+                                                <h6 class="fw-bold mb-0">{{ $item->product->name }}</h6>
+                                                <h6 class="fw-bold">Rs: {{ $item->product->price }}</h6>
+                                            </div>
+                                        </a>
+                                        <!-- card end -->
                                     </div>
-                                </a>
-                                <!-- card end -->
-                            </div>
-                        </li>
+                                </li>
+                            @endforeach
+                        @endforeach
                     </ul>
                 </div>
             </div>
