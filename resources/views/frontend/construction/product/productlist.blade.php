@@ -106,7 +106,7 @@
                 <ul id="relatedbrand" class="border p-2">
                     @foreach ($storeproducts as $item)
                         <li class="p-1">
-                            {{ $item }}
+                            {{-- {{ $item }} --}}
                         </li>
                     @endforeach
 
@@ -212,15 +212,18 @@
                         {{-- <p>{{ $storeproducts[0]->getrelatedcategory($storeproducts[0]->product->c_category->id,$storeproducts[0]->product->id) }}</p> --}}
 
                         <div class="botom_div_main  d-flex mt-3 flex-wrap justify-content-start pr-3">
-                            @foreach ($item->getrelatedcategory(3) as $suggesteditem)
+                            @foreach ($item->getrelatedproduct(3) as $suggesteditem)
+                                @php
+                                    $suggesteditem->store_id;
+                                @endphp
                                 <div class="d-flex div1 mr-2">
                                     <div>
                                         <img width="80px" height="72px" style=" object-fit: contain;"
-                                            src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $suggesteditem->image }}" />
+                                            src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $suggesteditem }}" />
                                     </div>
                                     <div class="d-flex flex-column justify-content-center">
-                                        <p class="m-0 txt">{{ $suggesteditem->name }}</p>
-                                        <p class="m-0 txt1">RS {{ $suggesteditem->price }}</p>
+                                        <p class="m-0 txt">{{ $suggesteditem }}</p>
+                                        <p class="m-0 txt1">RS {{ $suggesteditem }}</p>
                                         <a class="anc" href="">Get Quote</a>
                                     </div>
                                 </div>

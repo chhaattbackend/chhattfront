@@ -58,6 +58,18 @@ class ConstructionBCategoryController extends Controller
         }
         $storeproducts = ConstructionStoreProduct::where('product_id', $product->id)->get();
         $dcategories = ConstructionDCategory::where('c_category_id', $dcategory->category->id)->get();
+        $relatedBrand = [];
+        // $a = ConstructionProduct::where('c_category_id', $dcategory->category->id)->get(); // for all brands
+        $a = ConstructionProduct::where('c_category_id', $dcategory->category->id)->get(); // for all brands
+        foreach ($a as $key => $value) {
+            foreach ($value->storeproduct as $key => $item) {
+                if ($item->product->brand != null) {
+                    array_push($relatedBrand, $item->product->brand->name);
+                }
+            }
+        }
+        $relatedBrand = array_unique($relatedBrand);
+        // dd($relatedBrand);
 
         return view('frontend.construction.product.productlist', compact('storeproducts', 'dcategory', 'dcategories'));
     }

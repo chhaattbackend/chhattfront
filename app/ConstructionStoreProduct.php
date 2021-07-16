@@ -49,6 +49,17 @@ class ConstructionStoreProduct extends Model
 
     public function getrelatedproduct($count)
     {
-        return ConstructionStoreProduct::where('product_id', $this->product->id)->inRandomOrder()->take($count)->get();
+        // return ConstructionStoreProduct::where('product_id', $this->product->id)->inRandomOrder()->take($count)->get();
+        $a = ConstructionProduct::where('c_category_id',$this->product->c_category_id)->where('id', '!=', $this->product->id)->get();
+        $relatedProduct = [];
+        foreach ($a as $key => $item) {
+            $b= ConstructionStoreProduct::where('store_id',$this->store_id)->where('product_id',$item->id)->get();
+            array_push($relatedProduct, ConstructionStoreProduct::where('store_id',$this->store_id)->where('product_id',$item->id)->first());
+        }
+        $relatedProduct = array_unique($relatedProduct);
+
+        // dd($relatedProduct);
+        return $relatedProduct;
+
     }
 }
