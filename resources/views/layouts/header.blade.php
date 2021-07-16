@@ -25,7 +25,7 @@
                         <a class="text-decoration-none" href="{{ route('construction.home') }}">
                             <li id="home"  style="color: #fff"
                                 @if (Str::contains(Route::current()->getName(), 'construction')) class="activeNav" @endif class="lis">
-                                <span>Construction</span>
+                                <span>Construction Material</span>
                             </li>
                         </a>
 

@@ -26,8 +26,28 @@
 
     @php
     $count = 0;
+    $showbcat = 0;
     @endphp
+
     @foreach ($ccategories as $item)
+        @php
+            $count = 0;
+            $showbcat = 0;
+            $showcatsubcat = 0;
+            $countsubcat = 0;
+        @endphp
+        @foreach ($item->subcategories as $key => $subItem)
+            @foreach ($subItem->products as $key => $p)
+                @if ($key == 0)
+                    @php
+                        $showbcat = $p->storeproduct->count();
+                        if ($showbcat != null) {
+                            $countsubcat++;
+                        }
+                    @endphp
+                @endif
+            @endforeach
+        @endforeach
 
         <div id="serch_option_show" class="main_div_list">
             <div class="mainList1">
@@ -43,32 +63,46 @@
                                 <br>
                                 {{ $item->name }}
                             </h6>
-                            <p>({{ $item->subcategories->count() }})</p>
+                            <p>({{ $countsubcat }})</p>
                         </div>
                     </div>
                     <div class="list row m-auto flex-wrap">
                         @foreach ($item->subcategories as $key => $subItem)
                             @php
-                                $count++;
+                                $showcatsubcat = 0;
                             @endphp
+                            @foreach ($subItem->products as $key => $p)
+                                @if ($key == 0)
+                                    @php
+                                        $showcatsubcat = $p->storeproduct->count();
+                                    @endphp
+                                @endif
+                            @endforeach
+                            @unless($showcatsubcat == 0)
+                                @php
+                                    $countsubcat = 0;
+                                @endphp
+                                <div class="lit1 col-md-3 p-0  mt-4">
+                                    <div class="list1_div1">
+                                        <a href="{{ route('construction.productlist', ['id' => $subItem->id]) }}">
 
-                            <div class="lit1 col-md-3 p-0  mt-4">
-                                <div class="list1_div1">
-                                    <a href="{{ route('construction.productlist', ['id' => $subItem->id]) }}">
+                                            <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/{{ $subItem->image }}"
+                                                width="115px" height="115px" alt="" />
+                                        </a>
+                                    </div>
+                                    <div class="list1_div2">
+                                        <h6 class="ellipse">
+                                            <br>
+                                            {{ $subItem->name }}
+                                        </h6>
+                                        <p>({{$showcatsubcat}})</p>
+                                    </div>
+                                </div>
+                            @endunless
 
-                                        <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/{{ $subItem->image }}"
-                                            width="115px" height="115px" alt="" />
-                                    </a>
-                                </div>
-                                <div class="list1_div2">
-                                    <h6 class="ellipse">
-                                        <br>
-                                        {{ $subItem->name }}
-                                    </h6>
-                                    <p>({{ $subItem->subcategories->count() ?? 'no category' }})</p>
-                                </div>
-                            </div>
+
                         @endforeach
+
 
                     </div>
                 </div>

@@ -45,11 +45,7 @@ class ConstructionBCategoryController extends Controller
 
     public function viewall()
     {
-
         $bcategories = ConstructionBCategory::all();
-        // dd($bcategories[0]->subcategories[0]->subcategories[0]->products[0]->storeproduct);
-
-        // $products=ConstructionProduct::orderBy('id','desc')->paginate(8);
         return view('frontend.construction.home.b_cat_list', compact('bcategories',));
     }
 
@@ -57,11 +53,9 @@ class ConstructionBCategoryController extends Controller
     {
         $dcategory = ConstructionDCategory::find($id);
         $product = ConstructionProduct::where('d_category_id', $id)->first();
-
         if ($product == null) {
             return redirect()->back();
         }
-
         $storeproducts = ConstructionStoreProduct::where('product_id', $product->id)->get();
         $dcategories = ConstructionDCategory::where('c_category_id', $dcategory->category->id)->get();
 

@@ -85,11 +85,11 @@
                         <input type="checkbox"/> <span class="d-inline-block ml-2">Video</span>
                     </li>
                 </ul> --}}
-                <h6 class="font-weight-bolder mt-3 mb-0 border p-2 bg-light text-dark" onclick="down('relatedcat')">Related Category</h6>
+                <h6 class="font-weight-bolder mt-3 mb-0 border p-2 bg-light text-dark" onclick="down('relatedcat')">Related
+                    Category</h6>
                 <ul id="relatedcat" class="border p-2">
                     {{-- ->slice(0, 10) for limit --}}
                     @foreach ($dcategory->category->category->subcategories as $item)
-
                         <li class="p-1">
                             <a href="{{ route('construction.bcat', ['id' => str_replace(',', '_', str_replace(str_split('\\/:*?"<>|() '), '-', strtolower($dcategory->category->category->name)))]) }}"
                                 class="filtertag">
@@ -101,12 +101,12 @@
                 </ul>
 
 
-                <h6 class="font-weight-bolder mt-3 mb-0 border p-2 bg-light text-dark" onclick="down('relatedbrand')">Related Brands</h6>
+                <h6 class="font-weight-bolder mt-3 mb-0 border p-2 bg-light text-dark" onclick="down('relatedbrand')">
+                    Related Brands</h6>
                 <ul id="relatedbrand" class="border p-2">
                     @foreach ($storeproducts as $item)
-
                         <li class="p-1">
-                            {{ @$item->name }}
+                            {{ $item }}
                         </li>
                     @endforeach
 

@@ -112,12 +112,13 @@
                                     <form id="main_div_form" action="{{ route('construction.bcat', ['id' => $id]) }}"
                                         method="post">
                                         @csrf
-                                        {{-- <input type="hidden" value="{{ $item->id }}" name="id"> --}}
                                         <div class="text-decoration-none position-relative">
                                             <button onclick="formSubmit()" class="imageSection">
-                                                <img class="slideImg"
-                                                    src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $item->image }}"
-                                                    alt="" />
+                                                <a  href="{{ route('construction.bcat', ['id' => $id]) }}">
+                                                    <img class="slideImg"
+                                                        src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $item->image }}"
+                                                        alt="" />
+                                                </a>
                                             </button>
                                             <div class="text-dark paraContainer">
                                                 <div class="mt-1">
@@ -138,14 +139,17 @@
                                                                 </li>
                                                             @endif
                                                         @endforeach
-
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="btn-viewmore d-flex justify-content-between mt-3">
-                                            <button class="w-100 themebtn py-1 text-white" onclick="formSubmit()">View
-                                                more</button>
+                                            <a href="{{ route('construction.bcat', ['id' => $id]) }}"
+                                                class="text-decoration-none w-100 themebtn py-1 text-white">
+                                                <button class="w-100 themebtn py-1 text-white" onclick="formSubmit()">
+                                                    View more
+                                                </button>
+                                            </a>
                                         </div>
                                     </form>
 
@@ -193,7 +197,8 @@
 
                         <div class="col-sm-4 col-lg-3 mb-4">
                             <div class="propertyCard p-2">
-                                <a class="text-decoration-none position-relative" href="{{ route('construction.singleproduct', ['id' => $item->id]) }}">
+                                <a class="text-decoration-none position-relative"
+                                    href="{{ route('construction.singleproduct', ['id' => $item->id]) }}">
                                     <div class="imageSection">
                                         <img class="slideImg"
                                             src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}"
