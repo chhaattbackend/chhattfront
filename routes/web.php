@@ -59,5 +59,5 @@ Route::get('/storeDetail/{store:slug}','ConstructionStoreController@index')->nam
 // mobile
 Route::post('propertymobile', 'PropertyController@mobile');
 Route::get('filter/{for}', 'PropertyController@mobile')->name('filter');
-Route::get('results', 'PropertyController@search')->name('allproperties');
+Route::get('results/{all}', 'PropertyController@search')->name('allproperties');
 // mobile

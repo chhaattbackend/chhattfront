@@ -312,9 +312,13 @@
                                 id="indBtn">Industrial</button>
                         </div>
                         <div class="ms-4">
-                            <button class="themebtn2 px-3 py-1 ms-1"><a class="text-decoration-none"
-                                    href="{{ route('allproperties', ['All']) }}">View All</a>
-                            </button>
+
+                                <a href="{{route('allproperties',['all'=>'All'])}}" id="propertyChange">
+
+                                    <button class="themebtn2 px-3 py-1 ms-1" type="submit">
+                                            View All
+                                    </button>
+                                </a>
                         </div>
                     </div>
 
@@ -367,6 +371,8 @@
         const btn4 = document.getElementById("indBtn");
         const allProperties = () => {
             getListdata('All');
+            // var change=document.getElementById("mouz")
+            $("#propertyChange").attr('href', '{{route('allproperties',['all'=>'All'])}}');
             btn1.classList.add("active_bestProperties");
             btn2.classList.remove("active_bestProperties");
             btn3.classList.remove("active_bestProperties");
@@ -374,6 +380,7 @@
         };
         const residential = () => {
             getListdata("residential");
+            $("#propertyChange").attr('href', '{{route('allproperties',['all'=>'Residential'])}}');
             btn2.classList.add("active_bestProperties");
             btn1.classList.remove("active_bestProperties");
             btn3.classList.remove("active_bestProperties");
@@ -381,6 +388,7 @@
         };
         const commercial = () => {
             getListdata("commercial");
+            $("#propertyChange").attr('href', '{{route('allproperties',['all'=>'Commercial'])}}');
             btn3.classList.add("active_bestProperties");
             btn1.classList.remove("active_bestProperties");
             btn2.classList.remove("active_bestProperties");
@@ -388,6 +396,7 @@
         };
         const industrial = () => {
             getListdata("industrial");
+            $("#propertyChange").attr('href', '{{route('allproperties',['all'=>'Industrial'])}}');
             btn4.classList.add("active_bestProperties");
             btn1.classList.remove("active_bestProperties");
             btn2.classList.remove("active_bestProperties");

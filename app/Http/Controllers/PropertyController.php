@@ -20,6 +20,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
+use function PHPSTORM_META\type;
+
 class PropertyController extends Controller
 {
     public $globalclass;
@@ -36,24 +38,44 @@ class PropertyController extends Controller
 
 
 
-    public function search(Request $request)
+    public function search(Request $request, $all = null)
     {
-        // dd($request->all());
+        $inputval = null;
+        $inputcity_id = null;
+        $suggestedareas = null;
+        $suggestedareasid = null;
+        $inputcity_name = null;
 
-        if (isset($request->All)) {
 
-            $devicecheck = is_numeric(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'mobile'));
-            if ($devicecheck == 1) {
-                $properties = Property::orderBy('created_at', 'desc')->paginate(10);
-            } else {
-                $properties = Property::orderBy('created_at', 'desc')->paginate(24);
-            }
-
+        if (isset($all)) {
             $city = City::all();
             $propertytype = PropertyType::all();
+            $devicecheck = is_numeric(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'mobile'));
 
-            return view('frontend.property.search', compact('properties', 'propertytype', 'city'));
+
+            if ($all == 'All') {
+                if ($devicecheck == 1) {
+                    $properties = Property::orderBy('created_at', 'desc')->paginate(10);
+                } else {
+                    $properties = Property::orderBy('created_at', 'desc')->paginate(24);
+                }
+            } else {
+                if ($devicecheck == 1) {
+                    $properties = Property::orderBy('created_at', 'desc')->paginate(10);
+                } else {
+                    $properties = Property::where('type', $all)->paginate(24);
+                 }
+            }
+
+            return view('frontend.property.search', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_name', 'inputcity_id', 'suggestedareas', 'suggestedareasid'));
+
         }
+
+
+
+
+
+
 
         // for mobile end
         $city = City::all();
@@ -65,11 +87,6 @@ class PropertyController extends Controller
         });
         $pagination_array = array();
         $devicecheck = is_numeric(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'mobile'));
-        $inputval = null;
-        $inputcity_id = null;
-        $suggestedareas = null;
-        $suggestedareasid = null;
-        $inputcity_name = null;
 
 
 
@@ -189,6 +206,7 @@ class PropertyController extends Controller
         if ($devicecheck == 1) {
             $properties = $properties->orderBy('created_at', 'desc')->paginate(10)->setPath('');
         } else {
+
             $properties = $properties->orderBy('created_at', 'desc')->paginate(24)->setPath('');
         }
 
@@ -330,10 +348,11 @@ class PropertyController extends Controller
         $agencies = Agency::paginate(10);
         $city = City::all();
         $propertytype = PropertyType::all();
+        $check = 'All';
 
 
 
-        return view('frontend.property.index', compact('properties', 'agencies', 'city', 'propertytype'));
+        return view('frontend.property.index', compact('properties', 'agencies', 'city', 'propertytype', 'check'));
     }
 
     /**
