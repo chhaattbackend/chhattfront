@@ -144,7 +144,7 @@
                                 <div class="img_div">
                                     <img
                                         src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/{{ $item->image }}" />
-                                    <a href="{{ route('construction.productlist', ['id' => $item->id]) }}"
+                                    <a href="{{ route('construction.productlist', ['dcategory' => $item->name, 'product' => $item->products[0]->name]) }}"
                                         class="pt-2 ellipse" style="width: 130px;display: inline-block;">
                                         {{ $item->name }}
                                     </a>
@@ -213,22 +213,22 @@
 
                         <div class="botom_div_main  d-flex mt-3 flex-wrap justify-content-start pr-3">
                             @foreach ($item->getrelatedproduct(3) as $suggesteditem)
-                                @php
-                                    $suggesteditem->store_id;
-                                @endphp
-                                <div class="d-flex div1 mr-2">
-                                    <div>
-                                        <img width="80px" height="72px" style=" object-fit: contain;"
-                                            src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $suggesteditem }}" />
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <p class="m-0 txt">{{ $suggesteditem }}</p>
-                                        <p class="m-0 txt1">RS {{ $suggesteditem }}</p>
-                                        <a class="anc" href="">Get Quote</a>
-                                    </div>
-                                </div>
 
-
+                                @unless($suggesteditem->isstoreproduct($item->store_id) == null)
+                                    <div class="d-flex div1 mr-2">
+                                        <div>
+                                            <a href="{{ route('construction.productlist', ['dcategory' => $suggesteditem->d_category->name, 'product' => $suggesteditem->name]) }}">
+                                                <img width="80px" height="72px" style=" object-fit: contain;"
+                                                    src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $suggesteditem->image }}" />
+                                            </a>
+                                        </div>
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <p class="m-0 txt">{{ $suggesteditem->name }}</p>
+                                            <p class="m-0 txt1">RS {{ $suggesteditem->price }}</p>
+                                            <a class="anc" href="">Get Quote</a>
+                                        </div>
+                                    </div>
+                                @endunless
                             @endforeach
                         </div>
 

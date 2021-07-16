@@ -7,6 +7,7 @@ use App\AreaOne;
 use App\AreaThree;
 use App\AreaTwo;
 use App\City;
+use App\ConstructionStoreProduct;
 use App\GlobalClass;
 use App\Http\Resources\Area;
 use App\Property;
@@ -64,11 +65,10 @@ class PropertyController extends Controller
                     $properties = Property::orderBy('created_at', 'desc')->paginate(10);
                 } else {
                     $properties = Property::where('type', $all)->paginate(24);
-                 }
+                }
             }
 
             return view('frontend.property.search', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_name', 'inputcity_id', 'suggestedareas', 'suggestedareasid'));
-
         }
 
 
@@ -243,6 +243,16 @@ class PropertyController extends Controller
 
     public function home(Request $request)
     {
+        // $sp = ConstructionStoreProduct::all();
+        // foreach ($sp as $key => $value) {
+        //     // dd($value);
+        //     $value->update([
+        //         'brand_id' => $value->product->brand_id
+        //     ]);
+        // }
+        // dd('done');
+
+
 
         if (isset($request->type)) {
             if ($request->type == 'All') {

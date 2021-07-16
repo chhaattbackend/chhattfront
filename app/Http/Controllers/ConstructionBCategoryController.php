@@ -49,27 +49,41 @@ class ConstructionBCategoryController extends Controller
         return view('frontend.construction.home.b_cat_list', compact('bcategories',));
     }
 
-    public function product($id)
+    public function product(ConstructionDCategory $dcategory, ConstructionProduct $product)
     {
-        $dcategory = ConstructionDCategory::find($id);
-        $product = ConstructionProduct::where('d_category_id', $id)->first();
-        if ($product == null) {
-            return redirect()->back();
-        }
-        $storeproducts = ConstructionStoreProduct::where('product_id', $product->id)->get();
+        // dd($product->brand->name);
+        // $storeproducts = [];
+        // $dcategory = ConstructionDCategory::find($id);
+        // $product = ConstructionProduct::where('d_category_id', $id)->get();
+        // if ($product == null) {
+        //     return redirect()->back();
+        // }
+        // foreach ($product as $key => $item) {
+        // array_push($storeproducts, ConstructionStoreProduct::where('product_id', $item->id)->get());
+        // $storeproducts = ConstructionStoreProduct::where('product_id', $product->id)->get();
+        // }
+        // dd($storeproducts);
         $dcategories = ConstructionDCategory::where('c_category_id', $dcategory->category->id)->get();
-        $relatedBrand = [];
+
+
+
+
+        // $relatedBrand = [];
+        // // $a = ConstructionProduct::where('c_category_id', $dcategory->category->id)->get(); // for all brands
         // $a = ConstructionProduct::where('c_category_id', $dcategory->category->id)->get(); // for all brands
-        $a = ConstructionProduct::where('c_category_id', $dcategory->category->id)->get(); // for all brands
-        foreach ($a as $key => $value) {
-            foreach ($value->storeproduct as $key => $item) {
-                if ($item->product->brand != null) {
-                    array_push($relatedBrand, $item->product->brand->name);
-                }
-            }
-        }
-        $relatedBrand = array_unique($relatedBrand);
+        // foreach ($a as $key => $value) {
+        //     foreach ($value->storeproduct as $key => $item) {
+        //         if ($item->product->brand != null) {
+        //             array_push($relatedBrand, $item->product->brand->name);
+        //         }
+        //     }
+        // }
+        // $relatedBrand = array_unique($relatedBrand);
         // dd($relatedBrand);
+
+        $storeproducts = ConstructionStoreProduct::where('product_id', $product->id)->get();
+        // dd($storeproducts);
+
 
         return view('frontend.construction.product.productlist', compact('storeproducts', 'dcategory', 'dcategories'));
     }

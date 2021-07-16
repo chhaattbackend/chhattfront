@@ -13,6 +13,7 @@ class ConstructionStoreProduct extends Model
         'store_id',
         'product_id',
         'store_price',
+        'brand_id',
         'qty',
         'status',
         'unit_id',
@@ -50,16 +51,16 @@ class ConstructionStoreProduct extends Model
     public function getrelatedproduct($count)
     {
         // return ConstructionStoreProduct::where('product_id', $this->product->id)->inRandomOrder()->take($count)->get();
-        $a = ConstructionProduct::where('c_category_id',$this->product->c_category_id)->where('id', '!=', $this->product->id)->get();
-        $relatedProduct = [];
-        foreach ($a as $key => $item) {
-            $b= ConstructionStoreProduct::where('store_id',$this->store_id)->where('product_id',$item->id)->get();
-            array_push($relatedProduct, ConstructionStoreProduct::where('store_id',$this->store_id)->where('product_id',$item->id)->first());
-        }
-        $relatedProduct = array_unique($relatedProduct);
+        return ConstructionProduct::where('d_category_id',$this->product->d_category_id)->where('id', '!=', $this->product->id)->inRandomOrder()->get();
+        // $relatedProduct = [];
+        // foreach ($a as $key => $item) {
+        //     $b= ConstructionStoreProduct::where('store_id',$this->store_id)->where('product_id',$item->id)->get();
+        //     array_push($relatedProduct, ConstructionStoreProduct::where('store_id',$this->store_id)->where('product_id',$item->id)->first());
+        // }
+        // $relatedProduct = array_unique($relatedProduct);
 
-        // dd($relatedProduct);
-        return $relatedProduct;
+        // // dd($relatedProduct);
+        // return $relatedProduct;
 
     }
 }

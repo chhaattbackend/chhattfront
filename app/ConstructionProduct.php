@@ -19,6 +19,7 @@ class ConstructionProduct extends Model
         'name',
         'description',
         'price',
+        'brand_id',
         'quantity',
         'thumbnail',
         'image',
@@ -52,6 +53,11 @@ class ConstructionProduct extends Model
     }
     public function storeproduct(){
         return $this->hasMany(ConstructionStoreProduct::class,'product_id');
+    }
+
+    public function isstoreproduct($store_id){
+        // dd($this->id);
+        return ConstructionStoreProduct::where('store_id',$store_id)->where('product_id',$this->id)->first();
     }
 
 }

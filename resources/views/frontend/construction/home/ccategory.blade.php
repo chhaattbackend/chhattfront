@@ -84,7 +84,7 @@
                                 @endphp
                                 <div class="lit1 col-md-3 p-0  mt-4">
                                     <div class="list1_div1">
-                                        <a href="{{ route('construction.productlist', ['id' => $subItem->id]) }}">
+                                        <a href="{{ route('construction.productlist', ['dcategory' => $subItem->name , 'product' => $subItem->products[0]->name]) }}">
 
                                             <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/{{ $subItem->image }}"
                                                 width="115px" height="115px" alt="" />
