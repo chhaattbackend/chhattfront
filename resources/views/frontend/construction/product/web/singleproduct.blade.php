@@ -159,13 +159,16 @@
                     <div class="mapCardContainer mt-4">
                         <div class="container-fluid px-0">
                             <div class="row px-2">
+
                                 @foreach ($storeproduct->getrelatedproduct(1) as $item)
+
                                 @unless($item->isstoreproduct($storeproduct->store_id) == null)
                                         <div class="col-sm-4 col-lg-3 mb-4">
                                             <!-- property card start -->
                                             <div class="propertyCard p-2">
-                                                <a class="text-decoration-none position-relative" href="{{ route('construction.singleproduct', ['store'=>$storeproduct->store->name,'storeproduct' => $storeproduct->id]) }}">
-                                                    <div class="imageSection">
+                                               
+
+                                                    <div class="imageSection"><a class="text-decoration-none position-relative" href="{{ route('construction.singleproduct', ['store'=>$storeproduct->store->name,'storeproduct' => $item->storeproduct[0]->id]) }}">
                                                         <img class="slideImg"
                                                             src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->image }}"
                                                             alt="" />
@@ -177,7 +180,7 @@
                                                                 <h6 class="lightColor">{!! $item->c_category->name !!} </h6>
                                                             </div>
                                                             <div class="mt-2">
-                                                                <strong class="mt-5">{{ $item->name }}</strong>
+                                                                <strong class="mt-5">{{ $item->name}}</strong>
                                                             </div>
                                                             <h6 class="mt-2">
                                                                 <strong>
@@ -197,6 +200,7 @@
                                         </div>
                                     @endunless
                                 @endforeach
+
 
                             </div>
                         </div>

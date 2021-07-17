@@ -106,7 +106,8 @@
                 <ul id="relatedbrand" class="border p-2">
                     @foreach ($storeproducts as $item)
                         <li class="p-1">
-                            {{-- {{ $item }} --}}
+                            @dd($storeproducts)
+                            {{ $item->brand->name }}
                         </li>
                     @endforeach
 

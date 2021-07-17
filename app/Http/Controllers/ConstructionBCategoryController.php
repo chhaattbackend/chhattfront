@@ -53,6 +53,7 @@ class ConstructionBCategoryController extends Controller
 
     public function product(ConstructionDCategory $dcategory, ConstructionProduct $product)
     {
+        // dd($product->id);
         $storeproductdcat = DB::connection('mysql2')->table('products')
             ->select('d_categories.*')->distinct()
             ->join('store_products', 'products.id', '=', 'store_products.product_id')
@@ -78,17 +79,18 @@ class ConstructionBCategoryController extends Controller
         // }
         // $relatedBrand = array_unique($relatedBrand);
         // dd($relatedBrand);
-
+            // dd($storeproducts = ConstructionStoreProduct::where('product_id', $product->id)->get());
         $storeproducts = ConstructionStoreProduct::where('product_id', $product->id)->get();
+        
         // dd($storeproducts);
 
 
-        return view('frontend.construction.product.productlist', compact('storeproducts', 'dcategory', 'dcategories'));
+        return view('frontend.construction.product.productlist', compact('storeproducts', 'dcategory', 'dcategories',));
     }
 
     public function singleproduct(ConstructionStore $store, ConstructionStoreProduct $storeproduct)
     {
-        // dd($store);
+        // dd($storeproduct->id);
         return view('frontend.construction.product.singleproduct', compact('storeproduct'));
     }
 }
