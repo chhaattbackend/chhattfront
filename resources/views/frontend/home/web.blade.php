@@ -272,19 +272,17 @@
                 </symbol>
             </svg>
             <div class="product-sec-wrapper">
-                <h2><a class="hCathd" href="">Medical,
-                        Safety &amp; Protective Clothing and Apparel</a></h2>
+                <h2><a class="hCathd" href="">Properties And Agency</a></h2>
                 <div class="minht cBFlex" id="1">
                     <div class="product-banner  pbnr7">
                         <div class="banner-content">
                             <ul>
-                                <li><a href="">Disposable
-                                        Gloves</a>
+                                <li>
+                                    <a href=""> Real Estate Properties
+                                    </a>
                                 </li>
-                                <li><a href="">Hazmat Suit</a></li>
-                                <li><a href="">Personal Protective
-                                        Equipment
-                                        Kit</a></li>
+                                <li><a href="">Agencies</a></li>
+                                <li><a href="">Realtors</a></li>
                             </ul>
                             <a href="" class="view-all">View
                                 All</a>
@@ -294,21 +292,17 @@
                         <div class="col-md-4 col-sm-6 bdr1">
                             <div class="product-item">
                                 <div class="product-thumbnail">
-                                    <a href=""><img data-original="https://hm.imimg.com/imhome_gifs/cvid02.png"
-                                            alt="Face Mask" src="https://hm.imimg.com/imhome_gifs/cvid02.png"
+                                    <a href=""><img data-original="" alt="Face Mask"
+                                            src="https://images.unsplash.com/photo-1555636222-cae831e670b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1056&q=80"
                                             title="Face Mask"></a>
                                 </div>
                                 <div class="product-meta">
-                                    <h3><a href="">Face Mask</a></h3>
-                                    <p><a href="">3 Ply Face
-                                            Mask</a></p>
-                                    <p><a href="">N95
-                                            Respirator
-                                            Mask</a></p>
-                                    <p><a href="">Non Woven
-                                            Face
-                                            Mask</a></p>
-                                    <p><a href="">Nose Masks</a></p>
+                                    <h3><a href="{{ route('property.search', ['area_type' => 'Residential']) }}">Residential Properties</a></h3>
+                                    <p><a href="{{ route('property.search', ['property_type' => 'House' , 'area_type' => 'Residential']) }}">House for Sale
+                                        </a></p>
+                                    <p><a href="{{ route('property.search', ['property_type' => 'Flat', 'area_type' => 'Residential']) }}">Flat for Sale</a></p>
+                                    <p><a href="{{ route('property.search', ['property_type' => 'Plot', 'area_type' => 'Residential']) }}">Plot for Sale</a></p>
+
                                 </div>
                             </div>
                         </div>
@@ -321,13 +315,12 @@
                                             alt="Medical Mask" title="Medical Mask"></a>
                                 </div>
                                 <div class="product-meta">
-                                    <h3> <a href="">Medical Mask</a>
-                                    </h3>
-                                    <p><a href="">CPR Mask</a></p>
-                                    <p><a href="">Oxygen Mask</a></p>
-                                    <p><a href="">CPAP Mask</a></p>
-                                    <p><a href="">BIPAP Mask</a></p>
-                                    <p><a href="">Nasal Mask</a></p>
+                                    <h3><a href="{{ route('property.search', [ 'area_type' => 'Commercial']) }}">Commercial Properties</a></h3>
+                                    <p><a href="{{ route('property.search', [ 'area_type' => 'Commercial','property_type' => 'House']) }}">House for Sale
+                                        </a></p>
+                                    <p><a href="{{ route('property.search', ['property_type' => 'Flat', 'area_type' => 'Commercial']) }}">Flat for Sale</a></p>
+                                    <p><a href="{{ route('property.search', ['property_type' => 'Plot', 'area_type' => 'Commercial']) }}">Plot for Sale</a></p>
+
                                 </div>
                             </div>
                         </div>
@@ -339,13 +332,13 @@
                                             title="Surgical Gloves"></a>
                                 </div>
                                 <div class="product-meta">
-                                    <h3> <a href="">Surgical
-                                            Gloves</a>
-                                    </h3>
-                                    <p> <a href="">Nitrile
-                                            Gloves</a></p>
-                                    <p> <a href=""> Non-sterile
-                                            Gloves</a></p>
+                                    <h3><a href="{{ route('property.search', [ 'area_type' => 'Industrial']) }}">Industrial Properties</a></h3>
+                                    <p><a href="{{ route('property.search', ['property_type' => 'Warehouse', 'area_type' => 'Industrial']) }}">Warehouse for Sale
+                                        </a></p>
+
+                                    <p><a href="{{ route('property.search', ['property_type' => 'Plot', 'area_type' => 'Industrial']) }}">Plot for Sale</a></p>
+                                    <p><a href="{{ route('property.search', ['property_type' => 'Factory', 'area_type' => 'Industrial']) }}">Factory for Sale</a></p>
+
                                 </div>
                             </div>
                         </div>
@@ -358,19 +351,14 @@
                                             alt="Medical Clothing" title="Medical Clothing"></a>
                                 </div>
                                 <div class="product-meta">
-                                    <h3><a href="">Medical Clothing
+                                    <h3><a href="{{ route('agency') }}">Real Estate Agencies
                                         </a>
                                     </h3>
-                                    <p> <a href=""> Medical Apron</a>
+                                    <p> <a href="{{ route('agency') }}">Residential Properties agencies</a>
                                     </p>
-                                    <p><a href="">Nurse Uniform</a>
+                                    <p><a href="{{ route('agency') }}">Commercial Properties agencies</a>
                                     </p>
-                                    <p> <a href="">Surgical Gown</a>
-                                    </p>
-                                    <p><a href="">Disposable
-                                            Clothing</a></p>
-                                    <p> <a href="">Medical Scrub</a>
-                                    </p>
+
                                 </div>
                             </div>
                         </div>
@@ -383,13 +371,13 @@
                                             alt="Surgical Caps" title="Surgical Caps"></a>
                                 </div>
                                 <div class="product-meta">
-                                    <h3><a href=""> Surgical Caps</a>
+                                    <h3><a href=""> Area Speciality Realtors</a>
                                     </h3>
-                                    <p><a href=""> Bouffant Caps</a>
+                                    <p><a href=""> Dha</a>
                                     </p>
-                                    <p><a href="">Disposable Cap</a>
+                                    <p><a href="">Clifton</a>
                                     </p>
-                                    <p><a href="">Nurse Cap</a></p>
+                                    <p><a href="">Nazimabad</a></p>
                                 </div>
                             </div>
                         </div>
@@ -402,19 +390,14 @@
                                             alt="Personal Protective Equipment" title="Personal Protective Equipment"></a>
                                 </div>
                                 <div class="product-meta">
-                                    <h3><a href=" ">Personal Protective
-                                            Equipment</a></h3>
-                                    <p><a href="">Hazmat Suit</a></p>
-                                    <p><a href=""> Face Shields </a>
+                                    <h3><a href=" ">Property Specialist
+                                        </a></h3>
+                                    <p><a href="">Bungalow Specialist</a></p>
+                                    <p><a href=""> Commercial Specialist </a>
                                     </p>
-                                    <p> <a href=""> Disposable
-                                            Gloves</a></p>
-                                    <p><a href=""> Disposable
-                                            Face
-                                            Mask</a></p>
-                                    <p> <a href="">
-                                            Disposable
-                                            Shoe Cover</a></p>
+                                    <p> <a href=""> Plot Specialist</a></p>
+                                    <p><a href=""> General Specialist</a></p>
+
                                 </div>
                             </div>
                         </div>
