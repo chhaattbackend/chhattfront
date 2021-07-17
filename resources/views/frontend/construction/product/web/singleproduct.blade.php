@@ -74,17 +74,21 @@
                             <div>
                                 <h6>View Complete Details</h6>
                                 <div class="d-flex justify-content-center align-items-center mt-4">
-                                    <button
+                                    {{-- <button
                                         class="d-flex justify-content-center align-items-center bg-transparent border border-1 border-dark  rounded-3 flex-column px-4 py-1">
                                         <span class="fw-bold">
                                             Contact Seller
                                         </span>
                                         <small style="font-size: 0.6rem;">Ask for best deal</small>
-                                    </button>
+                                    </button> --}}
                                     <button
                                         class="d-flex justify-content-center align-items-center flex-column px-4 py-1 ms-3 rounded-3 bg-warning">
-                                        <span class="fw-bold"> Get Latest Price
-                                        </span>
+
+                                        <a href="tel:{{ $storeproduct->store->phone }}">
+
+                                            <span class="fw-bold"> Get Latest Price
+                                            </span>
+                                        </a>
                                         <small style="font-size: 0.6rem;">Request a quote</small>
                                     </button>
                                 </div>
