@@ -121,7 +121,7 @@
                             <button class="py-1 px-3 rounded-1">Contact Us</button>
                         </div>
                         <div style="width: 21%;">
-                            <button class="px-3 py-2 rounded-1 activeNav"><svg xmlns="http://www.w3.org/2000/svg" width="18"
+                            {{-- <button class="px-3 py-2 rounded-1 activeNav"><svg xmlns="http://www.w3.org/2000/svg" width="18"
                                     height="18" viewBox="0 0 21 20.984">
                                     <g data-name="Group 1674" transform="translate(-1106 -345)">
                                         <path
@@ -137,7 +137,7 @@
                                             fill="#fff" data-name="Path 255" transform="translate(873.854 345)">
                                         </path>
                                     </g>
-                                </svg> View Mobile Number</button>
+                                </svg> View Mobile Number</button> --}}
                         </div>
                     </div>
                 </div>
@@ -153,7 +153,7 @@
         <div class="container-fluid">
             <div>
                 <div class="d-flex justify-content-between">
-                    <h2 class="fw-bold">Industrial Supplies</h2>
+                    <h2 class="fw-bold">Deal In Cateogry</h2>
                     <div class="d-flex">
                         <div class="ms-4">
                             <button class="themebtn2 px-3 py-1 ms-1">View all</button>
@@ -298,18 +298,18 @@
                 </span>
                 <div class="p-2 product_div row flex-wrap justify-content-center text-center justify-content-between">
                     @foreach ($store->randomproduct(9) as $key => $item)
+                        {{-- @dd($item) --}}
+                        <div class="mt-4 col-md-2 p-2 border" style="width: 300px;">
 
-                            <div class="mt-4 col-md-2 p-2 border" style="width: 300px;">
+                            <a href="{{ route('construction.singleproduct', ['store' => $item->store->name, 'storeproduct' => $item->id]) }}"
+                                class="d-inline-block  text-decoration-none"
+                                style="width: 250px; font-size: 17px; color: #007bff; font-weight: bolder;">
+                                <img width="100%" height="200px"
+                                    src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}" />
+                                {{ $item->product->name }}
 
-                                <a href="{{ route('construction.singleproduct', [$item->id]) }}"
-                                    class="d-inline-block  text-decoration-none"
-                                    style="width: 250px; font-size: 17px; color: #007bff; font-weight: bolder;">
-                                    <img width="100%" height="200px"
-                                        src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}" />
-                                    {{ $item->product->name }}
-
-                                </a>
-                                {{-- <a href="" class="d-inline-block  text-decoration-none"
+                            </a>
+                            {{-- <a href="" class="d-inline-block  text-decoration-none"
                                         style="width: 250px; font-size: 17px; color: gray; ">
                                         {{ $item->product->price }}
 
@@ -326,7 +326,7 @@
                                             style="width: 250px; font-size: 15px; color: #007bff;font-weight: bold; ">
                                             View Details >
                                     </a> --}}
-                            </div>
+                        </div>
                     @endforeach
 
                 </div>
