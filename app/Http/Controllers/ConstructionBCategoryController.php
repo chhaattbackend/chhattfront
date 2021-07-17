@@ -12,6 +12,7 @@ use App\ConstructionStore;
 use App\ConstructionStoreProduct;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Pagination\Factory;
 
 class ConstructionBCategoryController extends Controller
 {
@@ -84,6 +85,7 @@ class ConstructionBCategoryController extends Controller
         $dcategory = ConstructionDCategory::where('c_category_id', $ccategory->id)->first();
         // dd($ccategory->subcategories);
         // dd($dcategory);
+
 
         return view('frontend.construction.product.productlist', compact('storeproducts', 'dcategory', 'dcategories'));
     }

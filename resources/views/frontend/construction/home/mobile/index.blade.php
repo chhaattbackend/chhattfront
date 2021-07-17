@@ -82,7 +82,7 @@
                                 <li>
                                     <div>
                                         <!-- card start -->
-                                        <a href="{{ route('construction.singleproduct', ['id' => $item->id]) }}"
+                                        <a href="{{ route('construction.singleproduct',['store'=>$item->store->name,'storeproduct' => $item->id]) }}"
                                             class="card_main_div text-decoration-none text-dark text-decoration-none">
                                             <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}" class="propertyImg" alt="" />
                                             <p class="mb-0 fw-bold text-black"> {{ $item->store->name }} </p>

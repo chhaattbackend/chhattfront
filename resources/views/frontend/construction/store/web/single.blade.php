@@ -202,15 +202,11 @@
                 <span class="d-block" style="width: 40px; margin: auto; height: 3px; background-color: #007bff;">
                 </span>
                 <p class="text-center">
-                    Thea-Tex Healthcare (India) Private Limited is a family owned boutique manufacturer and exporter
-                    of medical, hygiene and industrial nonwoven disposable products, with a core focus on surgical
-                    masks and particulate respirators, adhering to European (EN), US (ASTM) and Indian (IS)
-                    standards. Our products are marketed under the registered Filtra brand, or under OEM/Private
-                    Label agreements with the client.
+                  {{ $store->description }}.
                 </p>
                 <a href="" class="text-center d-block text-decoration-none">+ Read More</a>
             </div>
-            <div class="iconss row flex-wrap mt-5 ms-2 me-2">
+            {{-- <div class="iconss row flex-wrap mt-5 ms-2 me-2">
                 <div class="border d-flex align-items-center col-md-3 pt-2 pb-2">
                     <div style="border-radius: 100px;border: 1px solid transparent;">
                         <img style="border-radius: 100px;border: 1px solid transparent;"
@@ -291,7 +287,7 @@
                         <p class="m-0" style="font-size: 14px;">Exporter and Manufacturer</p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="products mt-5">
                 <h3 class="text-center">Our Products</h3>
                 <span class="d-block" style="width: 40px; margin: auto; height: 3px; background-color: #007bff;">
@@ -331,7 +327,7 @@
 
                 </div>
             </div>
-            <div class="ideos mt-5">
+            {{-- <div class="ideos mt-5">
                 <h3 class="text-center">Our Videos</h3>
                 <span class="d-block" style="width: 40px; margin: auto; height: 3px; background-color: #007bff;">
                 </span>
@@ -341,7 +337,7 @@
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
                 </div>
-            </div>
+            </div> --}}
             <div class="ideos mt-5 mb-5">
                 <h3 class="text-center">Reviews & Rating</h3>
                 <span class="d-block" style="width: 40px; margin: auto; height: 3px; background-color: #007bff;">
