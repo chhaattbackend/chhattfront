@@ -65,8 +65,8 @@
                             <h6 class="pt-2 fw-bold text-decoration-underline">Get Latest Price</h6>
                             <div class="row mt-2">
                                 @foreach ($storeproduct->product->attributes as $item)
-                                    <div class="col-6">{{$item->attribute->name}}</div>
-                                    <div class="col-6">{{$item->desc }}</div>
+                                    <div class="col-6">{{ $item->attribute->name }}</div>
+                                    <div class="col-6">{{ $item->desc }}</div>
                                     <hr class="my-1 text-secondary">
                                 @endforeach
 
@@ -114,9 +114,11 @@
                                     <i class="bi bi-star-fill unFilledStar"></i> (176)
                                 </div>
                                 <div class="px-2">
-                                    <a href="{{ route('construction.singlestore',['store' => $storeproduct->store->slug]) }}">
+                                    <a
+                                        href="{{ route('construction.singlestore', ['store' => $storeproduct->store->slug]) }}">
 
-                                        <button class="w-100 py-2 rounded bg-transparent border border-1 border-dark"> Vew Store</button>
+                                        <button class="w-100 py-2 rounded bg-transparent border border-1 border-dark"> Vew
+                                            Store</button>
                                     </a>
                                 </div>
                                 <div class="text-center">
@@ -148,48 +150,52 @@
                 <div class="col-12 mt-5">
                     <div class="d-flex align-items-centers">
                         <h5 class="ms-3 me-3">Explore similar products</h5> |
-                        <h5 class="d-flex align-items-center ms-3"><a href="{{ route('construction.singlestore',['store' => $storeproduct->store->slug ]) }}">View all products in {{ $storeproduct->store->name }}</a>  <i
+                        <h5 class="d-flex align-items-center ms-3"><a
+                                href="{{ route('construction.singlestore', ['store' => $storeproduct->store->slug]) }}">View
+                                all products in {{ $storeproduct->store->name }}</a> <i
                                 class="bi bi-chevron-right h5 mb-0"></i></h5>
                     </div>
 
                     <div class="mapCardContainer mt-4">
                         <div class="container-fluid px-0">
                             <div class="row px-2">
-                                @foreach ($storeproduct->getrelatedproduct(8) as $item)
-                                <div class="col-sm-4 col-lg-3 mb-4">
-                                    <!-- property card start -->
-                                    <div class="propertyCard p-2">
-                                        <a class="text-decoration-none position-relative" href="#">
-                                            <div class="imageSection">
-                                                <img class="slideImg"
-                                                    src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}"
-                                                    alt="" />
-                                            </div>
-                                            <div class="text-dark paraContainer">
-                                                <div class="mt-1">
-                                                    <div class="d-flex justify-content-between">
-                                                        <h6 class="lightColor">{!! $item->store->name !!}</h6>
-                                                        <h6 class="lightColor">{!! $item->product->c_category->name  !!} </h6>
+                                @foreach ($storeproduct->getrelatedproduct(1) as $item)
+                                @unless($item->isstoreproduct($storeproduct->store_id) == null)
+                                        <div class="col-sm-4 col-lg-3 mb-4">
+                                            <!-- property card start -->
+                                            <div class="propertyCard p-2">
+                                                <a class="text-decoration-none position-relative" href="{{ route('construction.singleproduct', ['store'=>$storeproduct->store->name,'storeproduct' => $storeproduct->id]) }}">
+                                                    <div class="imageSection">
+                                                        <img class="slideImg"
+                                                            src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->image }}"
+                                                            alt="" />
                                                     </div>
-                                                    <div class="mt-2">
-                                                        <strong class="mt-5">{{ $item->product->name }}</strong>
+                                                    <div class="text-dark paraContainer">
+                                                        <div class="mt-1">
+                                                            <div class="d-flex justify-content-between">
+                                                                <h6 class="lightColor">{!! $storeproduct->store->name !!}</h6>
+                                                                <h6 class="lightColor">{!! $item->c_category->name !!} </h6>
+                                                            </div>
+                                                            <div class="mt-2">
+                                                                <strong class="mt-5">{{ $item->name }}</strong>
+                                                            </div>
+                                                            <h6 class="mt-2">
+                                                                <strong>
+                                                                    Rs. {{ $item->price }}
+                                                                </strong>
+                                                            </h6>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between mt-3">
+                                                            <button class="w-100 themebtn py-1 text-white">View
+                                                                more</button>
+                                                            <button class="w-100 ms-3">Contact Us</button>
+                                                        </div>
                                                     </div>
-                                                    <h6 class="mt-2">
-                                                        <strong>
-                                                            Rs. {{ $item->product->price }}
-                                                        </strong>
-                                                    </h6>
-                                                </div>
-                                                <div class="d-flex justify-content-between mt-3">
-                                                    <button class="w-100 themebtn py-1 text-white">View
-                                                        more</button>
-                                                    <button class="w-100 ms-3">Contact Us</button>
-                                                </div>
+                                                </a>
                                             </div>
-                                        </a>
-                                    </div>
-                                    <!-- property card end -->
-                                </div>
+                                            <!-- property card end -->
+                                        </div>
+                                    @endunless
                                 @endforeach
 
                             </div>
@@ -210,9 +216,9 @@
 
                             <div class="row mt-4 px-4">
                                 <h5 class="mb-2">Product Specification</h5>
-                                 @foreach ($storeproduct->product->attributes as $item)
-                                    <div class="col-6">{{$item->attribute->name}}</div>
-                                    <div class="col-6">{{$item->desc }}</div>
+                                @foreach ($storeproduct->product->attributes as $item)
+                                    <div class="col-6">{{ $item->attribute->name }}</div>
+                                    <div class="col-6">{{ $item->desc }}</div>
                                     <hr class="my-1 text-secondary">
                                 @endforeach
                             </div>

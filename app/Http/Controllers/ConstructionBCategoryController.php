@@ -8,8 +8,10 @@ use App\ConstructionBCategory;
 use App\ConstructionCCategory;
 use App\ConstructionDCategory;
 use App\ConstructionProduct;
+use App\ConstructionStore;
 use App\ConstructionStoreProduct;
 use Illuminate\Http\Request;
+use DB;
 
 class ConstructionBCategoryController extends Controller
 {
@@ -51,22 +53,18 @@ class ConstructionBCategoryController extends Controller
 
     public function product(ConstructionDCategory $dcategory, ConstructionProduct $product)
     {
-        // dd($product->brand->name);
-        // $storeproducts = [];
-        // $dcategory = ConstructionDCategory::find($id);
-        // $product = ConstructionProduct::where('d_category_id', $id)->get();
-        // if ($product == null) {
-        //     return redirect()->back();
-        // }
-        // foreach ($product as $key => $item) {
-        // array_push($storeproducts, ConstructionStoreProduct::where('product_id', $item->id)->get());
-        // $storeproducts = ConstructionStoreProduct::where('product_id', $product->id)->get();
-        // }
-        // dd($storeproducts);
-        $dcategories = ConstructionDCategory::where('c_category_id', $dcategory->category->id)->get();
-
-
-
+        $storeproductdcat = DB::connection('mysql2')->table('products')
+            ->select('d_categories.*')->distinct()
+            ->join('store_products', 'products.id', '=', 'store_products.product_id')
+            ->join('d_categories', 'd_categories.id', '=', 'products.d_category_id')
+            ->join('c_categories', 'c_categories.id', '=', 'd_categories.c_category_id')
+            ->where('c_categories.id', '=', $dcategory->category->id)
+            ->get();
+        $dcategories = [];
+        foreach ($storeproductdcat as $item) {
+            array_push($dcategories, ConstructionDCategory::find($item->id));
+        }
+        // dd($dcategories);
 
         // $relatedBrand = [];
         // // $a = ConstructionProduct::where('c_category_id', $dcategory->category->id)->get(); // for all brands
@@ -88,9 +86,9 @@ class ConstructionBCategoryController extends Controller
         return view('frontend.construction.product.productlist', compact('storeproducts', 'dcategory', 'dcategories'));
     }
 
-    public function singleproduct($id)
+    public function singleproduct(ConstructionStore $store, ConstructionStoreProduct $storeproduct)
     {
-        $storeproduct = ConstructionStoreProduct::find($id);
+        // dd($store);
         return view('frontend.construction.product.singleproduct', compact('storeproduct'));
     }
 }

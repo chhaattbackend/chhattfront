@@ -140,11 +140,12 @@
                 <div class="main_slide_div">
                     <div class="card_div slide">
                         @foreach ($dcategories as $item)
+                            {{-- @dd($item->products) --}}
                             <div class="card p-2 m-1">
                                 <div class="img_div">
                                     <img
                                         src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/{{ $item->image }}" />
-                                    <a href="{{ route('construction.productlist', ['dcategory' => $item->name, 'product' => $item->products[0]->name]) }}"
+                                    <a href="{{ route('construction.productlist', ['dcategory' => $item->name, 'product' => $item->products[0]->id]) }}"
                                         class="pt-2 ellipse" style="width: 130px;display: inline-block;">
                                         {{ $item->name }}
                                     </a>
@@ -152,7 +153,6 @@
                                 <div class="rs">RS 10</div>
                                 <div class="brand">hamza developer</div>
                             </div>
-
                         @endforeach
 
                     </div>
@@ -160,10 +160,11 @@
                 <!-- slider -->
                 <!-- card end -->
                 @foreach ($storeproducts as $item)
+                    {{-- @dd($item->store->name) --}}
                     <!-- product card detail start -->
                     <div class="product_detail_card_div_main_div p-2 m-2">
                         <a class="text-decoration-none text-dark"
-                            href="{{ route('construction.singleproduct', ['id' => $item->id]) }}">
+                            href="{{ route('construction.singleproduct', ['store' => $item->store->name, 'storeproduct' => $item->id]) }}">
 
                             <div class="product_detail_card_div d-flex">
                                 <div class="frst_div">
@@ -212,12 +213,13 @@
                         {{-- <p>{{ $storeproducts[0]->getrelatedcategory($storeproducts[0]->product->c_category->id,$storeproducts[0]->product->id) }}</p> --}}
 
                         <div class="botom_div_main  d-flex mt-3 flex-wrap justify-content-start pr-3">
-                            @foreach ($item->getrelatedproduct(3) as $suggesteditem)
+                            @foreach ($item->getrelatedproduct(3) as $key => $suggesteditem)
 
-                                @unless($suggesteditem->isstoreproduct($item->store_id) == null)
+                                @unless($key < 4) @unless($suggesteditem->isstoreproduct($item->store_id) == null)
                                     <div class="d-flex div1 mr-2">
                                         <div>
-                                            <a href="{{ route('construction.productlist', ['dcategory' => $suggesteditem->d_category->name, 'product' => $suggesteditem->name]) }}">
+                                            <a
+                                                href="{{ route('construction.productlist', ['dcategory' => $suggesteditem->d_category->name, 'product' => $suggesteditem->id]) }}">
                                                 <img width="80px" height="72px" style=" object-fit: contain;"
                                                     src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $suggesteditem->image }}" />
                                             </a>
@@ -228,63 +230,65 @@
                                             <a class="anc" href="">Get Quote</a>
                                         </div>
                                     </div>
-                                @endunless
-                            @endforeach
-                        </div>
 
-                    </div>
-                    <!-- product card detail end -->
-                @endforeach
+                                @endunless
+                            @endunless
+                    @endforeach
+                </div>
 
             </div>
-            <!-- right div end -->
-        </div>
-        <!-- content end -->
+            <!-- product card detail end -->
+        @endforeach
+
     </div>
+    <!-- right div end -->
+</div>
+<!-- content end -->
+</div>
 @endsection
 
 @section('personalscripts')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
-        integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        // slick slider start
-        $('.slide').slick({
-            dots: false,
-            infinite: false,
-            speed: 300,
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            responsive: [{
-                    breakpoint: 1300,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 1,
-                        infinite: false,
-                        dots: false
-                    }
-                },
-                {
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 1,
-                        infinite: false,
-                        dots: false
-                    }
-                },
-            ]
-        });
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    // slick slider start
+    $('.slide').slick({
+        dots: false,
+        infinite: false,
+        speed: 300,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        responsive: [{
+                breakpoint: 1300,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    infinite: false,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    infinite: false,
+                    dots: false
+                }
+            },
+        ]
+    });
 
-        function down(id) {
-            var x = document.getElementById(id);
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
+    function down(id) {
+        var x = document.getElementById(id);
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
         }
-        // slick slider end
-    </script>
+    }
+    // slick slider end
+</script>
 @endsection

@@ -198,7 +198,7 @@
                         <div class="col-sm-4 col-lg-3 mb-4">
                             <div class="propertyCard p-2">
                                 <a class="text-decoration-none position-relative"
-                                    href="{{ route('construction.singleproduct', ['id' => $item->id]) }}">
+                                    href="{{ route('construction.singleproduct', ['store'=>$item->store->name,'storeproduct' => $item->id]) }}">
                                     <div class="imageSection">
                                         <img class="slideImg"
                                             src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}"

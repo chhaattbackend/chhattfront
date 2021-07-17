@@ -35,9 +35,9 @@ Route::post('/{id}','ConstructionBCategoryController@index')->name('construction
 Route::get('/{id}','ConstructionBCategoryController@byCategory')->name('construction.bcat'); // for reload that current ccat page
 
 Route::get('/bcat/all','ConstructionBCategoryController@viewall')->name('construction.bcatlist');
-Route::get('/{dcategory:name}/{product:name}','ConstructionBCategoryController@product')->name('construction.productlist');
-Route::get('/productDetail/{id}','ConstructionBCategoryController@singleproduct')->name('construction.singleproduct');
-Route::get('/storeDetail/{store:slug}','ConstructionStoreController@index')->name('construction.singlestore');
+Route::get('list/{dcategory:name}/{product:id}','ConstructionBCategoryController@product')->name('construction.productlist');
+Route::get('productDetail/{store:name}/{storeproduct:id}','ConstructionBCategoryController@singleproduct')->name('construction.singleproduct');
+Route::get('storeDetail/{store:slug}','ConstructionStoreController@index')->name('construction.singlestore');
 });
 
 
