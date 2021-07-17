@@ -112,7 +112,7 @@
                                     <small><i class="bi bi-geo-alt-fill"></i>{{$storeproduct->store->address}}
                                         </small>
                                 </div>
-                                <div class="text-center mb-2"><span class="fw-bold">5.3</span>/5
+                                <div class="text-center mb-2"><span class="fw-bold">4</span>/5
                                     <i class="bi bi-star-fill filledStar"></i><i class="bi bi-star-fill filledStar"></i><i
                                         class="bi bi-star-fill filledStar"></i><i class="bi bi-star-fill filledStar"></i>
                                     <i class="bi bi-star-fill unFilledStar"></i> (176)
@@ -237,7 +237,7 @@
                                 <p>{{ $storeproduct->product->description }}</p>
                             </div>
 
-                            <div class="ms-3 mt-3 p-4 bg-light d-flex justify-content-between">
+                            {{-- <div class="ms-3 mt-3 p-4 bg-light d-flex justify-content-between">
                                 <div>
                                     <h6 class="mb-0">Interested in this product?</h6>
                                     <h6 class="fw-bold">Get Latest Price from the seller</h6>
@@ -246,9 +246,9 @@
                                     <button class="border-0 bg-warning px-3 py-2 rounded-pill text-white">Contact
                                         Seller</button>
                                 </div>
-                            </div>
+                            </div> --}}
 
-                            <div class="ms-3 mt-4">
+                            {{-- <div class="ms-3 mt-4">
                                 <h5>About the Company</h5>
                                 <div class="row mt-3">
                                     <div class="col-4">
@@ -297,7 +297,7 @@
                                         aspernatur molestiae suscipit, nostrum nobis. Eius quidem dolores, modi sed
                                     </p>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="col-4 position-sticky">
                             <!-- CONTACT FORM START -->
@@ -327,7 +327,7 @@
                     </div>
                 </div>
             </div>
-
+{{--
             <div class="row rounded shadow mt-5 py-3">
                 <div class="d-flex ms-2">
                     <h5>Featured Recommendations</h5>
@@ -473,10 +473,10 @@
                     </div>
                 </div>
 
-            </div>
+            </div> --}}
 
 
-            <div class="row rounded shadow mt-5 py-3">
+            {{-- <div class="row rounded shadow mt-5 py-3">
                 <div class="d-flex ms-2">
                     <h5>Browse related categories</h5>
                     <div class="ms-2"><small>View All <i class="bi bi-chevron-right h6 mb-0"></i></small></div>
@@ -621,7 +621,7 @@
                     </div>
                 </div>
 
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection
