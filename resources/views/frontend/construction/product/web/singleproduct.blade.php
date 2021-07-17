@@ -37,9 +37,9 @@
 @section('content')
     <div class="single_construction">
         <div class="container-fluid">
-            <small>
+            {{-- <small>
                 lorem &nbsp; > &nbsp; lorem &nbsp; > &nbsp; lorem &nbsp; > &nbsp; lorem
-            </small>
+            </small> --}}
             <div class="row py-2 rounded shadow">
                 <div class="col-4">
                     <div class="galleryContainer">
@@ -105,8 +105,8 @@
                                     <small>Exports to Pakistan</small>
                                 </div>
                                 <div class="text-center">
-                                    <small><i class="bi bi-geo-alt-fill"></i> Sayajiganj, Vadodara,
-                                        Gujarat</small>
+                                    <small><i class="bi bi-geo-alt-fill"></i>{{$storeproduct->store->address}}
+                                        </small>
                                 </div>
                                 <div class="text-center mb-2"><span class="fw-bold">5.3</span>/5
                                     <i class="bi bi-star-fill filledStar"></i><i class="bi bi-star-fill filledStar"></i><i
@@ -121,10 +121,11 @@
                                             Store</button>
                                     </a>
                                 </div>
-                                <div class="text-center">
+                                <br>
+                                {{-- <div class="text-center">
                                     <small>67% Response Rate</small>
-                                </div>
-                                <div class="row px-2 mt-1">
+                                </div> --}}
+                                {{-- <div class="row px-2 mt-1">
                                     <div class="col-6 d-flex align-items-center"><i
                                             class="lstic spfirst mr3 pdinb pd_flsh"></i>
                                         <small class="smallFont mb-0 ms-1">
@@ -142,7 +143,7 @@
                                             Verified Exporter
                                         </small>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -159,13 +160,16 @@
                     <div class="mapCardContainer mt-4">
                         <div class="container-fluid px-0">
                             <div class="row px-2">
+
                                 @foreach ($storeproduct->getrelatedproduct(1) as $item)
+
                                 @unless($item->isstoreproduct($storeproduct->store_id) == null)
                                         <div class="col-sm-4 col-lg-3 mb-4">
                                             <!-- property card start -->
                                             <div class="propertyCard p-2">
-                                                <a class="text-decoration-none position-relative" href="{{ route('construction.singleproduct', ['store'=>$storeproduct->store->name,'storeproduct' => $storeproduct->id]) }}">
-                                                    <div class="imageSection">
+
+
+                                                    <div class="imageSection"><a class="text-decoration-none position-relative" href="{{ route('construction.singleproduct', ['store'=>$storeproduct->store->name,'storeproduct' => $item->storeproduct[0]->id]) }}">
                                                         <img class="slideImg"
                                                             src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->image }}"
                                                             alt="" />
@@ -177,7 +181,7 @@
                                                                 <h6 class="lightColor">{!! $item->c_category->name !!} </h6>
                                                             </div>
                                                             <div class="mt-2">
-                                                                <strong class="mt-5">{{ $item->name }}</strong>
+                                                                <strong class="mt-5">{{ $item->name}}</strong>
                                                             </div>
                                                             <h6 class="mt-2">
                                                                 <strong>
@@ -197,6 +201,7 @@
                                         </div>
                                     @endunless
                                 @endforeach
+
 
                             </div>
                         </div>

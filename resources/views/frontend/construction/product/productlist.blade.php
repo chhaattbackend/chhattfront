@@ -104,15 +104,15 @@
                 <h6 class="font-weight-bolder mt-3 mb-0 border p-2 bg-light text-dark" onclick="down('relatedbrand')">
                     Related Brands</h6>
                 <ul id="relatedbrand" class="border p-2">
-                    @foreach ($storeproducts as $item)
+                    @foreach ($brand as $item)
                         <li class="p-1">
-                            {{-- {{ $item }} --}}
+                            {{ $item->name }}
                         </li>
                     @endforeach
 
                 </ul>
 
-                <h6 class="font-weight-bolder mt-3 mb-0 border p-2 bg-light text-dark">Filter Results</h6>
+                {{-- <h6 class="font-weight-bolder mt-3 mb-0 border p-2 bg-light text-dark">Filter Results</h6>
                 <ul class="border p-2">
                     <li class="p-1">
                         Video
@@ -129,7 +129,7 @@
                     <li class=" p-1">
                         Video
                     </li>
-                </ul>
+                </ul> --}}
             </div>
             <!-- left div end -->
             <!-- right div start -->
