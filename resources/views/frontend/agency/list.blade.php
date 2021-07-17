@@ -18,14 +18,16 @@
                             {{-- <h6 class="lightColor">{{ $item->areaOne->city->name }}</h6> --}}
                             <h6 class="lightColor">Karachi</h6>
                         </div>
-                        <div class="text-start mt-2">
+                        <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+                            class="text-start mt-1">
                             <strong class="mt-5">{{ $item->name }}</strong>
                         </div>
-                        <h6 class="text-start mt-2">
+                        <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+                            class="text-start mt-1 mb-0">
                             <strong>
                                 {{ $item->user->name }}
                             </strong>
-                        </h6>
+                        </p>
                     </div>
                 </div>
             </a>

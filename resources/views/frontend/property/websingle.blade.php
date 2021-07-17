@@ -260,8 +260,7 @@
 
                                 <br />
                                 <textarea required name="description" class="@error('description') is-invalid @enderror"
-                                    rows="5">I saw your ad on Chhatt.com (چھت).
-                            I am interested in your property {!! $properties->id !!} Please do give reference of Chhatt.com to the Realtor/Property Owner</textarea>
+                                    rows="5">I saw your ad on Chhatt.com (چھت).&#013;I am interested in your property {!! $properties->id !!} Please do give reference of Chhatt.com to the Realtor/Property Owner</textarea>
                                 <br />
 
                                 <Button type="submit" style="background: #4391f7;border-radius: 4px">
@@ -294,9 +293,16 @@
         <div class="d-flex justify-content-between">
             <h2 class="fw-bold">Related Properties</h2>
             <div class="d-flex">
+                
                 <div class="ms-4">
-                    <button class="themebtn2 px-3 py-1 ms-1">View all</button>
+
+                    <a href="{{ route('property.search', ['city' => $properties->areaOne->city->name,'area_type' => $properties->type]) }}">
+                    <button class="themebtn2 px-3 py-1 ms-1" type="submit">
+
+                        View all</button>
+                    </a>
                 </div>
+
             </div>
         </div>
         <div class="position-relative mt-2">

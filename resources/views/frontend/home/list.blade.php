@@ -51,14 +51,18 @@ function convert_rupee($amount)
                         <h6 class="lightColor">{{ $item->updated_at->diffForHumans() }}</h6>
                     </div>
                     <div class="mt-2 title ellipse">
-                        <strong class="mt-5">{{ $item->property_type }} {{ $item->property_for }} in {{ optional($item->areaThree)->name }}
+                        <strong class="mt-5">{{ $item->property_type }} {{ $item->property_for }} in
+                            {{ optional($item->areaThree)->name }}
                             {{ optional($item->areaTwo)->name }}
                             {{ optional($item->areaOne)->name }}</strong>
                     </div>
-                    <h6 class="mt-1">
+                    <h6>
                         <strong>
                             @if ($item->price == null)
-                                <span style="background: red;" class="badge badge-pill badge-danger">On Request</span>
+                                <p class="my-2">
+                                    <span style="background: red;" class="badge badge-pill badge-danger">On
+                                        Request</span>
+                                </p>
                             @else
                                 <p style="color: rgb(228, 20, 20)">
                                     Rs: {{ convert_rupee($item->price) }}

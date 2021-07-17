@@ -1,6 +1,8 @@
 /* footer end */
 
+
 /* HEADER END */
+
 
 /* SLIDER START */
 
@@ -57,7 +59,7 @@
 
 .sliderBtnLeft {
     position: absolute;
-    left: -3.5%;
+    left: -9.5%;
     top: 50%;
     z-index: 1;
     transform: translateY(-50%);
@@ -79,7 +81,10 @@
     color: rgba(0, 0, 0, 0.3);
 }
 
+
 /* SLIDER END */
+
+
 /*----------------------- PROPERTIES-------------------*/
 
 .imgs {
@@ -88,6 +93,7 @@
     height: 100%;
     object-fit: cover;
 }
+
 .bottom {
     color: #fff;
     position: absolute;
@@ -290,7 +296,9 @@
     margin-top: 50px !important;
 }
 
+
 /* property list end */
+
 
 /* SLIDER START */
 
@@ -321,6 +329,7 @@
     height: 200px;
     width: 100%;
 }
+
 .scroll-img-list .imageSection .cardTag h6 {
     color: #fff;
     margin-bottom: 0rem;
@@ -328,7 +337,7 @@
     font-weight: 600;
 }
 
-.scroll-img-list .imageSection .cardTag  {
+.scroll-img-list .imageSection .cardTag {
     top: 2%;
     left: 2%;
     background-color: #b00;
@@ -362,7 +371,7 @@
 
 .sliderBtnLeft {
     position: absolute;
-    left: -3.5%;
+    left: -9.5%;
     top: 50%;
     z-index: 1;
     transform: translateY(-50%);
@@ -384,14 +393,15 @@
     color: rgba(0, 0, 0, 0.3);
 }
 
+
 /* SLIDER END */
+
 
 /* visit construction start  */
 
 .maindiv {
     width: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-        url(../../../assets/visitPropertySite.webp);
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../../../assets/visitPropertySite.webp);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -434,7 +444,9 @@
     letter-spacing: 2px;
 }
 
+
 /* lol */
+
 
 /* explorer start */
 
@@ -492,13 +504,18 @@
     box-shadow: 0px 0px 10px 5px #eee;
 }
 
+
 /* two-cards end */
+
+
 /* input start */
+
 .autoComplete_wrapper {
     width: 100% !important;
     margin-right: 10px !important;
 }
-.autoComplete_wrapper > input {
+
+.autoComplete_wrapper>input {
     width: 100% !important;
     height: 52px !important;
     padding-left: 8px !important;
@@ -508,7 +525,8 @@
     outline: 0;
     background-color: transparent !important;
 }
-.autoComplete_wrapper > ul {
+
+.autoComplete_wrapper>ul {
     position: absolute;
     max-height: 340px !important;
     width: 750px !important;
@@ -525,7 +543,10 @@
     z-index: 1000;
     outline: 0;
 }
-.autoComplete_wrapper > ul > li mark {
+
+.autoComplete_wrapper>ul>li mark {
     color: #007bff !important;
 }
+
+
 /* input end */
