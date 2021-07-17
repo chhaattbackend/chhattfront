@@ -21,23 +21,24 @@ Route::get('/agency/{id}', 'AgencyController@singleAgency')->name('single.agency
 Route::get('/propertyDetail/{id}', 'PropertyController@singleProperty')->name('single.property');
 Route::post('/agency/ajax', 'AgencyController@ajax');
 Route::post('/agency/mobileajax', 'AgencyController@mobileajax');
-Route::get('/property/{property_type}','PropertyController@explorer')->name('explorer.search');
+Route::get('/property/{property_type}', 'PropertyController@explorer')->name('explorer.search');
 Route::get('/contact-us', function () {
     return view('layouts.contact');
 })->name('contact');
-Route::post('sendform','LeadController@formsubmit')->name('contact.form');
+Route::post('sendform', 'LeadController@formsubmit')->name('contact.form');
 
 
 Route::prefix('construction')->group(function () {
-Route::get('/','ConstructionACategoryController@index')->name('construction.home');
+    Route::get('/', 'ConstructionACategoryController@index')->name('construction.home');
 
-Route::post('/{id}','ConstructionBCategoryController@index')->name('construction.bcat'); // for ccat click on homepage
-Route::get('/{id}','ConstructionBCategoryController@byCategory')->name('construction.bcat'); // for reload that current ccat page
+    Route::post('/{id}', 'ConstructionBCategoryController@index')->name('construction.bcat'); // for ccat click on homepage
+    Route::get('/{id}', 'ConstructionBCategoryController@byCategory')->name('construction.bcat'); // for reload that current ccat page
 
-Route::get('/bcat/all','ConstructionBCategoryController@viewall')->name('construction.bcatlist');
-Route::get('list/{dcategory:name}/{product:id}','ConstructionBCategoryController@product')->name('construction.productlist');
-Route::get('productDetail/{store:name}/{storeproduct:id}','ConstructionBCategoryController@singleproduct')->name('construction.singleproduct');
-Route::get('storeDetail/{store:slug}','ConstructionStoreController@index')->name('construction.singlestore');
+    Route::get('/bcat/all', 'ConstructionBCategoryController@viewall')->name('construction.bcatlist');
+    Route::get('list/{dcategory:name}/{product:id}', 'ConstructionBCategoryController@product')->name('construction.productlist');
+    Route::get('list/{ccategory:name}', 'ConstructionBCategoryController@mainProduct')->name('construction.mainproductlist');
+    Route::get('productDetail/{store:name}/{storeproduct:id}', 'ConstructionBCategoryController@singleproduct')->name('construction.singleproduct');
+    Route::get('storeDetail/{store:slug}', 'ConstructionStoreController@index')->name('construction.singlestore');
 });
 
 

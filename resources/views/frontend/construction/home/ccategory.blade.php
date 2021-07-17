@@ -55,8 +55,10 @@
                 <div id="main_List{{ $item->id }}" class="lst_div d-flex" style="height: 220px; overflow: hidden;">
                     <div class="litsdj col-md-2 pt-2 mt-4">
                         <div class="list1_div1">
-                            <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/ccategories/{{ $item->image }}"
-                                width="115px" height="115px" alt="" />
+                            <a href="{{ route('construction.mainproductlist',['ccategory' => $item->name ]) }}">
+                                <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/ccategories/{{ $item->image }}"
+                                    width="115px" height="115px" alt="" />
+                            </a>
                         </div>
                         <div class="list1_div2">
                             <h6>
