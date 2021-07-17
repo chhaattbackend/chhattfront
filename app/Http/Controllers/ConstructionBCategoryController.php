@@ -74,7 +74,21 @@ class ConstructionBCategoryController extends Controller
             ->where('c_categories.id', '=', $ccategory->id)
             ->get();
 
+        $storeproductdcat1 = DB::connection('mysql2')->table('products')
+            ->select('store_products.*')->distinct()
+            ->join('store_products', 'products.id', '=', 'store_products.product_id')
+            ->join('d_categories', 'd_categories.id', '=', 'products.d_category_id')
+            ->join('c_categories', 'c_categories.id', '=', 'd_categories.c_category_id')
+            ->join('stores', 'stores.id', '=', 'store_products.store_id')
+            ->where('c_categories.id', '=', $ccategory->id)
+            ->get();
 
+
+        $brand = [];
+        foreach ($storeproductdcat1 as $item) {
+            array_push($brand, ConstructionBrand::find($item->brand_id));
+        }
+        $brand = array_unique($brand);
 
 
         $dcategories = [];
@@ -91,7 +105,7 @@ class ConstructionBCategoryController extends Controller
         // dd($ccategory->subcategories);
         // dd($dcategory);
 
-        return view('frontend.construction.product.productlist', compact('storeproducts', 'dcategory', 'dcategories',));
+        return view('frontend.construction.product.productlist', compact('storeproducts', 'dcategory', 'dcategories','brand'));
     }
 
     public function product(ConstructionDCategory $dcategory, ConstructionProduct $product)
@@ -106,7 +120,7 @@ class ConstructionBCategoryController extends Controller
             ->get();
 
 
-            $storeproductdcat1 = DB::connection('mysql2')->table('products')
+        $storeproductdcat1 = DB::connection('mysql2')->table('products')
             ->select('store_products.*')->distinct()
             ->join('store_products', 'products.id', '=', 'store_products.product_id')
             ->join('d_categories', 'd_categories.id', '=', 'products.d_category_id')
@@ -128,8 +142,8 @@ class ConstructionBCategoryController extends Controller
         }
         $brand = array_unique($brand);
 
-         $storeproducts = ConstructionStoreProduct::where('product_id', $product->id)->get();
-        return view('frontend.construction.product.productlist', compact('storeproducts', 'dcategory', 'dcategories','brand'));
+        $storeproducts = ConstructionStoreProduct::where('product_id', $product->id)->get();
+        return view('frontend.construction.product.productlist', compact('storeproducts', 'dcategory', 'dcategories', 'brand'));
     }
 
     public function singleproduct(ConstructionStore $store, ConstructionStoreProduct $storeproduct)

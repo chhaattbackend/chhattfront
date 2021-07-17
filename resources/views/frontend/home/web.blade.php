@@ -262,12 +262,172 @@
 
 @section('content')
     <meta hidden name="csrf-token" content="{{ csrf_token() }}" />
-
+    <section class="products">
+        <div class="container">
+            <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+                <symbol id="disc" viewBox="0 0 451.846 451.847">
+                    <path
+                        d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744 L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284 c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z">
+                    </path>
+                </symbol>
+            </svg>
+            <div class="product-sec-wrapper">
+                <h2><a class="hCathd" href="">Medical,
+                        Safety &amp; Protective Clothing and Apparel</a></h2>
+                <div class="minht cBFlex" id="1">
+                    <div class="product-banner  pbnr7">
+                        <div class="banner-content">
+                            <ul>
+                                <li><a href="">Disposable
+                                        Gloves</a>
+                                </li>
+                                <li><a href="">Hazmat Suit</a></li>
+                                <li><a href="">Personal Protective
+                                        Equipment
+                                        Kit</a></li>
+                            </ul>
+                            <a href="" class="view-all">View
+                                All</a>
+                        </div>
+                    </div>
+                    <div class="row cBW100">
+                        <div class="col-md-4 col-sm-6 bdr1">
+                            <div class="product-item">
+                                <div class="product-thumbnail">
+                                    <a href=""><img data-original="https://hm.imimg.com/imhome_gifs/cvid02.png"
+                                            alt="Face Mask" src="https://hm.imimg.com/imhome_gifs/cvid02.png"
+                                            title="Face Mask"></a>
+                                </div>
+                                <div class="product-meta">
+                                    <h3><a href="">Face Mask</a></h3>
+                                    <p><a href="">3 Ply Face
+                                            Mask</a></p>
+                                    <p><a href="">N95
+                                            Respirator
+                                            Mask</a></p>
+                                    <p><a href="">Non Woven
+                                            Face
+                                            Mask</a></p>
+                                    <p><a href="">Nose Masks</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 bdr1">
+                            <div class="product-item">
+                                <div class="product-thumbnail">
+                                    <a href=""><img
+                                            data-original="https://5.imimg.com/data5/GA/AX/PV/SELLER-134485/oxygen-125x125.jpg"
+                                            src="https://5.imimg.com/data5/GA/AX/PV/SELLER-134485/oxygen-125x125.jpg"
+                                            alt="Medical Mask" title="Medical Mask"></a>
+                                </div>
+                                <div class="product-meta">
+                                    <h3> <a href="">Medical Mask</a>
+                                    </h3>
+                                    <p><a href="">CPR Mask</a></p>
+                                    <p><a href="">Oxygen Mask</a></p>
+                                    <p><a href="">CPAP Mask</a></p>
+                                    <p><a href="">BIPAP Mask</a></p>
+                                    <p><a href="">Nasal Mask</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 bdr1">
+                            <div class="product-item">
+                                <div class="product-thumbnail">
+                                    <a href=""><img data-original="https://hm.imimg.com/imhome_gifs/cvid03.png"
+                                            src="https://hm.imimg.com/imhome_gifs/cvid03.png" alt="Surgical Gloves"
+                                            title="Surgical Gloves"></a>
+                                </div>
+                                <div class="product-meta">
+                                    <h3> <a href="">Surgical
+                                            Gloves</a>
+                                    </h3>
+                                    <p> <a href="">Nitrile
+                                            Gloves</a></p>
+                                    <p> <a href=""> Non-sterile
+                                            Gloves</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 bdr1">
+                            <div class="product-item">
+                                <div class="product-thumbnail">
+                                    <a href=""><img
+                                            data-original="https://5.imimg.com/data5/JJ/IV/XY/SELLER-6410244/medical-scrubs-125x125.jpg"
+                                            src="https://5.imimg.com/data5/JJ/IV/XY/SELLER-6410244/medical-scrubs-125x125.jpg"
+                                            alt="Medical Clothing" title="Medical Clothing"></a>
+                                </div>
+                                <div class="product-meta">
+                                    <h3><a href="">Medical Clothing
+                                        </a>
+                                    </h3>
+                                    <p> <a href=""> Medical Apron</a>
+                                    </p>
+                                    <p><a href="">Nurse Uniform</a>
+                                    </p>
+                                    <p> <a href="">Surgical Gown</a>
+                                    </p>
+                                    <p><a href="">Disposable
+                                            Clothing</a></p>
+                                    <p> <a href="">Medical Scrub</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 bdr1">
+                            <div class="product-item">
+                                <div class="product-thumbnail">
+                                    <a href=""> <img
+                                            data-original="https://5.imimg.com/data5/FR/RK/MY-9882376/disposable-surgical-cap-125x125.jpg"
+                                            src="https://5.imimg.com/data5/FR/RK/MY-9882376/disposable-surgical-cap-125x125.jpg"
+                                            alt="Surgical Caps" title="Surgical Caps"></a>
+                                </div>
+                                <div class="product-meta">
+                                    <h3><a href=""> Surgical Caps</a>
+                                    </h3>
+                                    <p><a href=""> Bouffant Caps</a>
+                                    </p>
+                                    <p><a href="">Disposable Cap</a>
+                                    </p>
+                                    <p><a href="">Nurse Cap</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 bdr1">
+                            <div class="product-item">
+                                <div class="product-thumbnail">
+                                    <a href=" "> <img
+                                            data-original="https://5.imimg.com/data5/SI/XQ/MB/GLADMIN-73621/coronavirus-ppe-kit-125x125.png "
+                                            src="https://5.imimg.com/data5/SI/XQ/MB/GLADMIN-73621/coronavirus-ppe-kit-125x125.png "
+                                            alt="Personal Protective Equipment" title="Personal Protective Equipment"></a>
+                                </div>
+                                <div class="product-meta">
+                                    <h3><a href=" ">Personal Protective
+                                            Equipment</a></h3>
+                                    <p><a href="">Hazmat Suit</a></p>
+                                    <p><a href=""> Face Shields </a>
+                                    </p>
+                                    <p> <a href=""> Disposable
+                                            Gloves</a></p>
+                                    <p><a href=""> Disposable
+                                            Face
+                                            Mask</a></p>
+                                    <p> <a href="">
+                                            Disposable
+                                            Shoe Cover</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <div class="pageContainer">
         <div class="container-fluid">
             <!-- TW CARDS START -->
-            <div class="twoCards mt-5 text-center">
+            {{-- <div class="twoCards mt-5 text-center">
                 <h2 class="fw-bolder">Find the Business in town</h2>
                 <div class="mt-5 d-flex justify-content-center">
                     <div>
@@ -291,7 +451,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- TW CARDS END -->
             <br>
             <hr>
@@ -313,12 +473,12 @@
                         </div>
                         <div class="ms-4">
 
-                                <a href="{{route('allproperties',['all'=>'All'])}}" id="propertyChange">
+                            <a href="{{ route('allproperties', ['all' => 'All']) }}" id="propertyChange">
 
-                                    <button class="themebtn2 px-3 py-1 ms-1" type="submit">
-                                            View All
-                                    </button>
-                                </a>
+                                <button class="themebtn2 px-3 py-1 ms-1" type="submit">
+                                    View All
+                                </button>
+                            </a>
                         </div>
                     </div>
 
@@ -372,7 +532,7 @@
         const allProperties = () => {
             getListdata('All');
             // var change=document.getElementById("mouz")
-            $("#propertyChange").attr('href', '{{route('allproperties',['all'=>'All'])}}');
+            $("#propertyChange").attr('href', '{{ route('allproperties', ['all' => 'All']) }}');
             btn1.classList.add("active_bestProperties");
             btn2.classList.remove("active_bestProperties");
             btn3.classList.remove("active_bestProperties");
@@ -380,7 +540,7 @@
         };
         const residential = () => {
             getListdata("residential");
-            $("#propertyChange").attr('href', '{{route('allproperties',['all'=>'Residential'])}}');
+            $("#propertyChange").attr('href', '{{ route('allproperties', ['all' => 'Residential']) }}');
             btn2.classList.add("active_bestProperties");
             btn1.classList.remove("active_bestProperties");
             btn3.classList.remove("active_bestProperties");
@@ -388,7 +548,7 @@
         };
         const commercial = () => {
             getListdata("commercial");
-            $("#propertyChange").attr('href', '{{route('allproperties',['all'=>'Commercial'])}}');
+            $("#propertyChange").attr('href', '{{ route('allproperties', ['all' => 'Commercial']) }}');
             btn3.classList.add("active_bestProperties");
             btn1.classList.remove("active_bestProperties");
             btn2.classList.remove("active_bestProperties");
@@ -396,7 +556,7 @@
         };
         const industrial = () => {
             getListdata("industrial");
-            $("#propertyChange").attr('href', '{{route('allproperties',['all'=>'Industrial'])}}');
+            $("#propertyChange").attr('href', '{{ route('allproperties', ['all' => 'Industrial']) }}');
             btn4.classList.add("active_bestProperties");
             btn1.classList.remove("active_bestProperties");
             btn2.classList.remove("active_bestProperties");

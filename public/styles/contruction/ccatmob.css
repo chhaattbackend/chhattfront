@@ -1,0 +1,173 @@
+#websitec {
+  padding: 0 20px;
+  position: relative;
+  min-width: 1007px;
+}
+.main_div {
+  max-width: 1300px;
+  margin: auto;
+  margin-top: 20px;
+  padding: 20px 20px;
+  background-color: #e8eaeb;
+  text-align: center;
+}
+#mainList {
+  overflow: hidden;
+  transition: all 300ms linear !important;
+  height: 130px;
+}
+#mainList1 {
+  overflow: hidden;
+  transition: all 300ms linear !important;
+  height: 220px;
+}
+.centr {
+  max-width: 1300px;
+  margin: auto;
+  margin-top: 20px;
+  font-weight: bold;
+}
+.hegt {
+  height: auto;
+}
+.list {
+  display: flex;
+  width: 100%;
+  padding-top: 10px !important;
+}
+.list1,
+.list2,
+.list3,
+.list4,
+.list4,
+.list5 {
+  display: flex;
+  align-items: center;
+}
+.litsdj {
+  border-right: 1px solid;
+}
+.list1 .list1_div2,
+.list2 .list1_div2,
+.list3 .list1_div2,
+.list4 .list1_div2,
+.list4 .list1_div2,
+.list5 .list1_div2 {
+  padding-left: 5px;
+  text-align: left;
+  width: 300px !important;
+}
+.list1_div2 > h6 {
+  text-align: center;
+  font-size: 12px;
+}
+.list1 .list1_div2 p,
+.list2 .list1_div2 p,
+.list3 .list1_div2 p,
+.list4 .list1_div2 p,
+.list4 .list1_div2 p,
+.list5 .list1_div2 p {
+  margin: 0;
+}
+.btns {
+  background-color: #2e4cff;
+  font-size: 13px;
+  padding: 7px 15px;
+  color: #fff;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+.maincolapse {
+  margin-top: 25px;
+}
+@media (max-width: 1190px) {
+  .list5 {
+    display: none;
+  }
+}
+
+/* BEST propert start */
+.best_main_div {
+  margin-top: 15px;
+  background-color: #f2f2f4;
+  padding: 15px;
+}
+.best_main_div .fdiv .sdiv {
+  overflow-x: auto;
+  width: 100%;
+}
+.best_main_div .fdiv ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  margin-top: 5px;
+  width: 100%;
+  min-width: 400px;
+}
+.best_main_div .fdiv ul li {
+  display: flex;
+  flex-direction: column;
+  margin: 0 10px;
+}
+.top {
+  display: flex;
+  justify-content: space-between;
+}
+.top p:nth-child(1) {
+  font-weight: 900;
+  border-bottom: 1px solid;
+}
+.top p:nth-child(2) {
+  color: #007bff;
+}
+/* BEST propert end */
+
+/* PROPERT CARD START */
+.property_card_main_div {
+  color: #000;
+}
+
+.property_card_main_div_sub {
+  color: #000;
+}
+
+.property_card_main_div_sub .propertyImg {
+  width: 160px;
+  height: 120px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.property_card_main_div b {
+  display: block;
+  width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #000;
+}
+.property_card_main_div p:nth-of-type(1) {
+  font-size: 14px;
+  opacity: 0.5;
+  margin: 0;
+  padding-top: 5px;
+  padding-bottom: 3px;
+  color: #000;
+}
+.property_card_main_div p:nth-of-type(2) {
+  opacity: 0.7;
+  margin: 0;
+  padding-top: 3px;
+  padding-bottom: 10px;
+}
+.property_card_main_div p:nth-of-type(2) b {
+  color: #c90000;
+}
+.propertyImg {
+  width: 185px;
+  height: 140px;
+  border-radius: 10px;
+  border: 2px solid #007bff;
+}
+/* PROPERT CARD end */
