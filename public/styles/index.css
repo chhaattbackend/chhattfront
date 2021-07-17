@@ -3,7 +3,8 @@
     src: url("../fonts/Lato-Regular.ttf");
 }
 
-html, body {
+html,
+body {
     font-family: 'Lato', sans-serif !important;
     margin: 0;
     padding: 0;
@@ -64,6 +65,7 @@ h5 {
     font-weight: 600 !important;
 }
 
+
 /* STICKY NAVBAR START */
 
 .navbarContainer {
@@ -86,7 +88,9 @@ h5 {
     margin: auto;
 }
 
+
 /* STICKY NAVBAR END */
+
 
 /* NAVIGATOR CLASSES START */
 
@@ -98,11 +102,15 @@ h5 {
     display: none;
 }
 
+
 /* NAVIGATOR CLASSES END */
+
 
 /* LOL */
 
+
 /* website start */
+
 
 /* HEADER START */
 
@@ -396,7 +404,9 @@ h5 {
     height: 200px !important;
 }
 
+
 /* header end */
+
 
 /* footer start */
 
@@ -519,7 +529,8 @@ h5 {
     transition: 0.6s all;
 }
 
-.youtube, .facebook {
+.youtube,
+.facebook {
     padding: 0.4rem 0.5rem 0.5rem 8px !important;
 }
 
@@ -588,7 +599,9 @@ h5 {
     border-radius: 100%;
 }
 
+
 /* footer end */
+
 
 /* <!-- == NEWSLETTER START == --> */
 
@@ -672,7 +685,9 @@ h5 {
     text-align: left;
 }
 
+
 /* <!-- == NEWSLETTER END == --> */
+
 
 /* explorer start */
 
@@ -703,11 +718,14 @@ h5 {
     font-weight: bolder;
 }
 
+
 /* explorer end */
+
 
 /* TWO CARDS START */
 
-.twoCards .card1, .twoCards .card2 {
+.twoCards .card1,
+.twoCards .card2 {
     height: 170px;
     border-radius: 5px;
     width: 300px;
@@ -715,7 +733,8 @@ h5 {
     position: relative;
 }
 
-.twoCards .card1 img, .twoCards .card2 img {
+.twoCards .card1 img,
+.twoCards .card2 img {
     position: absolute;
     border-radius: 5px;
     left: 50%;
@@ -724,7 +743,9 @@ h5 {
     bottom: 15%;
 }
 
+
 /* TWO CARDS END */
+
 
 /* <!-- == TEXT CONTENT START == --> */
 
@@ -743,7 +764,9 @@ h5 {
     padding: 2rem 0rem;
 }
 
+
 /* <!-- == TEXT CONTENT END == --> */
+
 
 /* two-cards start */
 
@@ -817,6 +840,7 @@ h5 {
     font-weight: bold;
 }
 
+
 /* PROPERTY START */
 
 .ellipse {
@@ -862,7 +886,9 @@ h5 {
     margin-bottom: 0px;
 }
 
+
 /* PROPERTY END */
+
 
 /* property list start */
 
@@ -919,7 +945,9 @@ h5 {
     margin-left: 10px;
 }
 
+
 /* property list end */
+
 
 /* <!-- == ACTIVE NAV START == --> */
 
@@ -928,7 +956,25 @@ h5 {
     color: #fff;
 }
 
+
+/* .active_bestPropertiesR {
+    background-color: #ff0000 !important;
+    color: #fff;
+}
+
+.active_bestPropertiesC {
+    background-color: #4c00ff !important;
+    color: #fff;
+}
+
+.active_bestPropertiesI {
+    background-color: #0a5004 !important;
+    color: #fff;
+} */
+
+
 /* <!-- == ACTIVE NAV END == --> */
+
 
 /* <!-- == EXPLORE START == --> */
 
@@ -977,6 +1023,7 @@ h5 {
     margin-bottom: 0px;
 }
 
+
 /* explorer start */
 
 .exp {
@@ -1020,7 +1067,11 @@ h5 {
     color: #000;
 }
 
-.apart, .house, .office, .villa, .svilla {
+.apart,
+.house,
+.office,
+.villa,
+.svilla {
     cursor: pointer;
     width: 170px !important;
     padding-top: 25px;
@@ -1029,7 +1080,9 @@ h5 {
     box-shadow: 0px 0px 10px 5px #eee;
 }
 
+
 /* two-cards end */
+
 
 /* <!-- == EXPLORE END == --> */
 
@@ -1042,7 +1095,7 @@ h5 {
     background-repeat: no-repeat;
     background-size: cover;
     color: white;
-    background-image: url("../../assets/propertyCard.webp") ;
+    background-image: url("../../assets/propertyCard.webp");
 }
 
 .backgz {
@@ -1079,6 +1132,7 @@ h5 {
     font-size: 17px;
 }
 
+
 /* slick slider start */
 
 .slick-next:before {
@@ -1086,6 +1140,7 @@ h5 {
     color: black;
     font-size: 30px;
 }
+
 
 /* slick slider end */
 
@@ -1096,5 +1151,6 @@ h5 {
     display: inline-block;
     margin-left: -9px;
 }
+
 
 /* website end */
