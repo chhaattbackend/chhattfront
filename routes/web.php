@@ -31,8 +31,7 @@ Route::post('sendform', 'LeadController@formsubmit')->name('contact.form');
 Route::prefix('construction')->group(function () {
     Route::get('/', 'ConstructionACategoryController@index')->name('construction.home');
 
-    Route::post('/{id}', 'ConstructionBCategoryController@index')->name('construction.bcat'); // for ccat click on homepage
-    Route::get('/{id}', 'ConstructionBCategoryController@byCategory')->name('construction.bcat'); // for reload that current ccat page
+    Route::get('{bcategory:slug}', 'ConstructionBCategoryController@index')->name('construction.bcat'); // for reload that current ccat page
 
     Route::get('/bcat/all', 'ConstructionBCategoryController@viewall')->name('construction.bcatlist');
     Route::get('list/{dcategory:name}/{product:id}', 'ConstructionBCategoryController@product')->name('construction.productlist');

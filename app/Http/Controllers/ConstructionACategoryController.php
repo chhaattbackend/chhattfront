@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\ConstructionACategory;
 use App\ConstructionBCategory;
+use App\ConstructionCCategory;
+use App\ConstructionDCategory;
 use App\ConstructionProduct;
 use App\ConstructionStore;
 use App\ConstructionStoreProduct;
@@ -16,12 +18,21 @@ class ConstructionACategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        // $bcategories = ConstructionBCategory::all();
-        // $store=ConstructionStore::orderBy('id','desc')->get();
+        // $bcat = ConstructionDCategory::all();
+        // foreach ($bcat as $key => $item) {
+        //     $a = str_replace(str_split('\\/&,:*?"<>|()'), '', strtolower($item->name));
+        //     $a = str_replace(' ', '-', $a);
+        //     // dd($a);
 
-        $store = ConstructionStore::orderBy('id', 'desc')->get();
+        //     $item->update([
+        //         'slug' => $a
+        //     ]);
+        // }
+        // dd('done');
+
+        $store = ConstructionStore::orderBy('id', 'asc')->get();
         $bcategories = [];
         foreach ($store as $item) {
             foreach ($item->storeproducts as $item) {

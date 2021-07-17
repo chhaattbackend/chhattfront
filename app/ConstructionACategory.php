@@ -10,6 +10,7 @@ class ConstructionACategory extends Model
     protected $table = 'a_categories';
     protected $fillable=[
         'id',
-        'name'
+        'name',
+        'slug'
     ];
 }

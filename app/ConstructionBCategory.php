@@ -11,7 +11,8 @@ class ConstructionBCategory extends Model
     protected $fillable =[
         'id',
         'a_category_id',
-        'name'
+        'name',
+        'slug'
     ];
     public function category(){
         return $this->belongsTo(ConstructionACategory::class,'a_category_id');

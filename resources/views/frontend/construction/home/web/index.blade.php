@@ -102,19 +102,13 @@
                 <div class="main_slide_div">
                     <div style="margin: auto;" class="slider">
                         @foreach ($bcategories as $item)
-                            @php
-                                $id = str_replace(str_split('\\/:*?"<>|() '), '-', strtolower($item->name));
-                                $id = str_replace(',', '_', $id);
-                            @endphp
-
+                            {{-- @dd($item) --}}
                             <div>
                                 <li class="scroll-img-list  p-2 my-3">
-                                    <form id="main_div_form" action="{{ route('construction.bcat', ['id' => $id]) }}"
-                                        method="post">
-                                        @csrf
+                                    <div id="main_div_form">
                                         <div class="text-decoration-none position-relative">
-                                            <button onclick="formSubmit()" class="imageSection">
-                                                <a  href="{{ route('construction.bcat', ['id' => $id]) }}">
+                                            <button class="imageSection">
+                                                <a href="{{ route('construction.bcat', ['bcategory' => $item->slug]) }}">
                                                     <img class="slideImg"
                                                         src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $item->image }}"
                                                         alt="" />
@@ -144,14 +138,14 @@
                                             </div>
                                         </div>
                                         <div class="btn-viewmore d-flex justify-content-between mt-3">
-                                            <a href="{{ route('construction.bcat', ['id' => $id]) }}"
+                                            <a href="{{ route('construction.bcat', ['bcategory' => $item->slug]) }}"
                                                 class="text-decoration-none w-100 themebtn py-1 text-white">
-                                                <button class="w-100 themebtn py-1 text-white" onclick="formSubmit()">
+                                                <button class="w-100 themebtn py-1 text-white">
                                                     View more
                                                 </button>
                                             </a>
                                         </div>
-                                    </form>
+                                    </div>
 
                                 </li>
                             </div>
@@ -198,7 +192,7 @@
                         <div class="col-sm-4 col-lg-3 mb-4">
                             <div class="propertyCard p-2">
                                 <a class="text-decoration-none position-relative"
-                                    href="{{ route('construction.singleproduct', ['store'=>$item->store->name,'storeproduct' => $item->id]) }}">
+                                    href="{{ route('construction.singleproduct', ['store' => $item->store->name, 'storeproduct' => $item->id]) }}">
                                     <div class="imageSection">
                                         <img class="slideImg"
                                             src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}"

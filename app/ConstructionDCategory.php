@@ -11,7 +11,8 @@ class ConstructionDCategory extends Model
     protected $fillable =[
         'id',
         'c_category_id',
-        'name'
+        'name',
+        'slug'
     ];
     public function category(){
         return $this->belongsTo(ConstructionCCategory::class,'c_category_id');
@@ -23,7 +24,7 @@ class ConstructionDCategory extends Model
         return $this->hasMany(ConstructionProduct::class, 'd_category_id');
     }
 
-    
+
 
 
 
