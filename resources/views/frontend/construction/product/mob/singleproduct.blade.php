@@ -64,9 +64,11 @@
             <h5 class="font-weight-bold" style="font-size: 18px;">{{ $storeproduct->product->name }}</h5>
             <b class="text-primary">Rs {{ $storeproduct->product->price }}</b>
             <p>By: {{ $storeproduct->store->name }}, Karachi</p>
-            <div class="text-center d-flex">
-                <button type="button" class="btn btn-success w-50 me-2">Call Now</button>
-                <button type="button" class="btn btn-primary w-50">Get Best Price</button>
+            <div class="text-center ">
+                <a href="tel:+{{ $storeproduct->store->phone}}">
+                    <button type="button" class="btn btn-success w-50 me-2">Call Now</button>
+                </a>
+                {{-- <button type="button" class="btn btn-primary w-50">Get Best Price</button> --}}
             </div>
         </div>
         <!-- company card end -->
@@ -118,17 +120,21 @@
                     alt="">
                 <div class="px-3">
                     <h6 class="mb-0 small">{{ $storeproduct->store->name }}</h6>
-                    <p>Sriperumbudur, Chennai, Tamil Gandu</p>
-                    <div>Seller type: [Exports to Pakistan]</div>
+                    <p>{{ $storeproduct->store->address }}</p>
+                    {{-- <div>Seller type: [Exports to Pakistan]</div> --}}
                 </div>
                 <div>
+                    {{-- umair --}}
+                    <a href="tel:+{{ $storeproduct->store->phone}}">
                     <span class="phoneIconM">
-                        <i class="bi bi-telephone-outbound-fill"></i>
+                        <i class="bi bi-telephone-outbound-fill">
+                        </i>
                     </span>
+                </a>
                 </div>
             </div>
             <div class="text-center pt-3 pb-3">
-                <a href="{{ route('construction.singlestore',['store' => $storeproduct->store->slug]) }}">
+                <a href="{{ route('construction.singlestore', ['store' => $storeproduct->store->slug]) }}">
                     <button class="btn bg-transparent text-blue">View more</button>
                 </a>
             </div>
@@ -138,37 +144,37 @@
 
         <!-- bestprperty start -->
         @foreach ($storeproduct->getrelatedproduct(8) as $item)
-        <div class="bestprperty_main_div">
-            <div class="fdiv">
-                <div class="top">
-                    <p>Relative Properties</p>
-                    <p>
-                        View All
-                    </p>
-                </div>
-                <div class="sdiv">
-                    <ul>
-                        <li>
-                            <div>
-                                <!-- card start -->
-                                <a href="" class="card_main_div text-decoration-none">
-                                    <img src="./assets/images/welcomeCenter.webp" class="propertyImg" alt="" />
-                                    <p class="mb-0"> area_type </p>
-                                    <b>
-                                        property_type
-                                    </b>
-                                    <p>
-                                        <b>Rs : short_price</b>
-                                    </p>
-                                </a>
-                                <!-- card end -->
-                            </div>
-                        </li>
-                    </ul>
+            <div class="bestprperty_main_div">
+                <div class="fdiv">
+                    <div class="top">
+                        <p>Relative Properties</p>
+                        <p>
+                            View All
+                        </p>
+                    </div>
+                    <div class="sdiv">
+                        <ul>
+                            <li>
+                                <div>
+                                    <!-- card start -->
+                                    <a href="" class="card_main_div text-decoration-none">
+                                        <img src="./assets/images/welcomeCenter.webp" class="propertyImg" alt="" />
+                                        <p class="mb-0"> area_type </p>
+                                        <b>
+                                            property_type
+                                        </b>
+                                        <p>
+                                            <b>Rs : short_price</b>
+                                        </p>
+                                    </a>
+                                    <!-- card end -->
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- bestprperty end -->
+            <!-- bestprperty end -->
         @endforeach
     </div>
 @endsection
