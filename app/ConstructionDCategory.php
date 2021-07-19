@@ -27,6 +27,7 @@ class ConstructionDCategory extends Model
         return $this->hasMany(ConstructionProduct::class, 'd_category_id');
     }
 
+
     public function storeproduct()
     {
         return $this->hasManyThrough(
@@ -38,5 +39,17 @@ class ConstructionDCategory extends Model
             'id' // Local key on the environments table...
 
         );
+    }
+
+    public function storeproductwithpagination()
+    {
+        return $this->hasManyThrough(
+            ConstructionStoreProduct::class,
+            ConstructionProduct::class,
+            'd_category_id', // Foreign key on the ConstructionProduct table...
+            'product_id', // Foreign key on the ConstructionStoreProduct table...
+            'id', // Local key on the projects table...
+            'id' // Local key on the environments table...
+        )->paginate(10);
     }
 }

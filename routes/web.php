@@ -28,15 +28,16 @@ Route::get('/contact-us', function () {
 Route::post('sendform', 'LeadController@formsubmit')->name('contact.form');
 
 
-Route::prefix('construction')->group(function () {
-    Route::get('/', 'ConstructionACategoryController@index')->name('construction.home');
+// Route::prefix('construction')->group(function () {
+    Route::get('construction', 'ConstructionACategoryController@index')->name('construction.home');
     Route::get('{acategory:slug}', 'ConstructionBCategoryController@viewall')->name('construction.bcatlist');
     Route::get('{acategory:slug}/{bcategory:slug}', 'ConstructionBCategoryController@index')->name('construction.bcat');
-    Route::get('list/{dcategory:name}/{product:id}', 'ConstructionBCategoryController@product')->name('construction.productlist');
-    Route::get('list/{ccategory:name}', 'ConstructionBCategoryController@mainProduct')->name('construction.mainproductlist');
+    Route::get('{acategory:slug}/{bcategory:slug}/{ccategory:slug}', 'ConstructionBCategoryController@ccatproductlist')->name('construction.ccatproductlist');
+    Route::get('{acategory:slug}/{bcategory:slug}/{ccategory:slug}/{dcategory:slug}', 'ConstructionBCategoryController@dcatproductlist')->name('construction.dcatproductlist');
+    // Route::get('list/{ccategory:name}', 'ConstructionBCategoryController@mainProduct')->name('construction.mainproductlist');
     Route::get('productDetail/{store:name}/{storeproduct:id}', 'ConstructionBCategoryController@singleproduct')->name('construction.singleproduct');
     Route::get('storeDetail/{store:slug}', 'ConstructionStoreController@index')->name('construction.singlestore');
-});
+// });
 
 
 // mobile

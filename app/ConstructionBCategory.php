@@ -22,7 +22,11 @@ class ConstructionBCategory extends Model
     {
         return $this->hasMany(ConstructionCCategory::class, 'b_category_id');
     }
-    
+    public function ccategories()
+    {
+        return $this->hasMany(ConstructionCCategory::class, 'b_category_id');
+    }
+
     public function storeproduct()
     {
         return $this->hasManyThrough(
@@ -32,7 +36,6 @@ class ConstructionBCategory extends Model
             'product_id', // Foreign key on the ConstructionStoreProduct table...
             'id', // Local key on the projects table...
             'id' // Local key on the environments table...
-
         );
     }
 

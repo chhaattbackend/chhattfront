@@ -257,13 +257,24 @@ class PropertyController extends Controller
         // }
         // dd('done');
 
-        // $bcat = ConstructionDCategory::all();
+        // $bcat = ConstructionStore::all();
         // foreach ($bcat as $key => $item) {
         //     $a = str_replace(str_split('\\/:*?"<>|(),&'), '', strtolower($item->name));
         //     $a = str_replace(' ','-',$a);
-        //     $item->update([
-        //         'slug'=>$a
-        //     ]);
+        //     $b = explode('-', $a);
+        //     // dd(end($b));
+        //     // $item->update([
+        //     //     'slug'=>$a
+        //     // ]);
+        //     if (end($b) == 'store' || end($b) == 'stores' ) {
+        //         $item->update([
+        //             'slug'=>$a
+        //         ]);
+        //     } else {
+        //         $item->update([
+        //             'slug'=>$a.'-store'
+        //         ]);
+        //     }
         // }
         // dd('done');
 

@@ -18,7 +18,7 @@
     <div class="mn_divz">
         <div class="backgz">
             <div class="backg_sdivz">
-                <h1>{{ $dcategory->name }} {{ $dcategory->category->name }} </h1>
+                {{-- <h1>{{ $dcategory->name }} {{ $dcategory->category->name }} </h1> --}}
             </div>
         </div>
     </div>
@@ -30,25 +30,34 @@
     <div class="main_div_list container-fluid">
         <!-- breadcrumbs start -->
         <div>
-
-
             <a href="{{ route('home') }}">Chhatt</a><span> ></span>
-            {{-- <a href="{{ route('construction.home') }}">Construction</a><span> ></span> --}}
-            <a
-                href="{{ route('construction.bcatlist') }}">{{ $dcategory->category->category->category->name }}</a><span>
-                ></span>
-            <a
-                href="{{ route('construction.bcat', ['id' => str_replace(',', '_', str_replace(str_split('\\/:*?"<>|() '), '-', strtolower($dcategory->category->category->name)))]) }}">{{ $dcategory->category->category->name }}</a><span>
-                ></span>
-            <a href="{{ route('construction.bcatlist') }}">{{ $dcategory->category->name }}</a><span> ></span>
-            <a disabled>{{ $dcategory->name }}</a>
+
+            @if ($which == 'ccategory')
+                <a
+                    href="{{ route('construction.bcatlist', ['acategory' => $anycategory->category->category->slug]) }}">{{ $anycategory->category->category->name }}</a><span>></span>
+                <a
+                    href="{{ route('construction.bcat', ['acategory' => $anycategory->category->category->slug, 'bcategory' => $anycategory->category->slug]) }}">{{ $anycategory->category->name }}</a><span>
+                    ></span>
+                <a disabled>{{ $anycategory->name }}</a>
+            @endif
+
+            @if ($which == 'dcategory')
+                <a href="">{{ $anycategory->category->category->category->name }}</a><span>></span>
+                <a href="">{{ $anycategory->category->category->name }}</a><span>></span>
+                <a href="">{{ $anycategory->category->name }}</a><span> ></span>
+                <a disabled>{{ $anycategory->name }}</a>
+            @endif
         </div>
         <!-- breadcrumbs end -->
         <!-- heading start -->
+
+
+
         <div class="title_div">
-            <h1 class="title_div_1">{{ $dcategory->name }}
-                {{ $dcategory->category->name }}<span>({{ $dcategory->products->count() }} products available)
-                </span> </h1>
+            <h1 class="title_div_1">{{ $anycategory->name }}
+                <span>({{ $anycategory->storeproduct->count() }} products available)
+                </span>
+            </h1>
             <div>
                 <span class="title_div_1_sp1">View by : </span>
                 <span class="title_div_1_sp2"> Product </span>
@@ -56,6 +65,10 @@
                 <span class="title_div_1_sp4">Supplier</span>
             </div>
         </div>
+
+
+
+
         <!-- heading end -->
         <!-- location start -->
         {{-- <div class="search_bar_div_1 p-2 d-flex align-items-center">
@@ -85,18 +98,47 @@
                         <input type="checkbox"/> <span class="d-inline-block ml-2">Video</span>
                     </li>
                 </ul> --}}
+
+
+
+
                 <h6 class="font-weight-bolder mt-3 mb-0 border p-2 bg-light text-dark" onclick="down('relatedcat')">Related
                     Category</h6>
                 <ul id="relatedcat" class="border p-2">
-                    {{-- ->slice(0, 10) for limit --}}
-                    @foreach ($dcategory->category->category->subcategories as $item)
-                        <li class="p-1">
-                            <a href="{{ route('construction.bcat', ['id' => str_replace(',', '_', str_replace(str_split('\\/:*?"<>|() '), '-', strtolower($dcategory->category->category->name)))]) }}"
-                                class="filtertag">
-                                {{ $item->name }}
-                            </a>
-                        </li>
-                    @endforeach
+                    @unless($which != 'ccategory')
+                        @foreach ($anycategory->category->subcategories as $item)
+                            @unless($item->id == $anycategory->id)
+                                @if ($item->storeproduct->isNotEmpty())
+                                    <li class="p-1">
+                                        <a href="{{ route('construction.ccatproductlist', ['acategory' => $item->category->category->slug, 'bcategory' => $item->category->slug, 'ccategory' => $item->slug]) }}"
+                                            class="filtertag">
+                                            {{ $item->name }}
+                                        </a>
+                                    </li>
+                                @endif
+                            @endunless
+                        @endforeach
+                        @foreach ($anycategory->subcategories as $item)
+                            @if ($item->storeproduct->isNotEmpty())
+                                <li class="p-1">
+                                    <a class="filtertag">
+                                        {{ $item->name }}
+                                    </a>
+                                </li>
+                            @endif
+                        @endforeach
+                    @endunless
+
+                    {{-- @unless($which != 'dcategory')
+                        @foreach ($dcategory->category->category->subcategories as $item)
+                            <li class="p-1">
+                                <a href="{{ route('construction.bcat', ['id' => str_replace(',', '_', str_replace(str_split('\\/:*?"<>|() '), '-', strtolower($dcategory->category->category->name)))]) }}"
+                                    class="filtertag">
+                                    {{ $item->name }}
+                                </a>
+                            </li>
+                        @endforeach
+                    @endunless --}}
 
                 </ul>
 
@@ -104,14 +146,13 @@
                 <h6 class="font-weight-bolder mt-3 mb-0 border p-2 bg-light text-dark" onclick="down('relatedbrand')">
                     Related Brands</h6>
                 <ul id="relatedbrand" class="border p-2">
-                    @foreach ($brand as $item)
+                    @foreach ($brands as $item)
                         @if ($item != null)
                             <li class="p-1">
                                 {{ $item->name }}
                             </li>
                         @endif
                     @endforeach
-
                 </ul>
 
                 {{-- <h6 class="font-weight-bolder mt-3 mb-0 border p-2 bg-light text-dark">Filter Results</h6>
@@ -136,37 +177,53 @@
             <!-- left div end -->
             <!-- right div start -->
             <div class="main_div_content_2 ms-3 ">
-                <h5 class="font-weight-bolder mt-3">Popular {{ $dcategory->category->name }} Category</h5>
+                <h5 class="font-weight-bolder mt-3">Popular {{ $anycategory->name }} Category</h5>
                 <!-- card start -->
                 <!-- slider -->
                 <div class="main_slide_div">
                     <div class="card_div slide">
-                        @foreach ($dcategories as $item)
-                            {{-- @dd($item->products) --}}
-                            <div class="card p-2 m-1">
-                                <div class="img_div">
-                                    <img
-                                        src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/{{ $item->image }}" />
-                                    <a href="{{ route('construction.productlist', ['dcategory' => $item->name, 'product' => $item->products[0]->id]) }}"
-                                        class="pt-2 ellipse" style="width: 130px;display: inline-block;">
-                                        {{ $item->name }}
-                                    </a>
-                                </div>
-                                {{-- <div class="rs">{{ $item->name }}</div>
-                                <div class="brand">hamza developer</div> --}}
-                            </div>
-                        @endforeach
+                        @if ($which == 'ccategory')
+                            @foreach ($anycategory->subcategories as $item)
+                                @if ($item->storeproduct->isNotEmpty())
+                                    <div class="card p-2 m-1">
+                                        <div class="img_div">
+                                            <img
+                                                src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/{{ $item->image }}" />
+                                            <a href="" class="pt-2 ellipse" style="width: 130px;display: inline-block;">
+                                                {{ $item->name }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        @else
+                            @foreach ($anycategory as $item)
+                                @if ($item->storeproduct->isNotEmpty())
+                                    <div class="card p-2 m-1">
+                                        <div class="img_div">
+                                            <img
+                                                src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/" />
+                                            <a href="" class="pt-2 ellipse" style="width: 130px;display: inline-block;">
+                                                {{ $anycategory->name }}
+                                            </a>
+                                        </div>
+                                        {{-- <div class="rs">{{ $item->name }}</div>
+                                     <div class="brand">hamza developer</div> --}}
+                                    </div>
+                                @endif
+                            @endforeach
+                        @endif
 
                     </div>
                 </div>
+
+
                 <!-- slider -->
                 <!-- card end -->
-                @foreach ($storeproducts as $item)
-                    {{-- @dd($item->store->name) --}}
-                    <!-- product card detail start -->
+                <!-- product card detail start -->
+                @foreach ($anycategory->storeproductwithpagination() as $item)
                     <div class="product_detail_card_div_main_div p-2 m-2">
-                        <a class="text-decoration-none text-dark"
-                            href="{{ route('construction.singleproduct', ['store' => $item->store->name, 'storeproduct' => $item->id]) }}">
+                        <a class="text-decoration-none text-dark" href="">
 
                             <div class="product_detail_card_div d-flex">
                                 <div class="frst_div">
@@ -175,22 +232,21 @@
                                 </div>
                                 <div class="ml-3 sec_div">
                                     <h5 class="font-weight-bold">{{ $item->product->name }}</h5>
-                                    <span class="d-inline-block mr-3">RS {{ $item->product->price }} </span>
+                                    <span class="d-inline-block mr-3">RS {{ $item->store_price }} </span>
                                     <span class="d-inline-block mr-3"> </span>
                                     <a href=""> Get Export Price</a>
                                     <ul class="mb-0 me-3">
-                                        <li><strong>Brand</strong>:<span> {{ @$item->product->brand->name }}</span></li>
-
+                                        <li><strong>Brand</strong>:<span> {{ $item->product->brand->name }}</span></li>
                                         {{ $item->product->description }}
-                                        <li><a
-                                                href="{{ route('construction.singleproduct', ['store' => $item->store->name, 'storeproduct' => $item->id]) }}">read
+                                        <li><a href="name">read
                                                 more...</a></li>
                                     </ul>
                                 </div>
                                 <div class="th_div">
                                     <h5 class="font-weight-light m-0">{{ $item->store->name }}</h5>
-                                    <span>DHA, </span>
-                                    <span>Karachi</span>
+                                    <span>{{ @$item->store->areaOne->name }} {{ @$item->store->areaTwo->name }}
+                                        {{ @$item->store->areaThree->name }} </span> <br>
+                                    <span>{{ @$item->store->areaOne->city->name }}</span>
                                     {{-- <div class="mt-2">
                                         <span class="ls-img d-inline-block"></span>
                                         <span class="d-inline-block ind">Industry Leader</span>
@@ -210,7 +266,6 @@
                                     </div> --}}
                                     <div class="border text-center btns_contact mt-3 curs">
                                         <a class="text-white text-decoration-none" href="tel:{{ $item->store->phone }}">
-
                                             <h6 class="m-0 font-weight-bold">Contact Supplier</h6>
                                             <p class="m-0">Request a Quote</p>
                                         </a>
@@ -219,41 +274,43 @@
                             </div>
                         </a>
                         {{-- <p>{{ $storeproducts[0]->getrelatedcategory($storeproducts[0]->product->c_category->id,$storeproducts[0]->product->id) }}</p> --}}
+                        @unless($which == 'ccategory')
+                            <div class="botom_div_main  d-flex mt-3 flex-wrap justify-content-start pr-3">
+                                @php
+                                    $spcount = 0;
+                                @endphp
+                                @foreach ($item->getrelatedproduct(3) as $suggesteditem)
+                                    @unless($suggesteditem->isstoreproduct($item->store_id) == null)
+                                        @php
+                                            $spcount++;
+                                        @endphp
+                                        @if ($spcount < 4)
 
-                        <div class="botom_div_main  d-flex mt-3 flex-wrap justify-content-start pr-3">
-                            @php
-                                $spcount = 0;
-                            @endphp
-                            @foreach ($item->getrelatedproduct(3) as $suggesteditem)
-                                @unless($suggesteditem->isstoreproduct($item->store_id) == null)
-                                    @php
-                                        $spcount++;
-                                    @endphp
-                                    @if ($spcount < 4)
-
-                                        <div class="d-flex div1 mr-2">
-                                            <div>
-                                                <a
-                                                    href="{{ route('construction.productlist', ['dcategory' => $suggesteditem->d_category->name, 'product' => $suggesteditem->id]) }}">
-                                                    <img width="80px" height="72px" style=" object-fit: contain;"
-                                                        src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $suggesteditem->image }}" />
-                                                </a>
+                                            <div class="d-flex div1 mr-2">
+                                                <div>
+                                                    <a href="">
+                                                        <img width="80px" height="72px" style=" object-fit: contain;"
+                                                            src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $suggesteditem->image }}" />
+                                                    </a>
+                                                </div>
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <p class="m-0 txt">{{ $suggesteditem->name }}</p>
+                                                    <p class="m-0 txt1">RS {{ $suggesteditem->price }}</p>
+                                                    <a class="anc" href="">Get Quote</a>
+                                                </div>
                                             </div>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <p class="m-0 txt">{{ $suggesteditem->name }}</p>
-                                                <p class="m-0 txt1">RS {{ $suggesteditem->price }}</p>
-                                                <a class="anc" href="">Get Quote</a>
-                                            </div>
-                                        </div>
-                                    @endif
+                                        @endif
 
-                                @endunless
-                            @endforeach
-                        </div>
+                                    @endunless
+                                @endforeach
+                            </div>
+                        @endunless
 
                     </div>
-                    <!-- product card detail end -->
                 @endforeach
+
+                {{$anycategory->storeproductwithpagination()->links()}}
+                <!-- product card detail end -->
 
             </div>
             <!-- right div end -->
