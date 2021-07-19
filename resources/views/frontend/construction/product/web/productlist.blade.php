@@ -42,9 +42,13 @@
             @endif
 
             @if ($which == 'dcategory')
-                <a href="">{{ $anycategory->category->category->category->name }}</a><span>></span>
-                <a href="">{{ $anycategory->category->category->name }}</a><span>></span>
-                <a href="">{{ $anycategory->category->name }}</a><span> ></span>
+                <a
+                    href="{{ route('construction.bcatlist', ['acategory' => $anycategory->category->category->category->slug]) }}">{{ $anycategory->category->category->category->name }}</a><span>></span>
+                <a
+                    href="{{ route('construction.bcat', ['acategory' => $anycategory->category->category->category->slug, 'bcategory' => $anycategory->category->category->slug]) }}">{{ $anycategory->category->category->name }}</a><span>></span>
+                <a
+                    href="{{ route('construction.ccatproductlist', ['acategory' => $anycategory->category->category->category->slug, 'bcategory' => $anycategory->category->category->slug, 'ccategory' => $anycategory->category->slug]) }}">{{ $anycategory->category->name }}</a><span>
+                    ></span>
                 <a disabled>{{ $anycategory->name }}</a>
             @endif
         </div>
@@ -141,7 +145,7 @@
                                 </li>
                             @endif
                         @endforeach
-                        
+
                         @foreach ($anycategory->category->subcategories as $item)
                             @unless($item->id == $anycategory->id)
                                 @if ($item->storeproduct->isNotEmpty())
