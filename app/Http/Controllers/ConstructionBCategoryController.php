@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ACategory;
 use App\BCategory;
+use App\ConstructionACategory;
 use App\ConstructionBCategory;
 use App\ConstructionBrand;
 use App\ConstructionCCategory;
@@ -18,33 +19,27 @@ use Illuminate\Pagination\Factory;
 class ConstructionBCategoryController extends Controller
 {
 
-    public function index($slug)
+    public function index(ConstructionACategory $acategory,ConstructionBCategory $bcategory)
     {
-        $slug = str_replace('_', ',', $slug);
-
-        $slug = str_replace('-', ' ', $slug);
-
-        $ccategories = ConstructionCCategory::whereHas('category', function ($query) use ($slug) {
-            $query->where('name', $slug);
-        })->get();
-
+        $ccategories = ConstructionCCategory::where('b_category_id',$bcategory->id)->get();
+        
         return view('frontend.construction.home.ccategory', compact('ccategories'));
     }
 
 
-    public function byCategory($slug)
-    {
-        $slug = str_replace('_', ',', $slug);
-        $slug = str_replace('-', ' ', $slug);
+    // public function byCategory($slug)
+    // {
+    //     $slug = str_replace('_', ',', $slug);
+    //     $slug = str_replace('-', ' ', $slug);
 
-        $ccategories = ConstructionCCategory::whereHas('category', function ($query) use ($slug) {
-            $query->where('name', $slug);
-        })->get();
+    //     $ccategories = ConstructionCCategory::whereHas('category', function ($query) use ($slug) {
+    //         $query->where('name', $slug);
+    //     })->get();
 
 
-        // dd($ccategories);
-        return view('frontend.construction.home.ccategory', compact('ccategories'));
-    }
+    //     // dd($ccategories);
+    //     return view('frontend.construction.home.ccategory', compact('ccategories'));
+    // }
 
 
     public function viewall()

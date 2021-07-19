@@ -10,6 +10,12 @@ class ConstructionACategory extends Model
     protected $table = 'a_categories';
     protected $fillable=[
         'id',
-        'name'
+        'name',
+        'slug'
     ];
+    public function bcategories()
+    {
+        return $this->hasMany(ConstructionBCategory::class, 'a_category_id');
+    }
+
 }

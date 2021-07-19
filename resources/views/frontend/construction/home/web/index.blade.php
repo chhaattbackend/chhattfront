@@ -9,7 +9,6 @@
 @endsection
 
 @section('headercontent')
-
     <div class="mn_div">
         <div class="backg">
             <div class="backg_sdiv">
@@ -91,10 +90,10 @@
         <div class="container-fluid">
             <div>
                 <div class="d-flex justify-content-between">
-                    <h2 class="fw-bold">Industrial Supplies</h2>
+                    <h2 class="fw-bold">Construction Materials</h2>
                     <div class="d-flex">
                         <div class="ms-4">
-                            <a href="{{ route('construction.bcatlist') }}" class="themebtn2 px-3 py-1 ms-1">View all</a>
+                            <a href="{{ route('construction.bcatlist',['acategory'=>$bcategories[0]->category->slug]) }}" class="themebtn2 px-3 py-1 ms-1">View all</a>
                         </div>
                     </div>
                 </div>
@@ -102,19 +101,12 @@
                 <div class="main_slide_div">
                     <div style="margin: auto;" class="slider">
                         @foreach ($bcategories as $item)
-                            @php
-                                $id = str_replace(str_split('\\/:*?"<>|() '), '-', strtolower($item->name));
-                                $id = str_replace(',', '_', $id);
-                            @endphp
-
                             <div>
                                 <li class="scroll-img-list  p-2 my-3">
-                                    <form id="main_div_form" action="{{ route('construction.bcat', ['id' => $id]) }}"
-                                        method="post">
-                                        @csrf
+                                    <div id="main_div_form">
                                         <div class="text-decoration-none position-relative">
                                             <button onclick="formSubmit()" class="imageSection">
-                                                <a  href="{{ route('construction.bcat', ['id' => $id]) }}">
+                                                <a href="{{ route('construction.bcat', ['acategory'=>$item->category->slug,'bcategory' => $item->slug]) }}">
                                                     <img class="slideImg"
                                                         src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $item->image }}"
                                                         alt="" />
@@ -126,13 +118,7 @@
                                                         <strong class="mt-5">{{ $item->name }}</strong>
                                                     </div>
                                                     <ul style="list-style-type: disc; ">
-                                                        @php
-                                                            $i = 0;
-                                                        @endphp
-                                                        @foreach ($item->subcategories as $subItem)
-                                                            @php
-                                                                $i++;
-                                                            @endphp
+                                                        @foreach ($item->subcategories as $i => $subItem)
                                                             @if ($i < 6)
                                                                 <li style="list-style-position: inside;">
                                                                     {{ $subItem->name }}
@@ -144,14 +130,14 @@
                                             </div>
                                         </div>
                                         <div class="btn-viewmore d-flex justify-content-between mt-3">
-                                            <a href="{{ route('construction.bcat', ['id' => $id]) }}"
+                                            <a href="{{ route('construction.bcat', ['acategory'=>$item->category->slug,'bcategory' => $item->slug]) }}"
                                                 class="text-decoration-none w-100 themebtn py-1 text-white">
-                                                <button class="w-100 themebtn py-1 text-white" onclick="formSubmit()">
+                                                <button class="w-100 themebtn py-1 text-white">
                                                     View more
                                                 </button>
                                             </a>
                                         </div>
-                                    </form>
+                                    </div>
 
                                 </li>
                             </div>
@@ -192,13 +178,11 @@
         <div class="container-fluid">
             <div class="row px-2">
                 @foreach ($store as $item)
-
                     @foreach ($item->randomproduct(1) as $key => $item)
-
                         <div class="col-sm-4 col-lg-3 mb-4">
                             <div class="propertyCard p-2">
                                 <a class="text-decoration-none position-relative"
-                                    href="{{ route('construction.singleproduct', ['store'=>$item->store->name,'storeproduct' => $item->id]) }}">
+                                    href="{{ route('construction.singleproduct', ['store' => $item->store->name, 'storeproduct' => $item->id]) }}">
                                     <div class="imageSection">
                                         <img class="slideImg"
                                             src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}"
@@ -227,57 +211,8 @@
                             </div>
                             <!-- property card end -->
                         </div>
-
                     @endforeach
-
-
                 @endforeach
-
-
-                {{-- @foreach ($products as $item)
-
-
-
-                    <p>{{ $item->store->name }}</p>
-                    <p>{{ $item->product_id }}</p>
-                    <p>{{ $item->store_price }}</p>
-                    <p>{{ $item->qty }}</p>
-                    <p>{{ $item->status }}</p>
-                    <p>{{ $item->unit_id }}</p>
-
-                    <div class="col-sm-4 col-lg-3 mb-4">
-
-                        <div class="propertyCard p-2">
-                            <a class="text-decoration-none position-relative" href="#">
-                                <div class="imageSection">
-                                    <img class="slideImg"
-                                        src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}"
-                                        alt="" />
-                                </div>
-                                <div class="text-dark paraContainer">
-                                    <div class="mt-1">
-                                        <div class="d-flex justify-content-between">
-                                            <h6 class="lightColor">{{ $item->store->name ?? 'A Category' }}</h6>
-                                            <h6 class="lightColor">{{ $item->store->name ?? 'B Category' }}</h6>
-                                        </div>
-                                        <div class="mt-2">
-                                            <strong class="mt-5">{{ $item->product->name }}</strong>
-                                        </div>
-                                        <h6 class="mt-2">
-                                            <strong>
-                                                Rs: {{ $item->store_price }}
-                                            </strong>
-                                        </h6>
-                                    </div>
-                                    <div class="d-flex justify-content-between mt-3">
-                                        <button class="w-100 themebtn py-1 text-white">View more</button>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                @endforeach --}}
-
             </div>
         </div>
         <!--  PROPERTY CARD START  -->
@@ -297,11 +232,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
                 integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
                 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script>
-            function formSubmit() {
-                $('#main_div_form').submit();
-            }
-        </script>
 
 
         <!-- EXTERNAL LINKS END -->

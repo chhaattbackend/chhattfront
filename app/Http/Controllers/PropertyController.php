@@ -7,7 +7,10 @@ use App\AreaOne;
 use App\AreaThree;
 use App\AreaTwo;
 use App\City;
+use App\ConstructionACategory;
 use App\ConstructionBCategory;
+use App\ConstructionCCategory;
+use App\ConstructionDCategory;
 use App\ConstructionStore;
 use App\ConstructionStoreProduct;
 use App\GlobalClass;
@@ -250,6 +253,16 @@ class PropertyController extends Controller
         //     // dd($value);
         //     $value->update([
         //         'brand_id' => $value->product->brand_id
+        //     ]);
+        // }
+        // dd('done');
+
+        // $bcat = ConstructionDCategory::all();
+        // foreach ($bcat as $key => $item) {
+        //     $a = str_replace(str_split('\\/:*?"<>|(),&'), '', strtolower($item->name));
+        //     $a = str_replace(' ','-',$a);
+        //     $item->update([
+        //         'slug'=>$a
         //     ]);
         // }
         // dd('done');

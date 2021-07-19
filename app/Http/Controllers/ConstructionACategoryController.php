@@ -16,10 +16,22 @@ class ConstructionACategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         // $bcategories = ConstructionBCategory::all();
         // $store=ConstructionStore::orderBy('id','desc')->get();
+
+        // $bcat = ConstructionBCategory::find(4);
+        // return $bcat->storeproduct;
+        // dd($bcat->storeproduct);
+
+        // // $products = [];
+        // // foreach ($bcat->storeproduct as $item) {
+        // //     array_push($products, ConstructionProduct::find($item->product->id));
+        // // };
+        // // $products = array_unique($products);
+        // // dd($products);
+
 
         $store = ConstructionStore::orderBy('id', 'asc')->get();
         $bcategories = [];
