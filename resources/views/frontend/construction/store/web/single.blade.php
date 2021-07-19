@@ -1,10 +1,10 @@
 @extends('layouts.master')
 
 @section('style')
+    <meta name="robots" content="noindex" />
     <link rel="stylesheet" href="{{ asset('styles/index.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/contruction/home.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/contruction/singlestore.css') }}">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
         integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -95,9 +95,9 @@
 
                             {{-- <input hidden type="text" id="numberrrr" value=""> --}}
                             <a style=" background: #43b243;
-                                    color: white;
-                                    border-radius: 4px;
-                                    transition: all 0.7s ease;" class="text-decoration-none px-4 py-1"
+                                        color: white;
+                                        border-radius: 4px;
+                                        transition: all 0.7s ease;" class="text-decoration-none px-4 py-1"
                                 href="tel:{{ @$store->phone }}">
                                 <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
                                     class="text-white" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"

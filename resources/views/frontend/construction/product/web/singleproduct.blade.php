@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('style')
+    <meta name="robots" content="noindex"/>
     <link rel="stylesheet" href="{{ asset('styles/index.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/contruction/singleproduct.css') }}">
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"

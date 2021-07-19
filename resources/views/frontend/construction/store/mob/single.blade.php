@@ -2,7 +2,7 @@
 
 @section('style')
     <link rel="stylesheet" href="{{ asset('mobile/index.css') }}">
-
+    <meta name="robots" content="noindex"/>
     <link rel="stylesheet" href="{{ asset('styles/contruction/singlestoremob.css') }}">
 @endsection
 

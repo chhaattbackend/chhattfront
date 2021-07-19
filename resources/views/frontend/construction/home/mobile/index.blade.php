@@ -1,7 +1,7 @@
 @extends('layouts.mobile.master')
 
 @section('style')
-
+    <meta name="robots" content="noindex"/>
     <link rel="stylesheet" href="{{ asset('styles/contruction/homemob.css') }}">
 @endsection
 
@@ -82,9 +82,10 @@
                                 <li>
                                     <div>
                                         <!-- card start -->
-                                        <a href="{{ route('construction.singleproduct',['store'=>$item->store->name,'storeproduct' => $item->id]) }}"
+                                        <a href="{{ route('construction.singleproduct', ['store' => $item->store->name, 'storeproduct' => $item->id]) }}"
                                             class="card_main_div text-decoration-none text-dark text-decoration-none">
-                                            <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}" class="propertyImg" alt="" />
+                                            <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}"
+                                                class="propertyImg" alt="" />
                                             <p class="mb-0 fw-bold text-black"> {{ $item->store->name }} </p>
                                             <div class="list-group">
                                                 <h6 class="fw-bold mb-0">{{ $item->product->name }}</h6>

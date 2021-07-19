@@ -274,7 +274,8 @@
             <div class="product-sec-wrapper">
                 <h2><a class="hCathd" href="">Construction Material</a></h2>
                 <div class="minht cBFlex" id="1">
-                    <div class="product-banner  pbnr7">
+                    <div class="product-banner "
+                        style="background-image: url('https://media.istockphoto.com/photos/silhouette-of-engineer-and-construction-team-working-at-site-over-picture-id981344368?k=6&m=981344368&s=612x612&w=0&h=2PMn6uSakzTIFVuKlvyMikGAwbTBcr1yPJCG6Q2P8Bc=');">
                         <div class="banner-content">
                             <ul>
                                 @foreach (array_slice($bcategories, 0, 3) as $key => $item)

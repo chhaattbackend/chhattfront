@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('style')
+    <meta name="robots" content="noindex"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
         integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -114,7 +115,7 @@
                                         @csrf
                                         <div class="text-decoration-none position-relative">
                                             <button onclick="formSubmit()" class="imageSection">
-                                                <a  href="{{ route('construction.bcat', ['id' => $id]) }}">
+                                                <a href="{{ route('construction.bcat', ['id' => $id]) }}">
                                                     <img class="slideImg"
                                                         src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $item->image }}"
                                                         alt="" />
@@ -198,7 +199,7 @@
                         <div class="col-sm-4 col-lg-3 mb-4">
                             <div class="propertyCard p-2">
                                 <a class="text-decoration-none position-relative"
-                                    href="{{ route('construction.singleproduct', ['store'=>$item->store->name,'storeproduct' => $item->id]) }}">
+                                    href="{{ route('construction.singleproduct', ['store' => $item->store->name, 'storeproduct' => $item->id]) }}">
                                     <div class="imageSection">
                                         <img class="slideImg"
                                             src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}"

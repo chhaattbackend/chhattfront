@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('style')
+    <meta name="robots" content="noindex"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/index.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/contruction/ccat1.css') }}" />
 @endsection
