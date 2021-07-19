@@ -7,6 +7,8 @@ use App\AreaOne;
 use App\AreaThree;
 use App\AreaTwo;
 use App\City;
+use App\ConstructionBCategory;
+use App\ConstructionStore;
 use App\ConstructionStoreProduct;
 use App\GlobalClass;
 use App\Http\Resources\Area;
@@ -274,10 +276,20 @@ class PropertyController extends Controller
         }
 
         $city = City::all();
+        $store = ConstructionStore::orderBy('id', 'asc')->get();
+        $bcategories = [];
+        foreach ($store as $item) {
+            foreach ($item->storeproducts as $item) {
+                if ($item->product->b_category != null) {
+                    array_push($bcategories, ConstructionBCategory::find($item->product->b_category->id));
+                }
+            }
+        };
+        $bcategories = array_unique($bcategories);
 
 
         $property = Property::orderBy('created_at', 'desc')->paginate(25);
-        return view('frontend.home.index', compact('property', 'city'));
+        return view('frontend.home.index', compact('property', 'city', 'bcategories'));
     }
 
 

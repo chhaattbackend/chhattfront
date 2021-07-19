@@ -21,7 +21,7 @@ class ConstructionACategoryController extends Controller
         // $bcategories = ConstructionBCategory::all();
         // $store=ConstructionStore::orderBy('id','desc')->get();
 
-        $store = ConstructionStore::orderBy('id', 'desc')->get();
+        $store = ConstructionStore::orderBy('id', 'asc')->get();
         $bcategories = [];
         foreach ($store as $item) {
             foreach ($item->storeproducts as $item) {

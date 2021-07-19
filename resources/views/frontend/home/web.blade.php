@@ -27,7 +27,7 @@
     <div class="mn_div">
         <div class="backg">
             <div class="backg_sdiv">
-                <h1>Find the Best Properties and Construction Material</h1>
+                <h1>Find the Best Construction Material and Properties</h1>
                 <div class="main_bar">
                     <form onSubmit="" class="searchdiv">
                         <span class="searchIcon">
@@ -272,6 +272,64 @@
                 </symbol>
             </svg>
             <div class="product-sec-wrapper">
+                <h2><a class="hCathd" href="">Construction Material</a></h2>
+                <div class="minht cBFlex" id="1">
+                    <div class="product-banner  pbnr7">
+                        <div class="banner-content">
+                            <ul>
+                                <li>
+                                    <a href=""> Real Estate Properties
+                                    </a>
+                                </li>
+                                <li><a href="">Agencies</a></li>
+                                <li><a href="">Realtors</a></li>
+                            </ul>
+                            <a href="" class="view-all">View
+                                All</a>
+                        </div>
+                    </div>
+                    <div class="row cBW100">
+                        @foreach (array_slice($bcategories, 0, 9) as $key => $item)
+
+                            <div class="col-md-4 col-sm-6 bdr1">
+                                <div class="product-item">
+                                    <div class="product-thumbnail">
+                                        <a href=""><img data-original="" alt="Face Mask"
+                                                src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $item->image }}"
+                                                title="Face Mask"></a>
+                                    </div>
+                                    <div class="product-meta">
+                                        <h3><a href="{{ route('property.search', ['area_type' => 'Residential']) }}">{{ $item->name }}
+                                            </a></h3>
+                                            @foreach ($item->subcategories as $subitem )
+                                            <p>
+                                                <a
+                                                    href="{{ route('property.search', ['property_type' => 'House', 'area_type' => 'Residential']) }}">{{ $subitem->name }}
+                                                </a>
+                                            </p>
+                                            @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="products">
+        <div class="container">
+            <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+                <symbol id="disc" viewBox="0 0 451.846 451.847">
+                    <path
+                        d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744 L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284 c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z">
+                    </path>
+                </symbol>
+            </svg>
+            <div class="product-sec-wrapper">
                 <h2><a class="hCathd" href="">Properties And Agency</a></h2>
                 <div class="minht cBFlex" id="1">
                     <div class="product-banner  pbnr7">
@@ -297,11 +355,20 @@
                                             title="Face Mask"></a>
                                 </div>
                                 <div class="product-meta">
-                                    <h3><a href="{{ route('property.search', ['area_type' => 'Residential']) }}">Residential Properties</a></h3>
-                                    <p><a href="{{ route('property.search', ['property_type' => 'House' , 'area_type' => 'Residential']) }}">House for Sale
+                                    <h3><a href="{{ route('property.search', ['area_type' => 'Residential']) }}">Residential
+                                            Properties</a></h3>
+                                    <p><a
+                                            href="{{ route('property.search', ['property_type' => 'House', 'area_type' => 'Residential']) }}">House
+                                            for Sale
                                         </a></p>
-                                    <p><a href="{{ route('property.search', ['property_type' => 'Flat', 'area_type' => 'Residential']) }}">Flat for Sale</a></p>
-                                    <p><a href="{{ route('property.search', ['property_type' => 'Plot', 'area_type' => 'Residential']) }}">Plot for Sale</a></p>
+                                    <p><a
+                                            href="{{ route('property.search', ['property_type' => 'Flat', 'area_type' => 'Residential']) }}">Flat
+                                            for Sale</a></p>
+
+
+                                    <p><a
+                                            href="{{ route('property.search', ['property_type' => 'Plot', 'area_type' => 'Residential']) }}">Plot
+                                            for Sale</a></p>
 
                                 </div>
                             </div>
@@ -311,15 +378,22 @@
                                 <div class="product-thumbnail">
                                     <a href=""><img
                                             data-original="https://5.imimg.com/data5/GA/AX/PV/SELLER-134485/oxygen-125x125.jpg"
-                                            src="https://5.imimg.com/data5/GA/AX/PV/SELLER-134485/oxygen-125x125.jpg"
+                                            src="https://images.unsplash.com/photo-1597047084897-51e81819a499?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80g"
                                             alt="Medical Mask" title="Medical Mask"></a>
                                 </div>
                                 <div class="product-meta">
-                                    <h3><a href="{{ route('property.search', [ 'area_type' => 'Commercial']) }}">Commercial Properties</a></h3>
-                                    <p><a href="{{ route('property.search', [ 'area_type' => 'Commercial','property_type' => 'House']) }}">House for Sale
+                                    <h3><a href="{{ route('property.search', ['area_type' => 'Commercial']) }}">Commercial
+                                            Properties</a></h3>
+                                    <p><a
+                                            href="{{ route('property.search', ['area_type' => 'Commercial', 'property_type' => 'House']) }}">House
+                                            for Sale
                                         </a></p>
-                                    <p><a href="{{ route('property.search', ['property_type' => 'Flat', 'area_type' => 'Commercial']) }}">Flat for Sale</a></p>
-                                    <p><a href="{{ route('property.search', ['property_type' => 'Plot', 'area_type' => 'Commercial']) }}">Plot for Sale</a></p>
+                                    <p><a
+                                            href="{{ route('property.search', ['property_type' => 'Flat', 'area_type' => 'Commercial']) }}">Flat
+                                            for Sale</a></p>
+                                    <p><a
+                                            href="{{ route('property.search', ['property_type' => 'Plot', 'area_type' => 'Commercial']) }}">Plot
+                                            for Sale</a></p>
 
                                 </div>
                             </div>
@@ -328,16 +402,23 @@
                             <div class="product-item">
                                 <div class="product-thumbnail">
                                     <a href=""><img data-original="https://hm.imimg.com/imhome_gifs/cvid03.png"
-                                            src="https://hm.imimg.com/imhome_gifs/cvid03.png" alt="Surgical Gloves"
-                                            title="Surgical Gloves"></a>
+                                            src="https://images.unsplash.com/photo-1626470159480-427d823d3671?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1025&q=80"
+                                            alt="Surgical Gloves" title="Surgical Gloves"></a>
                                 </div>
                                 <div class="product-meta">
-                                    <h3><a href="{{ route('property.search', [ 'area_type' => 'Industrial']) }}">Industrial Properties</a></h3>
-                                    <p><a href="{{ route('property.search', ['property_type' => 'Warehouse', 'area_type' => 'Industrial']) }}">Warehouse for Sale
+                                    <h3><a href="{{ route('property.search', ['area_type' => 'Industrial']) }}">Industrial
+                                            Properties</a></h3>
+                                    <p><a
+                                            href="{{ route('property.search', ['property_type' => 'Warehouse', 'area_type' => 'Industrial']) }}">Warehouse
+                                            for Sale
                                         </a></p>
 
-                                    <p><a href="{{ route('property.search', ['property_type' => 'Plot', 'area_type' => 'Industrial']) }}">Plot for Sale</a></p>
-                                    <p><a href="{{ route('property.search', ['property_type' => 'Factory', 'area_type' => 'Industrial']) }}">Factory for Sale</a></p>
+                                    <p><a
+                                            href="{{ route('property.search', ['property_type' => 'Plot', 'area_type' => 'Industrial']) }}">Plot
+                                            for Sale</a></p>
+                                    <p><a
+                                            href="{{ route('property.search', ['property_type' => 'Factory', 'area_type' => 'Industrial']) }}">Factory
+                                            for Sale</a></p>
 
                                 </div>
                             </div>
@@ -347,7 +428,7 @@
                                 <div class="product-thumbnail">
                                     <a href=""><img
                                             data-original="https://5.imimg.com/data5/JJ/IV/XY/SELLER-6410244/medical-scrubs-125x125.jpg"
-                                            src="https://5.imimg.com/data5/JJ/IV/XY/SELLER-6410244/medical-scrubs-125x125.jpg"
+                                            src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
                                             alt="Medical Clothing" title="Medical Clothing"></a>
                                 </div>
                                 <div class="product-meta">
@@ -367,7 +448,7 @@
                                 <div class="product-thumbnail">
                                     <a href=""> <img
                                             data-original="https://5.imimg.com/data5/FR/RK/MY-9882376/disposable-surgical-cap-125x125.jpg"
-                                            src="https://5.imimg.com/data5/FR/RK/MY-9882376/disposable-surgical-cap-125x125.jpg"
+                                            src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
                                             alt="Surgical Caps" title="Surgical Caps"></a>
                                 </div>
                                 <div class="product-meta">
@@ -386,7 +467,7 @@
                                 <div class="product-thumbnail">
                                     <a href=" "> <img
                                             data-original="https://5.imimg.com/data5/SI/XQ/MB/GLADMIN-73621/coronavirus-ppe-kit-125x125.png "
-                                            src="https://5.imimg.com/data5/SI/XQ/MB/GLADMIN-73621/coronavirus-ppe-kit-125x125.png "
+                                            src="https://images.unsplash.com/photo-1514779324364-8400d49e81de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=627&q=80"
                                             alt="Personal Protective Equipment" title="Personal Protective Equipment"></a>
                                 </div>
                                 <div class="product-meta">
