@@ -55,7 +55,7 @@
                                     @endphp
                                     <div class="lit1 col-md-3 p-0  mt-4">
                                         <div class="list1_div1">
-                                            <a href="">
+                                            <a href="{{route('construction.dcatproductlist',['acategory'=> $dcat->category->category->category->slug, 'bcategory'=> $dcat->category->category->slug,'ccategory'=> $dcat->category->slug,'dcategory'=>$dcat->slug])}}">
                                                 <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/{{ $dcat->image }}"
                                                     width="115px" height="115px" alt="" />
                                             </a>

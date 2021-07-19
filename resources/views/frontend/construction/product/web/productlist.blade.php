@@ -18,7 +18,7 @@
     <div class="mn_divz">
         <div class="backgz">
             <div class="backg_sdivz">
-                {{-- <h1>{{ $dcategory->name }} {{ $dcategory->category->name }} </h1> --}}
+                <h1>{{ $anycategory->name }}</h1>
             </div>
         </div>
     </div>
@@ -121,7 +121,8 @@
                         @foreach ($anycategory->subcategories as $item)
                             @if ($item->storeproduct->isNotEmpty())
                                 <li class="p-1">
-                                    <a class="filtertag">
+                                    <a href="{{ route('construction.dcatproductlist', ['acategory' => $item->category->category->category->slug, 'bcategory' => $item->category->category->slug, 'ccategory' => $item->category->slug, 'dcategory' => $item->slug]) }}"
+                                        class="filtertag">
                                         {{ $item->name }}
                                     </a>
                                 </li>
@@ -129,17 +130,31 @@
                         @endforeach
                     @endunless
 
-                    {{-- @unless($which != 'dcategory')
-                        @foreach ($dcategory->category->category->subcategories as $item)
-                            <li class="p-1">
-                                <a href="{{ route('construction.bcat', ['id' => str_replace(',', '_', str_replace(str_split('\\/:*?"<>|() '), '-', strtolower($dcategory->category->category->name)))]) }}"
-                                    class="filtertag">
-                                    {{ $item->name }}
-                                </a>
-                            </li>
+                    @unless($which != 'dcategory')
+                        @foreach ($anycategory->category->category->subcategories as $item)
+                            @if ($item->storeproduct->isNotEmpty())
+                                <li class="p-1">
+                                    <a href="{{ route('construction.ccatproductlist', ['acategory' => $item->category->category->slug, 'bcategory' => $item->category->slug, 'ccategory' => $item->slug]) }}"
+                                        class="filtertag">
+                                        {{ $item->name }}
+                                    </a>
+                                </li>
+                            @endif
                         @endforeach
-                    @endunless --}}
-
+                        
+                        @foreach ($anycategory->category->subcategories as $item)
+                            @unless($item->id == $anycategory->id)
+                                @if ($item->storeproduct->isNotEmpty())
+                                    <li class="p-1">
+                                        <a href="{{ route('construction.dcatproductlist', ['acategory' => $item->category->category->category->slug, 'bcategory' => $item->category->category->slug, 'ccategory' => $item->category->slug, 'dcategory' => $item->slug]) }}"
+                                            class="filtertag">
+                                            {{ $item->name }}
+                                        </a>
+                                    </li>
+                                @endif
+                            @endunless
+                        @endforeach
+                    @endunless
                 </ul>
 
 
@@ -189,7 +204,8 @@
                                         <div class="img_div">
                                             <img
                                                 src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/{{ $item->image }}" />
-                                            <a href="" class="pt-2 ellipse" style="width: 130px;display: inline-block;">
+                                            <a href="{{ route('construction.dcatproductlist', ['acategory' => $item->category->category->category->slug, 'bcategory' => $item->category->category->slug, 'ccategory' => $item->category->slug, 'dcategory' => $item->slug]) }}"
+                                                class="pt-2 ellipse" style="width: 130px;display: inline-block;">
                                                 {{ $item->name }}
                                             </a>
                                         </div>
@@ -197,14 +213,15 @@
                                 @endif
                             @endforeach
                         @else
-                            @foreach ($anycategory as $item)
+                            @foreach ($anycategory->category->subcategories as $item)
                                 @if ($item->storeproduct->isNotEmpty())
                                     <div class="card p-2 m-1">
                                         <div class="img_div">
                                             <img
-                                                src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/" />
-                                            <a href="" class="pt-2 ellipse" style="width: 130px;display: inline-block;">
-                                                {{ $anycategory->name }}
+                                                src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/{{ $item->image }}" />
+                                            <a href="{{ route('construction.dcatproductlist', ['acategory' => $item->category->category->category->slug, 'bcategory' => $item->category->category->slug, 'ccategory' => $item->category->slug, 'dcategory' => $item->slug]) }}"
+                                                class="pt-2 ellipse" style="width: 130px;display: inline-block;">
+                                                {{ $item->name }}
                                             </a>
                                         </div>
                                         {{-- <div class="rs">{{ $item->name }}</div>
@@ -236,7 +253,7 @@
                                     <span class="d-inline-block mr-3"> </span>
                                     <a href=""> Get Export Price</a>
                                     <ul class="mb-0 me-3">
-                                        <li><strong>Brand</strong>:<span> {{ $item->product->brand->name }}</span></li>
+                                        <li><strong>Brand</strong>:<span> {{ @$item->product->brand->name }}</span></li>
                                         {{ $item->product->description }}
                                         <li><a href="name">read
                                                 more...</a></li>
@@ -309,7 +326,7 @@
                     </div>
                 @endforeach
 
-                {{$anycategory->storeproductwithpagination()->links()}}
+                {{ $anycategory->storeproductwithpagination()->links() }}
                 <!-- product card detail end -->
 
             </div>

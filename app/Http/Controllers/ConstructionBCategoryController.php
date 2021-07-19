@@ -151,12 +151,18 @@ class ConstructionBCategoryController extends Controller
         }
         $brands = array_unique($brands);
 
-        return view('frontend.construction.product.productlist', compact('anycategory', 'which','brands'));
+        return view('frontend.construction.product.productlist', compact('anycategory', 'which', 'brands'));
     }
     public function dcatproductlist(ConstructionACategory $acategory, ConstructionBCategory $bcategory, ConstructionCCategory $ccategory, ConstructionDCategory $dcategory)
     {
-
-        return view('frontend.construction.product.productlist', compact('storeproducts', 'dcategory', 'dcategories', 'brand'));
+        $anycategory = $dcategory;
+        $which = 'dcategory';
+        $brands = [];
+        foreach ($anycategory->storeproduct as $item) {
+            array_push($brands, ConstructionBrand::find($item->brand_id));
+        }
+        $brands = array_unique($brands);
+        return view('frontend.construction.product.productlist', compact('anycategory', 'which', 'brands'));
     }
 
     public function singleproduct(ConstructionStore $store, ConstructionStoreProduct $storeproduct)
