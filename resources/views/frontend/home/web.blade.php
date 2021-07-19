@@ -277,37 +277,43 @@
                     <div class="product-banner  pbnr7">
                         <div class="banner-content">
                             <ul>
-                                <li>
-                                    <a href=""> Real Estate Properties
-                                    </a>
-                                </li>
-                                <li><a href="">Agencies</a></li>
-                                <li><a href="">Realtors</a></li>
+                                @foreach (array_slice($bcategories, 0, 3) as $key => $item)
+                                    @php
+                                        $idx = str_replace(str_split('\\/:*?"<>|() '), '-', strtolower($item->name));
+                                        $idx = str_replace(',', '_', $idx);
+                                    @endphp
+                                    <li>
+                                        <a href="{{ route('construction.bcat', ['id' => $idx]) }}"> {{ $item->name }}
+                                        </a>
+                                    </li>
+                                @endforeach
                             </ul>
-                            <a href="" class="view-all">View
+                            <a href="{{ route('construction.home') }}" class="view-all">View
                                 All</a>
                         </div>
                     </div>
                     <div class="row cBW100">
                         @foreach (array_slice($bcategories, 0, 9) as $key => $item)
-
+                            @php
+                                $id = str_replace(str_split('\\/:*?"<>|() '), '-', strtolower($item->name));
+                                $id = str_replace(',', '_', $id);
+                            @endphp
                             <div class="col-md-4 col-sm-6 bdr1">
                                 <div class="product-item">
                                     <div class="product-thumbnail">
-                                        <a href=""><img data-original="" alt="Face Mask"
-                                                src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $item->image }}"
-                                                title="Face Mask"></a>
+                                        <a href="{{ route('construction.bcat', ['id' => $id]) }}"><img data-original=""
+                                                src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $item->image }}"></a>
                                     </div>
                                     <div class="product-meta">
-                                        <h3><a href="{{ route('property.search', ['area_type' => 'Residential']) }}">{{ $item->name }}
+
+                                        <h3><a href="{{ route('construction.bcat', ['id' => $id]) }}">{{ $item->name }}
                                             </a></h3>
-                                            @foreach ($item->subcategories as $subitem )
+                                        @foreach ($item->subcategories as $subitem)
                                             <p>
-                                                <a
-                                                    href="{{ route('property.search', ['property_type' => 'House', 'area_type' => 'Residential']) }}">{{ $subitem->name }}
-                                                </a>
+                                                {{ $subitem->name }}
+
                                             </p>
-                                            @endforeach
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -336,13 +342,12 @@
                         <div class="banner-content">
                             <ul>
                                 <li>
-                                    <a href=""> Real Estate Properties
+                                    <a href="{{ route('allproperties', ['all' => 'All']) }}"> Real Estate Properties
                                     </a>
                                 </li>
-                                <li><a href="">Agencies</a></li>
-                                <li><a href="">Realtors</a></li>
+                                <li><a href="{{ route('agency') }}">Agencies & Realtors</a></li>
                             </ul>
-                            <a href="" class="view-all">View
+                            <a href="{{ route('property') }}" class="view-all">View
                                 All</a>
                         </div>
                     </div>

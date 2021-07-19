@@ -37,7 +37,7 @@
             @endforeach
             <div class="best_main_div">
                 <div class="fdiv">
-                    <h3>slkjhdjhsadj</h3>
+                    <h3>{{ $item->category->name }}</h3>
                     <div class="sdiv">
                         <ul>
                             <li>

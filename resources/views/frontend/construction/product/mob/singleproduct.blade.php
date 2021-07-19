@@ -65,7 +65,7 @@
             <b class="text-primary">Rs {{ $storeproduct->product->price }}</b>
             <p>By: {{ $storeproduct->store->name }}, Karachi</p>
             <div class="text-center ">
-                <a href="tel:+{{ $storeproduct->store->phone}}">
+                <a href="tel:+{{ $storeproduct->store->phone }}">
                     <button type="button" class="btn btn-success w-50 me-2">Call Now</button>
                 </a>
                 {{-- <button type="button" class="btn btn-primary w-50">Get Best Price</button> --}}
@@ -125,12 +125,12 @@
                 </div>
                 <div>
                     {{-- umair --}}
-                    <a href="tel:+{{ $storeproduct->store->phone}}">
-                    <span class="phoneIconM">
-                        <i class="bi bi-telephone-outbound-fill">
-                        </i>
-                    </span>
-                </a>
+                    <a href="tel:+{{ $storeproduct->store->phone }}">
+                        <span class="phoneIconM">
+                            <i class="bi bi-telephone-outbound-fill">
+                            </i>
+                        </span>
+                    </a>
                 </div>
             </div>
             <div class="text-center pt-3 pb-3">
@@ -141,9 +141,9 @@
         </div>
         <!-- COMPANY INFORMATION end -->
 
-
+        <br><br><br><br>
         <!-- bestprperty start -->
-        @foreach ($storeproduct->getrelatedproduct(8) as $item)
+        {{-- @foreach ($storeproduct->getrelatedproduct(8) as $item)
             <div class="bestprperty_main_div">
                 <div class="fdiv">
                     <div class="top">
@@ -175,6 +175,6 @@
                 </div>
             </div>
             <!-- bestprperty end -->
-        @endforeach
+        @endforeach --}}
     </div>
 @endsection
