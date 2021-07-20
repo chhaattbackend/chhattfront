@@ -41,6 +41,19 @@ class ConstructionDCategory extends Model
         );
     }
 
+    public function brands()
+    {
+        return $this->hasManyThrough(
+            ConstructionBrand::class,
+            ConstructionProduct::class,
+            'd_category_id', // Foreign key on the ConstructionProduct table...
+            'id', // Foreign key on the ConstructionBrand table...
+            'id', // Local key on the projects table...
+            'brand_id' // Local key on the environments table...
+        );
+    }
+
+
     public function storeproductwithpagination()
     {
         return $this->hasManyThrough(

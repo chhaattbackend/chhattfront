@@ -34,6 +34,7 @@ Route::post('sendform', 'LeadController@formsubmit')->name('contact.form');
     Route::get('{acategory:slug}/{bcategory:slug}', 'ConstructionBCategoryController@index')->name('construction.bcat');
     Route::get('{acategory:slug}/{bcategory:slug}/{ccategory:slug}', 'ConstructionBCategoryController@ccatproductlist')->name('construction.ccatproductlist');
     Route::get('{acategory:slug}/{bcategory:slug}/{ccategory:slug}/{dcategory:slug}', 'ConstructionBCategoryController@dcatproductlist')->name('construction.dcatproductlist');
+    Route::get('{acategory:slug}/{bcategory:slug}/{ccategory:slug}/brand/{brand:slug}', 'ConstructionBCategoryController@brandproductlist')->name('construction.brandproductlist');
     // Route::get('list/{ccategory:name}', 'ConstructionBCategoryController@mainProduct')->name('construction.mainproductlist');
     Route::get('productDetail/{store:name}/{storeproduct:id}', 'ConstructionBCategoryController@singleproduct')->name('construction.singleproduct');
     Route::get('storeDetail/{store:slug}', 'ConstructionStoreController@index')->name('construction.singlestore');

@@ -48,60 +48,60 @@ class ConstructionBCategoryController extends Controller
         return view('frontend.construction.home.b_cat_list', compact('bcategories',));
     }
 
-    public function mainProduct(ConstructionCCategory $ccategory)
-    {
-        // dd($product->id);
-        $storeproductdcat = DB::connection('mysql2')->table('products')
-            ->select('d_categories.*')->distinct()
-            ->join('store_products', 'products.id', '=', 'store_products.product_id')
-            ->join('d_categories', 'd_categories.id', '=', 'products.d_category_id')
-            ->join('c_categories', 'c_categories.id', '=', 'd_categories.c_category_id')
-            ->join('stores', 'stores.id', '=', 'store_products.store_id')
-            ->where('c_categories.id', '=', $ccategory->id)
-            ->get();
+    // public function mainProduct(ConstructionCCategory $ccategory)
+    // {
+    //     // dd($product->id);
+    //     $storeproductdcat = DB::connection('mysql2')->table('products')
+    //         ->select('d_categories.*')->distinct()
+    //         ->join('store_products', 'products.id', '=', 'store_products.product_id')
+    //         ->join('d_categories', 'd_categories.id', '=', 'products.d_category_id')
+    //         ->join('c_categories', 'c_categories.id', '=', 'd_categories.c_category_id')
+    //         ->join('stores', 'stores.id', '=', 'store_products.store_id')
+    //         ->where('c_categories.id', '=', $ccategory->id)
+    //         ->get();
 
-        $storeproductss = DB::connection('mysql2')->table('products')
-            ->select('store_products.*')->distinct()
-            ->join('store_products', 'products.id', '=', 'store_products.product_id')
-            ->join('d_categories', 'd_categories.id', '=', 'products.d_category_id')
-            ->join('c_categories', 'c_categories.id', '=', 'd_categories.c_category_id')
-            ->join('stores', 'stores.id', '=', 'store_products.store_id')
-            ->where('c_categories.id', '=', $ccategory->id)
-            ->get();
+    //     $storeproductss = DB::connection('mysql2')->table('products')
+    //         ->select('store_products.*')->distinct()
+    //         ->join('store_products', 'products.id', '=', 'store_products.product_id')
+    //         ->join('d_categories', 'd_categories.id', '=', 'products.d_category_id')
+    //         ->join('c_categories', 'c_categories.id', '=', 'd_categories.c_category_id')
+    //         ->join('stores', 'stores.id', '=', 'store_products.store_id')
+    //         ->where('c_categories.id', '=', $ccategory->id)
+    //         ->get();
 
-        $storeproductdcat1 = DB::connection('mysql2')->table('products')
-            ->select('store_products.*')->distinct()
-            ->join('store_products', 'products.id', '=', 'store_products.product_id')
-            ->join('d_categories', 'd_categories.id', '=', 'products.d_category_id')
-            ->join('c_categories', 'c_categories.id', '=', 'd_categories.c_category_id')
-            ->join('stores', 'stores.id', '=', 'store_products.store_id')
-            ->where('c_categories.id', '=', $ccategory->id)
-            ->get();
-
-
-        $brand = [];
-        foreach ($storeproductdcat1 as $item) {
-            array_push($brand, ConstructionBrand::find($item->brand_id));
-        }
-        $brand = array_unique($brand);
+    //     $storeproductdcat1 = DB::connection('mysql2')->table('products')
+    //         ->select('store_products.*')->distinct()
+    //         ->join('store_products', 'products.id', '=', 'store_products.product_id')
+    //         ->join('d_categories', 'd_categories.id', '=', 'products.d_category_id')
+    //         ->join('c_categories', 'c_categories.id', '=', 'd_categories.c_category_id')
+    //         ->join('stores', 'stores.id', '=', 'store_products.store_id')
+    //         ->where('c_categories.id', '=', $ccategory->id)
+    //         ->get();
 
 
-        $dcategories = [];
-        foreach ($storeproductdcat as $item) {
-            array_push($dcategories, ConstructionDCategory::find($item->id));
-        }
+    //     $brand = [];
+    //     foreach ($storeproductdcat1 as $item) {
+    //         array_push($brand, ConstructionBrand::find($item->brand_id));
+    //     }
+    //     $brand = array_unique($brand);
 
-        $storeproducts = [];
-        foreach ($storeproductss as $item) {
-            array_push($storeproducts, ConstructionStoreProduct::find($item->id));
-        }
 
-        $dcategory = ConstructionDCategory::where('c_category_id', $ccategory->id)->first();
-        // dd($ccategory->subcategories);
-        // dd($dcategory);
+    //     $dcategories = [];
+    //     foreach ($storeproductdcat as $item) {
+    //         array_push($dcategories, ConstructionDCategory::find($item->id));
+    //     }
 
-        return view('frontend.construction.product.productlist', compact('storeproducts', 'dcategory', 'dcategories', 'brand'));
-    }
+    //     $storeproducts = [];
+    //     foreach ($storeproductss as $item) {
+    //         array_push($storeproducts, ConstructionStoreProduct::find($item->id));
+    //     }
+
+    //     $dcategory = ConstructionDCategory::where('c_category_id', $ccategory->id)->first();
+    //     // dd($ccategory->subcategories);
+    //     // dd($dcategory);
+
+    //     return view('frontend.construction.product.productlist', compact('storeproducts', 'dcategory', 'dcategories', 'brand'));
+    // }
 
     // public function product(ConstructionDCategory $dcategory, ConstructionProduct $product)
     // {
@@ -158,11 +158,30 @@ class ConstructionBCategoryController extends Controller
         $anycategory = $dcategory;
         $which = 'dcategory';
         $brands = [];
-        foreach ($anycategory->storeproduct as $item) {
+        foreach ($ccategory->storeproduct as $item) {
             array_push($brands, ConstructionBrand::find($item->brand_id));
         }
         $brands = array_unique($brands);
         return view('frontend.construction.product.productlist', compact('anycategory', 'which', 'brands'));
+    }
+
+    public function brandproductlist(ConstructionACategory $acategory, ConstructionBCategory $bcategory, ConstructionCCategory $ccategory,$brand)
+    {
+        $brand = ConstructionBrand::where('slug', $brand)->first();
+        if ($brand == null) {
+            return abort(404);
+        }
+        // dd($ccategory);
+
+        $anycategory = $ccategory;
+        $which = 'brand';
+        $brands = [];
+        foreach ($anycategory->storeproduct as $item) {
+            array_push($brands, ConstructionBrand::find($item->brand_id));
+        }
+        $brands = array_unique($brands);
+
+        return view('frontend.construction.product.productlist', compact('anycategory', 'which', 'brands','brand'));
     }
 
     public function singleproduct(ConstructionStore $store, ConstructionStoreProduct $storeproduct)

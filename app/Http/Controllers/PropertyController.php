@@ -9,6 +9,7 @@ use App\AreaTwo;
 use App\City;
 use App\ConstructionACategory;
 use App\ConstructionBCategory;
+use App\ConstructionBrand;
 use App\ConstructionCCategory;
 use App\ConstructionDCategory;
 use App\ConstructionStore;
@@ -256,6 +257,16 @@ class PropertyController extends Controller
         //     ]);
         // }
         // dd('done');
+
+        // $sp = ConstructionBrand::all();
+        // foreach ($sp as $key => $value) {
+        //     // dd($value);
+        //     $a = str_replace(str_split('\\/:*?"<>|(),&'), '', strtolower($value->name));
+        //     $a = str_replace(' ', '-', $a);
+        //     $value->update([
+        //         'slug' => $a
+        //     ]);
+        // }
 
         // $bcat = ConstructionStore::all();
         // foreach ($bcat as $key => $item) {
