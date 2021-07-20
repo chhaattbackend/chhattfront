@@ -30,7 +30,7 @@ Route::post('sendform', 'LeadController@formsubmit')->name('contact.form');
 
 // Route::prefix('construction')->group(function () {
     Route::get('construction', 'ConstructionACategoryController@index')->name('construction.home');
-    Route::get('{store:slug}/productDetail/{product:slug}', 'ConstructionBCategoryController@singleproduct')->name('construction.singleproduct');
+    Route::get('{store:slug}/product/{product:slug}', 'ConstructionBCategoryController@singleproduct')->name('construction.singleproduct');
     Route::get('store/{store:slug}', 'ConstructionStoreController@index')->name('construction.singlestore');
     Route::get('{acategory:slug}', 'ConstructionBCategoryController@viewall')->name('construction.bcatlist');
     Route::get('{acategory:slug}/{bcategory:slug}', 'ConstructionBCategoryController@index')->name('construction.bcat');

@@ -98,7 +98,7 @@
                             <div class="agencyCard">
                                 <div class="imagesContainer position-relative">
                                     <img class="bgIMg"
-                                        src="https://images.unsplash.com/photo-1622496030981-e8377ce1ecdd?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                                        src="{{asset('assets/chhattLogo.png')}}"
                                         alt="">
                                     <img class="profileImg"
                                         src="https://images.unsplash.com/photo-1624314086699-6ee739bd29e3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
