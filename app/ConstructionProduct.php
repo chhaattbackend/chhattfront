@@ -23,6 +23,7 @@ class ConstructionProduct extends Model
         'quantity',
         'thumbnail',
         'image',
+        'slug',
         'unit_id',
     ];
     public $timestamps = false;

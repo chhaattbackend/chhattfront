@@ -46,7 +46,7 @@ class ConstructionBCategoryController extends Controller
     {
         $bcategories = [];
         foreach ($acategory->bcategories as $item) {
-            if ($item->storeproduct != null) {
+            if ($item->storeproduct->isNotEmpty()) {
                 array_push($bcategories, ConstructionBCategory::find($item->id));
             }
         };
@@ -189,9 +189,9 @@ class ConstructionBCategoryController extends Controller
         return view('frontend.construction.product.productlist', compact('anycategory', 'which', 'brands', 'brand'));
     }
 
-    public function singleproduct(ConstructionStore $store, ConstructionStoreProduct $storeproduct)
+    public function singleproduct(ConstructionStore $store, ConstructionProduct $product)
     {
-        // dd($storeproduct->id);
+        $storeproduct = ConstructionStoreProduct::where('store_id',$store->id)->where('product_id',$product->id)->first();
         return view('frontend.construction.product.singleproduct', compact('storeproduct'));
     }
 }

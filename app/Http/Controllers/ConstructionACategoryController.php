@@ -31,19 +31,8 @@ class ConstructionACategoryController extends Controller
         // // };
         // // $products = array_unique($products);
         // // dd($products);
-
-
         $store = ConstructionStore::orderBy('id', 'asc')->get();
-        $bcategories = [];
-        foreach ($store as $item) {
-            foreach ($item->storeproducts as $item) {
-                if ($item->product->b_category != null) {
-                    array_push($bcategories, ConstructionBCategory::find($item->product->b_category->id));
-                }
-            }
-        };
-        $bcategories = array_unique($bcategories);
-
+        $bcategories=ConstructionBCategory::all();
         return view('frontend.construction.home.index', compact('bcategories', 'store'));
     }
 }

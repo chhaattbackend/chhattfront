@@ -173,7 +173,7 @@
                                             <div class="propertyCard p-2">
 
 
-                                                    <div class="imageSection"><a class="text-decoration-none position-relative" href="{{ route('construction.singleproduct', ['store'=>$storeproduct->store->name,'storeproduct' => $item->storeproduct[0]->id]) }}">
+                                                    <div class="imageSection"><a class="text-decoration-none position-relative" href="{{ route('construction.singleproduct', ['store'=>$storeproduct->store->slug,'product' => $item->slug]) }}">
                                                         <img class="slideImg"
                                                             src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->image }}"
                                                             alt="" />

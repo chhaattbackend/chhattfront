@@ -329,10 +329,12 @@
                             <a class="text-decoration-none text-dark" href="">
 
                                 <div class="product_detail_card_div d-flex">
-                                    <div class="frst_div">
-                                        <img
-                                            src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}" />
-                                    </div>
+                                    <a href="{{route('construction.singleproduct',['store' => $item->store->slug,'product'=> $item->product->slug])}}">
+                                        <div class="frst_div">
+                                            <img
+                                                src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}" />
+                                        </div>
+                                    </a>
                                     <div class="ml-3 sec_div">
                                         <h5 class="font-weight-bold">{{ $item->product->name }}</h5>
                                         <span class="d-inline-block mr-3">RS {{ $item->store_price }} </span>
@@ -393,7 +395,7 @@
 
                                                 <div class="d-flex div1 mr-2">
                                                     <div>
-                                                        <a href="">
+                                                        <a href="{{route('construction.singleproduct',['store' => $item->store->slug,'product'=> $suggesteditem->slug])}}">
                                                             <img width="80px" height="72px" style=" object-fit: contain;"
                                                                 src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $suggesteditem->image }}" />
                                                         </a>
@@ -415,16 +417,16 @@
                     @endforeach
                     {{ $brand->storeproductwithpagination()->links() }}
                 @else
-
                     @foreach ($anycategory->storeproductwithpagination() as $item)
                         <div class="product_detail_card_div_main_div p-2 m-2">
                             <a class="text-decoration-none text-dark" href="">
 
                                 <div class="product_detail_card_div d-flex">
+                                    <a class="text-decoration-none " href="{{route('construction.singleproduct',['store' => $item->store->slug,'product'=> $item->product->slug])}}">
                                     <div class="frst_div">
-                                        <img
-                                            src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}" />
-                                    </div>
+                                            <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}" />
+                                        </div>
+                                    </a>
                                     <div class="ml-3 sec_div">
                                         <h5 class="font-weight-bold">{{ $item->product->name }}</h5>
                                         <span class="d-inline-block mr-3">RS {{ $item->store_price }} </span>
@@ -459,7 +461,7 @@
                                         <span style="color: #068076; font-size: 14px;" class="font-weight-bold">
                                             View Mobile Number
                                         </span>
-                                    </div> --}}
+                                        </div> --}}
                                         <div class="border text-center btns_contact mt-3 curs">
                                             <a class="text-white text-decoration-none"
                                                 href="tel:{{ $item->store->phone }}">

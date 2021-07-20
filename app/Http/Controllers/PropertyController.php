@@ -12,6 +12,7 @@ use App\ConstructionBCategory;
 use App\ConstructionBrand;
 use App\ConstructionCCategory;
 use App\ConstructionDCategory;
+use App\ConstructionProduct;
 use App\ConstructionStore;
 use App\ConstructionStoreProduct;
 use App\GlobalClass;
@@ -267,6 +268,20 @@ class PropertyController extends Controller
         //         'slug' => $a
         //     ]);
         // }
+
+        // $sp = ConstructionProduct::all();
+        // foreach ($sp as $key => $value) {
+        //     if ($value->name != null) {
+        //         // dd($value);
+        //         # code...
+        //         $a = str_replace(str_split('(),&'), '', $value->name);
+        //         $a = str_replace(' ', '-', $a);
+        //         $value->update([
+        //             'slug' => $a
+        //         ]);
+        //     }
+        // }
+        // dd('done');
 
         // $bcat = ConstructionStore::all();
         // foreach ($bcat as $key => $item) {

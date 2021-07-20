@@ -53,6 +53,18 @@ class ConstructionStore extends Model
         return $this->belongsTo(ConstructionSupplier::class, 'store_id');
     }
 
+    public function products()
+    {
+        return $this->hasManyThrough(
+            ConstructionProduct::class,
+            ConstructionStoreProduct::class,
+            'store_id', // Foreign key on the ConstructionProduct table...
+            'id', // Foreign key on the ConstructionBrand table...
+            'id', // Local key on the projects table...
+            'product_id' // Local key on the environments table...
+        );
+    }
+
     // public function storeproducts(){
     //     return $this->belongsToMany(Product::class,'store_products','store_id','product_id');
     // }

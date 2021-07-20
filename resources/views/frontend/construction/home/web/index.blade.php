@@ -101,46 +101,48 @@
                 <div class="main_slide_div">
                     <div style="margin: auto;" class="slider">
                         @foreach ($bcategories as $item)
-                            <div>
-                                <li class="scroll-img-list  p-2 my-3">
-                                    <div id="main_div_form">
-                                        <div class="text-decoration-none position-relative">
-                                            <button onclick="formSubmit()" class="imageSection">
-                                                <a href="{{ route('construction.bcat', ['acategory'=>$item->category->slug,'bcategory' => $item->slug]) }}">
-                                                    <img class="slideImg"
-                                                        src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $item->image }}"
-                                                        alt="" />
-                                                </a>
-                                            </button>
-                                            <div class="text-dark paraContainer">
-                                                <div class="mt-1">
-                                                    <div class="mt-2 elipse">
-                                                        <strong class="mt-5">{{ $item->name }}</strong>
-                                                    </div>
-                                                    <ul style="list-style-type: disc; ">
-                                                        @foreach ($item->subcategories as $i => $subItem)
-                                                            @if ($i < 6)
-                                                                <li style="list-style-position: inside;">
-                                                                    {{ $subItem->name }}
-                                                                </li>
-                                                            @endif
-                                                        @endforeach
-                                                    </ul>
+                        @unless ($item->storeproduct->isEmpty())
+                        <div>
+                            <li class="scroll-img-list  p-2 my-3">
+                                <div id="main_div_form">
+                                    <div class="text-decoration-none position-relative">
+                                        <button onclick="formSubmit()" class="imageSection">
+                                            <a href="{{ route('construction.bcat', ['acategory'=>$item->category->slug,'bcategory' => $item->slug]) }}">
+                                                <img class="slideImg"
+                                                    src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $item->image }}"
+                                                    alt="" />
+                                            </a>
+                                        </button>
+                                        <div class="text-dark paraContainer">
+                                            <div class="mt-1">
+                                                <div class="mt-2 elipse">
+                                                    <strong class="mt-5">{{ $item->name }}</strong>
                                                 </div>
+                                                <ul style="list-style-type: disc; ">
+                                                    @foreach ($item->subcategories as $i => $subItem)
+                                                        @if ($i < 6)
+                                                            <li style="list-style-position: inside;">
+                                                                {{ $subItem->name }}
+                                                            </li>
+                                                        @endif
+                                                    @endforeach
+                                                </ul>
                                             </div>
                                         </div>
-                                        <div class="btn-viewmore d-flex justify-content-between mt-3">
-                                            <a href="{{ route('construction.bcat', ['acategory'=>$item->category->slug,'bcategory' => $item->slug]) }}"
-                                                class="text-decoration-none w-100 themebtn py-1 text-white">
-                                                <button class="w-100 themebtn py-1 text-white">
-                                                    View more
-                                                </button>
-                                            </a>
-                                        </div>
                                     </div>
+                                    <div class="btn-viewmore d-flex justify-content-between mt-3">
+                                        <a href="{{ route('construction.bcat', ['acategory'=>$item->category->slug,'bcategory' => $item->slug]) }}"
+                                            class="text-decoration-none w-100 themebtn py-1 text-white">
+                                            <button class="w-100 themebtn py-1 text-white">
+                                                View more
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
 
-                                </li>
-                            </div>
+                            </li>
+                        </div>
+                        @endunless
                         @endforeach
 
                     </div>
@@ -182,7 +184,7 @@
                         <div class="col-sm-4 col-lg-3 mb-4">
                             <div class="propertyCard p-2">
                                 <a class="text-decoration-none position-relative"
-                                    href="{{ route('construction.singleproduct', ['store' => $item->store->name, 'storeproduct' => $item->id]) }}">
+                                    href="{{ route('construction.singleproduct', ['store' => $item->store->slug, 'product' => $item->product->slug]) }}">
                                     <div class="imageSection">
                                         <img class="slideImg"
                                             src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}"
