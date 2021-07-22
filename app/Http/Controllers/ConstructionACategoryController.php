@@ -35,4 +35,22 @@ class ConstructionACategoryController extends Controller
         $bcategories=ConstructionBCategory::all();
         return view('frontend.construction.home.index', compact('bcategories', 'store'));
     }
+
+    public function search(Request $request)
+    {
+        $product = ConstructionProduct::whereHas('a_category', function ($query) use ($request) {
+            $query->where('name','like' ,'%'.$request->key.'%');
+        })->orWhereHas('b_category', function ($query) use ($request) {
+            $query->where('name', 'like', '%' . $request->key . '%');
+        })->orWhereHas('c_category', function ($query) use ($request) {
+            $query->where('name', 'like', '%' . $request->key . '%');
+        })->orWhereHas('d_category', function ($query) use ($request) {
+            $query->where('name', 'like', '%' . $request->key . '%');
+        })->orWhereHas('brand', function ($query) use ($request) {
+            $query->where('name', 'like', '%' . $request->key . '%');
+        })->get();
+
+
+        dd($product);
+    }
 }

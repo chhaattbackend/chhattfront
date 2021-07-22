@@ -29,8 +29,11 @@
                             </div>
                             <select id="citiesSelect" class="form-select" aria-label="Default select example"></select>
 
-                            <button type="submit" onclick="changeFunc(event)">
-                                Search
+                            {{-- <button type="submit" onclick="changeFunc(event)"> --}}
+                                <button type="submit"  >
+                                    <a href="{{route('construction.search')}}">
+                                        Search
+                                    </a>
                             </button>
                         </div>
                         <div class="secategories">
@@ -193,7 +196,7 @@
                                     <div class="text-dark paraContainer">
                                         <div class="mt-1">
                                             <div class="d-flex justify-content-between">
-                                                <h6 class="lightColor">{{ $item->store->name ?? 'A Category' }}</h6>
+                                                <h6 class="lightColor">{{ $item->product->d_category->name ?? 'A Category' }}</h6>
                                                 <h6 class="lightColor">{{ $item->store->name ?? 'B Category' }}</h6>
                                             </div>
                                             <div class="mt-2 ellipse">

@@ -277,13 +277,9 @@
                     <div class="product-banner  pbnr7">
                         <div class="banner-content">
                             <ul>
-                                @foreach (array_slice($bcategories, 0, 3) as $key => $item)
-                                    @php
-                                        $idx = str_replace(str_split('\\/:*?"<>|() '), '-', strtolower($item->name));
-                                        $idx = str_replace(',', '_', $idx);
-                                    @endphp
+                                @foreach (array_slice($bcategories, 0, 3) as $key => $bcat)
                                     <li>
-                                        <a href="{{ route('construction.bcat', ['id' => $idx]) }}"> {{ $item->name }}
+                                        <a href="{{route('construction.bcat', ['acategory'=> $bcat->category->slug,'bcategory'=> $bcat->slug])}}"> {{ $bcat->name }}
                                         </a>
                                     </li>
                                 @endforeach
@@ -293,26 +289,26 @@
                         </div>
                     </div>
                     <div class="row cBW100">
-                        @foreach (array_slice($bcategories, 0, 9) as $key => $item)
-                            @php
-                                $id = str_replace(str_split('\\/:*?"<>|() '), '-', strtolower($item->name));
-                                $id = str_replace(',', '_', $id);
-                            @endphp
+                        @foreach (array_slice($bcategories, 0, 9) as $key => $bcat)
+
                             <div class="col-md-4 col-sm-6 bdr1">
                                 <div class="product-item">
                                     <div class="product-thumbnail">
-                                        <a href="{{ route('construction.bcat', ['id' => $id]) }}"><img data-original=""
-                                                src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $item->image }}"></a>
+                                        <a href="{{route('construction.bcat', ['acategory'=> $bcat->category->slug,'bcategory'=> $bcat->slug])}}" ><img data-original=""
+                                                src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $bcat->image }}"></a>
                                     </div>
                                     <div class="product-meta">
 
-                                        <h3><a href="{{ route('construction.bcat', ['id' => $id]) }}">{{ $item->name }}
+                                        <h3><a href="{{route('construction.bcat', ['acategory'=> $bcat->category->slug,'bcategory'=> $bcat->slug])}}" bcat>{{ $bcat->name }}
                                             </a></h3>
-                                        @foreach ($item->subcategories as $subitem)
+                                        @foreach ($bcat->subcategories as $ccat)
+                                        @if ($ccat->storeproduct->isNotEmpty())
+                                        <a href="{{ route('construction.ccatproductlist', ['acategory' => $ccat->category->category->slug, 'bcategory' => $ccat->category->slug, 'ccategory' => $ccat->slug]) }}">
                                             <p>
-                                                {{ $subitem->name }}
-
+                                                {{ $ccat->name }}
                                             </p>
+                                        </a>
+                                        @endif
                                         @endforeach
                                     </div>
                                 </div>
