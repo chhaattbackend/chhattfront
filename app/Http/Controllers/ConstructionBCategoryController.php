@@ -176,8 +176,6 @@ class ConstructionBCategoryController extends Controller
         if ($brand == null) {
             return abort(404);
         }
-        // dd($ccategory);
-
         $anycategory = $ccategory;
         $which = 'brand';
         $brands = [];
@@ -185,7 +183,6 @@ class ConstructionBCategoryController extends Controller
             array_push($brands, ConstructionBrand::find($item->brand_id));
         }
         $brands = array_unique($brands);
-
         return view('frontend.construction.product.productlist', compact('anycategory', 'which', 'brands', 'brand'));
     }
 

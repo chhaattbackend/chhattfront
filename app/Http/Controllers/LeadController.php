@@ -259,7 +259,6 @@ class LeadController extends Controller
     public function update(Request $request, Lead $lead)
     {
         $lead->update($request->all());
-
         return redirect()->away($request->previous_url);
     }
 

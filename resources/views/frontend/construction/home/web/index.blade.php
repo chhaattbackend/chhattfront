@@ -75,7 +75,7 @@
 
             </div>
             <div class="scroll">
-                <div class="txtScroll">Scroll</div>
+                <div class="txtScroll">Scroll →</div>
                 <div>
                 </div>
             </div>
