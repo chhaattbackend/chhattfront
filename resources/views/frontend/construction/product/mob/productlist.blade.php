@@ -237,7 +237,6 @@
                             $before -= 1;
                         } else {
                             $before = 10 / 2;
-                            $before = round($before);
                         }
                     @endphp
 
@@ -255,7 +254,6 @@
                                                     @if ($abrand->id != $brand->id)
                                                         <li>
                                                             <div>
-                                                                <!-- card start -->
                                                                 <a style="margin: 12%;"
                                                                     href="{{ route('construction.brandproductlist', ['acategory' => $anycategory->category->category->slug, 'bcategory' => $anycategory->category->slug, 'ccategory' => $anycategory->slug, 'brand' => $abrand->slug]) }}"
                                                                     class="card_main_div text-decoration-none text-dark text-decoration-none pl-5">
@@ -265,7 +263,6 @@
                                                                     <h6 class="fw-bold fs-6">{{ $abrand->name }}
                                                                     </h6>
                                                                 </a>
-                                                                <!-- card end -->
                                                             </div>
                                                         </li>
                                                     @endif
@@ -319,7 +316,6 @@
 
                 @else
 
-
                     @php
                         if ($anycategory->storeproductwithpagination()->total() < 9) {
                             $before = $anycategory->storeproductwithpagination()->total();
@@ -328,7 +324,6 @@
                             $before -= 1;
                         } else {
                             $before = 10 / 2;
-                            $before = round($before);
                         }
                     @endphp
 
@@ -342,12 +337,10 @@
                                     <div class="sdiv">
                                         <ul class="main_ul" style="padding-left: 0px">
                                             @unless($which != 'ccategory')
-                                                {{-- @dd($anycategory->category->category->slug) --}}
                                                 @foreach ($brands as $abrand)
                                                     @if ($abrand != null)
                                                         <li>
                                                             <div>
-                                                                <!-- card start -->
                                                                 <a style="margin: 12%;"
                                                                     href="{{ route('construction.brandproductlist', ['acategory' => $anycategory->category->category->slug, 'bcategory' => $anycategory->category->slug, 'ccategory' => $anycategory->slug, 'brand' => $abrand->slug]) }}"
                                                                     class="card_main_div text-decoration-none text-dark text-decoration-none pl-5">
@@ -357,7 +350,6 @@
                                                                     <h6 class="fw-bold fs-6">{{ $abrand->name }}
                                                                     </h6>
                                                                 </a>
-                                                                <!-- card end -->
                                                             </div>
                                                         </li>
                                                     @endif
@@ -369,7 +361,6 @@
                                                     @if ($abrand != null)
                                                         <li>
                                                             <div>
-                                                                <!-- card start -->
                                                                 <a style="margin: 12%;"
                                                                     href="{{ route('construction.brandproductlist', ['acategory' => $anycategory->category->category->category->slug, 'bcategory' => $anycategory->category->category->slug, 'ccategory' => $anycategory->category->slug, 'brand' => $abrand->slug]) }}"
                                                                     class="card_main_div text-decoration-none text-dark text-decoration-none pl-5">
@@ -379,7 +370,6 @@
                                                                     <h6 class="fw-bold fs-6">{{ $abrand->name }}
                                                                     </h6>
                                                                 </a>
-                                                                <!-- card end -->
                                                             </div>
                                                         </li>
                                                     @endif
