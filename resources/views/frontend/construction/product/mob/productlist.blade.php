@@ -230,11 +230,16 @@
 
                 @if ($which == 'brand')
                     @php
-                        $before = $brand->storeproductwithpagination()->total();
-                        $before -= 1;
+                        if ($brand->storeproductwithpagination()->total() < 9) {
+                            $before = $brand->storeproductwithpagination()->total();
+                            $before /= 2;
+                            $before = round($before);
+                            $before -= 1;
+                        } else {
+                            $before = 10 / 2;
+                            $before = round($before);
+                        }
                     @endphp
-
-
 
                     @foreach ($brand->storeproductwithpagination() as $key => $item)
                         @if ($key == $before)
@@ -245,11 +250,9 @@
                                     </div>
                                     <div class="sdiv">
                                         <ul class="main_ul" style="padding-left: 0px">
-
-
-                                            @unless($which != 'ccategory')
-                                                @foreach ($brands as $abrand)
-                                                    @if ($abrand != null)
+                                            @foreach ($brands as $abrand)
+                                                @if ($abrand != null)
+                                                    @if ($abrand->id != $brand->id)
                                                         <li>
                                                             <div>
                                                                 <!-- card start -->
@@ -266,55 +269,8 @@
                                                             </div>
                                                         </li>
                                                     @endif
-                                                @endforeach
-                                            @endunless
-
-                                            @unless($which != 'brand')
-                                                @foreach ($brands as $abrand)
-                                                    @if ($abrand != null)
-                                                        @if ($abrand->id != $brand->id)
-                                                            <li>
-                                                                <div>
-                                                                    <!-- card start -->
-                                                                    <a style="margin: 12%;"
-                                                                        href="{{ route('construction.brandproductlist', ['acategory' => $anycategory->category->category->slug, 'bcategory' => $anycategory->category->slug, 'ccategory' => $anycategory->slug, 'brand' => $abrand->slug]) }}"
-                                                                        class="card_main_div text-decoration-none text-dark text-decoration-none pl-5">
-                                                                        <img style="height: 50px; width: 50px; border-radius: 50%; border: 2px solid rgb(170, 170, 170);"
-                                                                            src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/ccategories/{{ $abrand->image }}"
-                                                                            class="propertyImg " alt="">
-                                                                        <h6 class="fw-bold fs-6">{{ $abrand->name }}
-                                                                        </h6>
-                                                                    </a>
-                                                                    <!-- card end -->
-                                                                </div>
-                                                            </li>
-                                                        @endif
-                                                    @endif
-                                                @endforeach
-                                            @endunless
-
-                                            @unless($which != 'dcategory')
-                                                @foreach ($brands as $abrand)
-                                                    @if ($abrand != null)
-                                                        <li>
-                                                            <div>
-                                                                <!-- card start -->
-                                                                <a style="margin: 12%;"
-                                                                    href="{{ route('construction.brandproductlist', ['acategory' => $anycategory->category->category->slug, 'bcategory' => $anycategory->category->slug, 'ccategory' => $anycategory->slug, 'brand' => $abrand->slug]) }}"
-                                                                    class="card_main_div text-decoration-none text-dark text-decoration-none pl-5">
-                                                                    <img style="height: 50px; width: 50px; border-radius: 50%; border: 2px solid rgb(170, 170, 170);"
-                                                                        src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/ccategories/{{ $abrand->image }}"
-                                                                        class="propertyImg " alt="">
-                                                                    <h6 class="fw-bold fs-6">{{ $abrand->name }}
-                                                                    </h6>
-                                                                </a>
-                                                                <!-- card end -->
-                                                            </div>
-                                                        </li>
-                                                    @endif
-                                                @endforeach
-                                            @endunless
-
+                                                @endif
+                                            @endforeach
 
                                         </ul>
                                     </div>
@@ -356,10 +312,14 @@
                             </p>
                         </div>
                     @endforeach
+
                     <div style="z-index:0" class="text-center">
                         {{ $brand->storeproductwithpagination()->links() }}
                     </div>
+
                 @else
+
+
                     @php
                         if ($anycategory->storeproductwithpagination()->total() < 9) {
                             $before = $anycategory->storeproductwithpagination()->total();
@@ -371,7 +331,6 @@
                             $before = round($before);
                         }
                     @endphp
-                    {{-- @dd($before) --}}
 
                     @foreach ($anycategory->storeproductwithpagination() as $key => $item)
                         @if ($key == $before)
@@ -382,9 +341,8 @@
                                     </div>
                                     <div class="sdiv">
                                         <ul class="main_ul" style="padding-left: 0px">
-
-
                                             @unless($which != 'ccategory')
+                                                {{-- @dd($anycategory->category->category->slug) --}}
                                                 @foreach ($brands as $abrand)
                                                     @if ($abrand != null)
                                                         <li>
@@ -406,30 +364,6 @@
                                                 @endforeach
                                             @endunless
 
-                                            @unless($which != 'brand')
-                                                @foreach ($brands as $abrand)
-                                                    @if ($abrand != null)
-                                                        @if ($abrand->id != $brand->id)
-                                                            <li>
-                                                                <div>
-                                                                    <!-- card start -->
-                                                                    <a style="margin: 12%;"
-                                                                        href="{{ route('construction.brandproductlist', ['acategory' => $anycategory->category->category->slug, 'bcategory' => $anycategory->category->slug, 'ccategory' => $anycategory->slug, 'brand' => $abrand->slug]) }}"
-                                                                        class="card_main_div text-decoration-none text-dark text-decoration-none pl-5">
-                                                                        <img style="height: 50px; width: 50px; border-radius: 50%; border: 2px solid rgb(170, 170, 170);"
-                                                                            src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/ccategories/{{ $abrand->image }}"
-                                                                            class="propertyImg " alt="">
-                                                                        <h6 class="fw-bold fs-6">{{ $abrand->name }}
-                                                                        </h6>
-                                                                    </a>
-                                                                    <!-- card end -->
-                                                                </div>
-                                                            </li>
-                                                        @endif
-                                                    @endif
-                                                @endforeach
-                                            @endunless
-
                                             @unless($which != 'dcategory')
                                                 @foreach ($brands as $abrand)
                                                     @if ($abrand != null)
@@ -437,7 +371,7 @@
                                                             <div>
                                                                 <!-- card start -->
                                                                 <a style="margin: 12%;"
-                                                                    href="{{ route('construction.brandproductlist', ['acategory' => $anycategory->category->category->slug, 'bcategory' => $anycategory->category->slug, 'ccategory' => $anycategory->slug, 'brand' => $abrand->slug]) }}"
+                                                                    href="{{ route('construction.brandproductlist', ['acategory' => $anycategory->category->category->category->slug, 'bcategory' => $anycategory->category->category->slug, 'ccategory' => $anycategory->category->slug, 'brand' => $abrand->slug]) }}"
                                                                     class="card_main_div text-decoration-none text-dark text-decoration-none pl-5">
                                                                     <img style="height: 50px; width: 50px; border-radius: 50%; border: 2px solid rgb(170, 170, 170);"
                                                                         src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/ccategories/{{ $abrand->image }}"
