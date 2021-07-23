@@ -18,26 +18,23 @@
             <div class="top">
                 <p>Categories to explore</p>
                 <p>
-                    <a href="{{ route('construction.bcatlist') }}">
+                    <a href="{{ route('construction.home') }}">
                         View All
                     </a>
                 </p>
             </div>
             <div class="sdiv">
                 <ul class="main_ul" style="padding-left: 0px">
-                    @foreach (array_slice($bcategories, 0, 9) as $key => $item)
-                        @php
-                            $id = str_replace(str_split('\\/:*?"<>|() '), '-', strtolower($item->name));
-                            $id = str_replace(',', '_', $id);
-                        @endphp
+                    @foreach (array_slice($bcategories, 0, 9) as $key => $bcat)
+
                     <li>
                         <div>
                             <!-- card start -->
-                            <a href="{{ route('construction.bcat', ['id' => $id]) }}" class="card_main_div text-decoration-none text-dark text-decoration-none">
+                            <a href="{{route('construction.bcat', ['acategory'=> $bcat->category->slug,'bcategory'=> $bcat->slug])}}" class="card_main_div text-decoration-none text-dark text-decoration-none">
                                 <img style="height: 100px; width: 100px; border-radius: 50%; border: 2px solid rgb(170, 170, 170);"
-                                    src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $item->image }}"
+                                    src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $bcat->image }}"
                                     class="propertyImg" alt="" />
-                                <h6 class="text-center mb-0 mt-2 fw-bold">{{ $item->name }}</h6>
+                                <h6 class="text-center mb-0 mt-2 fw-bold">{{ $bcat->name }}</h6>
                             </a>
                             <!-- card end -->
                         </div>
