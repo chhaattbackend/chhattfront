@@ -190,26 +190,42 @@ class LeadController extends Controller
 
     public function formsubmit(Request $request)
     {
-        // dd($request->all());
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            // 'phone' => 'required',
         ]);
+
+        // dd($request->all());
 
         $lead = Lead::create([
             'name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
             'description' => $request->description,
+            'lead_from' => $request->lead_from,
+
         ]);
 
-        // dd($lead->id);
+        // dd($request->lead_from);
 
-        LeadAssign::create([
-            'agent_id' => $request->agent_id,
-            'lead_id' => $lead->id
-        ]);
+        if ($request->lead_from == 'property') {
+            // dd('property');
+
+            LeadAssign::create([
+
+                'agent_id' => $request->agent_id,
+                'lead_id' => $lead->id
+            ]);
+        }
+
+        if ($request->lead_from == 'construction') {
+            // dd('construction');
+            LeadAssign::create([
+                // 'agent_id' => $request->agent_id,
+                'lead_id' => $lead->id,
+                'storeproduct_id' => $request->storeproduct_id
+            ]);
+        }
         return redirect()->back();
     }
 

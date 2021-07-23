@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('style')
-    <meta name="robots" content="noindex"/>
+    <meta name="robots" content="noindex" />
     <link rel="stylesheet" href="{{ asset('styles/index.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/contruction/singleproduct.css') }}">
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -309,8 +309,12 @@
                                 </Button>
                                 <hr />
                                 <div class="innerContactform">
-                                    <form>
-                                        <input class="inpC" type="text" placeholder="Name" />
+                                    <form action="{{ route('contact.form', ['storeproduct_id' => $storeproduct->id]) }}"
+                                        method="POST">
+                                        @csrf
+                                        <input class="inpC" type="text" placeholder="Name" name="name" />
+                                        <input type="hidden" name='lead_from' value="construction">
+                                        {{-- <input type="hidden" name='storeproduct_id' value="{{$storeproduct->id}}"> --}}
                                         <br />
                                         <input class="inpC mt-4" type="text" name="email" placeholder="Email" />
                                         <br />
@@ -320,9 +324,22 @@
                                             <MdEmail class="text-white" style="font-size: 17px" />
                                             &nbsp;Submit
                                         </Button>
+
                                     </form>
+
                                 </div>
+
                             </div>
+                            <br>
+                            @error('description')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                            @error('email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                            @error('name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <!-- CONTACT FORM END -->
                         </div>
                     </div>

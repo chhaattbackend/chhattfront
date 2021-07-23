@@ -10,6 +10,7 @@ class LeadAssign extends Model
     protected $fillable = [
         'agent_id',
         'lead_id',
+        'storeproduct_id',
         'client_feedback',
         'realtor_feedback',
         'chat_status',
@@ -34,4 +35,8 @@ class LeadAssign extends Model
 
         return $this->belongsTo(Lead::class, 'lead_id');
     }
+    // public function store()
+    // {
+    //    return $this->belongsTo(ConstructionStoreProduct::class,'storeproduct_id');
+    // }
 }

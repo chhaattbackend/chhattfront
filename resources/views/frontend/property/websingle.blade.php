@@ -247,6 +247,7 @@
                             <form action="{{ route('contact.form') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name='agent_id' value="{!! $properties->user->agent->id !!}">
+                                <input type="hidden" name='lead_from' value="property">
                                 <input class="inpC @error('name') is-invalid @enderror" type="text" name="name"
                                     placeholder="Name" required />
 
