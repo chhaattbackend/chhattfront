@@ -10,110 +10,61 @@
 @section('content')
     <!-- MOBILE START -->
 
-    @foreach ($bcategories as $item)
-        @php
-            $wow = 0;
-        @endphp
-
-        @foreach ($item->subcategories as $item)
-            @php
-                $count = 0;
-                $showbcat = 0;
-                $showcatsubcat = 0;
-                $countsubcat = 0;
-            @endphp
-            @foreach ($item->subcategories as $key => $subItem)
-                @foreach ($subItem->products as $key => $p)
-                    @if ($key == 0)
-                        @php
-                            $showbcat = $p->storeproduct->count();
-                            if ($showbcat != null) {
-                                $countsubcat++;
-                            }
-                        @endphp
-                    @endif
-                @endforeach
-            @endforeach
-            @unless($showbcat == 0)
-                <div class="best_main_div">
-                    @php
-                        $wow++;
-                    @endphp
-
-                    @if ($wow < 2)
-                        <h3>{{ $item->category->name }}</h3>
-                    @endif
-
-
+    @foreach ($bcategories as $bcat)
+        <div class="best_main_div">
+            <div class="row">
+                <div class="col-12">
+                    <h2>{{ $bcat->name }}</h2>
+                </div>
+                <hr>
+            </div>
+        </div>
+        @foreach ($bcat->subcategories as $ccat)
+            @unless($ccat->storeproduct->isEmpty())
+                <div class="best_main_div" style="margin-top: 0px">
                     <div class="fdiv">
                         <div class="sdiv">
-                            <ul>
+                            <ul style="padding-left: 0rem;">
                                 <li>
                                     <div>
-                                        <a href="{{ route('construction.mainproductlist', ['ccategory' => $item->name]) }}"
+                                        <a href="{{ route('construction.ccatproductlist', ['acategory' => $ccat->category->category->slug, 'bcategory' => $ccat->category->slug, 'ccategory' => $ccat->slug]) }}"
                                             class="property_card_main_div text-decoration-none">
-                                            <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/ccategories/{{ $item->image }}"
+                                            <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/ccategories/{{ $ccat->image }}"
                                                 class="propertyImg shadow-sm" alt="" />
-                                            <div class="h5 mb-1 mt-1"> {{ $item->name }} </div>
+                                            <div class="h5 mb-1 mt-1"> {{ $ccat->name }} </div>
                                             <b>
-                                                ({{ $countsubcat }})
+                                                ({{ $ccat->storeproduct->count() }})
                                             </b>
                                         </a>
                                     </div>
                                 </li>
-                                @foreach ($item->subcategories as $key => $subItem)
-                                    @php
-                                        $showcatsubcat = 0;
-                                    @endphp
-                                    @foreach ($subItem->products as $key => $p)
-                                        @if ($key == 0)
-                                            @php
-                                                $showcatsubcat = $p->storeproduct->count();
-                                            @endphp
-                                        @endif
-                                    @endforeach
-                                    @unless($showcatsubcat == 0)
-                                        @php
-                                            $countsubcat = 0;
-                                        @endphp
+                                @foreach ($ccat->subcategories as $dcat)
+                                    @unless($dcat->storeproduct->isEmpty())
                                         <li>
                                             <div>
-                                                <a href="{{ route('construction.productlist', ['dcategory' => $subItem->name, 'product' => $subItem->products[0]->id]) }}"
+                                                <a href="{{ route('construction.dcatproductlist', ['acategory' => $dcat->category->category->category->slug, 'bcategory' => $dcat->category->category->slug, 'ccategory' => $dcat->category->slug, 'dcategory' => $dcat->slug]) }}"
                                                     class="property_card_main_div_sub text-decoration-none">
-                                                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/{{ $subItem->image }}"
+                                                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/{{ $dcat->image }}"
                                                         class="propertyImg shadow-sm" alt="" />
-                                                    <div class="h6 mb-0 mt-1"> {{ $subItem->name }} </div>
+                                                    <div class="h6 mb-0 mt-1"> {{ $dcat->name }} </div>
                                                     <b>
-                                                        ({{ $showcatsubcat }})
+                                                        ({{ $dcat->storeproduct->count() }})
                                                     </b>
                                                 </a>
                                             </div>
                                         </li>
                                     @endunless
-
-
                                 @endforeach
-
-
                             </ul>
                         </div>
                     </div>
                 </div>
-
-
             @endunless
-            @php
-                $countsubcat = 0;
-            @endphp
-
         @endforeach
-
-
     @endforeach
+    <br><br>
     <!-- MOBILE END -->
 @endsection
-
-
 @section('personalscripts')
 
 @endsection

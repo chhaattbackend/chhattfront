@@ -7,7 +7,12 @@ use App\AreaOne;
 use App\AreaThree;
 use App\AreaTwo;
 use App\City;
+use App\ConstructionACategory;
 use App\ConstructionBCategory;
+use App\ConstructionBrand;
+use App\ConstructionCCategory;
+use App\ConstructionDCategory;
+use App\ConstructionProduct;
 use App\ConstructionStore;
 use App\ConstructionStoreProduct;
 use App\GlobalClass;
@@ -254,6 +259,56 @@ class PropertyController extends Controller
         // }
         // dd('done');
 
+        // $sp = ConstructionBrand::all();
+        // foreach ($sp as $key => $value) {
+        //     // dd($value);
+        //     $a = str_replace(str_split('\\/:*?"<>|(),&'), '', strtolower($value->name));
+        //     $a = str_replace(' ', '-', $a);
+        //     $value->update([
+        //         'slug' => $a
+        //     ]);
+        // }
+
+        // $sp = ConstructionProduct::all();
+        // foreach ($sp as $key => $value) {
+        //     if ($value->id != 756 || $value->id != 1084) {
+        //         # code...
+        //         if ($value->name != null) {
+        //             // dd($value);
+        //             # code...
+        //             // $a = str_replace(str_split('(),&'), '', $value->name);
+        //             $a = str_replace(str_split('\\/:*?"<>|(²).®°″×'), '-', $value->slug);
+
+        //             // $a = str_replace(' ', '-', $a);
+        //             $value->update([
+        //                 'slug' => strtolower($a)
+        //             ]);
+        //         }
+        //     }
+        // }
+        // dd('done');
+
+        // $bcat = ConstructionStore::all();
+        // foreach ($bcat as $key => $item) {
+        //     $a = str_replace(str_split('\\/:*?"<>|(),&'), '', strtolower($item->name));
+        //     $a = str_replace(' ','-',$a);
+        //     $b = explode('-', $a);
+        //     // dd(end($b));
+        //     // $item->update([
+        //     //     'slug'=>$a
+        //     // ]);
+        //     if (end($b) == 'store' || end($b) == 'stores' ) {
+        //         $item->update([
+        //             'slug'=>$a
+        //         ]);
+        //     } else {
+        //         $item->update([
+        //             'slug'=>$a.'-store'
+        //         ]);
+        //     }
+        // }
+        // dd('done');
+
 
 
         if (isset($request->type)) {
@@ -276,13 +331,11 @@ class PropertyController extends Controller
         }
 
         $city = City::all();
-        $store = ConstructionStore::orderBy('id', 'asc')->get();
+        $bcats = ConstructionBCategory::all();
         $bcategories = [];
-        foreach ($store as $item) {
-            foreach ($item->storeproducts as $item) {
-                if ($item->product->b_category != null) {
-                    array_push($bcategories, ConstructionBCategory::find($item->product->b_category->id));
-                }
+        foreach ($bcats as $item) {
+            if ($item->storeproduct->isNotEmpty()) {
+                array_push($bcategories, ConstructionBCategory::find($item->id));
             }
         };
         $bcategories = array_unique($bcategories);

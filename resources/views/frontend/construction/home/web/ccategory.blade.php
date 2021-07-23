@@ -11,7 +11,7 @@
     <div class="mn_divz">
         <div class="backgz">
             <div class="backg_sdivz">
-                @if ($ccategories->isEmpty())
+                @if ($ccategories == null)
                     <h1>No Item</h1>
                 @else
                     <h1>{{ $ccategories[0]->category->name }}</h1>
@@ -24,104 +24,72 @@
 
 
 @section('content')
-
-    @php
-    $count = 0;
-    $showbcat = 0;
-    @endphp
-
-    @foreach ($ccategories as $item)
+    @foreach ($ccategories as $key => $ccat)
         @php
             $count = 0;
-            $showbcat = 0;
-            $showcatsubcat = 0;
-            $countsubcat = 0;
         @endphp
-        @foreach ($item->subcategories as $key => $subItem)
-            @foreach ($subItem->products as $key => $p)
-                @if ($key == 0)
-                    @php
-                        $showbcat = $p->storeproduct->count();
-                        if ($showbcat != null) {
-                            $countsubcat++;
-                        }
-                    @endphp
-                @endif
-            @endforeach
-        @endforeach
-
-        <div id="serch_option_show" class="main_div_list">
-            <div class="mainList1">
-
-                <div id="main_List{{ $item->id }}" class="lst_div d-flex" style="height: 220px; overflow: hidden;">
-                    <div class="litsdj col-md-2 pt-2 mt-4">
-                        <div class="list1_div1">
-                            <a href="{{ route('construction.mainproductlist',['ccategory' => $item->name ]) }}">
-                                <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/ccategories/{{ $item->image }}"
-                                    width="115px" height="115px" alt="" />
-                            </a>
+        @if ($ccat->storeproduct->isNotEmpty())
+            <div id="serch_option_show" class="main_div_list">
+                <div class="mainList1">
+                    <div id="main_List{{ $ccat->id }}" class="lst_div d-flex" style="height: 220px; overflow: hidden;transition: all 4s ease">
+                        <div class="litsdj col-md-2 pt-2 mt-4">
+                            <div class="list1_div1">
+                                <a href="{{route('construction.ccatproductlist',['acategory'=> $ccat->category->category->slug, 'bcategory'=> $ccat->category->slug,'ccategory'=> $ccat->slug])}}">
+                                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/ccategories/{{ $ccat->image }}"
+                                        width="115px" height="115px" alt="" />
+                                </a>
+                            </div>
+                            <div class="list1_div2">
+                                <h6>
+                                    <br>
+                                    {{ $ccat->name }}
+                                </h6>
+                                <p>({{ $ccat->storeproduct->count() }})</p>
+                            </div>
                         </div>
-                        <div class="list1_div2">
-                            <h6>
-                                <br>
-                                {{ $item->name }}
-                            </h6>
-                            <p>({{ $countsubcat }})</p>
-                        </div>
-                    </div>
-                    <div class="list row m-auto flex-wrap">
-                        @foreach ($item->subcategories as $key => $subItem)
-                            @php
-                                $showcatsubcat = 0;
-                            @endphp
-                            @foreach ($subItem->products as $key => $p)
-                                @if ($key == 0)
+
+                        <div class="list row m-auto flex-wrap">
+                            @foreach ($ccat->subcategories as $dcat)
+                                @if ($dcat->storeproduct->isNotEmpty())
                                     @php
-                                        $showcatsubcat = $p->storeproduct->count();
+                                        $count++;
                                     @endphp
+                                    <div class="lit1 col-md-3 p-0  mt-4">
+                                        <div class="list1_div1">
+                                            <a href="{{route('construction.dcatproductlist',['acategory'=> $dcat->category->category->category->slug, 'bcategory'=> $dcat->category->category->slug,'ccategory'=> $dcat->category->slug,'dcategory'=>$dcat->slug])}}">
+                                                <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/{{ $dcat->image }}"
+                                                    width="115px" height="115px" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="list1_div2">
+                                            <h6 class="ellipse">
+                                                <br>
+                                                {{ $dcat->name }}
+                                            </h6>
+                                            <p>({{ $dcat->storeproduct->count() }})</p>
+                                        </div>
+                                    </div>
+
                                 @endif
+
+
                             @endforeach
-                            @unless($showcatsubcat == 0)
-                                @php
-                                    $countsubcat = 0;
-                                @endphp
-                                <div class="lit1 col-md-3 p-0  mt-4">
-                                    <div class="list1_div1">
-                                        <a href="{{ route('construction.productlist', ['dcategory' => $subItem->name , 'product' => $subItem->products[0]->id]) }}">
 
-                                            <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/{{ $subItem->image }}"
-                                                width="115px" height="115px" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="list1_div2">
-                                        <h6 class="ellipse">
-                                            <br>
-                                            {{ $subItem->name }}
-                                        </h6>
-                                        <p>({{$showcatsubcat}})</p>
-                                    </div>
-                                </div>
-                            @endunless
-
-
-                        @endforeach
-
-
+                        </div>
                     </div>
                 </div>
+                @if ($count > 4)
+                    <button onclick="changewidth({{ $ccat->id }})" class="btns" style="">
+                        View More
+                    </button>
+                    <input hidden type="text" id="view_more{{ $ccat->id }}" value="true">
+                @endif
             </div>
-            @if ($count > 4)
-                <button onclick="changewidth({{ $item->id }})" class="btns">
-                    View More
-                </button>
-                <input hidden type="text" id="view_more{{ $item->id }}" value="true">
-            @endif
-        </div>
+        @endif
+
+
     @endforeach
-
-
 @endsection
-
 
 
 @section('personalscripts')
@@ -135,7 +103,7 @@
             // console.log(view1)
 
             if (view1.value == 'true') {
-                serch_option1.style.transition = "300ms";
+                serch_option1.style.transition = "3000ms";
                 serch_option1.style.height = "auto";
                 view1.value = 'false';
 
@@ -143,8 +111,7 @@
             } else if (view1.value == 'false') {
                 // console.log('false')
                 view1.value = 'true';
-
-                serch_option1.style.transition = "300ms";
+                serch_option1.style.transition = "3000ms";
                 serch_option1.style.height = "220px";
             }
             // console.log(id)

@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
     <meta charset="utf-8" />
     <meta name="theme-color" content="#007BFF" />
@@ -146,7 +145,6 @@
             });
         });
         // == EXPLORE CAROUSEL END
-
     </script>
 
 

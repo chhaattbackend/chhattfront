@@ -36,6 +36,7 @@
 
 
 @section('content')
+    {{-- @dd($storeproduct) --}}
     <div class="single_construction">
         <div class="container-fluid">
             {{-- <small>
@@ -47,7 +48,7 @@
                         <!-- Add images to <div class="fotorama"></div> -->
                         <div class="fotorama" data-nav="thumbs" data-width="100%" data-allowfullscreen="true">
                             <!-- ↑ The same as data-ratio="4/3" or data-ratio="1.3333333333". -->
-                            <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $storeproduct->product->image }}"
+                            <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ @$storeproduct->product->image }}"
                                 width="130" height="96">
 
                             {{-- <img src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
@@ -98,9 +99,7 @@
                         <div class="col-4">
                             <div class="agencyCard">
                                 <div class="imagesContainer position-relative">
-                                    <img class="bgIMg"
-                                        src="https://images.unsplash.com/photo-1622496030981-e8377ce1ecdd?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-                                        alt="">
+                                    <img class="bgIMg" src="{{ asset('assets/chhattLogo.png') }}" alt="">
                                     <img class="profileImg"
                                         src="https://images.unsplash.com/photo-1624314086699-6ee739bd29e3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
                                         alt="">
@@ -110,8 +109,8 @@
                                     <small>Exports to Pakistan</small>
                                 </div>
                                 <div class="text-center">
-                                    <small><i class="bi bi-geo-alt-fill"></i>{{$storeproduct->store->address}}
-                                        </small>
+                                    <small><i class="bi bi-geo-alt-fill"></i>{{ $storeproduct->store->address }}
+                                    </small>
                                 </div>
                                 <div class="text-center mb-2"><span class="fw-bold">4</span>/5
                                     <i class="bi bi-star-fill filledStar"></i><i class="bi bi-star-fill filledStar"></i><i
@@ -158,7 +157,7 @@
                         <h5 class="ms-3 me-3">Explore similar products</h5> |
                         <h5 class="d-flex align-items-center ms-3"><a
                                 href="{{ route('construction.singlestore', ['store' => $storeproduct->store->slug]) }}">View
-                                all products in {{ $storeproduct->store->name }}</a> <i
+                                all products in {{ @$storeproduct->store->name }}</a> <i
                                 class="bi bi-chevron-right h5 mb-0"></i></h5>
                     </div>
 
@@ -168,38 +167,39 @@
 
                                 @foreach ($storeproduct->getrelatedproduct(1) as $item)
 
-                                @unless($item->isstoreproduct($storeproduct->store_id) == null)
+                                    @unless($item->isstoreproduct($storeproduct->store_id) == null)
                                         <div class="col-sm-4 col-lg-3 mb-4">
                                             <!-- property card start -->
                                             <div class="propertyCard p-2">
 
 
-                                                    <div class="imageSection"><a class="text-decoration-none position-relative" href="{{ route('construction.singleproduct', ['store'=>$storeproduct->store->name,'storeproduct' => $item->storeproduct[0]->id]) }}">
+                                                <div class="imageSection"><a class="text-decoration-none position-relative"
+                                                        href="{{ route('construction.singleproduct', ['store' => $storeproduct->store->slug, 'product' => $item->slug]) }}">
                                                         <img class="slideImg"
                                                             src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->image }}"
                                                             alt="" />
-                                                    </div>
-                                                    <div class="text-dark paraContainer">
-                                                        <div class="mt-1">
-                                                            <div class="d-flex justify-content-between">
-                                                                <h6 class="lightColor">{!! $storeproduct->store->name !!}</h6>
-                                                                <h6 class="lightColor">{!! $item->c_category->name !!} </h6>
-                                                            </div>
-                                                            <div class="mt-2">
-                                                                <strong class="mt-5">{{ $item->name}}</strong>
-                                                            </div>
-                                                            <h6 class="mt-2">
-                                                                <strong>
-                                                                    Rs. {{ $item->price }}
-                                                                </strong>
-                                                            </h6>
+                                                </div>
+                                                <div class="text-dark paraContainer">
+                                                    <div class="mt-1">
+                                                        <div class="d-flex justify-content-between">
+                                                            <h6 class="lightColor">{!! $storeproduct->store->name !!}</h6>
+                                                            <h6 class="lightColor">{!! @$item->c_category->name !!} </h6>
                                                         </div>
-                                                        <div class="d-flex justify-content-between mt-3">
-                                                            <button class="w-100 themebtn py-1 text-white">View
-                                                                more</button>
-                                                            <button class="w-100 ms-3">Contact Us</button>
+                                                        <div class="mt-2">
+                                                            <strong class="mt-5">{{ $item->name }}</strong>
                                                         </div>
+                                                        <h6 class="mt-2">
+                                                            <strong>
+                                                                Rs. {{ $item->price }}
+                                                            </strong>
+                                                        </h6>
                                                     </div>
+                                                    <div class="d-flex justify-content-between mt-3">
+                                                        <button class="w-100 themebtn py-1 text-white">View
+                                                            more</button>
+                                                        <button class="w-100 ms-3">Contact Us</button>
+                                                    </div>
+                                                </div>
                                                 </a>
                                             </div>
                                             <!-- property card end -->
@@ -328,8 +328,7 @@
                     </div>
                 </div>
             </div>
-{{--
-            <div class="row rounded shadow mt-5 py-3">
+            {{-- <div class="row rounded shadow mt-5 py-3">
                 <div class="d-flex ms-2">
                     <h5>Featured Recommendations</h5>
                     <div class="ms-2"><small>View All <i class="bi bi-chevron-right h6 mb-0"></i></small></div>

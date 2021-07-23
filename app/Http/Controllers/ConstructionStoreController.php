@@ -31,8 +31,6 @@ class ConstructionStoreController extends Controller
             }
         };
         $d_categories = array_unique($d_categories);
-
-
         return view('frontend.construction.store.single', compact('store', 'd_categories'));
     }
 

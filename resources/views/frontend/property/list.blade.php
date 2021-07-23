@@ -15,6 +15,8 @@ function convert_rupee($amount)
 @endphp
 
 @forelse ($properties as $item)
+{{-- @dd(str_contains($item->images, 'static')); --}}
+{{-- @if (str_contains($item->images, 'StaticMap') != true && str_contains($item->images, 'static') != true) --}}
     @php
         $id = @$item->areaOne->city->name . '-' . @$item->type . '-' . @$item->property_type . '-' . @$item->property_for . '-' . @$item->areaOne->name . '-' . @$item->areaTwo->name . '-' . $item->id;
         $id = str_replace(str_split('\\/:*?"<>|()'), '-', strtolower($id));
@@ -94,6 +96,8 @@ function convert_rupee($amount)
         </div>
         <!-- property card end -->
     </div>
+{{-- @endif --}}
+
 @empty
     <p>no data found</p>
 @endforelse

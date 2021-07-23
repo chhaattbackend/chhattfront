@@ -179,10 +179,9 @@
                 <div class="main_slide_div">
                     <div style="margin: auto;" class="slider">
                         @foreach ($d_categories as $item)
-
                             <div>
                                 <li class="scroll-img-list p-2 my-3">
-                                    <a class="text-decoration-none position-relative" href="#">
+                                    <a class="text-decoration-none position-relative" href="{{route('construction.dcatproductlist', ['acategory' => $item->category->category->category->slug, 'bcategory' => $item->category->category->slug, 'ccategory' => $item->category->slug, 'dcategory' => $item->slug])}}">
                                         <div class="imageSection">
                                             <img class="slideImg"
                                                 src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/{{ $item->image }}"
@@ -203,7 +202,6 @@
                                     </a>
                                 </li>
                             </div>
-
                         @endforeach
 
                     </div>
@@ -312,7 +310,7 @@
                         {{-- @dd($item) --}}
                         <div class="mt-4 col-md-2 p-2 border" style="width: 300px;">
 
-                            <a href="{{ route('construction.singleproduct', ['store' => $item->store->name, 'storeproduct' => $item->id]) }}"
+                            <a href="{{ route('construction.singleproduct', ['store' => $item->store->slug, 'product' => $item->product->slug]) }}"
                                 class="d-inline-block  text-decoration-none"
                                 style="width: 250px; font-size: 17px; color: #007bff; font-weight: bolder;">
                                 <img width="100%" height="200px"
