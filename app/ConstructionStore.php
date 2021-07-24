@@ -74,9 +74,9 @@ class ConstructionStore extends Model
         return $this->hasMany(ConstructionStoreProduct::class, 'store_id');
     }
 
-    public function storeproductswithpagination()
+    public function randomstoreproductswithpagination()
     {
-        return $this->hasMany(ConstructionStoreProduct::class, 'store_id')->paginate(9);
+        return $this->hasMany(ConstructionStoreProduct::class, 'store_id')->inRandomOrder()->paginate(9);
     }
 
     public function storeservices()
@@ -88,4 +88,5 @@ class ConstructionStore extends Model
     {
         return ConstructionStoreProduct::where('store_id', $this->id)->inRandomOrder()->limit($limit)->get();
     }
+
 }

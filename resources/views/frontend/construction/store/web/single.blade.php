@@ -308,7 +308,7 @@
                 </span>
                 <div class="p-2 product_div row flex-wrap justify-content-center text-center justify-content-between">
                     {{-- @foreach ($store->randomproduct(9) as $key => $item) --}}
-                    @foreach ($store->storeproductswithpagination() as $key => $item)
+                    @foreach ($store->randomstoreproductswithpagination() as $key => $item)
                         <div class="mt-4 col-md-2 p-2 border" style="width: 300px;">
                             <a href="{{ route('construction.singleproduct', ['store' => $item->store->slug, 'product' => $item->product->slug]) }}"
                                 class="d-inline-block  text-decoration-none"
@@ -321,7 +321,7 @@
                     @endforeach
                     <div class="d-flex justify-content-center my-5">
                         <div>
-                            {{ $store->storeproductswithpagination()->links('pagination::simple-bootstrap-4') }}
+                            {{ $store->randomstoreproductswithpagination()->links('pagination::simple-bootstrap-4') }}
                         </div>
                     </div>
                     {{-- <a href="" class="d-inline-block  text-decoration-none"

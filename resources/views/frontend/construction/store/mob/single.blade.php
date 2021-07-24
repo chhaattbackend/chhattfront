@@ -56,7 +56,7 @@
                 <div class="row">
                     <div class="col-12 px-2">
 
-                        @foreach ($store->storeproductswithpagination() as $item)
+                        @foreach ($store->randomstoreproductswithpagination() as $item)
 
                             <div class="row py-3 rounded-3 shadow-sm">
                                 <div class="col-4">
@@ -83,10 +83,10 @@
                         <br>
                         <div class="d-flex justify-content-center">
                             <div>
-                                {{ $store->storeproductswithpagination()->links('pagination::simple-bootstrap-4') }}
+                                {{ $store->randomstoreproductswithpagination()->links('pagination::simple-bootstrap-4') }}
                             </div>
                         </div>
-                        
+
                         <br>
                         <br>
 
