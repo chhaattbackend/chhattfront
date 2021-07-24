@@ -79,23 +79,27 @@ class ConstructionACategoryController extends Controller
 
     public function search(Request $request)
     {
-        abort(500);
+        // abort(500);
 
         $products = ConstructionProduct::whereHas('c_category', function ($query) use ($request) {
             $query->where('name', 'like', '%' . $request->searched . '%');
         })->orWhereHas('d_category', function ($query) use ($request) {
             $query->where('name', 'like', '%' . $request->searched . '%');
-        })->orWhere('name', 'like', '%' . $request->searched . '%')->get();
+        })->orWhere('name', 'like', '%' . $request->searched . '%')->paginate(10)->setPath('');
 
 
-        $storeproducts = ConstructionStoreProduct::whereHas('c_category', function ($query) use ($request) {
-            $query->where('name', 'like', '%' . $request->searched . '%');
-        })->orWhereHas('d_category', function ($query) use ($request) {
-            $query->where('name', 'like', '%' . $request->searched . '%');
-        })->orWhereHas('product', function ($query) use ($request) {
-            $query->where('name', 'like', '%' . $request->searched . '%');
-        })->get();
+        // $storeproducts = ConstructionStoreProduct::whereHas('c_category', function ($query) use ($request) {
+        //     $query->where('name', 'like', '%' . $request->searched . '%');
+        // })->orWhereHas('d_category', function ($query) use ($request) {
+        //     $query->where('name', 'like', '%' . $request->searched . '%');
+        // })->orWhereHas('product', function ($query) use ($request) {
+        //     $query->where('name', 'like', '%' . $request->searched . '%');
+        // })->get();
         // dd($storeproducts);
+
+        $pagination = $products->appends(array(
+            'searched' => $request->searched
+        ));
 
         if ($products->isEmpty()) {
             abort(404);
@@ -110,8 +114,8 @@ class ConstructionACategoryController extends Controller
             }
         }
         $storeproduct = array_unique($storeproduct);
-        $a = collect($storeproduct)->paginate(10);
-        dd($a);
+        // $a = collect($storeproduct)->paginate(10);
+        // dd($a);
 
 
 
