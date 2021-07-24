@@ -67,16 +67,12 @@ class ConstructionProduct extends Model
 
     public function isstoreproduct($store_id)
     {
-        // dd($this->id);
         return ConstructionStoreProduct::where('store_id', $store_id)->where('product_id', $this->id)->first();
     }
 
-    // public function sahinaam()
-    // {
-    //     dd($this->id);
-    //     //  return ConstructionStoreProduct::where('product_id', $this->id)->where($this->d_category();)first();
+    public function allstoreproducts()
+    {
+        return $this->hasMany(ConstructionStoreProduct::class, 'product_id');
+    }
 
-
-    //     return ConstructionProduct::where('id', );
-    // }
 }

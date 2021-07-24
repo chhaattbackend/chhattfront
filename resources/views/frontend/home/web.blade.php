@@ -280,7 +280,9 @@
                             <ul>
                                 @foreach (array_slice($bcategories, 0, 3) as $key => $bcat)
                                     <li>
-                                        <a href="{{route('construction.bcat', ['acategory'=> $bcat->category->slug,'bcategory'=> $bcat->slug])}}"> {{ $bcat->name }}
+                                        <a
+                                            href="{{ route('construction.bcat', ['acategory' => $bcat->category->slug, 'bcategory' => $bcat->slug]) }}">
+                                            {{ $bcat->name }}
                                         </a>
                                     </li>
                                 @endforeach
@@ -295,21 +297,25 @@
                             <div class="col-md-4 col-sm-6 bdr1">
                                 <div class="product-item">
                                     <div class="product-thumbnail">
-                                        <a href="{{route('construction.bcat', ['acategory'=> $bcat->category->slug,'bcategory'=> $bcat->slug])}}" ><img data-original=""
+                                        <a
+                                            href="{{ route('construction.bcat', ['acategory' => $bcat->category->slug, 'bcategory' => $bcat->slug]) }}"><img
+                                                data-original=""
                                                 src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $bcat->image }}"></a>
                                     </div>
                                     <div class="product-meta">
 
-                                        <h3><a href="{{route('construction.bcat', ['acategory'=> $bcat->category->slug,'bcategory'=> $bcat->slug])}}" bcat>{{ $bcat->name }}
+                                        <h3><a href="{{ route('construction.bcat', ['acategory' => $bcat->category->slug, 'bcategory' => $bcat->slug]) }}"
+                                                bcat>{{ $bcat->name }}
                                             </a></h3>
                                         @foreach ($bcat->subcategories as $ccat)
-                                        @if ($ccat->storeproduct->isNotEmpty())
-                                        <a href="{{ route('construction.ccatproductlist', ['acategory' => $ccat->category->category->slug, 'bcategory' => $ccat->category->slug, 'ccategory' => $ccat->slug]) }}">
-                                            <p>
-                                                {{ $ccat->name }}
-                                            </p>
-                                        </a>
-                                        @endif
+                                            @if ($ccat->storeproduct->isNotEmpty())
+                                                <a
+                                                    href="{{ route('construction.ccatproductlist', ['acategory' => $ccat->category->category->slug, 'bcategory' => $ccat->category->slug, 'ccategory' => $ccat->slug]) }}">
+                                                    <p>
+                                                        {{ $ccat->name }}
+                                                    </p>
+                                                </a>
+                                            @endif
                                         @endforeach
                                     </div>
                                 </div>
