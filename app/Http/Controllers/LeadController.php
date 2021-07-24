@@ -190,27 +190,62 @@ class LeadController extends Controller
 
     public function formsubmit(Request $request)
     {
-        // dd($request->all());
+
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            // 'phone' => 'required',
+            'description'=>'required'
         ]);
+        // dd($request->all());
+        // dd($request->on_store);
+        // dd($request->all());
+        // dd($request);
 
         $lead = Lead::create([
             'name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
             'description' => $request->description,
+            'lead_from' => $request->lead_from,
+
         ]);
 
-        // dd($lead->id);
 
-        LeadAssign::create([
-            'agent_id' => $request->agent_id,
-            'lead_id' => $lead->id
-        ]);
-        return redirect()->back();
+        // dd($request->lead_from);
+
+        if ($request->lead_from == 'property') {
+            // dd('property');
+
+            LeadAssign::create([
+
+                'agent_id' => $request->agent_id,
+                'lead_id' => $lead->id
+            ]);
+        }
+
+        if ($request->lead_from == 'construction') {
+            // dd('construction');
+            if ($request->store_id==null) {
+
+                            LeadAssign::create([
+                                // 'agent_id' => $request->agent_id,
+                                'lead_id' => $lead->id,
+                                'storeproduct_id' => $request->storeproduct_id
+                            ]);
+
+            }
+            if ($request->store_id!=null) {
+                // dd('store');
+                LeadAssign::create([
+                    // 'agent_id' => $request->agent_id,
+                    'lead_id' => $lead->id,
+                    'store_id' => $request->store_id
+                ]);
+
+            }
+
+        }
+        return redirect()->back()->with(['message' => 'succesfully submitted', 'alert' => 'alert-success']);
     }
 
 

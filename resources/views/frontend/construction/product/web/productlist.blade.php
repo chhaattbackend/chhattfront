@@ -378,6 +378,7 @@
                                                 <p class="m-0">Request a Quote</p>
                                             </a>
                                         </div>
+
                                     </div>
                                 </div>
                             </a>
@@ -430,14 +431,21 @@
                                     </a>
                                     <div class="ml-3 sec_div">
                                         <h5 class="font-weight-bold">{{ $item->product->name }}</h5>
-                                        <span class="d-inline-block mr-3">RS {{ $item->store_price }} </span>
+                                            <b>
+                                                <strong>
+                                                    <span class="d-inline-block mr-3"> PKR:  {{ $item->store_price }}</span>
+                                                </strong>
+                                            </b>
+                                            <br>
                                         <span class="d-inline-block mr-3"> </span>
                                         <a href=""> Get Export Price</a>
-                                        <ul class="mb-0 me-3">
+                                        <ul class="mb-0 me-3 " >
                                             <li><strong>Brand</strong>:<span> {{ @$item->product->brand->name }}</span>
                                             </li>
-                                            {{ $item->product->description }}
-                                            <li><a href="name">read
+                                            <div class="hideText">
+                                                {{ $item->product->description }}
+                                            </div>
+                                            <li><a href="{{route('construction.singleproduct',['store' => $item->store->slug,'product'=> $item->product->slug])}}">read
                                                     more...</a></li>
                                         </ul>
                                     </div>
@@ -468,6 +476,14 @@
                                                 href="tel:{{ $item->store->phone }}">
                                                 <h6 class="m-0 font-weight-bold">Contact Supplier</h6>
                                                 <p class="m-0">Request a Quote</p>
+                                            </a>
+                                        </div>
+                                        <div class="px-2" style="padding-top: 4rem">
+                                            <a
+                                                href="{{ route('construction.singlestore', ['store' => $item->store->slug]) }}">
+
+                                                <button class="w-100 py-2 rounded bg-transparent border border-1 border-dark"> View
+                                                    Store</button>
                                             </a>
                                         </div>
                                     </div>

@@ -27,7 +27,8 @@ class Lead extends Model
         'property_type',
         'status',
         'created_by',
-        'job_profile'
+        'job_profile',
+        'lead_from'
     ];
 
     public function areaOne(){

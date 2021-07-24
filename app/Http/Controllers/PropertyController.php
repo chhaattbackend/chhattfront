@@ -313,15 +313,15 @@ class PropertyController extends Controller
 
         if (isset($request->type)) {
             if ($request->type == 'All') {
+                $property = Property::paginate(50);
 
-                $property = Property::paginate(28);
                 $data = view('frontend.home.list', compact('property'))->render();
                 return response()->json([
                     'data' => $data,
                     // 'pagination' => (string) $areas->links()
                 ]);
             }
-            $property = Property::where('type', $request->type)->paginate(28);
+            $property = Property::where('type', $request->type)->paginate(50);
             $data = view('frontend.home.list', compact('property'))->render();
 
             return response()->json([
@@ -329,7 +329,6 @@ class PropertyController extends Controller
                 // 'pagination' => (string) $areas->links()
             ]);
         }
-
         $city = City::all();
         $bcats = ConstructionBCategory::all();
         $bcategories = [];
@@ -341,7 +340,7 @@ class PropertyController extends Controller
         $bcategories = array_unique($bcategories);
 
 
-        $property = Property::orderBy('created_at', 'desc')->paginate(25);
+        $property = Property::paginate(50);
         return view('frontend.home.index', compact('property', 'city', 'bcategories'));
     }
 
