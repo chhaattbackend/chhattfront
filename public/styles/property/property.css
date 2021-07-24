@@ -58,7 +58,7 @@
 }
 
 @media screen and (max-width: 1200px) {
-    .autoComplete_wrapper > ul {
+    .autoComplete_wrapper>ul {
         width: 600px !important;
     }
     .backg .backg_sdiv .searchdiv {
@@ -73,7 +73,9 @@
     }
 }
 
+
 /* SLIDER START */
+
 #box-wrapper {
     /* height: 400px;   */
     width: 100%;
@@ -82,9 +84,11 @@
     overflow-x: hidden;
     padding: 1rem 0rem;
 }
+
 .boxWrapper {
     white-space: nowrap;
 }
+
 .scroll-img-list {
     display: inline-block;
     height: 100%;
@@ -94,19 +98,23 @@
     box-shadow: 0 0 10px 5px #eee;
     margin: 10px;
 }
+
 .scroll-img-list .imageSection {
     height: 200px;
     width: 100%;
 }
+
 .scroll-img-list .imageSection .slideImg {
     height: 100%;
     width: 100%;
     object-fit: cover;
     border-radius: 6px;
 }
+
 .scroll-img-list .paraContainer {
     white-space: normal;
 }
+
 .scroll-img-list .paraContainer h6 {
     margin-bottom: 0px;
 }
@@ -127,6 +135,7 @@
     z-index: 1;
     transform: translateY(-50%);
 }
+
 .sliderBtnRight {
     position: absolute;
     right: -10%;
@@ -142,12 +151,13 @@
 .lightColor {
     color: rgba(0, 0, 0, 0.3);
 }
+
+
 /* SLIDER END */
 
 .visit_maindiv {
     width: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-        url("../../assets/visitPropertySite.webp");
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../../assets/visitPropertySite.webp");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -155,6 +165,7 @@
     color: white;
     min-width: 1007px;
 }
+
 .visit_maindiv .innerDiv {
     margin: auto;
     padding: 0px 20px;
@@ -163,18 +174,22 @@
     justify-content: space-between;
     height: inherit;
 }
+
 .visit_maindiv .secOne {
     max-width: 300px;
 }
+
 .visit_maindiv .secOne h1 {
     font-weight: 600;
     letter-spacing: 1.5px;
     font-size: 2.2rem;
 }
+
 .visit_maindiv .secTwo {
     max-width: 520px;
     letter-spacing: 1.4px;
 }
+
 .visit_maindiv .secThree button {
     padding: 13px 45px;
     border-radius: 3px;
@@ -184,15 +199,21 @@
     letter-spacing: 2px;
 }
 
+
 /* visit construction end  */
 
+
 /* PROPERTY SEARCH ------------------------------------------------------------------*/
+
+
 /* input start */
+
 .autoComplete_wrapper {
     width: 100% !important;
     margin-right: 10px !important;
 }
-.autoComplete_wrapper > input {
+
+.autoComplete_wrapper>input {
     width: 100% !important;
     height: 52px !important;
     padding-left: 8px !important;
@@ -202,7 +223,8 @@
     outline: 0;
     background-color: transparent !important;
 }
-.autoComplete_wrapper > ul {
+
+.autoComplete_wrapper>ul {
     position: absolute;
     max-height: 340px !important;
     width: 750px !important;
@@ -219,7 +241,10 @@
     z-index: 1000;
     outline: 0;
 }
-.autoComplete_wrapper > ul > li mark {
+
+.autoComplete_wrapper>ul>li mark {
     color: #007bff !important;
 }
+
+
 /* input end */

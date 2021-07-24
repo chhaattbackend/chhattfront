@@ -250,12 +250,18 @@
                                 <input type="hidden" name='lead_from' value="property">
                                 <input class="inpC @error('name') is-invalid @enderror" type="text" name="name"
                                     placeholder="Name" required />
-
                                 <br />
                                 <input class="inpC mt-4 @error('email') is-invalid @enderror" type="email" name="email"
                                     placeholder="Email" required />
-
                                 <br />
+                                <div class="phone_inp">
+                                    <input class="inpC mt-4" type="number" name="email" placeholder="Phone" />
+                                    <div class="flag d-flex">
+                                      <img src="https://cdn.britannica.com/46/3346-004-D3BDE016/flag-symbolism-Pakistan-design-Islamic.jpg"
+                                        alt="">
+                                      <h6>+92</h6>
+                                    </div>
+                                  </div>
                                 <textarea required name="description" class="@error('description') is-invalid @enderror"
                                     rows="5">I saw your ad on Chhatt.com (چھت).&#013;I am interested in your property {!! $properties->id !!} Please do give reference of Chhatt.com to the Realtor/Property Owner</textarea>
                                 <br />

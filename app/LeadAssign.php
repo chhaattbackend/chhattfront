@@ -11,6 +11,7 @@ class LeadAssign extends Model
         'agent_id',
         'lead_id',
         'storeproduct_id',
+        'store_id',
         'client_feedback',
         'realtor_feedback',
         'chat_status',

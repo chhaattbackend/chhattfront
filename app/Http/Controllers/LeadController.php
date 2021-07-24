@@ -190,12 +190,16 @@ class LeadController extends Controller
 
     public function formsubmit(Request $request)
     {
+
         $request->validate([
             'name' => 'required',
             'email' => 'required',
+            'description'=>'required'
         ]);
-
         // dd($request->all());
+        // dd($request->on_store);
+        // dd($request->all());
+        // dd($request);
 
         $lead = Lead::create([
             'name' => $request->name,
@@ -205,6 +209,7 @@ class LeadController extends Controller
             'lead_from' => $request->lead_from,
 
         ]);
+
 
         // dd($request->lead_from);
 
@@ -220,13 +225,27 @@ class LeadController extends Controller
 
         if ($request->lead_from == 'construction') {
             // dd('construction');
-            LeadAssign::create([
-                // 'agent_id' => $request->agent_id,
-                'lead_id' => $lead->id,
-                'storeproduct_id' => $request->storeproduct_id
-            ]);
+            if ($request->store_id==null) {
+
+                            LeadAssign::create([
+                                // 'agent_id' => $request->agent_id,
+                                'lead_id' => $lead->id,
+                                'storeproduct_id' => $request->storeproduct_id
+                            ]);
+
+            }
+            if ($request->store_id!=null) {
+                // dd('store');
+                LeadAssign::create([
+                    // 'agent_id' => $request->agent_id,
+                    'lead_id' => $lead->id,
+                    'store_id' => $request->store_id
+                ]);
+
+            }
+
         }
-        return redirect()->back();
+        return redirect()->back()->with(['message' => 'succesfully submitted', 'alert' => 'alert-success']);
     }
 
 

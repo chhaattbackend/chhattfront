@@ -95,9 +95,9 @@
 
                             {{-- <input hidden type="text" id="numberrrr" value=""> --}}
                             <a style=" background: #43b243;
-                                                                                            color: white;
-                                                                                            border-radius: 4px;
-                                                                                            transition: all 0.7s ease;"
+                                                                                                                                color: white;
+                                                                                                                                border-radius: 4px;
+                                                                                                                                transition: all 0.7s ease;"
                                 class="text-decoration-none px-4 py-1" href="tel:{{ @$store->phone }}">
                                 <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
                                     class="text-white" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"
@@ -131,9 +131,18 @@
                     <div class="d-flex justify-content-between">
                         <div class="w-100">
                             <button class="py-1 px-3 rounded-1 activeNav">Home</button>
-                            <button class="py-1 px-3 rounded-1">Our Products</button>
-                            <button class="py-1 px-3 rounded-1">About Us</button>
-                            <button class="py-1 px-3 rounded-1">Contact Us</button>
+                            <a href="#ourProduct">
+                                <button class="py-1 px-3 rounded-1">Our Products</button>
+                            </a>
+                            <a href="#aboutUs">
+                                <button class="py-1 px-3 rounded-1">About Us</button>
+                            </a>
+
+                            <a href="#contactUs">
+
+                                <button class="py-1 px-3 rounded-1">Contact Us</button>
+
+                            </a>
                         </div>
                         <div style="width: 21%;">
                             {{-- <button class="px-3 py-2 rounded-1 activeNav"><svg xmlns="http://www.w3.org/2000/svg" width="18"
@@ -211,6 +220,7 @@
             </div>
             <br />
             <hr />
+            <div style="padding-top: 4rem" id="aboutUs"></div>
             <div class="about mt-5">
                 <h3 class="text-center">About Us</h3>
                 <span class="d-block" style="width: 40px; margin: auto; height: 3px; background-color: #007bff;">
@@ -302,6 +312,7 @@
                     </div>
                 </div>
             </div> --}}
+            <div style="padding-top: 4rem" id="ourProduct"></div>
             <div class="products mt-5">
                 <h3 class="text-center">Our Products</h3>
                 <span class="d-block" style="width: 40px; margin: auto; height: 3px; background-color: #007bff;">
@@ -404,26 +415,72 @@
                 </div>
             </div>
             <!-- email message start -->
-            <div class="border w-75 m-auto p-3">
-                <h3 class="text-center">Leave a Message, we will call you back!</h3>
-                <div class="form-group m-auto mt-5">
-                    <input class="form-field" type="email" placeholder="Email">
-                    <span>@gmail.com</span>
-                </div>
-                <div class="form-group m-auto mt-5">
-                    <input class="form-field" type="email" placeholder="Name">
-                    <!-- <span>@gmai</span> -->
-                </div>
-                <div class="form-group m-auto mt-5">
-                    <textarea class="form-field" style="height: 200px;" type="email"
-                        placeholder="Requirement Your Details"></textarea>
+            <div class="border w-75 m-auto p-3 ">
 
-                    <!-- <span>@gmai</span> -->
-                </div>
+
+                <form action="{{ route('contact.form', ['store_id' => $store->id]) }}" method="POST">
+                    @csrf
+                    <h3 class="text-center">Leave a Message, we will call you back!</h3>
+                    <div class="form-group m-auto mt-5">
+                        <input class="form-field" type="email" placeholder="Email" name="email">
+                        <input type="hidden" name='lead_from' value="construction">
+                        {{-- <span>@gmail.com</span> --}}
+                    </div>
+                    <div class="form-group m-auto mt-5">
+                        <input class="form-field" type="text" placeholder="Name" name="name">
+                        <!-- <span>@gmai</span> -->
+                    </div>
+                    <div class="phone_inp form-group m-auto mt-5">
+                        <input class=" mt-4 form-field" type="number" name="email" placeholder="Phone" />
+                        <div class="flag d-flex">
+                            <img src="https://cdn.britannica.com/46/3346-004-D3BDE016/flag-symbolism-Pakistan-design-Islamic.jpg"
+                                alt="">
+                            <h6>+92</h6>
+                        </div>
+                    </div>
+                    <div class="form-group m-auto mt-5">
+                        <textarea class="form-field" style="height: 200px;" name="description"
+                            placeholder="Requirement Your Details"></textarea>
+
+                        <!-- <span>@gmai</span> -->
+                    </div>
+                    <br />
+                    <div class="col-md-12 text-center">
+                        <Button type="submit">
+                            {{-- <MdEmail class="text-white" style="font-size: 17px" /> --}}
+                            <button type="submit" class="btn btn-primary" style="align-self: center">Submit</button>
+                            {{-- &nbsp;Submit --}}
+                        </Button>
+                    </div>
+
+                </form>
+
             </div>
+
+            <br>
+            {{-- @if ($message = Session::get('success'))
+        <div class="alert alert-success alert-block">
+	            <strong>{{ $message }}</strong>
+        </div>
+        @endif --}}
+            @if (Session::has('message'))
+                <p class="alert alert-info">{{ Session::get('message') }}</p>
+            @endif
+
+
+            @error('description')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            @error('email')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            @error('name')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <!-- email message end -->
 
             <!-- get in touch start -->
+            <div style="padding-top: 5rem" id="contactUs"></div>
             <div class="mt-4">
                 <h3 class="activeNav py-2 px-3 fw-bold">Get in touch with us</h3>
                 <div class="container-fluid">
@@ -522,6 +579,10 @@
 
             var number = $('#numberrrr').val();
             $('#changethis').html(number)
+        }
+
+        function alertFunc() {
+            alert("submitted")
         }
         // slick sl
     </script>
