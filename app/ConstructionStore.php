@@ -74,6 +74,11 @@ class ConstructionStore extends Model
         return $this->hasMany(ConstructionStoreProduct::class, 'store_id');
     }
 
+    public function storeproductswithpagination()
+    {
+        return $this->hasMany(ConstructionStoreProduct::class, 'store_id')->paginate(9);
+    }
+
     public function storeservices()
     {
         return $this->hasMany(ConstructionStoreService::class, 'store_id');

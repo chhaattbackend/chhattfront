@@ -95,10 +95,10 @@
 
                             {{-- <input hidden type="text" id="numberrrr" value=""> --}}
                             <a style=" background: #43b243;
-                                        color: white;
-                                        border-radius: 4px;
-                                        transition: all 0.7s ease;" class="text-decoration-none px-4 py-1"
-                                href="tel:{{ @$store->phone }}">
+                                                                                            color: white;
+                                                                                            border-radius: 4px;
+                                                                                            transition: all 0.7s ease;"
+                                class="text-decoration-none px-4 py-1" href="tel:{{ @$store->phone }}">
                                 <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
                                     class="text-white" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"
                                     style="font-size: 14px;">
@@ -181,7 +181,8 @@
                         @foreach ($d_categories as $item)
                             <div>
                                 <li class="scroll-img-list p-2 my-3">
-                                    <a class="text-decoration-none position-relative" href="{{route('construction.dcatproductlist', ['acategory' => $item->category->category->category->slug, 'bcategory' => $item->category->category->slug, 'ccategory' => $item->category->slug, 'dcategory' => $item->slug])}}">
+                                    <a class="text-decoration-none position-relative"
+                                        href="{{ route('construction.dcatproductlist', ['acategory' => $item->category->category->category->slug, 'bcategory' => $item->category->category->slug, 'ccategory' => $item->category->slug, 'dcategory' => $item->slug]) }}">
                                         <div class="imageSection">
                                             <img class="slideImg"
                                                 src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/{{ $item->image }}"
@@ -306,37 +307,40 @@
                 <span class="d-block" style="width: 40px; margin: auto; height: 3px; background-color: #007bff;">
                 </span>
                 <div class="p-2 product_div row flex-wrap justify-content-center text-center justify-content-between">
-                    @foreach ($store->randomproduct(9) as $key => $item)
-                        {{-- @dd($item) --}}
+                    {{-- @foreach ($store->randomproduct(9) as $key => $item) --}}
+                    @foreach ($store->storeproductswithpagination() as $key => $item)
                         <div class="mt-4 col-md-2 p-2 border" style="width: 300px;">
-
                             <a href="{{ route('construction.singleproduct', ['store' => $item->store->slug, 'product' => $item->product->slug]) }}"
                                 class="d-inline-block  text-decoration-none"
                                 style="width: 250px; font-size: 17px; color: #007bff; font-weight: bolder;">
                                 <img width="100%" height="200px"
                                     src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}" />
                                 {{ $item->product->name }}
-
                             </a>
-                            {{-- <a href="" class="d-inline-block  text-decoration-none"
-                                        style="width: 250px; font-size: 17px; color: gray; ">
-                                        {{ $item->product->price }}
-
-                                        </a>
-                                        <a href="" class="d-inline-block  text-decoration-none"
-                                            style="width: 250px; font-size: 17px; color: gray; ">
-                                            No response for the inquiry from sdmabgmk
-                                        </a>
-                                        <a href="" class="d-inline-block  text-decoration-none"
-                                            style="width: 250px; font-size: 17px; color: gray; ">
-                                            No response for the inquiry from sdmabgmk
-                                        </a>
-                                        <a href="" class="d-inline-block mt-2 text-decoration-none"
-                                            style="width: 250px; font-size: 15px; color: #007bff;font-weight: bold; ">
-                                            View Details >
-                                    </a> --}}
                         </div>
                     @endforeach
+                    <div class="d-flex justify-content-center my-5">
+                        <div>
+                            {{ $store->storeproductswithpagination()->links('pagination::simple-bootstrap-4') }}
+                        </div>
+                    </div>
+                    {{-- <a href="" class="d-inline-block  text-decoration-none"
+                                    style="width: 250px; font-size: 17px; color: gray; ">
+                                    {{ $item->product->price }}
+
+                                    </a>
+                                    <a href="" class="d-inline-block  text-decoration-none"
+                                        style="width: 250px; font-size: 17px; color: gray; ">
+                                        No response for the inquiry from sdmabgmk
+                                    </a>
+                                    <a href="" class="d-inline-block  text-decoration-none"
+                                        style="width: 250px; font-size: 17px; color: gray; ">
+                                        No response for the inquiry from sdmabgmk
+                                    </a>
+                                    <a href="" class="d-inline-block mt-2 text-decoration-none"
+                                        style="width: 250px; font-size: 15px; color: #007bff;font-weight: bold; ">
+                                        View Details >
+                                </a> --}}
 
                 </div>
             </div>
