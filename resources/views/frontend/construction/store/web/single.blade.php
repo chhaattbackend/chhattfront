@@ -307,7 +307,6 @@
                 <span class="d-block" style="width: 40px; margin: auto; height: 3px; background-color: #007bff;">
                 </span>
                 <div class="p-2 product_div row flex-wrap justify-content-center text-center justify-content-between">
-                    {{-- @foreach ($store->randomproduct(9) as $key => $item) --}}
                     @foreach ($store->randomstoreproductswithpagination() as $key => $item)
                         <div class="mt-4 col-md-2 p-2 border" style="width: 300px;">
                             <a href="{{ route('construction.singleproduct', ['store' => $item->store->slug, 'product' => $item->product->slug]) }}"
