@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <link rel="icon" href="{{ URL::asset('assets/favicon.ico') }}" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
     <meta charset="utf-8" />
     <meta name="theme-color" content="#007BFF" />
