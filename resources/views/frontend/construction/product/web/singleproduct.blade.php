@@ -206,8 +206,6 @@
                                         </div>
                                     @endunless
                                 @endforeach
-
-
                             </div>
                         </div>
                     </div>
@@ -222,7 +220,6 @@
                                     Details</button>
                                 <button class="bg-transparent ms-5 px-3 h4 mb-0 pb-2">Company Details</button>
                             </div>
-
 
                             <div class="row mt-4 px-4">
                                 <h5 class="mb-2">Product Specification</h5>

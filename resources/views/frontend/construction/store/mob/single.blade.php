@@ -2,7 +2,7 @@
 
 @section('style')
     <link rel="stylesheet" href="{{ asset('mobile/index.css') }}">
-    <meta name="robots" content="noindex"/>
+    <meta name="robots" content="noindex" />
     <link rel="stylesheet" href="{{ asset('styles/contruction/singlestoremob.css') }}">
 @endsection
 
@@ -56,30 +56,40 @@
                 <div class="row">
                     <div class="col-12 px-2">
 
-                        @foreach ($store->storeproducts as $item)
+                        @foreach ($store->randomstoreproductswithpagination() as $item)
 
-                        <div class="row py-3 rounded-3 shadow-sm">
-                            <div class="col-4">
-                                <img class="w-100 border border-1 border-dark rounded-2"
-                                    src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}"
-                                    alt="">
+                            <div class="row py-3 rounded-3 shadow-sm">
+                                <div class="col-4">
+                                    <img class="w-100 border border-1 border-dark rounded-2"
+                                        src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}"
+                                        alt="">
+                                </div>
+                                <div class="col-8 ps-0">
+                                    <h6 class="fw-bold mb-0">{{ $item->product->name }}</h6>
+                                    <h6 class="fw-bold mb-0">Rs {{ $item->product->price }}</h5>
+                                        <div class="small"> {{ $item->product->description }}
+                                        </div>
+                                </div>
+                                <div class="d-flex mt-2">
+                                    <button class="outlinedBtn w-100 py-1 rounded-pill"><i
+                                            class="bi bi-telephone-fill me-1"></i>
+                                        Call Now</button>
+                                    <button class="filledBtn w-100 text-white py-1 rounded-pill ms-3 border-0"><i
+                                            class="bi bi-chat-right-text-fill me-1"></i>
+                                        Contact Seller</button>
+                                </div>
                             </div>
-                            <div class="col-8 ps-0">
-                                <h6 class="fw-bold mb-0">{{ $item->product->name }}</h6>
-                                <h6 class="fw-bold mb-0">Rs {{ $item->product->price }}</h5>
-                                    <div class="small"> {{ $item->product->description }}
-                                    </div>
-                            </div>
-                            <div class="d-flex mt-2">
-                                <button class="outlinedBtn w-100 py-1 rounded-pill"><i
-                                        class="bi bi-telephone-fill me-1"></i>
-                                    Call Now</button>
-                                <button class="filledBtn w-100 text-white py-1 rounded-pill ms-3 border-0"><i
-                                        class="bi bi-chat-right-text-fill me-1"></i>
-                                    Contact Seller</button>
+                        @endforeach
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            <div>
+                                {{ $store->randomstoreproductswithpagination()->links('pagination::simple-bootstrap-4') }}
                             </div>
                         </div>
-                        @endforeach
+
+                        <br>
+                        <br>
+
 
 
                     </div>
@@ -89,7 +99,7 @@
         <!-- PRODUCT CARD END -->
 
         <!-- bestprperty start -->
-        <div class="container-fluid bg-white">
+        {{-- <div class="container-fluid bg-white">
             <div class="bg-white bestprperty_main_div">
                 <div class="fdiv">
                     <div class="top">
@@ -120,7 +130,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- bestprperty end -->
 
         <!-- DETAILS START -->
