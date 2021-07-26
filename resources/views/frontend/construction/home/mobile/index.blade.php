@@ -1,7 +1,8 @@
-@extends('layouts.mobile.master')
+@extends('layouts.mobile.master',['search'=>1])
 
 @section('style')
     <meta name="robots" content="noindex"/>
+
     <link rel="stylesheet" href="{{ asset('styles/contruction/homemob.css') }}">
 @endsection
 
@@ -9,13 +10,9 @@
 @section('content')
     <!-- MOBILE START -->
     <div id="mobile">
-        <div class="p-3 bg-white">
-            <a href="constructionSearch.html">
-                <button class="searchBtn py-2 w-100 text-white rounded-2"><i class="me-2 bi bi-search"></i>Search</button>
-            </a>
-        </div>
+
         <!-- SUPPLIES start -->
-        <div class="indSupplies">
+        <div class="indSupplies mt-4">
             <div class="fdiv">
                 <div class="top">
                     <p>Construction Materials</p>

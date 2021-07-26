@@ -34,8 +34,8 @@
             @if (isset($search))
                 <div class="search_inp">
                     <!-- <div class="autoComplete_wrapper"> -->
-                    <input style="margin-top: 8px; height: 100% !important; padding-left: 2rem !important;"
-                        id="autoComplete" autocomplete="off" type="text" tabindex="1" class="border-0" />
+                    <input style="margin-top: 8px; height: 100% !important; padding-left: 2rem !important; background: transparent"
+                        id="autoComplete" autocomplete="off" type="text" width="100%" tabindex="1" class="border-0" />
                     <!-- </div> -->
 
                     <svg id="srchIcn" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
