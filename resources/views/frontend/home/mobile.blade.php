@@ -1,4 +1,4 @@
-@extends('layouts.mobile.master')
+@extends('layouts.mobile.master',['search'=>1])
 
 @section('style')
     <title>Pakistan Best Property Real Estate - Buy Sell and Build Properties | Chhatt.com</title>
@@ -14,39 +14,48 @@
 @section('content')
     @include('functions.convert_rupee')
 
-        
 
-    <div class="indSupplies mb-4">
+
+    <div class="indSupplies mb-4 mt-4">
         <div class="fdiv">
             <div class="top">
-                <p>Apparel, Clothing &amp; Garments</p>
+                <p>Construction Material</p>
                 <p>
-                    View All
+                    <a href="{{ route('construction.home') }}" class="text-decoration-none">
+                        View All
+                    </a>
                 </p>
             </div>
             <div class="sdiv">
-                <ul class="topCat main_ul">
+                <ul class="topCat main_ul" style="padding-left: 0rem">
                     @foreach (array_slice($bcategories, 0, 9) as $key => $bcat)
                         <li class="shadow-sm">
                             <div>
                                 <!-- card start -->
-                                <a href="" class="text-decoration-none text-dark text-decoration-none">
+                                <a class=" text-dark text-decoration-none"
+                                    href="{{ route('construction.bcat', ['acategory' => $bcat->category->slug, 'bcategory' => $bcat->slug]) }}">
                                     <h4 class="fw-bold">{{ $bcat->name }}</h4>
-                                    <hr class="mt-0">
-                                    <div class="d-flex">
-                                        <div>
-                                            <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $bcat->image }}"
-                                                class="propertyImg shadow-sm" alt="">
-                                        </div>
-                                        <div class="ms-2">
-                                            @foreach ($bcat->subcategories->slice(0, 3) as $ccat)
-                                                <p class="mb-0 pt-0"> {{ $ccat->name }} <i
-                                                        class="ms-2 bi bi-caret-right-square-fill"></i>
-                                                </p>
-                                            @endforeach
-                                        </div>
-                                    </div>
                                 </a>
+                                <hr class="mt-0">
+                                <div class="d-flex">
+                                    <div>
+                                        <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $bcat->image }}"
+                                            class="propertyImg shadow-sm" alt="">
+                                    </div>
+                                    <div class="ms-2">
+                                        @foreach ($bcat->subcategories->slice(0, 3) as $ccat)
+                                            <div class="d-flex align-items-center">
+
+                                                <a href="{{ route('construction.ccatproductlist', ['acategory' => $ccat->category->category->slug, 'bcategory' => $ccat->category->slug, 'ccategory' => $ccat->slug]) }}"
+                                                    class="text-decoration-none text-dark">
+                                                    <p class="mb-0 pt-0"> {{ $ccat->name }}
+                                                    </p>
+                                                </a>
+                                                <i class="ms-2 bi bi-caret-right-square-fill"></i>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
                             </div>
                             <!-- card end -->
                         </li>
@@ -58,7 +67,254 @@
         </div>
     </div>
 
-    <div class="indSupplies mb-4">
+    <div class="indSupplies mb-4 mt-4">
+        <div class="fdiv">
+            <div class="top">
+                <p>Property & Agency</p>
+                <p>
+                    <a href="{{ route('construction.home') }}" class="text-decoration-none">
+                        View All
+                    </a>
+                </p>
+            </div>
+            <div class="sdiv">
+                <ul class="topCat main_ul" style="padding-left: 0rem">
+                    <li class="shadow-sm">
+                        <div>
+                            <!-- card start -->
+                            <a class=" text-dark text-decoration-none" href="">
+                                <h4 class="fw-bold">Residential Properties</h4>
+                            </a>
+                            <hr class="mt-0">
+                            <div class="d-flex">
+                                <div>
+                                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/"
+                                        class="propertyImg shadow-sm" alt="">
+                                </div>
+                                <div class="ms-2">
+                                    <div class="d-flex align-items-center">
+                                        <a href="" class="text-decoration-none text-dark">
+                                            <p class="mb-0 pt-0"> House for Sale </p>
+                                        </a>
+                                        <i class="ms-2 bi bi-caret-right-square-fill"></i>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <a href="" class="text-decoration-none text-dark">
+                                            <p class="mb-0 pt-0"> Flat for Sale </p>
+                                        </a>
+                                        <i class="ms-2 bi bi-caret-right-square-fill"></i>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <a href="" class="text-decoration-none text-dark">
+                                            <p class="mb-0 pt-0"> Plot for Sale </p>
+                                        </a>
+                                        <i class="ms-2 bi bi-caret-right-square-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- card end -->
+                    </li>
+
+                    <li class="shadow-sm">
+                        <div>
+                            <!-- card start -->
+                            <a class=" text-dark text-decoration-none" href="">
+                                <h4 class="fw-bold">Commercial Properties</h4>
+                            </a>
+                            <hr class="mt-0">
+                            <div class="d-flex">
+                                <div>
+                                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/"
+                                        class="propertyImg shadow-sm" alt="">
+                                </div>
+                                <div class="ms-2">
+                                    <div class="d-flex align-items-center">
+                                        <a href="" class="text-decoration-none text-dark">
+                                            <p class="mb-0 pt-0"> House for Sale </p>
+                                        </a>
+                                        <i class="ms-2 bi bi-caret-right-square-fill"></i>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <a href="" class="text-decoration-none text-dark">
+                                            <p class="mb-0 pt-0"> Flat for Sale </p>
+                                        </a>
+                                        <i class="ms-2 bi bi-caret-right-square-fill"></i>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <a href="" class="text-decoration-none text-dark">
+                                            <p class="mb-0 pt-0"> Plot for Sale </p>
+                                        </a>
+                                        <i class="ms-2 bi bi-caret-right-square-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- card end -->
+                    </li>
+
+                    <li class="shadow-sm">
+                        <div>
+                            <!-- card start -->
+                            <a class=" text-dark text-decoration-none" href="">
+                                <h4 class="fw-bold">Industrial Properties</h4>
+                            </a>
+                            <hr class="mt-0">
+                            <div class="d-flex">
+                                <div>
+                                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/"
+                                        class="propertyImg shadow-sm" alt="">
+                                </div>
+                                <div class="ms-2">
+                                    <div class="d-flex align-items-center">
+                                        <a href="" class="text-decoration-none text-dark">
+                                            <p class="mb-0 pt-0"> Warehouse for Sale </p>
+                                        </a>
+                                        <i class="ms-2 bi bi-caret-right-square-fill"></i>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <a href="" class="text-decoration-none text-dark">
+                                            <p class="mb-0 pt-0"> Plot for Sale </p>
+
+                                        </a>
+                                        <i class="ms-2 bi bi-caret-right-square-fill"></i>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <a href="" class="text-decoration-none text-dark">
+                                            <p class="mb-0 pt-0"> Factory for Sale </p>
+
+                                        </a>
+                                        <i class="ms-2 bi bi-caret-right-square-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- card end -->
+                    </li>
+
+                    <li class="shadow-sm">
+                        <div>
+                            <!-- card start -->
+                            <a class=" text-dark text-decoration-none" href="">
+                                <h4 class="fw-bold">Real Estate Agencies</h4>
+                            </a>
+                            <hr class="mt-0">
+                            <div class="d-flex">
+                                <div>
+                                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/"
+                                        class="propertyImg shadow-sm" alt="">
+                                </div>
+                                <div class="ms-2">
+                                    <div class="d-flex align-items-center">
+                                        <a href="" class="text-decoration-none text-dark">
+                                            <p class="mb-0 pt-0"> Residential Properties agencies </p>
+                                        </a>
+                                        <i class="ms-2 bi bi-caret-right-square-fill"></i>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <a href="" class="text-decoration-none text-dark">
+                                            <p class="mb-0 pt-0"> Commercial Properties agencies </p>
+                                        </a>
+                                        <i class="ms-2 bi bi-caret-right-square-fill"></i>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- card end -->
+                    </li>
+
+                    <li class="shadow-sm">
+                        <div>
+                            <!-- card start -->
+                            <a class=" text-dark text-decoration-none" href="">
+                                <h4 class="fw-bold">Area Speciality Realtors</h4>
+                            </a>
+                            <hr class="mt-0">
+                            <div class="d-flex">
+                                <div>
+                                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/"
+                                        class="propertyImg shadow-sm" alt="">
+                                </div>
+                                <div class="ms-2">
+                                    <div class="d-flex align-items-center">
+                                        <a href="" class="text-decoration-none text-dark">
+                                            <p class="mb-0 pt-0"> DHA </p>
+                                        </a>
+                                        <i class="ms-2 bi bi-caret-right-square-fill"></i>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <a href="" class="text-decoration-none text-dark">
+                                            <p class="mb-0 pt-0"> Clifton </p>
+
+                                        </a>
+                                        <i class="ms-2 bi bi-caret-right-square-fill"></i>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <a href="" class="text-decoration-none text-dark">
+                                            <p class="mb-0 pt-0"> Nazimabad</p>
+
+                                        </a>
+                                        <i class="ms-2 bi bi-caret-right-square-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- card end -->
+                    </li>
+
+                    <li class="shadow-sm">
+                        <div>
+                            <!-- card start -->
+                            <a class=" text-dark text-decoration-none" href="">
+                                <h4 class="fw-bold">Property Specialist</h4>
+                            </a>
+                            <hr class="mt-0">
+                            <div class="d-flex">
+                                <div>
+                                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/"
+                                        class="propertyImg shadow-sm" alt="">
+                                </div>
+                                <div class="ms-2">
+                                    <div class="d-flex align-items-center">
+                                        <a href="" class="text-decoration-none text-dark">
+                                            <p class="mb-0 pt-0"> Bungalow Specialist </p>
+                                        </a>
+                                        <i class="ms-2 bi bi-caret-right-square-fill"></i>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <a href="" class="text-decoration-none text-dark">
+                                            <p class="mb-0 pt-0"> Commercial Specialist </p>
+
+                                        </a>
+                                        <i class="ms-2 bi bi-caret-right-square-fill"></i>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <a href="" class="text-decoration-none text-dark">
+                                            <p class="mb-0 pt-0"> Plot Specialist </p>
+
+                                        </a>
+                                        <i class="ms-2 bi bi-caret-right-square-fill"></i>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <a href="" class="text-decoration-none text-dark">
+                                            <p class="mb-0 pt-0"> General Specialist </p>
+
+                                        </a>
+                                        <i class="ms-2 bi bi-caret-right-square-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- card end -->
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    {{-- <div class="indSupplies mb-4">
         <div class="fdiv">
             <div class="top">
                 <p>Categories to explore</p>
@@ -89,7 +345,7 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="category_main_div">
 

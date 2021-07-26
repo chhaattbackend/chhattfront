@@ -1427,7 +1427,7 @@
 .indSupplies .fdiv .main_ul li {
   display: flex;
   flex-direction: column;
-  margin: 0 10px;
+  margin: 0 5px;
 }
 .top {
   display: flex;

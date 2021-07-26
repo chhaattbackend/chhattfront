@@ -230,16 +230,34 @@
 
 /* <!-- featured project card end --> */
 .indSupplies .topCat li {
-  background-color: #fff;
-  padding: 0.5rem 0.8rem;
+    background-color: #fff;
+    padding: 0.5rem 0.8rem;
   border-radius: 10px;
-  width: 500px !important;
-  min-width: 265px !important;
+  min-width: 300px !important;
+
+}
+
+.indSupplies .topCat li h4 {
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    width: 270px;
+}
+
+.indSupplies .topCat li P {
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    max-width: 100px;
 }
 
 .indSupplies .topCat li .propertyImg {
-  width: 150px;
-  height: 105px;
+    width: 150px;
+    height: 105px;
 }
 
 .indSupplies .topCat li i {

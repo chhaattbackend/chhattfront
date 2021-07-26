@@ -18,26 +18,25 @@
                             </li>
                         </a>
                         <a class="text-decoration-none" href="{{ route('property') }}">
-                            <li id="property"  style="color: #fff" @if (Route::current()->getName() == 'property' || Route::current()->getName() == 'explorer.search' || Route::current()->getName() == 'property.search' || Route::current()->getName() == 'single.property') class="activeNav" @endif class="lis">
+                            <li id="property" style="color: #fff" @if (Route::current()->getName() == 'property' || Route::current()->getName() == 'explorer.search' || Route::current()->getName() == 'property.search' || Route::current()->getName() == 'single.property') class="activeNav" @endif class="lis">
                                 <span>Property</span>
                             </li>
                         </a>
                         <a class="text-decoration-none" href="{{ route('construction.home') }}">
-                            <li id="home"  style="color: #fff"
-                                @if (Str::contains(Route::current()->getName(), 'construction')) class="activeNav" @endif class="lis">
+                            <li id="home" style="color: #fff" @if (Str::contains(Route::current()->getName(), 'construction')) class="activeNav" @endif class="lis">
                                 <span>Construction Material</span>
                             </li>
                         </a>
 
                         <a class="text-decoration-none" href="{{ route('agency') }}">
 
-                            <li id="agencies"  style="color: #fff" @if (Route::current()->getName() == 'agency' || Route::current()->getName() == 'single.agency') class="activeNav" @endif class="lis">
+                            <li id="agencies" style="color: #fff" @if (Route::current()->getName() == 'agency' || Route::current()->getName() == 'single.agency') class="activeNav" @endif class="lis">
                                 <span>Agencies</span>
                             </li>
                         </a>
 
                         <a class="text-decoration-none" href="{{ route('contact') }}">
-                            <li id="contact"  style="color: #fff" @if (Route::current()->getName() == 'contact') class="activeNav" @endif class="lis">
+                            <li id="contact" style="color: #fff" @if (Route::current()->getName() == 'contact') class="activeNav" @endif class="lis">
                                 <span>Contact Us</span>
                             </li>
                         </a>
@@ -47,6 +46,10 @@
         </div>
     </div>
     @yield('headercontent')
+    <div style="position: absolute; top: 1%; left: 50%; transform: translateX(-50%); width: 8%; height: auto;">
+        <img style="width: 100%;"
+            src="{{ asset('assets/Bismillah-3D-White-Wallpaper-340x220-removebg-preview.png') }}" alt="">
+    </div>
 
     <script>
         const homebtn = document.getElementById("home");

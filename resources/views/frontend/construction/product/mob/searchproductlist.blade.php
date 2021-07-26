@@ -71,7 +71,7 @@
 
                 @php
                     if ($storeproducts->total() < 9) {
-                        $before = $brand->storeproductwithpagination()->total();
+                        $before = $storeproducts->total();
                         $before /= 2;
                         $before = round($before);
                         $before -= 1;
