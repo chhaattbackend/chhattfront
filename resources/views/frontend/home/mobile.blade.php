@@ -13,6 +13,51 @@
 
 @section('content')
     @include('functions.convert_rupee')
+
+        
+
+    <div class="indSupplies mb-4">
+        <div class="fdiv">
+            <div class="top">
+                <p>Apparel, Clothing &amp; Garments</p>
+                <p>
+                    View All
+                </p>
+            </div>
+            <div class="sdiv">
+                <ul class="topCat main_ul">
+                    @foreach (array_slice($bcategories, 0, 9) as $key => $bcat)
+                        <li class="shadow-sm">
+                            <div>
+                                <!-- card start -->
+                                <a href="" class="text-decoration-none text-dark text-decoration-none">
+                                    <h4 class="fw-bold">{{ $bcat->name }}</h4>
+                                    <hr class="mt-0">
+                                    <div class="d-flex">
+                                        <div>
+                                            <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $bcat->image }}"
+                                                class="propertyImg shadow-sm" alt="">
+                                        </div>
+                                        <div class="ms-2">
+                                            @foreach ($bcat->subcategories->slice(0, 3) as $ccat)
+                                                <p class="mb-0 pt-0"> {{ $ccat->name }} <i
+                                                        class="ms-2 bi bi-caret-right-square-fill"></i>
+                                                </p>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- card end -->
+                        </li>
+                    @endforeach
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <div class="indSupplies mb-4">
         <div class="fdiv">
             <div class="top">
@@ -27,18 +72,19 @@
                 <ul class="main_ul" style="padding-left: 0px">
                     @foreach (array_slice($bcategories, 0, 9) as $key => $bcat)
 
-                    <li>
-                        <div>
-                            <!-- card start -->
-                            <a href="{{route('construction.bcat', ['acategory'=> $bcat->category->slug,'bcategory'=> $bcat->slug])}}" class="card_main_div text-decoration-none text-dark text-decoration-none">
-                                <img style="height: 100px; width: 100px; border-radius: 50%; border: 2px solid rgb(170, 170, 170);"
-                                    src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $bcat->image }}"
-                                    class="propertyImg" alt="" />
-                                <h6 class="text-center mb-0 mt-2 fw-bold">{{ $bcat->name }}</h6>
-                            </a>
-                            <!-- card end -->
-                        </div>
-                    </li>
+                        <li>
+                            <div>
+                                <!-- card start -->
+                                <a href="{{ route('construction.bcat', ['acategory' => $bcat->category->slug, 'bcategory' => $bcat->slug]) }}"
+                                    class="card_main_div text-decoration-none text-dark text-decoration-none">
+                                    <img style="height: 100px; width: 100px; border-radius: 50%; border: 2px solid rgb(170, 170, 170);"
+                                        src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/{{ $bcat->image }}"
+                                        class="propertyImg" alt="" />
+                                    <h6 class="text-center mb-0 mt-2 fw-bold">{{ $bcat->name }}</h6>
+                                </a>
+                                <!-- card end -->
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>

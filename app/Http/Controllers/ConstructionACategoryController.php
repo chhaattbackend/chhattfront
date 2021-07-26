@@ -9,8 +9,11 @@ use App\ConstructionDCategory;
 use App\ConstructionProduct;
 use App\ConstructionStore;
 use App\ConstructionStoreProduct;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-
+use Illuminate\Pagination\LengthAwarePaginator as Pag;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 
 class ConstructionACategoryController extends Controller
 {
@@ -22,19 +25,6 @@ class ConstructionACategoryController extends Controller
      */
     public function index()
     {
-        // $bcategories = ConstructionBCategory::all();
-        // $store=ConstructionStore::orderBy('id','desc')->get();
-
-        // $bcat = ConstructionBCategory::find(4);
-        // return $bcat->storeproduct;
-        // dd($bcat->storeproduct);
-
-        // // $products = [];
-        // // foreach ($bcat->storeproduct as $item) {
-        // //     array_push($products, ConstructionProduct::find($item->product->id));
-        // // };
-        // // $products = array_unique($products);
-        // // dd($products);
         $store = ConstructionStore::orderBy('id', 'asc')->get();
         $bcategories = ConstructionBCategory::all();
         return view('frontend.construction.home.index', compact('bcategories', 'store'));
@@ -79,55 +69,47 @@ class ConstructionACategoryController extends Controller
 
     public function search(Request $request)
     {
-        // abort(500);
-
         $products = ConstructionProduct::whereHas('c_category', function ($query) use ($request) {
             $query->where('name', 'like', '%' . $request->searched . '%');
         })->orWhereHas('d_category', function ($query) use ($request) {
             $query->where('name', 'like', '%' . $request->searched . '%');
-        })->orWhere('name', 'like', '%' . $request->searched . '%')->paginate(10)->setPath('');
-
-
-        // $storeproducts = ConstructionStoreProduct::whereHas('c_category', function ($query) use ($request) {
-        //     $query->where('name', 'like', '%' . $request->searched . '%');
-        // })->orWhereHas('d_category', function ($query) use ($request) {
-        //     $query->where('name', 'like', '%' . $request->searched . '%');
-        // })->orWhereHas('product', function ($query) use ($request) {
-        //     $query->where('name', 'like', '%' . $request->searched . '%');
-        // })->get();
-        // dd($storeproducts);
-
-        $pagination = $products->appends(array(
-            'searched' => $request->searched
-        ));
+        })->orWhere('name', 'like', '%' . $request->searched . '%')->get();
 
         if ($products->isEmpty()) {
             abort(404);
         }
 
-        $storeproduct = [];
+        $storeproducts = [];
         foreach ($products as $item) {
             if ($item->storeproduct->isNotEmpty()) {
                 foreach ($item->storeproduct as $key => $value) {
-                    array_push($storeproduct, ConstructionStoreProduct::find($value->id));
+                    array_push($storeproducts, ConstructionStoreProduct::find($value->id));
                 }
             }
         }
-        $storeproduct = array_unique($storeproduct);
-        // $a = collect($storeproduct)->paginate(10);
-        // dd($a);
 
-
+        $storeproducts = array_unique($storeproducts);
+        $storeproducts = collect($storeproducts);
+        $storeproducts = $this->paginate($storeproducts)->setPath('');
+        $pagination = $storeproducts->appends(array(
+            'searched' => $request->searched
+        ));
 
         $heading = $request->searched;
         $anycategory = $products[0]->c_category;
-        // dd($anycategory);
         $brands = [];
         foreach ($anycategory->storeproduct as $item) {
             array_push($brands, ConstructionBrand::find($item->brand_id));
         }
         $brands = array_unique($brands);
 
-        return view('frontend.construction.product.searchproductlist', compact('products', 'heading', 'brands', 'anycategory'));
+        return view('frontend.construction.product.searchproductlist', compact('products', 'heading', 'brands', 'anycategory', 'storeproducts'));
+    }
+
+    public function paginate($items, $perPage = 10, $page = null, $options = [])
+    {
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
     }
 }

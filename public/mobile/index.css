@@ -10,6 +10,43 @@
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 }
+.mobile_home_main_div .search_inp {
+  position: absolute;
+  height: 30px;
+  bottom: -10%;
+  border-radius: 8px;
+  width: 90%;
+  margin: auto;
+  z-index: 9999999;
+  background-color: #fff;
+  box-shadow: 1px 1px 10px #4e4e4e5d;
+  border: none;
+}
+.mobile_home_main_div .search_inp input {
+  width: 100%;
+  height: 100%;
+  padding-right: 1.7rem;
+  padding-left: 2rem;
+  border-radius: 8px;
+  outline: none;
+
+}
+.mobile_home_main_div .search_inp input:focus {
+  outline: none;
+}
+.mobile_home_main_div .search_inp #srchIcn {
+  color: #007bff;
+  position: absolute;
+  top: 53%;
+  transform: translateY(-50%);
+  left: 2%;
+}
+.mobile_home_main_div .search_inp #micIcn {
+  position: absolute;
+  right: 2.5%;
+  top: 53%;
+  transform: translateY(-50%);
+}
 
 .menu {
     right: 3%;
@@ -174,6 +211,10 @@
     margin-top: 15px;
     color: #fff;
 }
+
+
+
+
 
 
 /* mobile footer end */

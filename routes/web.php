@@ -27,6 +27,11 @@ Route::get('/contact-us', function () {
 })->name('contact');
 Route::post('sendform', 'LeadController@formsubmit')->name('contact.form');
 
+// mobile
+Route::post('propertymobile', 'PropertyController@mobile');
+Route::get('filter/{for}', 'PropertyController@mobile')->name('filter');
+Route::get('results/{all}', 'PropertyController@search')->name('allproperties');
+// mobile
 
 // Route::prefix('construction')->group(function () {
 Route::get('construction', 'ConstructionACategoryController@index')->name('construction.home');
@@ -40,10 +45,3 @@ Route::get('{acategory:slug}/{bcategory:slug}/{ccategory:slug}', 'ConstructionBC
 Route::get('{acategory:slug}/{bcategory:slug}/{ccategory:slug}/{dcategory:slug}', 'ConstructionBCategoryController@dcatproductlist')->name('construction.dcatproductlist');
 Route::get('{acategory:slug}/{bcategory:slug}/{ccategory:slug}/brand/{brand:slug}', 'ConstructionBCategoryController@brandproductlist')->name('construction.brandproductlist');
 // });
-
-
-// mobile
-Route::post('propertymobile', 'PropertyController@mobile');
-Route::get('filter/{for}', 'PropertyController@mobile')->name('filter');
-Route::get('results/{all}', 'PropertyController@search')->name('allproperties');
-// mobile

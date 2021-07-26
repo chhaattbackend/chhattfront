@@ -43,12 +43,12 @@
                             <input id="autoComplete" autocomplete="off" type="text" tabindex="1" />
                         </div>
                         <!-- city select start -->
-                        <select id="citiesSelect" onchange="changecity()" class="form-select"
+                        {{-- <select id="citiesSelect" onchange="changecity()" class="form-select"
                             aria-label="Default select example">
                             @foreach ($city as $item)
                                 <option value="{{ $item->name }}">{{ $item->name }} </option>
                             @endforeach
-                        </select>
+                        </select> --}}
                         <!-- city select end -->
                         <!-- search end -->
                         <!-- city lagana h -->
@@ -80,7 +80,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
         integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
+    {{-- <script>
         $('.responsive').slick({
             dots: false,
             infinite: false,
@@ -122,7 +122,7 @@
         //         $.each(prev.data, function(key, value) {
         //             console,log()
         //             $("#citiesSelect").append(`
-    //         <option value="${value.id}">${value.name}</option>`);
+        //      <option value="${value.id}">${value.name}</option>`);
         //         })
         //     )
         // }
@@ -257,6 +257,175 @@
         }
         // SUBMIT END
         // == SEARCH AREA DROPDOWN END
+    </script> --}}
+
+    <script>
+        // slick slider start
+        $('.slider').slick({
+            dots: false,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            arrows: true,
+            responsive: [{
+                    breakpoint: 1300,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        infinite: false,
+                        dots: false
+                    }
+                },
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        infinite: false,
+                        dots: false
+                    }
+                },
+            ]
+        });
+
+        // == SEARCH AREA DROPDOWN START
+        var areas;
+        const autoCompleteJS = new autoComplete({
+            data: {
+                src: async () => {
+                    try {
+                        // Loading placeholder text
+                        document
+                            .getElementById("autoComplete")
+                            .setAttribute("placeholder", "Loading...");
+                        // Fetch External Data Source
+                        const source = await fetch(
+                            "{{ route('construction.searchsuggestions') }}"
+                        );
+                        areas = await source.json();
+                        // Post Loading placeholder text
+                        document
+                            .getElementById("autoComplete")
+                            .setAttribute("placeholder", autoCompleteJS.placeHolder);
+                        // Returns Fetched data
+                        // console.log(areas);
+                        return areas;
+                    } catch (error) {
+                        return error;
+                    }
+                },
+                keys: ["name"],
+                cache: true,
+                filter: (list) => {
+                    // Filter duplicates
+                    // incase of multiple data keys usage
+                    const filteredResults = Array.from(
+                        new Set(list.map((value) => value.match))
+                    ).map((food) => {
+                        return list.find((value) => value.match === food);
+                    });
+                    return filteredResults;
+                }
+            },
+            placeHolder: "Try Something 'Final'",
+            resultsList: {
+                element: (list, data) => {
+                    const info = document.createElement("p");
+                    if (data.results.length > 0) {
+                        info.innerHTML = `Displaying <strong>${data.matches.length}</strong> results`;
+                    } else {
+                        info.innerHTML =
+                            `Found <strong>${data.matches.length}</strong> matching results for <strong>"${data.query}"</strong>`;
+                    }
+                    list.prepend(info);
+                },
+                noResults: true,
+                maxResults: 10000,
+                tabSelect: true
+            },
+            resultItem: {
+                element: (item, data) => {
+                    // console.log(data);
+                    // Modify Results Item Style
+                    item.style = "display: flex; justify-content: space-between;";
+                    // Modify Results Item Content
+                    item.innerHTML = `
+     <span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+       ${data.match}
+     </span>
+     <span style="margin-left:15px;display:inline-block;width:160px;text-align:right;align-items: center; font-size: 13px; font-weight: 100; text-transform: uppercase; color: rgba(0,0,0,.2); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+       ${data.value.from}
+     </span>`;
+                },
+                highlight: true
+            },
+            events: {
+                input: {
+                    selection: (e) => {
+                        const selection = e.detail.selection.value;
+                        autoCompleteJS.input.value = selection.name;
+                    },
+                    focus: () => {
+                        if (autoCompleteJS.input.value.length) autoCompleteJS.start();
+                    }
+                }
+            }
+        });
+
+        // SUBMIT START
+        function changeFunc(e) {
+            e.preventDefault()
+            const inpVal = document.getElementById("autoComplete");
+
+            var url = '{{ route('construction.search', 'searched=:key') }}';
+            key = inpVal.value
+            url = url.replace(':key', key);
+            document.location.href = url;
+
+            // if (areas) {
+            //     const filteredArea = areas.data.filter((prev) => prev.name === inpVal.value)
+            //     if (filteredArea.length) {} else {
+            //         // console.log(inpVal.value)
+            //     }
+            // } else {
+            //     // console.log("error")
+            // }
+        }
+        // SUBMIT END
+        // == SEARCH AREA DROPDOWN END\
+
+        // PROPERTY CAROUSEL START
+        var scrolled = 0;
+        $(".scroll-left").on("click", function() {
+            scrolled = scrolled - 300;
+            $("#box-wrapper").animate({
+                scrollLeft: scrolled,
+            });
+        });
+        $(".scroll-right").on("click", function() {
+            scrolled = scrolled + 300;
+            $("#box-wrapper").animate({
+                scrollLeft: scrolled,
+            });
+        });
+        // PROPERTY CAROUSEL END
+
+        // == EXPLORE CAROUSEL START
+        var scrolled = 0;
+        $(".scroll-leftExplore").on("click", function() {
+            scrolled = scrolled - 300;
+            $("#box-wrapperExplore").animate({
+                scrollLeft: scrolled,
+            });
+        });
+        $(".scroll-rightExplore").on("click", function() {
+            scrolled = scrolled + 300;
+            $("#box-wrapperExplore").animate({
+                scrollLeft: scrolled,
+            });
+        });
+        // slick slider end
     </script>
 @endsection
 

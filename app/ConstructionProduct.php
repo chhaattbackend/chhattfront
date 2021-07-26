@@ -70,9 +70,6 @@ class ConstructionProduct extends Model
         return ConstructionStoreProduct::where('store_id', $store_id)->where('product_id', $this->id)->first();
     }
 
-    public function allstoreproducts()
-    {
-        return $this->hasMany(ConstructionStoreProduct::class, 'product_id');
-    }
+   
 
 }

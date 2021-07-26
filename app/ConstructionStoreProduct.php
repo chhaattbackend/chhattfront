@@ -80,30 +80,30 @@ class ConstructionStoreProduct extends Model
     //     );
     // }
 
-    // public function c_category()
-    // {
-    //     // dd($this);
-    //     return $this->hasManyThrough(
-    //         ConstructionStoreProduct::class,
-    //         ConstructionProduct::class,
-    //         'c_category_id', // Foreign key on the ConstructionProduct table...
-    //         'product_id', // Foreign key on the ConstructionStoreProduct table...
-    //         'id', // Local key on the projects table...
-    //         'id' // Local key on the environments table...
-    //     );
-    // }
+    public function c_category()
+    {
+        // dd($this);
+        return $this->hasOneThrough(
+            ConstructionStoreProduct::class,
+            ConstructionProduct::class,
+            'c_category_id', // Foreign key on the ConstructionProduct table...
+            'product_id', // Foreign key on the ConstructionStoreProduct table...
+            'id', // Local key on the projects table...
+            'id' // Local key on the environments table...
+        );
+    }
 
-    // public function d_category()
-    // {
-    //     return $this->hasManyThrough(
-    //         ConstructionStoreProduct::class,
-    //         ConstructionProduct::class,
-    //         'd_category_id', // Foreign key on the ConstructionProduct table...
-    //         'product_id', // Foreign key on the ConstructionStoreProduct table...
-    //         'id', // Local key on the projects table...
-    //         'id' // Local key on the environments table...
-    //     );
-    // }
+    public function d_category()
+    {
+        return $this->hasOneThrough(
+            ConstructionStoreProduct::class,
+            ConstructionProduct::class,
+            'd_category_id', // Foreign key on the ConstructionProduct table...
+            'product_id', // Foreign key on the ConstructionStoreProduct table...
+            'id', // Local key on the projects table...
+            'id' // Local key on the environments table...
+        );
+    }
 
 
 }

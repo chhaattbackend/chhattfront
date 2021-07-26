@@ -331,7 +331,7 @@
                     @endforeach
                     <div class="d-flex justify-content-center my-5">
                         <div>
-                            {{ $store->randomstoreproductswithpagination()->links('pagination::simple-bootstrap-4') }}
+                            {{ $store->randomstoreproductswithpagination()->fragment('ourProduct')->links('pagination::simple-bootstrap-4') }}
                         </div>
                     </div>
                     {{-- <a href="" class="d-inline-block  text-decoration-none"
