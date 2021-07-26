@@ -329,7 +329,7 @@ class PropertyController extends Controller
 
             if ($request->type == 'All') {
                 if (isset($request->p)) {
-                    $properties = Property::paginate(24);
+                    $properties = Property::paginate(100);
                 } else {
                     $properties = Property::paginate(10);
                 }
@@ -345,7 +345,7 @@ class PropertyController extends Controller
 
             if (isset($request->p)) {
 
-                $properties = Property::where('type', $request->type)->paginate(24);
+                $properties = Property::where('type', $request->type)->paginate(100);
             } else {
                 $properties = Property::where('type', $request->type)->paginate(10);
             }
@@ -358,7 +358,7 @@ class PropertyController extends Controller
         }
 
 
-        $properties = Property::paginate(28);
+        $properties = Property::paginate(100);
         $agencies = Agency::paginate(10);
         $city = City::all();
         $propertytype = PropertyType::all();

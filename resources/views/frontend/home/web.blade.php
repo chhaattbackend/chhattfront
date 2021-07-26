@@ -535,16 +535,16 @@
                                     <h3><a href="{{ route('property.search', ['area_type' => 'Residential']) }}">Residential
                                             Properties</a></h3>
                                     <p><a
-                                            href="{{ route('property.search', ['property_type' => 'House', 'area_type' => 'Residential']) }}">House
-                                            for Sale
+                                            href="{{ route('property.search', ['property_type' => 'House', 'area_type' => 'Residential', 'property_for' => 'For Rent']) }}">House
+                                            for Rent
                                         </a></p>
                                     <p><a
-                                            href="{{ route('property.search', ['property_type' => 'Flat', 'area_type' => 'Residential']) }}">Flat
-                                            for Sale</a></p>
+                                            href="{{ route('property.search', ['property_type' => 'Flat', 'area_type' => 'Residential', 'property_for' => 'For Booking']) }}">Flat
+                                            for Booking</a></p>
 
 
                                     <p><a
-                                            href="{{ route('property.search', ['property_type' => 'Plot', 'area_type' => 'Residential']) }}">Plot
+                                            href="{{ route('property.search', ['property_type' => 'Plot', 'area_type' => 'Residential', 'property_for' => 'For Sale']) }}">Plot
                                             for Sale</a></p>
 
                                 </div>
@@ -562,14 +562,14 @@
                                     <h3><a href="{{ route('property.search', ['area_type' => 'Commercial']) }}">Commercial
                                             Properties</a></h3>
                                     <p><a
-                                            href="{{ route('property.search', ['area_type' => 'Commercial', 'property_type' => 'House']) }}">House
-                                            for Sale
+                                            href="{{ route('property.search', ['property_type' => 'Office','area_type' => 'Commercial','property_for' => 'For Booking']) }}">Office
+                                            for Booking
                                         </a></p>
                                     <p><a
-                                            href="{{ route('property.search', ['property_type' => 'Flat', 'area_type' => 'Commercial']) }}">Flat
-                                            for Sale</a></p>
+                                            href="{{ route('property.search', ['property_type' => 'Shop', 'area_type' => 'Commercial','property_for' => 'For Rent']) }}">Shop
+                                            for Rent</a></p>
                                     <p><a
-                                            href="{{ route('property.search', ['property_type' => 'Plot', 'area_type' => 'Commercial']) }}">Plot
+                                            href="{{ route('property.search', ['property_type' => 'Plot', 'area_type' => 'Commercial','property_for' => 'For Sale']) }}">Plot
                                             for Sale</a></p>
 
                                 </div>
@@ -586,15 +586,15 @@
                                     <h3><a href="{{ route('property.search', ['area_type' => 'Industrial']) }}">Industrial
                                             Properties</a></h3>
                                     <p><a
-                                            href="{{ route('property.search', ['property_type' => 'Warehouse', 'area_type' => 'Industrial']) }}">Warehouse
-                                            for Sale
+                                            href="{{ route('property.search', ['property_type' => 'Warehouse', 'area_type' => 'Industrial','property_for' => 'For Rent']) }}">Warehouse
+                                            for Rent
                                         </a></p>
 
                                     <p><a
-                                            href="{{ route('property.search', ['property_type' => 'Plot', 'area_type' => 'Industrial']) }}">Plot
-                                            for Sale</a></p>
+                                            href="{{ route('property.search', ['property_type' => 'Plot', 'area_type' => 'Industrial','property_for' => 'For Booking']) }}">Plot
+                                            for Booking</a></p>
                                     <p><a
-                                            href="{{ route('property.search', ['property_type' => 'Factory', 'area_type' => 'Industrial']) }}">Factory
+                                            href="{{ route('property.search', ['property_type' => 'Factory', 'area_type' => 'Industrial','property_for' => 'For Sale']) }}">Factory
                                             for Sale</a></p>
 
                                 </div>
@@ -612,9 +612,9 @@
                                     <h3><a href="{{ route('agency') }}">Real Estate Agencies
                                         </a>
                                     </h3>
-                                    <p> <a href="{{ route('agency') }}">Residential Properties agencies</a>
+                                    <p> <a href="{{ route('agency') }}">Agencies by Area</a>
                                     </p>
-                                    <p><a href="{{ route('agency') }}">Commercial Properties agencies</a>
+                                    <p><a href="{{ route('agency') }}">Agencies by Working Area</a>
                                     </p>
 
                                 </div>
@@ -629,13 +629,13 @@
                                             alt="Surgical Caps" title="Surgical Caps"></a>
                                 </div>
                                 <div class="product-meta">
-                                    <h3><a href=""> Area Speciality Realtors</a>
+                                    <h3><a href=""> Realtor by Area</a>
                                     </h3>
                                     <p><a href=""> Dha</a>
                                     </p>
-                                    <p><a href="">Clifton</a>
+                                    <p><a href="">Schema 33</a>
                                     </p>
-                                    <p><a href="">Nazimabad</a></p>
+                                    <p><a href="">Behria</a></p>
                                 </div>
                             </div>
                         </div>
@@ -648,7 +648,7 @@
                                             alt="Personal Protective Equipment" title="Personal Protective Equipment"></a>
                                 </div>
                                 <div class="product-meta">
-                                    <h3><a href=" ">Property Specialist
+                                    <h3><a href=" ">Realtor by Speciality
                                         </a></h3>
                                     <p><a href="">Bungalow Specialist</a></p>
                                     <p><a href=""> Commercial Specialist </a>

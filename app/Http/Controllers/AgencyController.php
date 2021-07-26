@@ -138,6 +138,11 @@ class AgencyController extends Controller
             })->orWhere('name', 'like', '%' . $seacrh . '%')
                 ->paginate(24)->setPath('');
 
+                // $newagency=$agencies->whereHas('areaOne',function($query) use ($seacrh){$query->where('name', '==' ,'%'  '%')});
+                // dd($newagency);
+
+
+
             $pagination = $agencies->appends(array(
                 'keyword' => $request->keyword
             ));
@@ -194,6 +199,22 @@ class AgencyController extends Controller
             Agency::create($request->except('image'));
         }
         return redirect()->route('agencies.index');
+    }
+    public function newAgency()
+    {
+        $members = Agent::join('agencies', 'agencies.id', '=', 'agents.agency_id')
+        ->join('users', 'users.id', '=', 'agents.user_id')
+        ->where('agencies.area_one_id', '=', 6)
+        ->select('agents.*')
+        ->get();
+        //return  $members;
+
+        $getname = $members[1]->agency->name;
+
+        return $getname;
+
+
+
     }
 
     /**
