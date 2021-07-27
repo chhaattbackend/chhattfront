@@ -629,13 +629,12 @@
                                             alt="Surgical Caps" title="Surgical Caps"></a>
                                 </div>
                                 <div class="product-meta">
+
                                     <h3><a href=""> Realtor by Area</a>
                                     </h3>
-                                    <p><a href=""> Dha</a>
-                                    </p>
-                                    <p><a href="">Schema 33</a>
-                                    </p>
-                                    <p><a href="">Behria</a></p>
+                                    <p><a href="{{ route('agent.search', ['areatype' => 'Dha']) }}"> Dha</a></p>
+                                    <p><a href="{{ route('agent.search', ['areatype' => 'Malir Cantt-Scheme 33']) }}"> Malir Cantt-Scheme 33</a></p>
+                                    <p><a href="{{ route('agent.search', ['areatype' => 'Bahria Town']) }}">Bahria</a></p>
                                 </div>
                             </div>
                         </div>
@@ -650,11 +649,11 @@
                                 <div class="product-meta">
                                     <h3><a href=" ">Realtor by Speciality
                                         </a></h3>
-                                    <p><a href="">Bungalow Specialist</a></p>
-                                    <p><a href=""> Commercial Specialist </a>
+                                    <p><a href="{{route('agent.special',['name'=>'Bungalow Specialist'])}}">Bungalow Specialist</a></p>
+                                    <p><a href="{{route('agent.special',['name'=>'Residential Specialist'])}}"> Residential Specialist </a>
                                     </p>
-                                    <p> <a href=""> Plot Specialist</a></p>
-                                    <p><a href=""> General Specialist</a></p>
+                                    {{-- <p> <a href="{{route('agent.special',['name'=>'Plot Specialist'])}}"> Plot Specialist</a></p> --}}
+                                    <p><a href="{{route('agent.special',['name'=>'General Specialist'])}}"> General Specialist</a></p>
 
                                 </div>
                             </div>

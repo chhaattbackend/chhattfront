@@ -183,7 +183,6 @@ class AgencyController extends Controller
      */
     public function store(Request $request)
     {
-
         // dd($request->all());
         $this->validate($request, [
             'user_id' => 'required',
@@ -191,7 +190,6 @@ class AgencyController extends Controller
             'name' => 'required',
             'area_two_id' => 'required',
         ]);
-
         if ($request->file('image')) {
             $filename = $this->globalclass->storeS3($request->file('image'), 'agencies');
             Agency::create($request->except('image') + ["image" => $filename]);
@@ -200,21 +198,36 @@ class AgencyController extends Controller
         }
         return redirect()->route('agencies.index');
     }
-    public function newAgency()
+
+    public function newAgency(Request $request)
     {
+        $getareaone =AreaOne::where('name', $request->areatype)->get();
+        $getar = 0;
+        // return $getareaone[0]->id;
+        if ($getareaone->count()>0) {
+
+            $getar = $getareaone[0]->id;
+
+
+        }
+        else{
+
+            $getar = $getareaone->id;
+
+        }
+
+
+
         $members = Agent::join('agencies', 'agencies.id', '=', 'agents.agency_id')
         ->join('users', 'users.id', '=', 'agents.user_id')
-        ->where('agencies.area_one_id', '=', 6)
+        ->where('agencies.area_one_id', '=', $getar)
         ->select('agents.*')
         ->get();
         //return  $members;
 
         $getname = $members[1]->agency->name;
 
-        return $getname;
-
-
-
+        return $members;
     }
 
     /**
