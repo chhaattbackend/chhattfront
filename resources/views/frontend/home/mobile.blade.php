@@ -88,7 +88,7 @@
                             <hr class="mt-0">
                             <div class="d-flex">
                                 <div>
-                                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/"
+                                    <img src="https://images.unsplash.com/photo-1555636222-cae831e670b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1056&q=80"
                                         class="propertyImg shadow-sm" alt="">
                                 </div>
                                 <div class="ms-2">
@@ -125,7 +125,7 @@
                             <hr class="mt-0">
                             <div class="d-flex">
                                 <div>
-                                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/"
+                                    <img src="https://images.unsplash.com/photo-1597047084897-51e81819a499?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1049&q=80g"
                                         class="propertyImg shadow-sm" alt="">
                                 </div>
                                 <div class="ms-2">
@@ -147,7 +147,7 @@
                                         </a>
                                         <i class="ms-2 bi bi-caret-right-square-fill"></i>
                                     </div>
-                                </div>
+                                </div>    sdfdf
                             </div>
                         </div>
                         <!-- card end -->
@@ -162,7 +162,7 @@
                             <hr class="mt-0">
                             <div class="d-flex">
                                 <div>
-                                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/"
+                                    <img src="https://images.unsplash.com/photo-1626470159480-427d823d3671?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1025&q=80"
                                         class="propertyImg shadow-sm" alt="">
                                 </div>
                                 <div class="ms-2">
@@ -201,7 +201,7 @@
                             <hr class="mt-0">
                             <div class="d-flex">
                                 <div>
-                                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/"
+                                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
                                         class="propertyImg shadow-sm" alt="">
                                 </div>
                                 <div class="ms-2">
@@ -228,12 +228,12 @@
                         <div>
                             <!-- card start -->
                             <a class=" text-dark text-decoration-none" href="">
-                                <h4 class="fw-bold">Area Speciality Realtors</h4>
+                                <h4 class="fw-bold">Realtor by Area</h4>
                             </a>
                             <hr class="mt-0">
                             <div class="d-flex">
                                 <div>
-                                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/"
+                                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
                                         class="propertyImg shadow-sm" alt="">
                                 </div>
                                 <div class="ms-2">
@@ -267,12 +267,12 @@
                         <div>
                             <!-- card start -->
                             <a class=" text-dark text-decoration-none" href="">
-                                <h4 class="fw-bold">Property Specialist</h4>
+                                <h4 class="fw-bold">Realtor by Speciality</h4>
                             </a>
                             <hr class="mt-0">
                             <div class="d-flex">
                                 <div>
-                                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/bcategories/"
+                                    <img src="https://images.unsplash.com/photo-1514779324364-8400d49e81de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=627&q=80"
                                         class="propertyImg shadow-sm" alt="">
                                 </div>
                                 <div class="ms-2">

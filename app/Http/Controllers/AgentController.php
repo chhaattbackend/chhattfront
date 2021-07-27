@@ -241,12 +241,21 @@ class AgentController extends Controller
 
         //$getspeci=Speciality::where('id',$request->)->get();
 
-        $speciality=Agent::join('agent_specialities','agent_specialities.agent_id','=','agents.id')
+        $members=Agent::join('agent_specialities','agent_specialities.agent_id','=','agents.id')
         ->join('specialities','specialities.id','=','agent_specialities.speciality_id')
         ->where('specialities.name','=',$request->name)
         ->select('agents.*')
-        ->get();
-         return $speciality;
+        ->paginate(12);
+        //  return $speciality;
+
+
+        $pagination = $members->appends(array(
+            'areatype' => $request->name
+        ));
+        $getname = $members[1]->agency->name;
+
+
+        return view('frontend.agency.agentlist',compact('members'));
     }
 
     public function filter(Request $request)

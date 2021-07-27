@@ -222,12 +222,17 @@ class AgencyController extends Controller
         ->join('users', 'users.id', '=', 'agents.user_id')
         ->where('agencies.area_one_id', '=', $getar)
         ->select('agents.*')
-        ->get();
+        ->paginate(12)->setPath('');
         //return  $members;
 
+        $pagination = $members->appends(array(
+            'areatype' => $request->areatype
+        ));
         $getname = $members[1]->agency->name;
 
-        return $members;
+
+        return view('frontend.agency.agentlist',compact('members'));
+
     }
 
     /**

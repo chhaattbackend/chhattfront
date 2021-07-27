@@ -28,9 +28,9 @@ Route::get('/contact-us', function () {
     return view('layouts.contact');
 })->name('contact');
 
-Route::get('/exapmle', function () {
-    return view('frontend.agency.agentlist');
-})->name('contact');
+// Route::get('/exapmle', function () {
+//     return view('frontend.agency.agentlist');
+// })->name('contact');
 
 Route::post('sendform', 'LeadController@formsubmit')->name('contact.form');
 
