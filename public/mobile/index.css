@@ -12,7 +12,7 @@
 }
 .mobile_home_main_div .search_inp {
   position: absolute;
-  height: 30px;
+  height: 35px;
   bottom: -10%;
   border-radius: 8px;
   width: 90%;
@@ -44,7 +44,7 @@
 .mobile_home_main_div .search_inp #micIcn {
   position: absolute;
   right: 2.5%;
-  top: 53%;
+  top: 50%;
   transform: translateY(-50%);
 }
 

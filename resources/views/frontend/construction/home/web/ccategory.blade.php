@@ -1,7 +1,12 @@
 @extends('layouts.master')
 
 @section('style')
-    <meta name="robots" content="noindex"/>
+    <title>{{ $ccategories[0]->category->name }} - The best source of construction material at Chhatt</title>
+    <meta name="title"
+        content="{{ $ccategories[0]->category->name }} - The best source of construction material at Chhatt.">
+    <meta name="description" content=" {{ $ccategories[0]->category->name }} is the best source of construction. If you are looking
+                for the best construction materials and hardware tools at the best price must visit Chhatt.">
+                
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/index.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/contruction/ccat1.css') }}" />
 @endsection
@@ -31,10 +36,12 @@
         @if ($ccat->storeproduct->isNotEmpty())
             <div id="serch_option_show" class="main_div_list">
                 <div class="mainList1">
-                    <div id="main_List{{ $ccat->id }}" class="lst_div d-flex" style="height: 220px; overflow: hidden;transition: all 4s ease">
+                    <div id="main_List{{ $ccat->id }}" class="lst_div d-flex"
+                        style="height: 220px; overflow: hidden;transition: all 4s ease">
                         <div class="litsdj col-md-2 pt-2 mt-4">
                             <div class="list1_div1">
-                                <a href="{{route('construction.ccatproductlist',['acategory'=> $ccat->category->category->slug, 'bcategory'=> $ccat->category->slug,'ccategory'=> $ccat->slug])}}">
+                                <a
+                                    href="{{ route('construction.ccatproductlist', ['acategory' => $ccat->category->category->slug, 'bcategory' => $ccat->category->slug, 'ccategory' => $ccat->slug]) }}">
                                     <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/ccategories/{{ $ccat->image }}"
                                         width="115px" height="115px" alt="" />
                                 </a>
@@ -56,7 +63,8 @@
                                     @endphp
                                     <div class="lit1 col-md-3 p-0  mt-4">
                                         <div class="list1_div1">
-                                            <a href="{{route('construction.dcatproductlist',['acategory'=> $dcat->category->category->category->slug, 'bcategory'=> $dcat->category->category->slug,'ccategory'=> $dcat->category->slug,'dcategory'=>$dcat->slug])}}">
+                                            <a
+                                                href="{{ route('construction.dcatproductlist', ['acategory' => $dcat->category->category->category->slug, 'bcategory' => $dcat->category->category->slug, 'ccategory' => $dcat->category->slug, 'dcategory' => $dcat->slug]) }}">
                                                 <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/dcategories/{{ $dcat->image }}"
                                                     width="115px" height="115px" alt="" />
                                             </a>

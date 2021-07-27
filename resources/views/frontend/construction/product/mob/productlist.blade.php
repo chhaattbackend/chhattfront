@@ -1,7 +1,21 @@
 @extends('layouts.mobile.master')
 
 @section('style')
-    <meta name="robots" content="noindex" />
+    @if ($which == 'ccategory')
+        <title>{{ $anycategory->name }} - Best quality construction material available at Chhatt</title>
+        <meta name="title" content="{{ $anycategory->name }} - Best quality construction material available at Chhatt">
+        <meta name="description" content="{{ $anycategory->name }} and other construction materials are available at Chhatt. For further information and details you must contact our vendors.">
+    @endif
+    @if ($which == 'dcategory')
+        <title>{{ $anycategory->name }} - Best quality construction material available at Chhatt</title>
+        <meta name="title" content="{{ $anycategory->name }} - Best quality construction material available at Chhatt">
+        <meta name="description" content="{{ $anycategory->name }} and other construction materials are available at Chhatt. For further information and details you must contact our vendors.">
+    @endif
+    @if ($which == 'brand')
+        <title>Brands {{ $brand->name }} - Best quality construction material available at Chhatt</title>
+        <meta name="title" content=" Brands {{ $brand->name }} - Best quality construction material available at Chhatt">
+        <meta name="description" content=" Brand | {{ $brand->name }} and other construction materials are available at Chhatt. For further information and details you must contact our vendors.">
+    @endif
     <link rel="stylesheet" href="{{ asset('mobile/index.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/contruction/mobproductlist.css') }}">
 @endsection

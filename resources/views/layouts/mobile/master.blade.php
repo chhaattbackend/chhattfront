@@ -10,6 +10,9 @@
 
     @yield('style')
     <link rel="stylesheet" type="text/css" href="./mobile/index.css" />
+    @if (isset($search))
+        <link rel="stylesheet" href="{{ asset('mobile/autoInp.css') }}">
+    @endif
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
@@ -19,43 +22,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="./assets/fonticons/font/flaticon.css" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.1.3/dist/css/autoComplete.01.min.css">
 </head>
 
 <body>
 
     <div id="mobile">
         <!-- header start -->
-        <div class="mobile_home_main_div position-relative">
-            <div class="search_inp">
-                <!-- <div class="autoComplete_wrapper"> -->
-                <input style="margin-top: 1px; height: 100% !important; padding-left: 2rem !important;"
-                    id="autoComplete" type="text" tabindex="1" class="border-0" />
-                <!-- </div> -->
-                <!-- <input type="text" name="" id="" placeholder="Search anything.."> -->
-                <svg id="srchIcn" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
-                    class="srchIcn">
-                    <path fill="#007bff"
-                        d="M17.415 16.385l-4.282-4.453c1.1-1.308 1.704-2.955 1.704-4.669C14.837 3.258 11.58 0 7.574 0S.31 3.258.31 7.263s3.258 7.263 7.263 7.263c1.503 0 2.936-.453 4.161-1.314l4.314 4.487c.18.187.423.29.683.29.246 0 .48-.094.656-.264.377-.362.389-.963.027-1.34zM7.574 1.895c2.96 0 5.368 2.408 5.368 5.368 0 2.96-2.408 5.369-5.368 5.369-2.96 0-5.369-2.409-5.369-5.369s2.409-5.368 5.369-5.368z">
-                    </path>
-                </svg>
+        <div class="mobile_home_main_div position-relative" @if (isset($search)) style="padding-bottom: 35px !important" @endif>
+            @if (isset($search))
+                <div class="search_inp">
+                    <!-- <div class="autoComplete_wrapper"> -->
+                    <input style="margin-top: 8px; height: 100% !important; padding-left: 2rem !important; background: transparent"
+                        id="autoComplete" autocomplete="off" type="text" width="100%" tabindex="1" class="border-0" />
+                    <!-- </div> -->
 
-                <svg id="micIcn" xmlns="http://www.w3.org/2000/svg" width="12" height="20" viewBox="0 0 12 20">
-                    <g fill="none">
-                        <path fill="#E44747" stroke="#007bff" stroke-width=".5"
-                            d="M5.18 17.298C2.335 17.295.029 15.209.025 12.636v-1.748c0-.161.145-.292.323-.292.178 0 .322.13.322.292v1.748c0 2.253 2.02 4.079 4.512 4.079 2.491 0 4.511-1.826 4.511-4.08v-1.747c0-.161.145-.292.323-.292.178 0 .322.13.322.292v1.748c-.003 2.573-2.31 4.659-5.156 4.662h0z"
-                            transform="translate(1)"></path>
-                        <path fill="#E44747"
-                            d="M5.042 0C3.27.002 1.835 1.469 1.833 3.279v8.742c0 1.811 1.437 3.279 3.209 3.279s3.208-1.468 3.208-3.279V3.28C8.248 1.469 6.813.002 5.042 0z"
-                            transform="translate(1)"></path>
-                        <path fill="#E44747" stroke="#007bff" stroke-width=".5"
-                            d="M5.219 19.337c-.081 0-.159-.03-.216-.085-.057-.055-.09-.129-.09-.206v-2.04c0-.16.137-.291.306-.291.169 0 .305.13.305.291v2.04c0 .077-.032.151-.089.206-.057.054-.135.085-.216.085z"
-                            transform="translate(1)"></path>
-                        <path fill="#E44747" stroke="#007bff" stroke-width=".5"
-                            d="M7.052 19.337H3.386c-.17 0-.306-.13-.306-.291 0-.161.137-.292.306-.292h3.666c.169 0 .306.13.306.292 0 .16-.137.291-.306.291z"
-                            transform="translate(1)"></path>
-                    </g>
-                </svg>
-            </div>
+                    <svg id="srchIcn" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                        class="srchIcn">
+                        <path fill="#007bff"
+                            d="M17.415 16.385l-4.282-4.453c1.1-1.308 1.704-2.955 1.704-4.669C14.837 3.258 11.58 0 7.574 0S.31 3.258.31 7.263s3.258 7.263 7.263 7.263c1.503 0 2.936-.453 4.161-1.314l4.314 4.487c.18.187.423.29.683.29.246 0 .48-.094.656-.264.377-.362.389-.963.027-1.34zM7.574 1.895c2.96 0 5.368 2.408 5.368 5.368 0 2.96-2.408 5.369-5.368 5.369-2.96 0-5.369-2.409-5.369-5.369s2.409-5.368 5.369-5.368z">
+                        </path>
+                    </svg>
+
+                    <i onclick="changeFunc(event)" id="micIcn" class="bi bi-arrow-up-right-square-fill"
+                        style="color: #007bff; font-size: 1.2rem"></i>
+                </div>
+            @endif
             <a href='{{ route('home') }}'>
                 <img src="{{ asset('assets/logow.png') }}" width='90px' alt='logo' />
             </a>
@@ -170,19 +163,195 @@
     <!-- bottom navigation end -->
 
 
-
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
         integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous">
     </script>
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.1.3/dist/autoComplete.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+        integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
     @yield('personalscripts')
+
+    @if (isset($search))
+        <script>
+            // slick slider start
+            $('.slider').slick({
+                dots: false,
+                infinite: false,
+                speed: 300,
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                arrows: true,
+                responsive: [{
+                        breakpoint: 1300,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1,
+                            infinite: false,
+                            dots: false
+                        }
+                    },
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1,
+                            infinite: false,
+                            dots: false
+                        }
+                    },
+                ]
+            });
+
+            // == SEARCH AREA DROPDOWN START
+            var areas;
+            const autoCompleteJS = new autoComplete({
+                data: {
+                    src: async () => {
+                        try {
+                            // Loading placeholder text
+                            document
+                                .getElementById("autoComplete")
+                                .setAttribute("placeholder", "Loading...");
+                            // Fetch External Data Source
+                            const source = await fetch(
+                                "{{ route('construction.searchsuggestions') }}"
+                            );
+                            areas = await source.json();
+                            // Post Loading placeholder text
+                            document
+                                .getElementById("autoComplete")
+                                .setAttribute("placeholder", autoCompleteJS.placeHolder);
+                            // Returns Fetched data
+                            // console.log(areas);
+                            return areas;
+                        } catch (error) {
+                            return error;
+                        }
+                    },
+                    keys: ["name"],
+                    cache: true,
+                    filter: (list) => {
+                        // Filter duplicates
+                        // incase of multiple data keys usage
+                        const filteredResults = Array.from(
+                            new Set(list.map((value) => value.match))
+                        ).map((food) => {
+                            return list.find((value) => value.match === food);
+                        });
+                        return filteredResults;
+                    }
+                },
+                placeHolder: "Search Your Desire Item",
+                resultsList: {
+                    element: (list, data) => {
+                        const info = document.createElement("p");
+                        if (data.results.length > 0) {
+                            info.innerHTML = `Displaying <strong>${data.matches.length}</strong> results`;
+                        } else {
+                            info.innerHTML =
+                                `Found <strong>${data.matches.length}</strong> matching results for <strong>"${data.query}"</strong>`;
+                        }
+                        list.prepend(info);
+                    },
+                    noResults: true,
+                    maxResults: 10000,
+                    tabSelect: true
+                },
+                resultItem: {
+                    element: (item, data) => {
+                        // console.log(data);
+                        // Modify Results Item Style
+                        item.style = "display: flex; justify-content: space-between;";
+                        // Modify Results Item Content
+                        item.innerHTML = `
+     <span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+       ${data.match}
+     </span>
+     <span style="margin-left:15px;display:inline-block;width:160px;text-align:right;align-items: center; font-size: 13px; font-weight: 100; text-transform: uppercase; color: rgba(0,0,0,.2); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+       ${data.value.from}
+     </span>`;
+                    },
+                    highlight: true
+                },
+                events: {
+                    input: {
+                        selection: (e) => {
+                            const selection = e.detail.selection.value;
+                            autoCompleteJS.input.value = selection.name;
+                        },
+                        focus: () => {
+                            if (autoCompleteJS.input.value.length) autoCompleteJS.start();
+                        }
+                    }
+                }
+            });
+
+            // SUBMIT START
+            function changeFunc(e) {
+                e.preventDefault()
+                const inpVal = document.getElementById("autoComplete");
+
+                var url = '{{ route('construction.search', 'searched=:key') }}';
+                key = inpVal.value
+                url = url.replace(':key', key);
+                document.location.href = url;
+
+                // if (areas) {
+                //     const filteredArea = areas.data.filter((prev) => prev.name === inpVal.value)
+                //     if (filteredArea.length) {} else {
+                //         // console.log(inpVal.value)
+                //     }
+                // } else {
+                //     // console.log("error")
+                // }
+            }
+            // SUBMIT END
+            // == SEARCH AREA DROPDOWN END\
+
+            // PROPERTY CAROUSEL START
+            var scrolled = 0;
+            $(".scroll-left").on("click", function() {
+                scrolled = scrolled - 300;
+                $("#box-wrapper").animate({
+                    scrollLeft: scrolled,
+                });
+            });
+            $(".scroll-right").on("click", function() {
+                scrolled = scrolled + 300;
+                $("#box-wrapper").animate({
+                    scrollLeft: scrolled,
+                });
+            });
+            // PROPERTY CAROUSEL END
+
+            // == EXPLORE CAROUSEL START
+            var scrolled = 0;
+            $(".scroll-leftExplore").on("click", function() {
+                scrolled = scrolled - 300;
+                $("#box-wrapperExplore").animate({
+                    scrollLeft: scrolled,
+                });
+            });
+            $(".scroll-rightExplore").on("click", function() {
+                scrolled = scrolled + 300;
+                $("#box-wrapperExplore").animate({
+                    scrollLeft: scrolled,
+                });
+            });
+            // slick slider end
+        </script>
+    @endif
 
 
 

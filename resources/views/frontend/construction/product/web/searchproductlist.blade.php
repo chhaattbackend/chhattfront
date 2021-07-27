@@ -1,7 +1,11 @@
 @extends('layouts.master')
 
 @section('style')
-    <meta name="robots" content="noindex" />
+    <title>{{ $heading }} - Best quality construction material available at Chhatt</title>
+    <meta name="title" content="{{ $heading }} - Best quality construction material available at Chhatt">
+    <meta name="description"
+        content="{{ $heading }} and other construction materials are available at Chhatt. For further information and details you must contact our vendors.">
+
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/index.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/contruction/productlist.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"

@@ -1,7 +1,10 @@
 @extends('layouts.mobile.master')
 
 @section('style')
-    <meta name="robots" content="noindex" />
+    <title>{{ $heading }} - Best quality construction material available at Chhatt</title>
+    <meta name="title" content="{{ $heading }} - Best quality construction material available at Chhatt">
+    <meta name="description"
+        content="{{ $heading }} and other construction materials are available at Chhatt. For further information and details you must contact our vendors.">
     <link rel="stylesheet" href="{{ asset('mobile/index.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/contruction/mobproductlist.css') }}">
 @endsection
@@ -71,7 +74,7 @@
 
                 @php
                     if ($storeproducts->total() < 9) {
-                        $before = $brand->storeproductwithpagination()->total();
+                        $before = $storeproducts->total();
                         $before /= 2;
                         $before = round($before);
                         $before -= 1;
