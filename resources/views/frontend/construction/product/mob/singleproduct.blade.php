@@ -54,13 +54,11 @@
     <div id="mobile">
         <!-- header start -->
 
-
         <div class="slider mt-3" style="max-height: 250px;">
             <div class="divs">
                 <img width="100%" style="max-height: 250px;"
                     src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $storeproduct->product->image }}" />
             </div>
-
         </div>
         <!-- slider end -->
         <!-- company card start -->
