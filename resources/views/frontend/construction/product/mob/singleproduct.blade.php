@@ -1,8 +1,12 @@
 @extends('layouts.mobile.master')
 
 @section('style')
+    <title>{{ $storeproduct->product->name }} - Contact for more information at {{ $storeproduct->store->name }} | Chhatt</title>
+    <meta name="title"
+        content="{{ $storeproduct->product->name }} - Contact for more information at {{ $storeproduct->store->name }} | Chhatt">
+    <meta name="description"
+        content="{{ $storeproduct->product->name }}and other construction materials are available at Chhatt. For further information and details you must contact at our vendors {{ $storeproduct->store->name }}">
     <link rel="stylesheet" href="{{ asset('mobile/index.css') }}">
-    <meta name="robots" content="noindex"/>
     <link rel="stylesheet" href="{{ asset('styles/contruction/singleproductmob.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
         integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="

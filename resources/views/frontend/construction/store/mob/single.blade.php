@@ -1,8 +1,11 @@
 @extends('layouts.mobile.master')
 
 @section('style')
+    <title>{{ $store->name }} for the latest price and updates contact us</title>
+    <meta name="title" content="{{ $store->name }} for the latest price and updates contact us">
+    <meta name="description"
+        content="{{ $store->name }} - for the best quality construction materials and other hardwareequipment, latest prices and updates must contact us and visit Chhatt.com">
     <link rel="stylesheet" href="{{ asset('mobile/index.css') }}">
-    <meta name="robots" content="noindex" />
     <link rel="stylesheet" href="{{ asset('styles/contruction/singlestoremob.css') }}">
 @endsection
 

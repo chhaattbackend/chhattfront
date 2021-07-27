@@ -1,7 +1,11 @@
 @extends('layouts.mobile.master')
 
 @section('style')
-    <meta name="robots" content="noindex"/>
+    <title>{{ $ccategories[0]->category->name }} - The best source of construction material at Chhatt</title>
+    <meta name="title"
+        content="{{ $ccategories[0]->category->name }} - The best source of construction material at Chhatt.">
+    <meta name="description" content=" {{ $ccategories[0]->category->name }} is the best source of construction. If you are looking
+                    for the best construction materials and hardware tools at the best price must visit Chhatt.">
     <link rel="stylesheet" href="{{ asset('mobile/index.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/contruction/ccatmob.css') }}">
 @endsection

@@ -1,7 +1,22 @@
 @extends('layouts.master')
 
 @section('style')
-    <meta name="robots" content="noindex"/>
+    @if ($which == 'ccategory')
+        <title>{{ $anycategory->name }} - Best quality construction material available at Chhatt</title>
+        <meta name="title" content="{{ $anycategory->name }} - Best quality construction material available at Chhatt">
+        <meta name="description" content="{{ $anycategory->name }} and other construction materials are available at Chhatt. For further information and details you must contact our vendors.">
+    @endif
+    @if ($which == 'dcategory')
+        <title>{{ $anycategory->name }} - Best quality construction material available at Chhatt</title>
+        <meta name="title" content="{{ $anycategory->name }} - Best quality construction material available at Chhatt">
+        <meta name="description" content="{{ $anycategory->name }} and other construction materials are available at Chhatt. For further information and details you must contact our vendors.">
+    @endif
+    @if ($which == 'brand')
+        <title>Brands {{ $brand->name }} - Best quality construction material available at Chhatt</title>
+        <meta name="title" content=" Brands {{ $brand->name }} - Best quality construction material available at Chhatt">
+        <meta name="description" content=" Brand | {{ $brand->name }} and other construction materials are available at Chhatt. For further information and details you must contact our vendors.">
+    @endif
+
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/index.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/contruction/productlist.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
@@ -21,9 +36,7 @@
             <div class="backg_sdivz">
                 @if ($which == 'brand')
                     <h1>{{ $brand->name }}</h1>
-
                 @else
-
                     <h1>{{ $anycategory->name }}</h1>
                 @endif
             </div>
@@ -330,7 +343,8 @@
                             <a class="text-decoration-none text-dark" href="">
 
                                 <div class="product_detail_card_div d-flex">
-                                    <a href="{{route('construction.singleproduct',['store' => $item->store->slug,'product'=> $item->product->slug])}}">
+                                    <a
+                                        href="{{ route('construction.singleproduct', ['store' => $item->store->slug, 'product' => $item->product->slug]) }}">
                                         <div class="frst_div">
                                             <img
                                                 src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}" />
@@ -397,7 +411,8 @@
 
                                                 <div class="d-flex div1 mr-2">
                                                     <div>
-                                                        <a href="{{route('construction.singleproduct',['store' => $item->store->slug,'product'=> $suggesteditem->slug])}}">
+                                                        <a
+                                                            href="{{ route('construction.singleproduct', ['store' => $item->store->slug, 'product' => $suggesteditem->slug]) }}">
                                                             <img width="80px" height="72px" style=" object-fit: contain;"
                                                                 src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $suggesteditem->image }}" />
                                                         </a>
@@ -424,28 +439,31 @@
                             <a class="text-decoration-none text-dark" href="">
 
                                 <div class="product_detail_card_div d-flex">
-                                    <a class="text-decoration-none " href="{{route('construction.singleproduct',['store' => $item->store->slug,'product'=> $item->product->slug])}}">
-                                    <div class="frst_div">
-                                            <img src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}" />
+                                    <a class="text-decoration-none "
+                                        href="{{ route('construction.singleproduct', ['store' => $item->store->slug, 'product' => $item->product->slug]) }}">
+                                        <div class="frst_div">
+                                            <img
+                                                src="https://chhatt.s3.ap-south-1.amazonaws.com/construction/product/{{ $item->product->image }}" />
                                         </div>
                                     </a>
                                     <div class="ml-3 sec_div">
                                         <h5 class="font-weight-bold">{{ $item->product->name }}</h5>
-                                            <b>
-                                                <strong>
-                                                    <span class="d-inline-block mr-3"> PKR:  {{ $item->store_price }}</span>
-                                                </strong>
-                                            </b>
-                                            <br>
+                                        <b>
+                                            <strong>
+                                                <span class="d-inline-block mr-3"> PKR: {{ $item->store_price }}</span>
+                                            </strong>
+                                        </b>
+                                        <br>
                                         <span class="d-inline-block mr-3"> </span>
                                         <a href=""> Get Export Price</a>
-                                        <ul class="mb-0 me-3 " >
+                                        <ul class="mb-0 me-3 ">
                                             <li><strong>Brand</strong>:<span> {{ @$item->product->brand->name }}</span>
                                             </li>
                                             <div class="hideText">
                                                 {{ $item->product->description }}
                                             </div>
-                                            <li><a href="{{route('construction.singleproduct',['store' => $item->store->slug,'product'=> $item->product->slug])}}">read
+                                            <li><a
+                                                    href="{{ route('construction.singleproduct', ['store' => $item->store->slug, 'product' => $item->product->slug]) }}">read
                                                     more...</a></li>
                                         </ul>
                                     </div>
@@ -482,7 +500,9 @@
                                             <a
                                                 href="{{ route('construction.singlestore', ['store' => $item->store->slug]) }}">
 
-                                                <button class="w-100 py-2 rounded bg-transparent border border-1 border-dark"> View
+                                                <button
+                                                    class="w-100 py-2 rounded bg-transparent border border-1 border-dark">
+                                                    View
                                                     Store</button>
                                             </a>
                                         </div>

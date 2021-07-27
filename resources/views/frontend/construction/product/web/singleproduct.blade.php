@@ -1,20 +1,16 @@
 @extends('layouts.master')
 
 @section('style')
-    <meta name="robots" content="noindex" />
+    <title>{{ $storeproduct->product->name }} - {{ $storeproduct->store->name }} - The best quality construction material available at Chhatt</title>
+    <meta name="title" content="{{ $storeproduct->product->name }} - {{ $storeproduct->store->name }} - The best quality construction material available at Chhatt">
+    <meta name="description" content="{{ $storeproduct->product->name }} and other construction materials are available at Chhatt. Forfurther information and details you must contact our vendors.">
+
     <link rel="stylesheet" href="{{ asset('styles/index.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/contruction/singleproduct.css') }}">
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" /> --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <!-- image gallery start -->
-    <!-- jQuery 1.8 or later, 33 KB -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!-- Fotorama from CDNJS, 19 KB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
-    <!-- image gallery end -->
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
         integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -36,7 +32,6 @@
 
 
 @section('content')
-    {{-- @dd($storeproduct) --}}
     <div class="single_construction">
         <div class="container-fluid">
             {{-- <small>

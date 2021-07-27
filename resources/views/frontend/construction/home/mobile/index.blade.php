@@ -1,8 +1,9 @@
 @extends('layouts.mobile.master',['search'=>1])
 
 @section('style')
-    <meta name="robots" content="noindex"/>
-
+    <title>Pakistan Best Construction Materials & Services | Chhatt.com</title>
+    <meta name="title" content="Pakistan Best Construction Materials & Services | Chhatt.com">
+    <meta name="description" content="Looking for the best construction materials and services provider in Pakistan. Chhatt.com provides all types of construction and building materials visit our website">
     <link rel="stylesheet" href="{{ asset('styles/contruction/homemob.css') }}">
 @endsection
 
