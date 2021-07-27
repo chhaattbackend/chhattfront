@@ -61,7 +61,7 @@
                                         <h6 class="mt-0">
                                             Total Properties:
                                             <strong>
-                                                99
+                                                {{ $item->user->properties->count() }}
                                             </strong>
                                         </h6>
                                         <div class="w-100 d-flex justify-content-center mt-1">
