@@ -10,7 +10,6 @@ class Anycategory extends Component
     use WithPagination;
 
     public $which;
-    public $user = [];
     public $anycategory = [];
 
     // public function mount()
