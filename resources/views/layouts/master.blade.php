@@ -7,6 +7,7 @@
     <meta charset="utf-8" />
     <meta name="theme-color" content="#007BFF" />
 
+    @livewireStyles
     @yield('style')
 
     <link rel="stylesheet" type="text/css" href="./styles/index.css" />
@@ -146,6 +147,7 @@
         });
         // == EXPLORE CAROUSEL END
     </script>
+    @livewireScripts
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
         var Tawk_API = Tawk_API || {},
