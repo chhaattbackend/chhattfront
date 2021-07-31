@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Livewire\Livewire;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,8 @@ Route::get('/property/{property_type}', 'PropertyController@explorer')->name('ex
 Route::get('/contact-us', function () {
     return view('layouts.contact');
 })->name('contact');
+Route::get('makelinks', 'SampleController@makelinks');
+
 
 // Route::get('/exapmle', function () {
 //     return view('frontend.agency.agentlist');
@@ -51,4 +54,9 @@ Route::get('{acategory:slug}/{bcategory:slug}', 'ConstructionBCategoryController
 Route::get('{acategory:slug}/{bcategory:slug}/{ccategory:slug}', 'ConstructionBCategoryController@ccatproductlist')->name('construction.ccatproductlist');
 Route::get('{acategory:slug}/{bcategory:slug}/{ccategory:slug}/{dcategory:slug}', 'ConstructionBCategoryController@dcatproductlist')->name('construction.dcatproductlist');
 Route::get('{acategory:slug}/{bcategory:slug}/{ccategory:slug}/brand/{brand:slug}', 'ConstructionBCategoryController@brandproductlist')->name('construction.brandproductlist');
+
+
+
+
+
 // });
