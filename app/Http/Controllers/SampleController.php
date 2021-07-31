@@ -29,6 +29,7 @@ use App\ConstructionBCategory;
 use App\ConstructionBrand;
 use App\ConstructionCCategory;
 use App\ConstructionDCategory;
+use App\ConstructionStore;
 use App\Plot_cat;
 use App\PropertySocial;
 use App\SalesAgent;
@@ -50,22 +51,84 @@ class SampleController extends Controller
     public function makelinks()
     {
         $acats = ConstructionACategory::all();
+        $stores = ConstructionStore::all();
         $url = [];
+
+        // foreach ($acats as $acat) {
+        //     array_push($url, 'https://chhatt.com/' . $acat->slug);
+        //     foreach ($acat->bcategories as $bcat) {
+        //         array_push($url, 'bcat start of ' . $bcat->name);
+        //         array_push($url, 'https://chhatt.com/' . $acat->slug . '/' . $bcat->slug);
+        //         foreach ($bcat->subcategories as $keycat => $ccat) {
+        //             if ($ccat->storeproduct->isNotEmpty()) {
+        //                 array_push($url, 'ccat start of ' . $ccat->name);
+        //                 array_push($url, 'https://chhatt.com/' . $acat->slug . '/' . $bcat->slug . '/' . $ccat->slug);
+        //                 foreach ($ccat->subcategories as $keydcat => $dcat) {
+        //                     array_push($url, 'dcat start of ' . $ccat->name);
+        //                     array_push($url, 'https://chhatt.com/' . $acat->slug . '/' . $bcat->slug . '/' . $ccat->slug . '/' . $dcat->slug);
+        //                 }
+        //                 foreach ($ccat->storeproduct as $keyproduct => $product) {
+        //                     if ($product->brand_id != null) {
+        //                         array_push($url, 'brand start of ' . $ccat->name);
+        //                         $brand = ConstructionBrand::find($product->product->brand_id);
+        //                         array_push($url, 'https://chhatt.com/' . $acat->slug . '/' . $bcat->slug . '/' . $ccat->slug . '/brand' . '/' . @$brand->slug);
+        //                     }
+        //                     array_push($url, 'storeproduct start of ' . $ccat->name);
+
+
+        //                     array_push($url, 'https://chhatt.com/' . $product->store->slug . '/product' .  '/' . $product->product->slug);
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+
+        foreach ($acats as $acat) {
+            array_push($url, 'https://chhatt.com/' . $acat->slug);
+        }
+
+        foreach ($acats as $acat) {
+            foreach ($acat->bcategories as $bcat) {
+                if ($bcat->storeproduct->isNotEmpty()) {
+                    array_push($url, 'bcategory');
+                    array_push($url, 'https://chhatt.com/' . $acat->slug . '/' . $bcat->slug);
+                }
+            }
+        }
 
         foreach ($acats as $acat) {
             foreach ($acat->bcategories as $bcat) {
                 foreach ($bcat->subcategories as $keycat => $ccat) {
                     if ($ccat->storeproduct->isNotEmpty()) {
-                        array_push($url, 'ccat start of ' . $ccat->name);
+                        array_push($url, 'ccategory');
                         array_push($url, 'https://chhatt.com/' . $acat->slug . '/' . $bcat->slug . '/' . $ccat->slug);
-                        foreach ($ccat->subcategories as $keydcat => $dcat) {
-                            array_push($url, 'dcat start of ' . $ccat->name);
+                    }
+                }
+            }
+        }
 
-                            array_push($url, 'https://chhatt.com/' . $acat->slug . '/' . $bcat->slug . '/' . $ccat->slug . '/' . $dcat->slug);
+        foreach ($acats as $acat) {
+            foreach ($acat->bcategories as $bcat) {
+                foreach ($bcat->subcategories as $keycat => $ccat) {
+                    if ($ccat->storeproduct->isNotEmpty()) {
+                        foreach ($ccat->subcategories as $keydcat => $dcat) {
+                            if ($dcat->storeproduct->isNotEmpty()) {
+                                array_push($url, 'dcategory');
+                                array_push($url, 'https://chhatt.com/' . $acat->slug . '/' . $bcat->slug . '/' . $ccat->slug . '/' . $dcat->slug);
+                            }
                         }
+                    }
+                }
+            }
+        }
+
+        foreach ($acats as $acat) {
+            foreach ($acat->bcategories as $bcat) {
+                foreach ($bcat->subcategories as $keycat => $ccat) {
+                    if ($ccat->storeproduct->isNotEmpty()) {
                         foreach ($ccat->storeproduct as $keyproduct => $product) {
                             if ($product->brand_id != null) {
-                                array_push($url, 'brand start of ' . $ccat->name);
+                                array_push($url, 'brand');
                                 $brand = ConstructionBrand::find($product->product->brand_id);
                                 array_push($url, 'https://chhatt.com/' . $acat->slug . '/' . $bcat->slug . '/' . $ccat->slug . '/brand' . '/' . @$brand->slug);
                             }
@@ -74,6 +137,28 @@ class SampleController extends Controller
                 }
             }
         }
+
+        foreach ($stores as $keysasas => $store) {
+            array_push($url, 'stores');
+            array_push($url, 'https://chhatt.com/store' . '/' . $store->slug);
+        }
+
+        foreach ($acats as $acat) {
+            foreach ($acat->bcategories as $bcat) {
+                foreach ($bcat->subcategories as $keycat => $ccat) {
+                    if ($ccat->storeproduct->isNotEmpty()) {
+                        foreach ($ccat->storeproduct as $keyproduct => $product) {
+
+                            array_push($url, 'storeproduct');
+                            array_push($url, 'https://chhatt.com/' . $product->store->slug . '/product' .  '/' . $product->product->slug);
+                        }
+                    }
+                }
+            }
+        }
+
+
+
         $url = array_unique($url);
 
         return $url;
