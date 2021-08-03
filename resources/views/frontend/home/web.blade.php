@@ -697,7 +697,7 @@
             <hr>
             <br>
             <!-- BEST PROPERTY START -->
-            <div>
+            {{-- <div>
                 <div class="d-flex justify-content-between">
                     <h2 class="fw-bold">Best properties for you</h2>
                     <div class="d-flex">
@@ -735,12 +735,12 @@
                         <i class="scroll-right bi bi-arrow-right-circle-fill"></i>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- BEST PROPERTY END -->
         </div>
     </div>
 
-    @include('layouts.explorer')
+    {{-- @include('layouts.explorer') --}}
     <br>
     @include('layouts.textcontent')
     @include('layouts.twocard')
