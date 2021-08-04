@@ -29,16 +29,12 @@ Route::get('/contact-us', function () {
     return view('layouts.contact');
 })->name('contact');
 Route::get('makelinks', 'SampleController@makelinks');
-
-
 // Route::get('/exapmle', function () {
 //     return view('frontend.construction.service.index');
 // })->name('contact');
 
 Route::view('service', 'frontend.construction.service.index');
-
 Route::post('sendform', 'LeadController@formsubmit')->name('contact.form');
-
 // mobile
 Route::post('propertymobile', 'PropertyController@mobile');
 Route::get('filter/{for}', 'PropertyController@mobile')->name('filter');
