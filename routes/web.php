@@ -28,12 +28,11 @@ Route::get('/property/{property_type}', 'PropertyController@explorer')->name('ex
 Route::get('/contact-us', function () {
     return view('layouts.contact');
 })->name('contact');
-Route::get('makelinks', 'SampleController@makelinks');
-// Route::get('/exapmle', function () {
-//     return view('frontend.construction.service.index');
-// })->name('contact');
 
-Route::view('service', 'frontend.construction.service.index');
+Route::get('makelinks', 'SampleController@makelinks');
+
+Route::get('/professionals', 'ConstructionUserServiceController@index');
+
 Route::post('sendform', 'LeadController@formsubmit')->name('contact.form');
 // mobile
 Route::post('propertymobile', 'PropertyController@mobile');

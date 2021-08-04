@@ -47,10 +47,16 @@
                 <h1 class="text-center">Find a Professional</h1>
                 <p class="text-center">Find and book the best professional near you</p>
                 <div class="mb-3 d-flex flex-column flex-sm-row w-100">
-                    <select name="" id="" class="w-100 py-1 rounded-3 px-2 border border-dark border-1 mb-2 mb-sm-0">
-                        <option value="">Select Service</option>
-                        <option value="">Select Service</option>
-                    </select>
+
+                    <input list="service" style="outline: none" class="w-100 py-1 rounded-3 px-2 border border-dark border-1 mb-2 mb-sm-0">
+                    <datalist  id="service">
+                        <option value="Internet Explorer">
+                        <option value="Firefox">
+                        <option value="Chrome">
+                        <option value="Opera">
+                        <option value="Safari">
+                    </datalist>
+
                     <select name="" id=""
                         class="w-100 py-1 rounded-3 px-2 border border-dark border-1 mb-2 mb-sm-0 ms-0 ms-sm-3">
                         <option value="">City</option>
@@ -70,7 +76,7 @@
 
     <div style="max-width: 1200px; margin: auto;" class="d-flex justify-content-center align-items-center mt-5">
         <div class="container-fluid h-100">
-            <h1 class="text-center">What do you need done?</h1>
+            <h1 class="text-center">What do you need to be done?</h1>
             <div class="row mt-5">
                 <div class="col-6 col-sm-6 col-md-4 col-lg-2">
                     <div

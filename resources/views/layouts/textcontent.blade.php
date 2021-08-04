@@ -4,8 +4,8 @@
             Chhatt.com
         </h2>
         <p>
-            If you are looking for the best costruction material and service propvider or property
-            and agencies then you are at the right place chhatt.com facilitates your material and property
+            If you are looking for the best costruction material and service provider or <a href="/property">property</a>
+            and <a href="/real-estate-agencies">agencies</a> then you are at right place, chhatt.com facilitates your material and property
             need, just on a click at chhatt.com and switch in the world of best and discounted costruction
             material and professionals.
 
@@ -21,7 +21,7 @@
         <div>
             <h3>Construction Materials</h3>
             <p>
-                Chhatt.com aims to provide you the best and discounted, all types of construction material.
+                Chhatt.com aims to provide you the best and discounted, all types of <a href='/construction'>construction material</a>.
                 As chhatt.com provides you the list of verified material vendors with their products which
                 they are selling with the details and their prices, from those vendors, consumer can chosee
                 who is selling the quality product with the best rates among those sellers.
@@ -35,9 +35,9 @@
         </div>
         <br />
         <div>
-            <h3>professionals</h3>
+            <h3>Professionals</h3>
             <p>
-                consumer can also find proffesional for new construcion/renovation or maintanance at chhatt.com.
+                Consumer can also find proffesional for new construcion/renovation or maintanance at chhatt.com.
                 we aims to provide trusted proffessional who gives the quality service on a due time.
                 consumer can find proffesionals like Architects, designers, engenieers, mason, carpainter, plumber,
                 electrision and many more..
