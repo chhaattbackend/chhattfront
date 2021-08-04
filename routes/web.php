@@ -32,8 +32,10 @@ Route::get('makelinks', 'SampleController@makelinks');
 
 
 // Route::get('/exapmle', function () {
-//     return view('frontend.agency.agentlist');
+//     return view('frontend.construction.service.index');
 // })->name('contact');
+
+Route::view('service', 'frontend.construction.service.index');
 
 Route::post('sendform', 'LeadController@formsubmit')->name('contact.form');
 

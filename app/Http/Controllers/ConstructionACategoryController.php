@@ -75,6 +75,7 @@ class ConstructionACategoryController extends Controller
             $query->where('name', 'like', '%' . $request->searched . '%');
         })->orWhere('name', 'like', '%' . $request->searched . '%')->get();
 
+        // abort_if($products->isEmpty(), 404);
         if ($products->isEmpty()) {
             abort(404);
         }
