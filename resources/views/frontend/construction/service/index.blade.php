@@ -46,27 +46,7 @@
             <div class="search_cont w-100">
                 <h1 class="text-center">Find a Professional</h1>
                 <p class="text-center">Find and book the best professional near you</p>
-                <div class="mb-3 d-flex flex-column flex-sm-row w-100">
-
-                    <input list="service" style="outline: none" class="w-100 py-1 rounded-3 px-2 border border-dark border-1 mb-2 mb-sm-0">
-                    <datalist  id="service">
-                        <option value="Internet Explorer">
-                        <option value="Firefox">
-                        <option value="Chrome">
-                        <option value="Opera">
-                        <option value="Safari">
-                    </datalist>
-
-                    <select name="" id=""
-                        class="w-100 py-1 rounded-3 px-2 border border-dark border-1 mb-2 mb-sm-0 ms-0 ms-sm-3">
-                        <option value="">City</option>
-                        <option value="">City</option>
-                    </select>
-                    <select name="" id="" class="w-100 py-1 rounded-3 px-2 border border-dark border-1 ms-0 ms-sm-3">
-                        <option value="">Area</option>
-                        <option value="">Area</option>
-                    </select>
-                </div>
+                @livewire('service.dropdowns')
                 <div class="w-100">
                     <button class="bg-dark w-100 border-0 text-white py-2 small rounded-3">Search Professionals</button>
                 </div>

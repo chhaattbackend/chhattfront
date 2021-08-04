@@ -9,6 +9,7 @@ class ConstructionService extends Model
 {
     protected $connection = 'mysql2';
     protected $table = 'services';
+    
     public function category(){
         return $this->belongsTo(ConstructionServiceType::class,'service_type_id');
     }
