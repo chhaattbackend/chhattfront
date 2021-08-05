@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Service;
 use App\AreaOne;
 use App\City;
 use App\ConstructionService;
+use App\ConstructionServiceType;
 use Livewire\Component;
 
 class Dropdowns extends Component
@@ -18,7 +19,7 @@ class Dropdowns extends Component
 
     public function mount()
     {
-        $this->service = ConstructionService::take(3)->get();
+        $this->service = ConstructionServiceType::take(3)->get();
         $this->city = City::take(3)->get();
         $this->area = AreaOne::take(3)->get();
     }
@@ -29,7 +30,7 @@ class Dropdowns extends Component
             $this->city = City::where('name', 'like', '%' . $this->citykey . '%')->get();
         }
         if ($whatto == 'service') {
-            $this->service = ConstructionService::where('name', 'like', '%' . $this->servicekey . '%')->get();
+            $this->service = ConstructionServiceType::where('name', 'like', '%' . $this->servicekey . '%')->get();
         }
         if ($whatto == 'area') {
             $this->area = AreaOne::where('name', 'like', '%' . $this->areakey . '%')->get();

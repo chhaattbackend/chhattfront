@@ -57,16 +57,7 @@ class ConstructionStoreController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $name = time() . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('/images');
-            $img = $image->move($destinationPath, $name);
-            Store::create($request->except('image') + ['image' => $name]);
-        } else {
-            Store::create($request->all());
-        }
-        return redirect()->route('stores.index');
+        //
     }
 
     /**

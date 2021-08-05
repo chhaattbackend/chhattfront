@@ -35,7 +35,8 @@ Route::get('/contact-us', function () {
 
 Route::get('makelinks', 'SampleController@makelinks');
 
-Route::get('/professionals', 'ConstructionUserServiceController@index');
+Route::get('/professionals', 'ConstructionServiceController@index');
+// Route::get('/professionals', [\App\Http\Livewire\Service\Web\Index::class, '__invoke']); // for livewire
 
 Route::post('sendform', 'LeadController@formsubmit')->name('contact.form');
 // mobile
