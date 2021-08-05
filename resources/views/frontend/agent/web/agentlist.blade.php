@@ -30,17 +30,17 @@
         <div class="mapCardContainer">
             <div class="container-fluid px-0">
 
-                <div class="row">
-                    @foreach ($members as $item)
-                    @if ($item->user != null)
+                    <div class="row">
+                        @foreach ($members as $item)
+                        @if ($item->user != null)
 
-                    <div class="col-sm-4 col-lg-3 mb-4">
-                        <!-- property card start -->
-                        <div class="propertyCard1 p-2">
-                            <a class="text-decoration-none position-relative" href="#">
-                                <div class="imageSection">
+                        <div class="col-sm-4 col-lg-3 mb-4">
+                            <!-- property card start -->
+                            <div class="propertyCard1 p-2">
+                                <a class="text-decoration-none position-relative" href="#">
+                                    <div class="imageSection">
 
-                                    <img class="slideImg"
+                                        <img class="slideImg"
 
                                         @if  (@$item->user->thumbnail == null)
                                         src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
@@ -50,24 +50,27 @@
                                         src="https://chhatt.s3.ap-south-1.amazonaws.com/users/{!! $item->user->thumbnail !!}"
                                         @endif
                                         alt="" />
-                                </div>
-                                <div class="text-dark paraContainer mt-3">
-                                    <div class="mt-1">
-                                        <h6 class="lightColor">{{$item->user->name}}</h6>
-                                        <div class="name"></div>
-                                        <div class="mt-2">
-                                            <strong class="mt-5">{{$item->agency->name}}</strong>
-                                        </div>
-                                        <h6 class="mt-0">
-                                            Total Properties:
-                                            <strong>
-                                                {{ $item->user->properties->count() }}
+                                    </div>
+                                    <div class="text-dark paraContainer mt-3">
+                                        <div class="mt-1">
+                                            <h6 class="lightColor">{{$item->user->name}}</h6>
+                                            <div class="name"></div>
+                                            <div class="mt-2">
+                                                <strong class="mt-5">{{$item->agency->name}}</strong>
+                                            </div>
+                                            <h6 class="mt-0">
+                                                Total Properties:
+                                                <strong>
+                                                    {{count($item->user->properties)}}
                                             </strong>
                                         </h6>
                                         <div class="w-100 d-flex justify-content-center mt-1">
-                                            <button class="cardBtn rounded-pill px-3 mt-1">
-                                                Get in touch
-                                            </button>
+                                            <a href="{{route('agent.single',['id'=>$item->id])}}">
+                                                <button class="cardBtn rounded-pill px-3 mt-1">
+                                                    Get in touch
+                                                </button>
+                                            </a>
+
                                         </div>
                                     </div>
                                 </div>

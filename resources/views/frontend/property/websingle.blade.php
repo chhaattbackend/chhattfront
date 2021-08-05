@@ -255,7 +255,7 @@
                                     placeholder="Email" required />
                                 <br />
                                 <div class="phone_inp">
-                                    <input class="inpC mt-4" type="number" name="email" placeholder="Phone" />
+                                    <input class="inpC mt-4" type="number" name="phone" placeholder="Phone" />
                                     <div class="flag d-flex">
                                       <img src="https://cdn.britannica.com/46/3346-004-D3BDE016/flag-symbolism-Pakistan-design-Islamic.jpg"
                                         alt="">
@@ -282,6 +282,9 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                     @error('name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    @error('phone')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                     <!--  <LoginForm />  -->
