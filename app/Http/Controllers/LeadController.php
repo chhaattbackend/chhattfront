@@ -190,11 +190,13 @@ class LeadController extends Controller
 
     public function formsubmit(Request $request)
     {
+        // dd('d');
 
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'description'=>'required'
+            'description'=>'required',
+            'phone'=>'required',
         ]);
         // dd($request->all());
         // dd($request->on_store);
@@ -214,7 +216,7 @@ class LeadController extends Controller
         // dd($request->lead_from);
 
         if ($request->lead_from == 'property') {
-            // dd('property');
+            dd('property');
 
             LeadAssign::create([
 

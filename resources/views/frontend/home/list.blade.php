@@ -19,7 +19,7 @@ $count = 0;
 @foreach ($property as $item)
 
     @if ($count < 24)
-    
+
         @if (str_contains($item->images, 'StaticMap') != true && str_contains($item->images,
         'static') != true) @if ($item->images->count() > 1)
             @php

@@ -72,7 +72,7 @@
             <div class="top">
                 <p>Property & Agency</p>
                 <p>
-                    <a href="{{ route('construction.home') }}" class="text-decoration-none">
+                    <a href="{{ route('property') }}" class="text-decoration-none">
                         View All
                     </a>
                 </p>
@@ -147,7 +147,7 @@
                                         </a>
                                         <i class="ms-2 bi bi-caret-right-square-fill"></i>
                                     </div>
-                                </div>    sdfdf
+                                </div>
                             </div>
                         </div>
                         <!-- card end -->
@@ -277,32 +277,32 @@
                                 </div>
                                 <div class="ms-2">
                                     <div class="d-flex align-items-center">
-                                        <a href="" class="text-decoration-none text-dark">
+                                        <a href="{{route('agent.special',['name'=>'Bungalow Specialist'])}}" class="text-decoration-none text-dark">
                                             <p class="mb-0 pt-0"> Bungalow Specialist </p>
                                         </a>
                                         <i class="ms-2 bi bi-caret-right-square-fill"></i>
                                     </div>
                                     <div class="d-flex align-items-center">
-                                        <a href="" class="text-decoration-none text-dark">
-                                            <p class="mb-0 pt-0"> Commercial Specialist </p>
+                                        <a href="{{route('agent.special',['name'=>'Residential Specialist'])}}" class="text-decoration-none text-dark">
+                                            <p class="mb-0 pt-0"> Residential Specialist </p>
 
                                         </a>
                                         <i class="ms-2 bi bi-caret-right-square-fill"></i>
                                     </div>
                                     <div class="d-flex align-items-center">
-                                        <a href="" class="text-decoration-none text-dark">
-                                            <p class="mb-0 pt-0"> Plot Specialist </p>
-
-                                        </a>
-                                        <i class="ms-2 bi bi-caret-right-square-fill"></i>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <a href="" class="text-decoration-none text-dark">
+                                        <a href="{{route('agent.special',['name'=>'General Specialist'])}}" class="text-decoration-none text-dark">
                                             <p class="mb-0 pt-0"> General Specialist </p>
 
                                         </a>
                                         <i class="ms-2 bi bi-caret-right-square-fill"></i>
                                     </div>
+                                    {{-- <div class="d-flex align-items-center">
+                                        <a href="" class="text-decoration-none text-dark">
+                                            <p class="mb-0 pt-0"> General Specialist </p>
+
+                                        </a>
+                                        <i class="ms-2 bi bi-caret-right-square-fill"></i>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -454,6 +454,9 @@
             </div>
         </div>
     </div>
+    @php
+        $count = 0;
+    @endphp
 
     <div class="bestprperty_main_div">
         <div class="fdiv">
@@ -466,6 +469,9 @@
             <div class="sdiv">
                 <ul>
                     @foreach ($property as $item)
+                        @if ($count < 24)
+                             @if (str_contains($item->images, 'StaticMap') != true && str_contains($item->images,
+                                'static') != true) @if ($item->images->count() > 1)
                         @php
                             $id = @$item->areaOne->city->name . '-' . @$item->type . '-' . @$item->property_type . '-' . @$item->property_for . '-' . @$item->areaOne->name . '-' . @$item->areaTwo->name . '-' . $item->id;
                             $id = str_replace(str_split('\\/:*?"<>|()'), '-', strtolower($id));
@@ -477,8 +483,17 @@
                             <div>
                                 <!-- card start -->
                                 <a href="{{ route('single.property', $id) }}" class="card_main_div text-decoration-none">
+
+                                    @if (!$item->images->isEmpty())
                                     <img src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ @$item->images[0]->name }}"
                                         class="propertyImg" alt="" />
+                                        @else
+                                        <img
+                                        src="https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"
+                                        alt="" class="slideImg">
+                                        @endif
+
+
                                     <p class="mb-0"> {{ $item->type }} </p>
                                     <b>
                                         {{ $item->property_for }} in
@@ -499,6 +514,9 @@
                                 <!-- card end -->
                             </div>
                         </li>
+                         @endif
+                         @endif
+                          @endif
                     @endforeach
                 </ul>
             </div>

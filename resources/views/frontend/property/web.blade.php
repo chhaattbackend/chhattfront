@@ -236,7 +236,7 @@
 
 
                 <div id="list" class="row px-2">
-                    @include('frontend.property.list')
+                    @include('layouts.listwithimage')
                 </div>
 
             </div>

@@ -9,6 +9,7 @@ use App\AreaOne;
 use App\AgentArea;
 use App\AreaTwo;
 use App\Position;
+use App\Property;
 use App\Speciality;
 use App\User;
 use Illuminate\Http\Request;
@@ -246,6 +247,8 @@ class AgentController extends Controller
         ->where('specialities.name','=',$request->name)
         ->select('agents.*')
         ->paginate(12);
+        // dd($members);
+
         //  return $speciality;
 
 
@@ -254,8 +257,73 @@ class AgentController extends Controller
         ));
         $getname = $members[1]->agency->name;
 
+        // return $members;
 
-        return view('frontend.agency.agentlist',compact('members'));
+
+        return view('frontend.agent.index',compact('members'));
+    }
+    public function singleRealtor(Request $request)
+    {
+
+
+        $agent = Agent::find($request->id);
+
+
+
+        $relatedagents=Agent::join('agent_specialities','agent_specialities.agent_id','=','agents.id')
+        ->join('specialities','specialities.id','=','agent_specialities.speciality_id')
+        ->where('specialities.id','=',$agent->specialities[0]->speciality_id)
+        ->select('agents.*')->get();
+
+
+
+            return view('frontend.agent.singleindex',compact('agent','relatedagents'));
+    }
+
+
+
+    public function mobileajax(Request $request)
+    {
+        // dd($request->members);
+        if ($request->keyword == null || $request->keyword == ' ') {
+            $members = Agent::paginate(10);
+            // dd('f');
+        } else {
+            $mem =$request->members;
+            // dd($mem['data'].indexOf(1));
+            $members = Agent::whereIn('id',$mem['data']);
+            // dd($members[]);
+
+            $seacrh = $request->keyword;
+
+            $members = $members->whereHas('user', function ($query) use ($seacrh) {
+                $query->where('name', 'like', '%' . $seacrh . '%');
+            })->orWhereHas('agency', function ($query) use ($seacrh) {
+                $query->where('name', 'like', '%' . $seacrh . '%');
+            })->paginate(10)->setPath('');
+
+            // $seacrh = $request->keyword;
+            // // $members = Agent::where('id', '!=', null);
+            // // dd($agent);
+
+            // $members = $agent->whereHas('user', function ($query) use ($seacrh) {
+            //     $query->where('name', 'like', '%' . $seacrh . '%');
+            // })->orWhereHas('agency', function ($query) use ($seacrh) {
+            //     $query->where('name', 'like', '%' . $seacrh . '%');
+            // })->paginate(10)->setPath('');
+
+            $pagination = $members->appends(array(
+                'keyword' => $request->keyword
+            ));
+        }
+
+        $data = view('frontend.agent.mobile.agentlist', compact('members'))->render();
+
+        return response()->json([
+            'data' => $data,
+            'total' => (string) $members->total(),
+            'pagination' => (string) $members->links()
+        ]);
     }
 
     public function filter(Request $request)

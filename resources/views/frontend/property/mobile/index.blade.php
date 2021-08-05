@@ -343,7 +343,9 @@
             </div>
         </div>
         <!-- property Type end -->
-
+        @php
+            $count=0;
+        @endphp
         <!-- best property start -->
         <div class="best_main_div">
             <div class="fdiv">
@@ -356,6 +358,9 @@
                 <div class="sdiv">
                     <ul>
                         @foreach ($properties as $item)
+                        @if ($count < 24)
+                        @if (str_contains($item->images, 'StaticMap') != true && str_contains($item->images,
+                           'static') != true) @if ($item->images->count() > 1)
                             @php
                                 $id = @$item->areaOne->city->name . '-' . @$item->type . '-' . @$item->property_type . '-' . @$item->property_for . '-' . @$item->areaOne->name . '-' . @$item->areaTwo->name . '-' . $item->id;
                                 $id = str_replace(str_split('\\/:*?"<>|()'), '-', strtolower($id));
@@ -388,6 +393,9 @@
                                     </a>
                                 </div>
                             </li>
+                            @endif
+                            @endif
+                             @endif
                         @endforeach
                     </ul>
                 </div>

@@ -14,15 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'PropertyController@home')->name('home');
+Route::get('/agentsingle', 'AgentController@singleRealtor')->name('agent.single');
 Route::get('/property', 'PropertyController@index')->name('property');
 Route::get('/result', 'PropertyController@search')->name('property.search');
+// Route::get('/realtorDetail/{id}', 'AgentController@singleRealtor')->name('single.realtor');
 Route::get('/searchone', 'AgencyController@newAgency')->name('agent.search');
 Route::get('/getspeciality', 'AgentController@getSpeciality')->name('agent.special');
 Route::get('/real-estate-agencies', 'AgencyController@index')->name('agency');
 Route::get('/agency/{id}', 'AgencyController@singleAgency')->name('single.agency');
 Route::get('/propertyDetail/{id}', 'PropertyController@singleProperty')->name('single.property');
+
 Route::post('/agency/ajax', 'AgencyController@ajax');
 Route::post('/agency/mobileajax', 'AgencyController@mobileajax');
+Route::post('/agent/mobileajax', 'AgentController@mobileajax');
 Route::get('/property/{property_type}', 'PropertyController@explorer')->name('explorer.search');
 Route::get('/contact-us', function () {
     return view('layouts.contact');

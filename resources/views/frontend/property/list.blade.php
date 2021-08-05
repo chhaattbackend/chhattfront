@@ -16,9 +16,9 @@ $count = 0;
 @endphp
 
 @forelse ($properties as $item)
-@if ($count < 24)
- @if (str_contains($item->images, 'StaticMap') != true && str_contains($item->images, 'static') != true)
- @if ($item->images->count() > 1)
+{{-- @if ($count < 24)
+@if (str_contains($item->images, 'StaticMap') != true && str_contains($item->images, 'static') != true)
+@if ($item->images->count() > 1) --}}
 {{-- @dd(str_contains($item->images, 'static')); --}}
 {{-- @if (str_contains($item->images, 'StaticMap') != true && str_contains($item->images, 'static') != true) --}}
     @php
@@ -100,9 +100,9 @@ $count = 0;
         </div>
         <!-- property card end -->
     </div>
+    {{-- @endif
     @endif
-    @endif
-@endif
+@endif --}}
 
 @empty
     <p>no data found</p>
