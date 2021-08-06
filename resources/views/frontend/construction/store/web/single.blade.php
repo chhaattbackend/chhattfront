@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('style')
-    
+
     <title>{{ $store->name }} for the latest price and updates contact us</title>
     <meta name="title" content="{{ $store->name }} for the latest price and updates contact us">
     <meta name="description" content="{{ $store->name }} - for the best quality construction materials and other hardwareequipment, latest prices and updates must contact us and visit Chhatt.com">
@@ -444,7 +444,7 @@
                     </div>
                     <div class="form-group m-auto mt-5">
                         <textarea class="form-field" style="height: 200px;" name="description"
-                            placeholder="Requirement Your Details"></textarea>
+                            placeholder="Your Details"></textarea>
 
                         <!-- <span>@gmai</span> -->
                     </div>

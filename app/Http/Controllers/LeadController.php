@@ -216,7 +216,7 @@ class LeadController extends Controller
         // dd($request->lead_from);
 
         if ($request->lead_from == 'property') {
-            dd('property');
+            // dd('property');
 
             LeadAssign::create([
 

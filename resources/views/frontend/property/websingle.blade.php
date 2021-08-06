@@ -275,6 +275,10 @@
                     </div>
 
                     <br />
+                    @if (Session::has('message'))
+                    <p class="alert alert-info">{{ Session::get('message') }}</p>
+                @endif
+
                     @error('description')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror

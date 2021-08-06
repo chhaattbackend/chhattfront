@@ -84,7 +84,8 @@
             </a>
             <hr />
             <div class="innerContactform">
-                <form action="{{ route('contact.form') }}" method="POST">
+                <form action="{{ route('contact.form',['agent_id'=>$agent->id]) }}"
+                    method="POST">
                     @csrf
                     <input type="hidden" name='agent_id' value="{!! $agent->id !!}">
                     <input type="hidden" name='lead_from' value="property">
@@ -112,8 +113,14 @@
                     </Button>
                 </form>
             </div>
+            <br />
+            @if (Session::has('message'))
+        <p class="alert alert-info">{{ Session::get('message') }}</p>
+         @endif
         </div>
-        <br />
+
+
+
         @error('description')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror

@@ -82,7 +82,7 @@ h5 {
 }
 
 .navbarContainer.sticky {
-    background-color: #000;
+    background-color: rgb(0, 0, 0);
     width: 100vw;
     transition: 0.6s all;
     margin: auto;
