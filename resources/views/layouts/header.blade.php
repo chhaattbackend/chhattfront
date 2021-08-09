@@ -8,8 +8,8 @@
                     </a>
                 </div>
                 <div class="tabss">
-                    @if (Route::current()->getName() == '')
-                    @endif
+                    {{-- @if (Route::current()->getName() == '')
+                    @endif --}}
                     <p></p>
                     <ul>
                         <a class="text-decoration-none" href="{{ route('home') }}">
