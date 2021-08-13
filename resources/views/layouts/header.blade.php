@@ -12,21 +12,21 @@
                     @endif --}}
                     <p></p>
                     <ul>
-                        <a class="text-decoration-none" href="{{ route('home') }}">
+                        {{-- <a class="text-decoration-none" href="{{ route('home') }}">
                             <li id="home" style="color: #fff" @if (Route::current()->getName() == 'home') class="activeNav" @endif class="lif">
                                 <span>Home</span>
                             </li>
-                        </a>
+                        </a> --}}
                         <a class="text-decoration-none" href="{{ route('property') }}">
                             <li id="property" style="color: #fff" @if (Route::current()->getName() == 'property' || Route::current()->getName() == 'explorer.search' || Route::current()->getName() == 'property.search' || Route::current()->getName() == 'single.property') class="activeNav" @endif class="lis">
                                 <span>Property</span>
                             </li>
                         </a>
-                        <a class="text-decoration-none" href="{{ route('construction.home') }}">
+                        {{-- <a class="text-decoration-none" href="{{ route('construction.home') }}">
                             <li id="home" style="color: #fff" @if (Str::contains(Route::current()->getName(), 'construction')) class="activeNav" @endif class="lis">
                                 <span>Construction Material</span>
                             </li>
-                        </a>
+                        </a> --}}
 
                         <a class="text-decoration-none" href="{{ route('agency') }}">
 

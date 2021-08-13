@@ -250,6 +250,7 @@ class PropertyController extends Controller
 
     public function home(Request $request)
     {
+        return redirect()->route('property');
 
         if (isset($request->type)) {
             if ($request->type == 'All') {
@@ -329,7 +330,7 @@ class PropertyController extends Controller
 
             if ($request->type == 'All') {
                 if (isset($request->p)) {
-                    $properties = Property::paginate(100);
+                    $properties = Property::paginate(200);
                 } else {
                     $properties = Property::paginate(10);
                 }
@@ -358,7 +359,7 @@ class PropertyController extends Controller
         }
 
 
-        $properties = Property::paginate(100);
+        $properties = Property::paginate(200);
         $agencies = Agency::paginate(10);
         $city = City::all();
         $propertytype = PropertyType::all();
