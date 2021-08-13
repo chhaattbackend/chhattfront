@@ -22,11 +22,16 @@
                                 <span>Property</span>
                             </li>
                         </a>
-                        {{-- <a class="text-decoration-none" href="{{ route('construction.home') }}">
-                            <li id="home" style="color: #fff" @if (Str::contains(Route::current()->getName(), 'construction')) class="activeNav" @endif class="lis">
-                                <span>Construction Material</span>
+                        <a class="text-decoration-none" href="{{ route('buy.property',['property_for'=>'For Sale']) }}">
+                            <li id="home" style="color: #fff" @if (Str::contains(Route::current()->getName(), 'buy.property')) class="activeNav" @endif class="lis">
+                                <span>For Buy</span>
                             </li>
-                        </a> --}}
+                        </a>
+                        <a class="text-decoration-none" href="{{ route('rent.property',['property_for'=>'For Rent']) }}">
+                            <li id="home" style="color: #fff" @if (Str::contains(Route::current()->getName(), 'rent.property')) class="activeNav" @endif class="lis">
+                                <span>For Rent</span>
+                            </li>
+                        </a>
 
                         <a class="text-decoration-none" href="{{ route('agency') }}">
 

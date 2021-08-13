@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Livewire\Livewire;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +16,8 @@ use Livewire\Livewire;
 Route::get('/', 'PropertyController@home')->name('home');
 Route::get('/agentsingle', 'AgentController@singleRealtor')->name('agent.single');
 Route::get('/property', 'PropertyController@index')->name('property');
+Route::get('/forbuy', 'PropertyController@forBuy')->name('buy.property');
+Route::get('/forRent', 'PropertyController@forBuy')->name('rent.property');
 Route::get('/result', 'PropertyController@search')->name('property.search');
 // Route::get('/realtorDetail/{id}', 'AgentController@singleRealtor')->name('single.realtor');
 Route::get('/searchone', 'AgencyController@newAgency')->name('agent.search');
@@ -33,12 +34,12 @@ Route::get('/contact-us', function () {
     return view('layouts.contact');
 })->name('contact');
 
-Route::get('makelinks', 'SampleController@makelinks');
-
-Route::get('/professionals', 'ConstructionServiceController@index');
-// Route::get('/professionals', [\App\Http\Livewire\Service\Web\Index::class, '__invoke']); // for livewire
+// Route::get('/exapmle', function () {
+//     return view('frontend.agency.agentlist');
+// })->name('contact');
 
 Route::post('sendform', 'LeadController@formsubmit')->name('contact.form');
+
 // mobile
 Route::post('propertymobile', 'PropertyController@mobile');
 Route::get('filter/{for}', 'PropertyController@mobile')->name('filter');
@@ -56,9 +57,4 @@ Route::get('{acategory:slug}/{bcategory:slug}', 'ConstructionBCategoryController
 Route::get('{acategory:slug}/{bcategory:slug}/{ccategory:slug}', 'ConstructionBCategoryController@ccatproductlist')->name('construction.ccatproductlist');
 Route::get('{acategory:slug}/{bcategory:slug}/{ccategory:slug}/{dcategory:slug}', 'ConstructionBCategoryController@dcatproductlist')->name('construction.dcatproductlist');
 Route::get('{acategory:slug}/{bcategory:slug}/{ccategory:slug}/brand/{brand:slug}', 'ConstructionBCategoryController@brandproductlist')->name('construction.brandproductlist');
-
-
-
-
-
 // });
