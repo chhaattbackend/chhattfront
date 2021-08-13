@@ -407,7 +407,7 @@
                                 .setAttribute("placeholder", "Loading...");
                             // Fetch External Data Source
                             const source = await fetch(
-                                `http://uat.chhatt.com/api/allareas?city=${city}`
+                                `https://uat.chhatt.com/api/allareas?city=${city}`
                             );
                             areas = await source.json();
                             // Post Loading placeholder text
