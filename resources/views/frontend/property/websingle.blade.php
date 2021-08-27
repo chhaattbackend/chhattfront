@@ -1,7 +1,10 @@
 @extends('layouts.master')
 @section('style')
-    <title>Beautiful {{ @$properties->size }} {{ @$properties->size_type }} {{ @$properties->property_type }} {{ @$properties->property_for }} In {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }} {{ $properties->areaOne->city->name }} | Chhatt.com</title>
-    <meta name="title" content="Beautiful {{ @$properties->size }} {{ @$properties->size_type }} {{ @$properties->property_type }}{{ @$properties->property_for }} In {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }} {{ $properties->areaOne->city->name }} | Chhatt.com">
+    <title>Beautiful {{ @$properties->size }} {{ @$properties->size_type }} {{ @$properties->property_type }}
+        {{ @$properties->property_for }} In {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }}
+        {{ $properties->areaOne->city->name }} | Chhatt.com</title>
+    <meta name="title"
+        content="Beautiful {{ @$properties->size }} {{ @$properties->size_type }} {{ @$properties->property_type }}{{ @$properties->property_for }} In {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }} {{ $properties->areaOne->city->name }} | Chhatt.com">
     <meta name="description"
         content="Find the {{ @$properties->size }} {{ @$properties->size_type }} {{ @$properties->property_type }} {{ @$properties->property_for }} In {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }} {{ $properties->areaOne->city->name }}. Chhatt.com provides you luxury apartments, flats and properties at best prices.">
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/index.css') }}" />
@@ -65,8 +68,8 @@
             <div class="share_div">
 
                 <!--  <button>
-                                                                                                                    <MdFavoriteBorder /> Favorite
-                                                                                                                  </button>  -->
+                                                                                                                            <MdFavoriteBorder /> Favorite
+                                                                                                                          </button>  -->
                 <!--  <button>Print</button>  -->
             </div>
         </div>
@@ -200,9 +203,17 @@
                             {{ @$properties->property_type }} {{ @$properties->property_for }} in
                             {{ @$properties->areaOne->name }}
                         </h2>
-                        <h2>
-                            PKR {{ @convert_rupee($properties->price) }}
-                        </h2>
+                        @if (@convert_rupee($properties->price) == '0')
+                            <h2>
+                                PKR: On Call
+                            </h2>
+                        @else
+                            <h2>
+                                PKR: {{ @convert_rupee($properties->price) }}
+                            </h2>
+
+                        @endif
+
                         <p>
                             {{ @$properties->address }}
                         </p>
@@ -210,29 +221,49 @@
                     <br />
                     <!--  HIDDEN FOR MAP PAGE END  -->
                     <div class="contactContainer">
-                        <h2>Contact Us</h2>
+                        <h2>Contact Realtor</h2>
                         <div class="Style_contactUser__3SauW">
                             {{-- {{ $properties->user }} --}}
                             @if ($properties->user->thumbnail != null)
                                 <div style="text-align: center">
-                                    <img width="60px" height="60px" style="border-radius: 50px"
-                                        src="https://chhatt.s3.ap-south-1.amazonaws.com/users/{!! $properties->user->thumbnail !!}"
-                                        alt="{{ $properties->user->name }}">
+                                    <a href="{{ route('agent.single', ['id' => $properties->user->agent->id]) }}">
+
+                                        <img width="60px" height="60px" style="border-radius: 50px"
+                                            src="https://chhatt.s3.ap-south-1.amazonaws.com/users/{!! $properties->user->thumbnail !!}"
+                                            alt="{{ $properties->user->name }}">
+                                    </a>
+                                    {{-- @dd($properties->user->agent) --}}
                                     <h5 class="pt-2 pb-1">{!! $properties->user->name !!} </h5>
+
+                                    <a href="{{ route('single.agency', ['id' => $properties->user->agent->agency->id]) }}">
+
+                                        <h6 class="pt-2 pb-1">{!! @$properties->user->agent->agency->name !!}</h6>
+                                    </a>
                                 </div>
 
                             @else
                                 <div style="text-align: center">
-                                    <img width="60px" height="60px" style="border-radius: 50px"
-                                        src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
-                                        alt="M Akhlaq Khan">
+                                    <a href="{{ route('agent.single', ['id' => $properties->user->agent->id]) }}">
+
+                                        <img width="60px" height="60px" style="border-radius: 50px"
+                                            src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
+                                            alt="M Akhlaq Khan">
+                                    </a>
                                     <h5 class="pt-2 pb-1">{!! $properties->user->name !!} </h5>
+                                    {{-- @dd($properties->user) --}}
+                                    {{-- @dd($properties->id) --}}
+                                    <a href="{{ route('single.agency', ['id' => $properties->user->agent->agency->id]) }}" class="text-decoration-none" style="color: #333;opacity: 0.6">
+
+                                        <h6 class="pt-2 pb-1">{!! @$properties->user->agent->agency->name !!} </h6>
+                                    </a>
                                 </div>
                             @endif
 
                         </div>
 
                         <input hidden type="text" id="numberrrr" value="{{ @$properties->user->phone }}">
+
+
                         <Button class="showNumber ripple" onclick="chnagenumb()">
                             <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
                                 class="text-white" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"
@@ -242,6 +273,7 @@
                                 </path>
                             </svg> <span id="changethis">Call Now</span>
                         </Button>
+
                         <hr />
                         <div class="innerContactform">
                             <form action="{{ route('contact.form') }}" method="POST">
@@ -257,11 +289,11 @@
                                 <div class="phone_inp">
                                     <input class="inpC mt-4" type="number" name="phone" placeholder="Phone" />
                                     <div class="flag d-flex">
-                                      <img src="https://cdn.britannica.com/46/3346-004-D3BDE016/flag-symbolism-Pakistan-design-Islamic.jpg"
-                                        alt="">
-                                      <h6>+92</h6>
+                                        <img src="https://cdn.britannica.com/46/3346-004-D3BDE016/flag-symbolism-Pakistan-design-Islamic.jpg"
+                                            alt="">
+                                        <h6>+92</h6>
                                     </div>
-                                  </div>
+                                </div>
                                 <textarea required name="description" class="@error('description') is-invalid @enderror"
                                     rows="5">I saw your ad on Chhatt.com (چھت).&#013;I am interested in your property {!! $properties->id !!} Please do give reference of Chhatt.com to the Realtor/Property Owner</textarea>
                                 <br />
@@ -276,8 +308,8 @@
 
                     <br />
                     @if (Session::has('message'))
-                    <p class="alert alert-info">{{ Session::get('message') }}</p>
-                @endif
+                        <p class="alert alert-info">{{ Session::get('message') }}</p>
+                    @endif
 
                     @error('description')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -306,10 +338,11 @@
 
                 <div class="ms-4">
 
-                    <a href="{{ route('property.search', ['city' => $properties->areaOne->city->name,'area_type' => $properties->type]) }}">
-                    <button class="themebtn2 px-3 py-1 ms-1" type="submit">
+                    <a
+                        href="{{ route('property.search', ['city' => $properties->areaOne->city->name, 'area_type' => $properties->type]) }}">
+                        <button class="themebtn2 px-3 py-1 ms-1" type="submit">
 
-                        View all</button>
+                            View all</button>
                     </a>
                 </div>
 

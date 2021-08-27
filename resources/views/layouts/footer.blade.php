@@ -41,7 +41,7 @@
               <div class="txt_div">
                 <p class="m-0">Phone</p>
                 <a class="m-0" href="tel:03302244288">
-                  033 02 244288
+                  0330 2244288
                 </a>
               </div>
             </div>
@@ -151,11 +151,15 @@
               &copy;2021 <span style="color: #007BFF">Chhatt</span>, All
               rights reserved
             </p>
-              <button>
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#fff" class="bi bi-arrow-up-short" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
-                </svg>
-              </button>
+            
+
+                <button>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#fff" class="bi bi-arrow-up-short" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
+                  </svg>
+                </button>
+
+
           </div>
         </div>
       </footer>

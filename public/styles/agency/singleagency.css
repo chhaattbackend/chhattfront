@@ -1,10 +1,12 @@
 /* AGENCY BODY START */
+
 .detailSection {
     max-width: 1280px;
     min-width: 1007px;
     margin: 70px auto;
     display: flex;
 }
+
 .detailSection .right_side {
     margin-right: 20px;
     width: 70%;
@@ -170,7 +172,9 @@
     align-items: center;
 }
 
+
 /* AGENCY BODY END */
+
 
 /* AGENTS START */
 
@@ -210,9 +214,10 @@
     width: 100%;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 5px #eee;
-    margin-top: 20px;
+    margin-top: 40px;
     padding: 35px;
     position: relative;
+    height: 100%;
 }
 
 .maindivAgentCard .imgContainer {
@@ -225,7 +230,7 @@
 .maindivAgentCard .imgContainer img {
     width: 128px;
     border-radius: 50%;
-    padding: 5px;
+    padding: 10px;
     box-shadow: 1px 1px 10px #c1c1c1;
     height: 128px;
 }
@@ -273,7 +278,9 @@
     background: rgb(0, 123, 255);
 }
 
+
 /* AGENTS END */
+
 
 /* SLIDER START */
 
@@ -348,5 +355,6 @@
 .lightColor {
     color: rgba(0, 0, 0, 0.3);
 }
+
 
 /* SLIDER END */

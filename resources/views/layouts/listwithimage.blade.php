@@ -16,9 +16,9 @@ $count = 0;
 @endphp
 
 @forelse ($properties as $item)
-@if ($count < 24)
+{{-- @if ($count < 24)
 @if (str_contains($item->images, 'StaticMap') != true && str_contains($item->images, 'static') != true)
-@if ($item->images->count() > 1)
+@if ($item->images->count() > 1) --}}
 {{-- @dd(str_contains($item->images, 'static')); --}}
 {{-- @if (str_contains($item->images, 'StaticMap') != true && str_contains($item->images, 'static') != true) --}}
     @php
@@ -44,7 +44,9 @@ $count = 0;
 
                     <div class="cardTag position-absolute">
                         <h6>
+                            
                             {{ $item->property_for }}
+                            {{-- @dd($item->user) --}}
                         </h6>
                     </div>
 
@@ -62,7 +64,7 @@ $count = 0;
                         </div>
                         <h6 style="text-align: left" class="mt-1 mb-1">
                             @if ($item->price == null || $item->price == 0)
-                                <span style="background: red;" class="badge badge-pill badge-danger">On Request</span>
+                                 <span style="background: red;" class="badge badge-pill badge-danger">Rs: On Call</span>
                             @else
                                 <strong>
                                     <p style="color: rgb(228, 20, 20)">
@@ -100,9 +102,9 @@ $count = 0;
         </div>
         <!-- property card end -->
     </div>
+    {{-- @endif
     @endif
-    @endif
-@endif
+@endif --}}
 
 @empty
     <p>no data found</p>

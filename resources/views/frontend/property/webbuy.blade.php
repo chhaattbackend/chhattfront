@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="{{ asset('styles/mediaquery.css') }}">
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.1.3/dist/css/autoComplete.01.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 
 @endsection
 
@@ -19,7 +22,7 @@
     <div class="mn_divz">
         <div class="backgz">
             <div class="backg_sdivz">
-                <h1 class="fw-bolder">Find the best properties from top locations</h1>
+                <h1 class="fw-bolder">Find the best Projects</h1>
             </div>
         </div>
     </div>
@@ -28,7 +31,7 @@
     <!-- agency search start -->
 
     <div>
-        <div class="agency-search">
+        {{-- <div class="agency-search">
             <div class="secdiv" id="serch_option_show">
                 <!-- ============================  SEARCH BOX START  ================================  -->
                 <div class="searchdiv">
@@ -188,7 +191,7 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </div> --}}
 
 
         @unless($suggestedareas == null || $suggestedareasid == 'a2' || $suggestedareasid == 'a3')
@@ -220,8 +223,26 @@
 
     <!-- AGENCIES START -->
     <!-- propertylist start -->
-    <div id="bestProperty" class="propertylist mapCardContainer">
-        <h6 class="text-end fw-bold">Showing {{ $properties->total() }} Results</h6>
+    <div id="bestProperty" class="propertylist mapCardContainer" style="margin-top: 5px">
+        <div class="row">
+            <div class="col-6" style="align-self: flex-start">
+
+                <h5 class=" fw-bold" style=" text-align: start">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                        <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                      </svg>
+
+                </h5>
+            </div>
+            <div class="col-6" style="align-self: flex-end;">
+                <h5 class=" fw-bold " style=" text-align: end">Showing {{ $projects->total() }} Results</h5>
+            </div>
+
+
+
+
+        </div>
+
         <br />
         <!--  property slider -->
 
@@ -229,11 +250,11 @@
         <div class="mapCardContainer">
             <div class="container-fluid px-0">
                 <div class="row">
-                    @include('frontend.property.list')
+                    @include('layouts.featuredproject')
                 </div>
 
                 <div class="d-flex justify-content-center">
-                    {{ $properties->links() }}
+                    {{ $projects->links() }}
                 </div>
 
                 <br />

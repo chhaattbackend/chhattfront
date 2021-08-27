@@ -10,5 +10,6 @@ class PropertyImage extends Model
         'property_id',
         'name',
         'sort_order',
+        'project_id'
     ];
 }

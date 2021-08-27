@@ -23,69 +23,73 @@ class AgentController extends Controller
      */
     public function index(Request $request)
     {
-        if (!$request->keyword) {
-            if (auth()->user()->role->name == 'Agency') {
-                $agents = Agent::where('agency_id', auth()->user()->agency->id)->paginate(25);
-            } else {
-                $agents = Agent::orderBy('created_at','desc')->paginate(25);
-            }
-        } else {
-            if (auth()->user()->role->name == 'Agency') {
-
-                $seacrh = $request->keyword;
-                $agents = Agent::where('agency_id', auth()->user()->agency->id);
 
 
-                $agents = $agents->whereHas('user', function ($query) use ($seacrh) {
-                    $query->where('name', 'like', '%' . $seacrh . '%');
-                })->orWhereHas('agency', function ($query) use ($seacrh) {
-                    $query->whereHas('areaOne', function ($query) use ($seacrh) {
-                        $query->where('name', 'like', '%' . $seacrh . '%');
-                    });
-                })
-                    ->orWhereHas('agency', function ($query) use ($seacrh) {
-                        $query->whereHas('areaTwo', function ($query) use ($seacrh) {
-                            $query->where('name', 'like', '%' . $seacrh . '%');
-                        });
-                    })->orWhereHas('agency', function ($query) use ($seacrh) {
-                        $query->where('name', 'like', '%' . $seacrh . '%');
-                    })->orWhereHas('user', function ($query) use ($seacrh) {
-                        $query->where('phone', 'like', '%' . $seacrh . '%');
-                    })->paginate(25)->setPath('');
 
-                $pagination = $agents->appends(array(
-                    'keyword' => $request->keyword
-                ));
-            } else {
 
-                $seacrh = $request->keyword;
-                $agents = Agent::where('id','!=',null)->orderBy('created_at','desc');
+        // if (!$request->keyword) {
+        //     if (auth()->user()->role->name == 'Agency') {
+        //         $agents = Agent::where('agency_id', auth()->user()->agency->id)->paginate(25);
+        //     } else {
+        //         $agents = Agent::orderBy('created_at','desc')->paginate(25);
+        //     }
+        // } else {
+        //     if (auth()->user()->role->name == 'Agency') {
 
-                $agents = $agents->whereHas('user', function ($query) use ($seacrh) {
-                    $query->where('name', 'like', '%' . $seacrh . '%');
-                })->orWhereHas('agency', function ($query) use ($seacrh) {
-                    $query->whereHas('areaOne', function ($query) use ($seacrh) {
-                        $query->where('name', 'like', '%' . $seacrh . '%');
-                    });
-                })
-                    ->orWhereHas('agency', function ($query) use ($seacrh) {
-                        $query->whereHas('areaTwo', function ($query) use ($seacrh) {
-                            $query->where('name', 'like', '%' . $seacrh . '%');
-                        });
-                    })->orWhereHas('agency', function ($query) use ($seacrh) {
-                        $query->where('name', 'like', '%' . $seacrh . '%');
-                    })->orWhereHas('user', function ($query) use ($seacrh) {
-                        $query->where('phone', 'like', '%' . $seacrh . '%');
-                    })->paginate(25)->setPath('');
+        //         $seacrh = $request->keyword;
+        //         $agents = Agent::where('agency_id', auth()->user()->agency->id);
 
-                $pagination = $agents->appends(array(
-                    'keyword' => $request->keyword
-                ));
-            }
-        }
-        $area_one = AreaOne::all();
-        $area_two = AreaTwo::all();
-        return view('admin.agent.index', compact('agents', 'area_one', 'area_two'));
+
+        //         $agents = $agents->whereHas('user', function ($query) use ($seacrh) {
+        //             $query->where('name', 'like', '%' . $seacrh . '%');
+        //         })->orWhereHas('agency', function ($query) use ($seacrh) {
+        //             $query->whereHas('areaOne', function ($query) use ($seacrh) {
+        //                 $query->where('name', 'like', '%' . $seacrh . '%');
+        //             });
+        //         })
+        //             ->orWhereHas('agency', function ($query) use ($seacrh) {
+        //                 $query->whereHas('areaTwo', function ($query) use ($seacrh) {
+        //                     $query->where('name', 'like', '%' . $seacrh . '%');
+        //                 });
+        //             })->orWhereHas('agency', function ($query) use ($seacrh) {
+        //                 $query->where('name', 'like', '%' . $seacrh . '%');
+        //             })->orWhereHas('user', function ($query) use ($seacrh) {
+        //                 $query->where('phone', 'like', '%' . $seacrh . '%');
+        //             })->paginate(25)->setPath('');
+
+        //         $pagination = $agents->appends(array(
+        //             'keyword' => $request->keyword
+        //         ));
+        //     } else {
+
+        //         $seacrh = $request->keyword;
+        //         $agents = Agent::where('id','!=',null)->orderBy('created_at','desc');
+
+        //         $agents = $agents->whereHas('user', function ($query) use ($seacrh) {
+        //             $query->where('name', 'like', '%' . $seacrh . '%');
+        //         })->orWhereHas('agency', function ($query) use ($seacrh) {
+        //             $query->whereHas('areaOne', function ($query) use ($seacrh) {
+        //                 $query->where('name', 'like', '%' . $seacrh . '%');
+        //             });
+        //         })
+        //             ->orWhereHas('agency', function ($query) use ($seacrh) {
+        //                 $query->whereHas('areaTwo', function ($query) use ($seacrh) {
+        //                     $query->where('name', 'like', '%' . $seacrh . '%');
+        //                 });
+        //             })->orWhereHas('agency', function ($query) use ($seacrh) {
+        //                 $query->where('name', 'like', '%' . $seacrh . '%');
+        //             })->orWhereHas('user', function ($query) use ($seacrh) {
+        //                 $query->where('phone', 'like', '%' . $seacrh . '%');
+        //             })->paginate(25)->setPath('');
+
+        //         $pagination = $agents->appends(array(
+        //             'keyword' => $request->keyword
+        //         ));
+        //     }
+        // }
+        // $area_one = AreaOne::all();
+        // $area_two = AreaTwo::all();
+        // return view('admin.agent.index', compact('agents', 'area_one', 'area_two'));
     }
 
 
@@ -266,14 +270,25 @@ class AgentController extends Controller
     {
 
 
-        $agent = Agent::find($request->id);
+        $agent = Agent::findOrfail($request->id);
+        $relatedagents=Agent::where('agency_id',$agent->agency->id)->get();
 
 
+        // dd($agent);
 
-        $relatedagents=Agent::join('agent_specialities','agent_specialities.agent_id','=','agents.id')
-        ->join('specialities','specialities.id','=','agent_specialities.speciality_id')
-        ->where('specialities.id','=',$agent->specialities[0]->speciality_id)
-        ->select('agents.*')->get();
+     
+
+        if ($agent->specialities->isNotEmpty()) {
+
+
+            $relatedagents=Agent::join('agent_specialities','agent_specialities.agent_id','=','agents.id')
+            ->join('specialities','specialities.id','=','agent_specialities.speciality_id')
+            ->where('specialities.id','=',$agent->specialities[0]->speciality_id)
+            ->select('agents.*')->get();
+            return view('frontend.agent.singleindex',compact('agent','relatedagents'));
+
+        }
+            // dd($relatedagents);
 
 
 

@@ -33,6 +33,7 @@ $count = 0;
             <a class="text-decoration-none position-relative" href="{{ route('single.property', $id) }}">
                 <div class="imageSection position-relative">
                     @if (!$item->images->isEmpty())
+                    
                         <img class="slideImg"
                             src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ @$item->images[0]->name }}"
                             alt="" />

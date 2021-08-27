@@ -62,7 +62,7 @@ $count = 0;
                         </div>
                         <h6 style="text-align: left" class="mt-1 mb-1">
                             @if ($item->price == null || $item->price == 0)
-                                <span style="background: red;" class="badge badge-pill badge-danger">On Request</span>
+                                <span style="background: red;" class="badge badge-pill badge-danger">Rs: On Call</span>
                             @else
                                 <strong>
                                     <p style="color: rgb(228, 20, 20)">

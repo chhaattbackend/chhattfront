@@ -18,18 +18,13 @@
                             </li>
                         </a> --}}
                         <a class="text-decoration-none" href="{{ route('property') }}">
-                            <li id="property" style="color: #fff" @if (Route::current()->getName() == 'property' || Route::current()->getName() == 'explorer.search' || Route::current()->getName() == 'property.search' || Route::current()->getName() == 'single.property') class="activeNav" @endif class="lis">
-                                <span>Property</span>
+                            <li id="property" style="color: #fff" @if (Route::current()->getName() == 'property' || Route::current()->getName() == 'explorer.search' || Route::current()->getName() == 'property.search' || Route::current()->getName() == 'single.property'||Route::current()->getName() == 'more.property' ) class="activeNav" @endif class="lis">
+                                <span>Properties</span>
                             </li>
                         </a>
-                        <a class="text-decoration-none" href="{{ route('buy.property',['property_for'=>'For Sale']) }}">
+                        <a class="text-decoration-none" href="{{ route('buy.property') }}">
                             <li id="home" style="color: #fff" @if (Str::contains(Route::current()->getName(), 'buy.property')) class="activeNav" @endif class="lis">
-                                <span>For Buy</span>
-                            </li>
-                        </a>
-                        <a class="text-decoration-none" href="{{ route('rent.property',['property_for'=>'For Rent']) }}">
-                            <li id="home" style="color: #fff" @if (Str::contains(Route::current()->getName(), 'rent.property')) class="activeNav" @endif class="lis">
-                                <span>For Rent</span>
+                                <span>Projects</span>
                             </li>
                         </a>
 
@@ -40,6 +35,11 @@
                             </li>
                         </a>
 
+                        {{-- <a class="text-decoration-none" href="">
+                            <li id="home" style="color: #fff" @if (Str::contains(Route::current()->getName(), 'rent.property')) class="activeNav" @endif class="lis">
+                                <span>Maps</span>
+                            </li>
+                        </a> --}}
                         <a class="text-decoration-none" href="{{ route('contact') }}">
                             <li id="contact" style="color: #fff" @if (Route::current()->getName() == 'contact') class="activeNav" @endif class="lis">
                                 <span>Contact Us</span>

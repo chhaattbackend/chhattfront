@@ -12,13 +12,46 @@
 
 @section('headercontent')
     <div class="mn_div">
-        <div class="backg">
+        <div class="backg ">
             <div class="backg_sdiv">
-                <h1>Search Your Desire Property</h1>
-                <div class="main_bar">
+                <div class="main_bar p-3 offset-1"
+                    style="background: rgba(19, 18, 18, 0.308);  max-width: 950px !important; ">
                     <form id="form11" action="" class="frm">
+                        <div class="row p-4 " style="margin-bottom: 1%; margin-left: 105px">
+
+
+                            <div class="col-2">
+                                <button type="button" class="btn btn-outline-primary btn-sm p-0 active" id="buy"
+                                    style="line-height: 25px;  " onclick="dothis('For Sale')">Buy</button>
+                            </div>
+                            <div class="col-2 ">
+                                <button type="button" class="btn btn-outline-primary btn-sm p-0" id="rent"
+                                    style="line-height: 25px" onclick="dothis('For Rent')">Rent</button>
+
+                            </div>
+                            <div class="col-2">
+                                <button type="button" class="btn btn-outline-primary btn-sm p-0" id="wanted"
+                                    style="line-height: 25px" onclick="dothis('requirement')">Wanted</button>
+
+                            </div>
+                            <div class="col-2">
+                                <button type="button" class="btn btn-outline-primary btn-sm p-0" id="project"
+                                    style="line-height: 25px" onclick="dothis('project')">Project</button>
+                            </div>
+                            <div class="col-2">
+                                <button type="button" class="btn btn-outline-primary btn-sm p-0" id="invest"
+                                    style="line-height: 25px" onclick="dothis('invest')">Invest</button>
+
+                            </div>
+
+                            <input type="hidden" name="property_for" id="typesasasasas" value="For Sale">
+
+
+
+
+                        </div>
                         <div class="searchdiv">
-                            <span class="searchIcon">
+                            <span class="searchIcon" style="margin-right: 20px">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="23" height="25" fill="currentColor"
                                     class="bi bi-search" viewBox="0 0 16 16">
                                     <path
@@ -27,16 +60,30 @@
                             </span>
                             <!-- search field start  -->
                             <!-- search start -->
-                            <div class="autoComplete_wrapper">
-                                <input id="autoComplete" autocomplete="off" type="text" tabindex="1" />
-                            </div>
-                            <!-- city select start -->
                             <select id="citiesSelect" onchange="changecity()" class="form-select"
                                 aria-label="Default select example">
                                 @foreach ($city as $item)
                                     <option value="{{ $item->name }}">{{ $item->name }} </option>
                                 @endforeach
                             </select>
+                            <div class="autoComplete_wrapper">
+                                <input id="autoComplete" autocomplete="off" type="text" tabindex="1" />
+                            </div>
+
+                            <!-- city select start -->
+
+
+
+                            <select style="width: 20ch;" name="area_type" id="type">
+
+                                <option selected value="Residential">Residential </option>
+                                {{-- <option value="Residential">Residential</option> --}}
+                                <option value="Commercial">Commercial</option>
+                                <option value="Industrial">Industrial</option>
+
+                            </select>
+
+
                             <!-- city select end -->
                             <!-- search end -->
                             <!-- city lagana h -->
@@ -44,24 +91,33 @@
                                 Search
                             </button>
                         </div>
-                        <div class="serch_bottom" id="serch_option_show">
-                            <div class="d-flex flex-column">
-                                <div class="view_more_main">
-                                    <input class="view_more_main" style="padding-right: 6px; background: none" type="reset"
-                                        value="Reset" />
-                                    <span class="sspan" id="view_more">View More</span>
-                                </div>
-                                <div class="d-flex justify-content-between">
+
+                        <div class="view_more_maq" style="margin-top: 9px" id="viewmore">
+                            <input class="view_more_maq" style="padding-right: 6px; background: none" type="reset"
+                                value="Reset" />
+                            <span class="sspan" id="view_more">View More</span>
+                        </div>
+                        <div class="serch_bottom " id="serch_option_show" style="display: none">
+                            {{-- <div class="d-flex flex-column"> --}}
+                            <div class="d-flex flex-column" id="moreItems">
+                                {{-- <div class="view_more_main">
+                                        <input class="view_more_main" style="padding-right: 6px; background: none" type="reset"
+                                            value="Reset" />
+                                        <span class="sspan" id="view_more">View More</span>
+                                    </div> --}}
+                                <div class="d-flex justify-content-between" id="drop_show">
                                     <div class="slct1 slct w-100 mx-3">
                                         <div class="pb-1">Property Type</div>
-                                        <select class="py-2 w-100 px-2  border-0" name="property_type">
+                                        <select class="py-2 w-100 px-2  border-0" name="property_type" id="property_type">
                                             <option selected disabled value="">Property Type </option>
-                                            @foreach ($propertytype as $item)
-                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @foreach ($p_type as $item)
+                                                <option value="{{ $item->property_type }}">{{ $item->property_type }}
+                                                </option>
                                             @endforeach
                                         </select>
+
                                     </div>
-                                    <div class="slct1 slct w-100 mx-3">
+                                    {{-- <div class="slct1 slct w-100 mx-3">
                                         <div class="pb-1">Area Type</div>
                                         <select class="py-2 w-100 px-2  border-0" name="area_type">
                                             <option selected disabled value="">Area Type </option>
@@ -69,7 +125,7 @@
                                             <option value="Commercial">Commercial</option>
                                             <option value="Industrial">Industrial</option>
                                         </select>
-                                    </div>
+                                    </div> --}}
                                     <div class="slct1 slct w-100 mx-3">
                                         <div class="pb-1">Beds</div>
                                         <select class="py-2 w-100 px-2  border-0" name="bed">
@@ -103,7 +159,58 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="d-flex justify-content-between mt-3" id="drop_show">
+
+                                <div class="d-flex justify-content-between mt-3" id="drop_showl">
+                                    {{-- <div class="slct1 slct w-100 mx-3">
+                                        <div class="pb-1">Property Type</div>
+                                        <select class="py-2 w-100 px-2  border-0" name="property_type">
+                                            <option selected disabled value="">Property Type </option>
+                                            @foreach ($propertytype as $item)
+                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div> --}}
+                                    {{-- <div class="slct1 slct w-100 mx-3">
+                                        <div class="pb-1">Area Type</div>
+                                        <select class="py-2 w-100 px-2  border-0" name="area_type">
+                                            <option selected disabled value="">Area Type </option>
+                                            <option value="Residential">Residential</option>
+                                            <option value="Commercial">Commercial</option>
+                                            <option value="Industrial">Industrial</option>
+                                        </select>
+                                    </div> --}}
+                                    {{-- <div class="slct1 slct w-100 mx-3">
+                                        <div class="pb-1">Beds</div>
+                                        <select class="py-2 w-100 px-2  border-0" name="bed">
+                                            <option selected disabled value="">Beds </option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="+10">+10</option>
+                                        </select>
+                                    </div> --}}
+                                    {{-- <div class="slct1 slct w-100 mx-3">
+                                        <div class="pb-1">Baths</div>
+                                        <select class="py-2 w-100 px-2  border-0" name="bath">
+                                            <option selected disabled value="">Bath </option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="+10">+10</option>
+                                        </select>
+                                    </div> --}}
                                     <div class="slct1 slct w-100 mx-3">
                                         <div class="pb-1">Price Min</div>
                                         <select class="py-2 w-100 px-2  border-0" name="min_price">
@@ -185,8 +292,8 @@
                                         </select>
                                     </div>
                                 </div>
+                                {{-- </div> --}}
                             </div>
-                        </div>
                     </form>
                 </div>
             </div>
@@ -203,9 +310,17 @@
     <div id="bestProperty" class="propertylist">
         <div class="secdiv">
             <div class="secdivtxt">
-                <h3 class="fw-bold">Best properties for you</h3>
+                <h3 class="fw-bold">Fresh Properties</h3>
+
             </div>
-            <div class="sul">
+            <div class="d-flex">
+                <div class="ms-4" style="text-align: end">
+                    <button onclick="window.location='{{ route('more.property', ['property_for' => 'All']) }}'"
+                        class="themebtn2 px-3 py-1 ms-1">View
+                        all</button>
+                </div>
+            </div>
+            {{-- <div class="sul">
                 <ul>
                     <li title="All">
                         <button id="all" class="themebtnUnPressed active_bestProperties"
@@ -224,38 +339,57 @@
                     {{-- <li title="View all" class="viewall">
                         <button>View all</button>
                     </li> --}}
-                </ul>
-            </div>
+            </ul>
         </div>
-        <br />
-        <!--  property slider -->
-
-        <!-- PROPERTY CARD START -->
-        <div class="mapCardContainer">
-            <div class="container-fluid">
-
-
-                <div id="list" class="row px-2">
-                    @include('layouts.listwithimage')
-                </div>
-
-            </div>
-            <hr style="background-color: black">
-
-
-            @include('layouts.featuredproject')
-        </div>
-        <br><br><br>
-
-
-        <br>
-
-
-
-        <!--  PROPERTY CARD START  -->
 
     </div>
-    <div class="visit_maindiv">
+    <br />
+    <!--  property slider -->
+
+    <!-- PROPERTY CARD START -->
+    <div class="mapCardContainer">
+        <div class="container-fluid">
+
+
+            <div id="list" class="row px-2">
+                @include('layouts.listwithimage')
+            </div>
+
+
+
+
+
+
+
+        </div>
+    </div>
+    <hr>
+
+    <div class="mapCardContainer ">
+        <div class="container-fluid">
+
+            <div class="row px-2">
+
+                @include('layouts.featuredproject')
+            </div>
+        </div>
+
+
+    </div>
+
+    <br>
+
+
+
+    <br>
+    <hr>
+
+
+
+    <!--  PROPERTY CARD START  -->
+
+    </div>
+    {{-- <div class="visit_maindiv">
         <div class="innerDiv">
             <div class="secOne">
                 <h2>Visit Our Construction Site</h2>
@@ -272,11 +406,231 @@
                 <!-- </Link> -->
             </div>
         </div>
-    </div>
+    </div> --}}
+    <br>
+    @include('layouts.explorer')
+
+    <hr>
     <br>
     @include('layouts.agency')
     <br>
-    @include('layouts.explorer')
+    <br>
+    <div class="exp">
+
+        <div class="container" style="padding: 2%">
+
+            <h2
+                style="text-align: center; font-weight: 600; color: #333; opacity: 0.8; margin-bottom: 2%;text-decoration: underline;">
+                POPULAR LOCATIONS
+            </h2>
+            <div class="row ">
+                <div style="margin-bottom: 2%; text-align: center">
+                    <h4>
+                        KARACHI
+                        <hr>
+                    </h4>
+
+                </div>
+
+
+                <div class="col-11" style="padding: 0">
+                    <div class="row" style="text-align: center">
+                        <div class="col-3 offset-1">
+                            <h5 style="text-align: start" class="space-4">
+                                Properties for Sale
+                                <hr>
+                            </h5>
+                        </div>
+                        <div class="col-3 offset-1">
+                            <h5 style="text-align: start" class="space-4">
+                                Properties for Rent
+                                <hr>
+                            </h5>
+                        </div>
+                        <div class="col-3 offset-1">
+                            <h5 style="text-align: start" class="">
+                                Popular Location For Houses
+                                <hr>
+                            </h5>
+                        </div>
+
+
+                    </div>
+
+                    <br>
+                    <div class="row " style=" text-align: center">
+                        <div class="col-3 offset-1" style="text-align: start">
+                            <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'House']) }}"
+                                class="text-decoration-none">
+                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                    House For Sale In Karachi
+                                </p>
+                            </a>
+                            <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'Plot']) }}"
+                                class="text-decoration-none">
+                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                    Plot For Sale In Karachi
+                                </p>
+                            </a>
+                            <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'Shop']) }}"
+                                class="text-decoration-none">
+                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                    Shop For Sale In Karachi
+                                </p>
+                            </a>
+                            <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'Mezzanine']) }}"
+                                class="text-decoration-none">
+                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                    Mezzanine For Sale In Karachi
+                                </p>
+                            </a>
+                            <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'Lower Portion']) }}"
+                                class="text-decoration-none">
+                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                    Lower Portion For Sale In Karachi
+                                </p>
+                            </a>
+                            <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'Upper Portion']) }}"
+                                class="text-decoration-none">
+                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                    Upper Portion For Sale In Karachi
+                                </p>
+                            </a>
+
+
+                        </div>
+                        <div class="col-3 offset-1" style="text-align: start">
+                            <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'House']) }}"
+                                class="text-decoration-none">
+                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                    House For Rent In Karachi
+                                </p>
+                            </a>
+
+                            <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Shop']) }}"
+                                class="text-decoration-none">
+                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                    Shop For Rent In Karachi
+                                </p>
+                            </a>
+
+                            <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Flat']) }}"
+                                class="text-decoration-none">
+                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                    Flat For Rent In Karachi
+                                </p>
+                            </a>
+                            <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Mezzanine']) }}"
+                                class="text-decoration-none">
+                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                    Mezzanine For Rent In Karachi
+                                </p>
+                            </a>
+                            <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Lower Portion']) }}"
+                                class="text-decoration-none">
+                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                    Lower Portion For Rent In Karachi
+                                </p>
+                            </a>
+                            <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Upper Portion']) }}"
+                                class="text-decoration-none">
+                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                    Upper Portion For Rent In Karachi
+                                </p>
+                            </a>
+
+
+
+
+                        </div>
+                        <div class="col-3 offset-1" style="text-align: start">
+
+                            <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'House', 'area' => '6']) }}"
+                                class="text-decoration-none">
+                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6; ">
+                                    House For Sale In Dha
+                                </p>
+                            </a>
+                            <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Flat', 'area' => '6']) }}"
+                                class="text-decoration-none">
+
+                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                    Flat For Rent In Dha
+                                </p>
+                            </a>
+
+                            <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'House', 'area' => '2']) }}"
+                                class="text-decoration-none txt_div">
+                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                    House For Sale In Bahria
+                                </p>
+                            </a>
+                            <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Flat', 'area' => '2']) }}"
+                                class="text-decoration-none txt_div">
+                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                    Flat For Rent In Bahria
+                                </p>
+                            </a>
+                            <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Flat', 'area' => '3']) }}"
+                                class="text-decoration-none txt_div">
+                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                    Flat For Rent In Korangi
+                                </p>
+                            </a>
+                            <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'House', 'area' => '3']) }}"
+                                class="text-decoration-none txt_div">
+                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+                                    House For Rent In Korangi
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    {{-- <div class="row">
+        <div class="col-sm-4">
+                <div class="d-flex justify-content-center">
+                ashdjasdh
+
+            </div>
+        </div>
+        <div class="col-sm-4">
+                <div class="d-flex justify-content-center">
+                ashdjasdh
+
+            </div>
+        </div>
+        <div class="col-sm-4">
+                <div class="d-flex justify-content-center">
+                ashdjasdh
+
+            </div>
+        </div>
+
+
+
+    </div> --}}
 
     <script>
         const btn1 = document.getElementById("all");
@@ -312,23 +666,59 @@
             btn3.classList.remove("active_bestProperties");
         };
         var serch_option = document.getElementById("serch_option_show");
+        var moreItems = document.getElementById("moreItems");
         var view = document.getElementById("view_more");
         var drop = document.getElementById("drop_show");
+        var drop1 = document.getElementById("drop_showl");
         var view_more_bool = false
         view.addEventListener("click", () => {
             view_more_bool = !view_more_bool
             if (view_more_bool === true) {
+                moreItems.style.transition = "500ms 1000ms";
                 serch_option.style.height = "200px";
+
                 drop.style.opacity = "1";
                 drop.style.transition = "500ms 300ms";
+                drop1.style.opacity = "1";
+                drop1.style.transition = "500ms 300ms";
+                moreItems.style.display = "block";
+
                 view.innerText = "View Less";
+                serch_option.style.display = "block";
             } else if (view_more_bool === false) {
-                serch_option.style.height = "120px";
-                drop.style.transition = "100ms";
+                moreItems.style.transition = "0ms";
+                serch_option.style.height = "111px";
+                serch_option.style.display = "none";
+                drop.style.transition = "400ms";
                 drop.style.opacity = "0";
+                drop1.style.transition = "300ms";
+                drop1.style.opacity = "0";
+                moreItems.style.display = "none";
                 view.innerText = "View More";
             }
         });
+        // view.addEventListener("click", () => {
+        //     view_more_bool = !view_more_bool
+        //     if (view_more_bool === true) {
+        //         moreItems.style.transition = "500ms 1000ms";
+        //         serch_option.style.height = "230px";
+        //         drop.style.opacity = "1";
+        //         drop.style.transition = "500ms 300ms";
+        //         drop1.style.opacity = "1";
+        //         drop1.style.transition = "500ms 300ms";
+        //         moreItems.style.display = "block";
+        //         view.innerText = "View Less"
+        //     } else if (view_more_bool === false) {
+        //         moreItems.style.transition = "0ms";
+        //         serch_option.style.height = "111px";
+        //         drop.style.transition = "400ms";
+        //         drop.style.opacity = "0";
+        //         drop1.style.transition = "300ms";
+        //         drop1.style.opacity = "0";
+        //         moreItems.style.display = "none";
+        //         view.innerText = "View More"
+        //     }
+        // });
 
         function getListdata(type) {
             $('#list').addClass('animate__animated animate__fadeOut');
@@ -395,6 +785,7 @@
             search(city);
         }
 
+
         function search() {
 
             const autoCompleteJS = new autoComplete({
@@ -435,7 +826,7 @@
                         return filteredResults;
                     }
                 },
-                placeHolder: "Try Something 'Final'",
+                placeHolder: "Search Location",
                 resultsList: {
                     element: (list, data) => {
                         const info = document.createElement("p");
@@ -481,16 +872,174 @@
             });
 
         }
+        $('#type').change(function() {
+
+            var type = $(this).val();
+
+            console.log(type)
+            $('#property_type').find('option').not(':first').remove();
+            $.ajax({
+                url: 'ajax/' + type,
+                type: 'get',
+                dataType: 'json',
+                success: function(response) {
+                    var len = 0;
+                    console.log(response.p_type);
+                    if (response.p_type != null) {
+                        len = response.p_type.length;
+                    }
+                    if (len > 0) {
+                        for (var i = 0; i < len; i++) {
+                            // var id = response.data[i].id;
+                            // console.log('hhh')
+                            // console.log(response.p_type[1].property_type)
+                            var name = response.p_type[i].property_type;
+                            var option = "<option value='" + name + "'>" + name + "</option>";
+                            $("#property_type").append(option);
+                        }
+                    }
+
+                }
+            })
+        })
+
+        function dothis(params) {
+            console.log(params)
+            $("#typesasasasas").val(params);
+            // console.log($("#typesasasasas").val())
+            if ($("#typesasasasas").val() == "For Sale") {
+                var property_for = $("#typesasasasas").val();
+                $('#buy').addClass('active');
+                $('#rent').removeClass('active');
+                $('#wanted').removeClass('active');
+                $('#invest').removeClass('active');
+                $('#project').removeClass('active');
+                $('#type').show();
+                $('#viewmore').show();
+                $.ajax({
+                    type: "GET",
+                    url: 'ajax/' + property_for,
+                    dataType: 'html',
+                    data: {
+                        property_for: 'For Sale',
+                    },
+                    success: function(responese) {
+                        // console.log(responese.pagination)
+
+                        $('#list').html(responese);
+
+                        $('#list').removeClass('animate__animated animate__fadeOut');
+
+                        // console.log(responese.pagination)
+                        $('#list').html(responese.p_type);
+                        $('#list').addClass('animate__animated animate__fadeIn');
+                        $('#wow').html(responese.pagination);
+                        $('#total').html('Showing ' + responese.total + ' Results');
+                    },
+                });
+            }
+
+
+            if ($("#typesasasasas").val() == "For Rent") {
+                var property_for = $("#typesasasasas").val();
+
+                $('#rent').addClass('active');
+                $('#buy').removeClass('active');
+                $('#wanted').removeClass('active');
+                $('#invest').removeClass('active');
+                $('#project').removeClass('active');
+                $('#type').show();
+                $('#viewmore').show();
+                $.ajax({
+                    type: "GET",
+                    url: 'ajax/' + property_for,
+                    dataType: 'html',
+                    data: {
+                        property_for: 'For Rent',
+                    },
+                    success: function(responese) {
+                        // console.log(responese.pagination)
+
+                        $('#list').html(responese);
+
+                        $('#list').removeClass('animate__animated animate__fadeOut');
+
+                        // console.log(responese.pagination)
+                        $('#list').html(responese.p_type);
+                        $('#list').addClass('animate__animated animate__fadeIn');
+                        $('#wow').html(responese.pagination);
+                        $('#total').html('Showing ' + responese.total + ' Results');
+                    },
+                });
+            }
+            if ($("#typesasasasas").val() == "requirement") {
+                var inventory_type = $("#typesasasasas").val();
+
+                $('#typesasasasas').attr('name', 'inventory_type')
+                $('#wanted').addClass('active');
+                $('#rent').removeClass('active');
+                $('#buy').removeClass('active');
+                $('#invest').removeClass('active');
+                $('#project').removeClass('active');
+                $('#type').show();
+                $('#viewmore').show();
+                $.ajax({
+                    type: "GET",
+                    url: 'ajax/' + inventory_type,
+                    dataType: 'html',
+                    data: {
+                        inventory_type: 'requirement',
+                    },
+                    success: function(responese) {
+                        // console.log(responese.pagination)
+
+                        $('#list').html(responese);
+
+                        $('#list').removeClass('animate__animated animate__fadeOut');
+
+                        // console.log(responese.pagination)
+                        $('#list').html(responese.p_type);
+                        $('#list').addClass('animate__animated animate__fadeIn');
+                        $('#wow').html(responese.pagination);
+                        $('#total').html('Showing ' + responese.total + ' Results');
+                    },
+                });
+            }
+            if ($("#typesasasasas").val() == "invest") {
+                $('#typesasasasas').attr('name', '')
+                $('#invest').addClass('active');
+                $('#rent').removeClass('active');
+                $('#buy').removeClass('active');
+                $('#wanted').removeClass('active');
+                $('#project').removeClass('active');
+            }
+            if ($("#typesasasasas").val() == "project") {
+                $('#typesasasasas').attr('name', 'projects')
+
+                $('#project').addClass('active');
+                $('#rent').removeClass('active');
+                $('#buy').removeClass('active');
+                $('#wanted').removeClass('active');
+                $('#invest').removeClass('active');
+                $('#type').hide();
+                $('#viewmore').hide();
+            }
+
+        }
+
 
         // SUBMIT START
         function changeFunc(e) {
             e.preventDefault()
+
             const inpVal = document.getElementById("autoComplete");
             if (areas) {
                 const filteredArea = areas.data.filter((prev) => prev.name === inpVal.value)
+
                 if (filteredArea.length) {
                     // console.log(filteredArea[0].key)
                     var formData = $('#form11').serialize();
+                    // console.log(formData);
                     var url = '{{ route('property.search', 'search_areas=:key:word:formdata') }}';
                     // console.log(filteredArea[0].key)
                     array = filteredArea[0].key.split(",");
@@ -507,16 +1056,17 @@
                     key = area + ',' + array[1];
                     // console.log(key)
                     url = url.replace(':key', key);
+                    console.log(formData);
                     if (formData == null) {
                         url = url.replace(':word', '&');
                     } else {
                         url = url.replace(':word', '');
                     }
-                    url = url.replace(':formdata', formData);
+                    url = url.replace(':formdata', '&' + formData);
+                    // console.log(url)
+
                     document.location.href = url;
-                } else {
-                    // console.log(inpVal.value)
-                }
+                } else {}
             } else {
                 // console.log("error")
             }

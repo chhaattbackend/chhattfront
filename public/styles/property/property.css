@@ -24,7 +24,7 @@
     margin-top: 15px;
     padding-top: 10px;
     padding-bottom: 15px;
-    height: 120px;
+    height: 0px;
     transition: height 500ms;
 }
 
@@ -199,6 +199,14 @@
     letter-spacing: 2px;
 }
 
+.view_more_maq {
+    color: #ffffffd2;
+    font-size: 15px;
+    font-weight: 800;
+    text-align: right;
+    /* padding-bottom: 10px; */
+}
+
 
 /* visit construction end  */
 
@@ -244,6 +252,23 @@
 
 .autoComplete_wrapper>ul>li mark {
     color: #007bff !important;
+}
+
+.txt_div a :hover {
+    color: "#007cff";
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+.txt:hover {
+    text-decoration: underline;
 }
 
 
