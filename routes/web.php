@@ -36,9 +36,11 @@ Route::post('/agency/ajax', 'AgencyController@ajax');
 Route::post('/agency/mobileajax', 'AgencyController@mobileajax');
 Route::post('/agent/mobileajax', 'AgentController@mobileajax');
 Route::get('/property/{property_type}', 'PropertyController@explorer')->name('explorer.search');
-Route::get('/contact-us', function () {
-    return view('layouts.contact');
-})->name('contact');
+// Route::get('/contact-us', function () {
+//     return view('layouts.contact');
+// })->name('contact');
+
+Route::view('/contact-us', 'layouts.contact')->name('contact');
 
 // Route::get('/exapmle', function () {
 //     return view('frontend.agency.agentlist');
