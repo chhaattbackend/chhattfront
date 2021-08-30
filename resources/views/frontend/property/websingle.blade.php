@@ -252,7 +252,7 @@
                                     <h5 class="pt-2 pb-1">{!! $properties->user->name !!} </h5>
                                     {{-- @dd($properties->user) --}}
                                     {{-- @dd($properties->id) --}}
-                                    <a href="{{ route('single.agency', ['id' => $properties->user->agent->agency->id]) }}" class="text-decoration-none" style="color: #333;opacity: 0.6">
+                                    <a href="{{ route('single.agency', ['id' => $properties->user->agent->agency->id]) }}" class="text-decoration-none" style="color: #333;opacity: 0.6 ">
 
                                         <h6 class="pt-2 pb-1">{!! @$properties->user->agent->agency->name !!} </h6>
                                     </a>

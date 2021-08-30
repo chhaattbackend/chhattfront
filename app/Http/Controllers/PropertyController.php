@@ -453,6 +453,10 @@ class PropertyController extends Controller
         ]);
 
     }
+    public function invest()
+    {
+       return view('frontend.property.webinvest');
+    }
     public function forBuy(Request $request)
     {
         $inputval = null;

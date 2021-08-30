@@ -40,7 +40,7 @@
                             </div>
                             <div class="col-2">
                                 <button type="button" class="btn btn-outline-primary btn-sm p-0" id="invest"
-                                    style="line-height: 25px" onclick="dothis('invest')">Invest</button>
+                                    style="line-height: 25px" onclick="window.location='{{ route('invest') }}'">Invest</button>
 
                             </div>
 
@@ -1070,6 +1070,10 @@
             } else {
                 // console.log("error")
             }
+        }
+        function invest() {
+            window.location.replace({{}});
+
         }
         // SUBMIT END
         // == SEARCH AREA DROPDOWN END
