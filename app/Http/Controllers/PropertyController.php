@@ -903,7 +903,7 @@ class PropertyController extends Controller
 
 
             }
-                 return view('frontend.property.webbuy',compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_name', 'inputcity_id', 'suggestedareas', 'suggestedareasid'));
+                 return view('frontend.property.webpopular',compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_name', 'inputcity_id', 'suggestedareas', 'suggestedareasid'));
         }
           $city = City::all();
         $propertytype = PropertyType::all();
