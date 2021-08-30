@@ -19,9 +19,9 @@ Route::get('/agentsingle', 'AgentController@singleRealtor')->name('agent.single'
 // Route::get('/number', 'AgentController@index')->name('agent.number');
 Route::get('/property', 'PropertyController@index')->name('property');
 Route::get('/projects', 'PropertyController@forBuy')->name('buy.property');
-Route::get('/forrent', 'PropertyController@viewMore')->name('more.property');
+Route::get('/All', 'PropertyController@viewMore')->name('more.property');
 Route::get('/popularproperty', 'PropertyController@popularProperty')->name('popular.property');
-Route::get('invest','PropertyController@invest')->name('invest');
+// Route::get('invest','PropertyController@invest')->name('invest');
 
 
 Route::get('/result', 'PropertyController@search')->name('property.search');

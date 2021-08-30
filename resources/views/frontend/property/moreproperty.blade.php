@@ -227,12 +227,12 @@
         <div class="row">
             <div class="col-6" style="align-self: flex-start">
 
-                <h5 class=" fw-bold" style=" text-align: start">
+                {{-- <h5 class=" fw-bold" style=" text-align: start">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
                         <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
                       </svg>
 
-                </h5>
+                </h5> --}}
             </div>
             {{-- @dd($properties->count()) --}}
             <div class="col-6" style="align-self: flex-end;">
@@ -322,7 +322,7 @@
                                 .setAttribute("placeholder", "Loading...");
                             // Fetch External Data Source
                             const source = await fetch(
-                                `http://uat.chhatt.com/api/allareas?city=${city}`
+                                `https://uat.chhatt.com/api/allareas?city=${city}`
                             );
                             areas = await source.json();
                             // Post Loading placeholder text
@@ -350,7 +350,7 @@
                         return filteredResults;
                     }
                 },
-                placeHolder: "Try Something 'Final'",
+                placeHolder: "Search Location",
                 resultsList: {
 
                     // noResults: true,

@@ -38,7 +38,7 @@
                         </span>
                         <!-- search field start  -->
                         <div>
-                            <input id="keyword" type="text" placeholder="try Something 'Final'" />
+                            <input id="keyword" type="text" placeholder="Search Agencies" />
                         </div>
                     </div>
                 </div>

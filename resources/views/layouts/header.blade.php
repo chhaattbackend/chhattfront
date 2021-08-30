@@ -18,7 +18,7 @@
                             </li>
                         </a> --}}
                         <a class="text-decoration-none" href="{{ route('property') }}">
-                            <li id="property" style="color: #fff" @if (Route::current()->getName() == 'property' || Route::current()->getName() == 'explorer.search' || Route::current()->getName() == 'property.search' || Route::current()->getName() == 'single.property'||Route::current()->getName() == 'more.property' ) class="activeNav" @endif class="lis">
+                            <li id="property" style="color: #fff" @if (Route::current()->getName() == 'property' || Route::current()->getName() == 'explorer.search' || Route::current()->getName() == 'property.search' || Route::current()->getName() == 'single.property'||Route::current()->getName() == 'more.property'||Route::current()->getName() == 'popular.property' ) class="activeNav" @endif class="lis">
                                 <span>Properties</span>
                             </li>
                         </a>

@@ -39,8 +39,9 @@
                                     style="line-height: 25px" onclick="dothis('project')">Project</button>
                             </div>
                             <div class="col-2">
-                                <button type="button" class="btn btn-outline-primary btn-sm p-0" id="invest"
-                                    style="line-height: 25px" onclick="window.location='{{ route('invest') }}'">Invest</button>
+                                <a  href="#" class="btn btn-outline-primary btn-sm p-0" id="invest"
+                                    style="line-height: 25px"
+                                  >Invest</a>
 
                             </div>
 
@@ -904,7 +905,7 @@
         })
 
         function dothis(params) {
-            console.log(params)
+            // console.log(params)
             $("#typesasasasas").val(params);
             // console.log($("#typesasasasas").val())
             if ($("#typesasasasas").val() == "For Sale") {
@@ -1056,7 +1057,7 @@
                     key = area + ',' + array[1];
                     // console.log(key)
                     url = url.replace(':key', key);
-                    console.log(formData);
+                    // console.log(formData);
                     if (formData == null) {
                         url = url.replace(':word', '&');
                     } else {
@@ -1071,10 +1072,8 @@
                 // console.log("error")
             }
         }
-        function invest() {
-            window.location.replace({{}});
 
-        }
+
         // SUBMIT END
         // == SEARCH AREA DROPDOWN END
     </script>
