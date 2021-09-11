@@ -21,7 +21,7 @@ Route::get('/property', 'PropertyController@index')->name('property');
 Route::get('/projects', 'PropertyController@forBuy')->name('buy.property');
 Route::get('/All', 'PropertyController@viewMore')->name('more.property');
 Route::get('/popularproperty', 'PropertyController@popularProperty')->name('popular.property');
-// Route::get('invest','PropertyController@invest')->name('invest');
+Route::get('invest','PropertyController@invest')->name('invest');
 
 
 Route::get('/result', 'PropertyController@search')->name('property.search');
@@ -33,6 +33,8 @@ Route::get('/agency/{id}', 'AgencyController@singleAgency')->name('single.agency
 Route::get('/propertyDetail/{id}', 'PropertyController@singleProperty')->name('single.property');
 
 Route::post('/agency/ajax', 'AgencyController@ajax');
+Route::post('/invest/ajax', 'PropertyController@investAjax');
+Route::post('/project/ajax', 'PropertyController@projectAjax');
 Route::post('/agency/mobileajax', 'AgencyController@mobileajax');
 Route::post('/agent/mobileajax', 'AgentController@mobileajax');
 Route::get('/property/{property_type}', 'PropertyController@explorer')->name('explorer.search');
@@ -47,6 +49,7 @@ Route::view('/contact-us', 'layouts.contact')->name('contact');
 // })->name('contact');
 
 Route::post('sendform', 'LeadController@formsubmit')->name('contact.form');
+Route::post('sendform1', 'LeadController@formsubmit1')->name('contact.form1');
 
 // mobile
 Route::post('propertymobile', 'PropertyController@mobile');

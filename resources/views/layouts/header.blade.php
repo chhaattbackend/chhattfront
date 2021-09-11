@@ -23,7 +23,7 @@
                             </li>
                         </a>
                         <a class="text-decoration-none" href="{{ route('buy.property') }}">
-                            <li id="home" style="color: #fff" @if (Str::contains(Route::current()->getName(), 'buy.property')) class="activeNav" @endif class="lis">
+                            <li id="home" style="color: #fff" @if (Str::contains(Route::current()->getName(), 'buy.property')|| Str::contains(Route::current()->getName(), 'invest')) class="activeNav" @endif class="lis">
                                 <span>Projects</span>
                             </li>
                         </a>

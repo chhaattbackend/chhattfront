@@ -15,7 +15,7 @@
         @endforeach
     </datalist>
 
-    <input wire:keyup="Search('area')" wire:model="areakey" list="area" style="outline: none" placeholder="Area"
+    <input wire:keyup="Search('area')" wire:model="areakey" list="0" style="outline: none" placeholder="Area"
         class="w-100 py-1 rounded-3 px-2 border border-dark border-1 mb-2 mb-sm-0">
     <datalist id="area">
          @foreach ($area as $item)

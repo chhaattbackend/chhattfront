@@ -8,11 +8,13 @@
         content="Browse the best properties in {{ @$inputcity_name }}, Pakistan. Find the latest apartments, plots, houses and commercial properties at leading property portal Chhatt.com">
     <link rel="stylesheet" href="{{ asset('styles/index.css') }}">
     {{-- <link rel="stylesheet" type="text/css" href="./styles/property/properties.css" /> --}}
+    <link rel="stylesheet" type="text/css" href="./styles/property/property.css" />
     <link rel="stylesheet" href="{{ asset('styles/property/properties.css') }}">
+
     <link rel="stylesheet" href="{{ asset('styles/mediaquery.css') }}">
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.1.3/dist/css/autoComplete.01.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 
@@ -28,198 +30,28 @@
     </div>
 @endsection
 @section('content')
-    <!-- agency search start -->
-
-    <div>
-        {{-- <div class="agency-search">
-            <div class="secdiv" id="serch_option_show">
-                <!-- ============================  SEARCH BOX START  ================================  -->
-                <div class="searchdiv">
-                    <div class="leftSec">
-                        <form onSubmit="" class="searchdivL">
-                            <span class="searchIcon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="25" fill="#CCCCCC"
-                                    class="bi bi-search" viewBox="0 0 16 16">
-                                    <path
-                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                                </svg>
-                            </span>
-
-                            <!-- search field start  -->
-                            <!-- search start -->
-                            <div class="autoComplete_wrapper">
-                                <input value="{{ $inputval }}" id="autoComplete" autocomplete="off" type="text"
-                                    tabindex="1" />
-                            </div>
-                            <!-- city select start -->
-                            <select id="citiesSelect" onchange="changecity()" class="form-select"
-                                aria-label="Default select example">
-                                @foreach ($city as $item)
-                                    <option @if (@$inputcity_id == @$item->id) selected @endif value="{{ $item->name }}">{{ $item->name }} </option>
-                                @endforeach
-                            </select>
-                            <!-- city select end -->
-                            <!-- search end -->
-                            <!-- city lagana h -->
-                            <button type="submit" onclick="changeFunc(event)">
-                                Search
-                            </button>
-                        </form>
-                    </div>
-                </div>
-                <form id="form11">
-
-                    <div class="d-flex flex-column mt-2">
-                        <div class="view_more_main">
-                            <span>Reset</span>
-                            <span class="sspan" id="view_more">View More</span>
-                        </div>
-                        <div id="moreItems">
-                            <div class="d-flex justify-content-between" id="drop_show">
-                                <select class="py-2 w-100 px-2 mx-3 border-0" name="property_type" id="">
-                                    <option selected disabled value="">Property Type </option>
-                                    @foreach ($propertytype as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                    @endforeach
-                                </select>
-                                <select class="py-2 w-100 px-2 mx-3 border-0" name="area_type" id="">
-                                    <option selected disabled value="">Area Type </option>
-                                    <option value="Residential">Residential</option>
-                                    <option value="Commercial">Commercial</option>
-                                    <option value="Industrial">Industrial</option>
-                                </select>
-                                <select class="py-2 w-100 px-2 mx-3 border-0" name="bed" id="">
-                                    <option selected disabled value="">Beds</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="+10">+10</option>
-                                </select>
-                                <select class="py-2 w-100 px-2 mx-3 border-0" name="bath" id="">
-                                    <option selected disabled value="">Bath </option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="+10">+10</option>
-                                </select>
-                            </div>
-                            <div class="d-flex justify-content-between mt-4" id="drop_showl">
-                                <select class="py-2 w-100 px-2 mx-3 border-0" name="min_price" id="">
-                                    <option selected disabled value="">Min Price </option>
-                                    <option value="500000">500,000</option>
-                                    <option value="1000000">1,000,000</option>
-                                    <option value="2000000">2,000,000</option>
-                                    <option value="3500000">3,500,000</option>
-                                    <option value="5000000">5,000,000</option>
-                                    <option value="6500000">6,500,000</option>
-                                    <option value="8000000">8,000,000</option>
-                                    <option value="10000000">10,000,000</option>
-                                    <option value="12500000">12,500,000</option>
-                                    <option value="15000000">15,000,000</option>
-                                    <option value="17500000">17,500,000</option>
-                                    <option value="20000000">20,000,000</option>
-                                    <option value="30000000">30,000,000</option>
-                                    <option value="40000000">40,000,000</option>
-                                    <option value="50000000">50,000,000</option>
-                                    <option value="75000000">75,000,000</option>
-                                    <option value="100000000">100,000,000</option>
-                                    <option value="250000000">250,000,000</option>
-                                    <option value="500000000">500,000,000</option>
-                                    <option value="1000000000">1,000,000,000</option>
-                                </select>
-                                <select class="py-2 w-100 px-2 mx-3 border-0" name="max_price">
-                                    <option selected disabled value="">Max Price </option>
-                                    <option value="500000">500,000</option>
-                                    <option value="1000000">1,000,000</option>
-                                    <option value="2000000">2,000,000</option>
-                                    <option value="3500000">3,500,000</option>
-                                    <option value="5000000">5,000,000</option>
-                                    <option value="6500000">6,500,000</option>
-                                    <option value="8000000">8,000,000</option>
-                                    <option value="10000000">10,000,000</option>
-                                    <option value="12500000">12,500,000</option>
-                                    <option value="15000000">15,000,000</option>
-                                    <option value="17500000">17,500,000</option>
-                                    <option value="20000000">20,000,000</option>
-                                    <option value="30000000">30,000,000</option>
-                                    <option value="40000000">40,000,000</option>
-                                    <option value="50000000">50,000,000</option>
-                                    <option value="75000000">75,000,000</option>
-                                    <option value="100000000">100,000,000</option>
-                                    <option value="250000000">250,000,000</option>
-                                    <option value="500000000">500,000,000</option>
-                                    <option value="1000000000">1,000,000,000</option>
-                                </select>
-                                <select class="py-2 w-100 px-2 mx-3 border-0" name="area_min" id="">
-                                    <option selected disabled value="">Area Min </option>
-                                    <option value="500">500</option>
-                                    <option value="1000">1000</option>
-                                    <option value="1500">1500</option>
-                                    <option value="2000">2000</option>
-                                    <option value="2500">2500</option>
-                                    <option value="3000">3000</option>
-                                    <option value="3500">3500</option>
-                                    <option value="4000">4000</option>
-
-
-                                </select>
-                                <select class="py-2 w-100 px-2 mx-3 border-0" name="area_max" id="">
-                                    <option selected disabled value="">Area Max </option>
-                                    <option value="500">500</option>
-                                    <option value="1000">1000</option>
-                                    <option value="1500">1500</option>
-                                    <option value="2000">2000</option>
-                                    <option value="2500">2500</option>
-                                    <option value="3000">3000</option>
-                                    <option value="3500">3500</option>
-                                    <option value="4000">4000</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div> --}}
-
-
-        @unless($suggestedareas == null || $suggestedareasid == 'a2' || $suggestedareasid == 'a3')
-
-            <div class="agency-search" style="padding-top: 10px !important;">
-                <div class="secdiv2">
-                    <div class="container-fluid">
-                        <div class="row">
-                            @foreach ($suggestedareas as $item)
-
-                                @unless($suggestedareasid == 'a2' || $suggestedareasid == 'a3')
-                                    <a href="{{ route('property.search', ['search_areas' => 'a2-' . $item->id]) }}"
-                                        class="col-4 col-xl-3 fw-bold text-decoration-none text-dark my-1">{{ $item->name }}
-                                        ({{ $item->properties->count() }})
-                                    </a>
-                                @endunless
-
-
-                            @endforeach
-                        </div>
+    <meta hidden name="csrf-token" content="{{ csrf_token() }}" />
+    <div class="agency-search">
+        <div class="secdiv">
+            <!-- ============================  SEARCH BOX START  ================================  -->
+            <div class="searchdiv">
+                <div class="leftSec">
+                    <span>
+                        <!-- <RiSearch2Line fontSize="26px" /> -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                    </span>
+                    <!-- search field start  -->
+                    <div>
+                        <input id="keyword" type="text" placeholder="Search area or project name" />
                     </div>
                 </div>
             </div>
-
-        @endunless
-
+        </div>
     </div>
-    <!-- agency search end -->
 
     <!-- AGENCIES START -->
     <!-- propertylist start -->
@@ -228,14 +60,16 @@
             <div class="col-6" style="align-self: flex-start">
 
                 <h5 class=" fw-bold" style=" text-align: start">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
-                        <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
-                      </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-filter" viewBox="0 0 16 16">
+                        <path
+                            d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                    </svg>
 
                 </h5>
             </div>
             <div class="col-6" style="align-self: flex-end;">
-                <h5 class=" fw-bold " style=" text-align: end">Showing {{ $projects->total() }} Results</h5>
+                <h5 id="total" class=" fw-bold " style=" text-align: end">Showing {{ $projects->total() }} Results</h5>
             </div>
 
 
@@ -249,7 +83,7 @@
         <!-- PROPERTY CARD START -->
         <div class="mapCardContainer">
             <div class="container-fluid px-0">
-                <div class="row">
+                <div class="row" id="list">
                     @include('layouts.featuredproject')
                 </div>
 
@@ -300,6 +134,48 @@
         // == SEARCH AREA DROPDOWN START
         var areas;
         var city;
+        $('#keyword').on('keyup', function() {
+            var value = $(this).val();
+            $('#list').addClass('animate__animated animate__fadeOut');
+
+            console.log(value);
+            ajaxSearch(value)
+        });
+
+        function ajaxSearch(value) {
+            $.ajax({
+                type: "POST",
+                url: "project/ajax",
+                dataType: 'JSON',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    keyword: value,
+                },
+                success: function(responese) {
+                    // console.log(responese.pagination)
+                    $('#list').removeClass('animate__animated animate__fadeOut');
+
+                    // console.log(responese.pagination)
+                    $('#list').html(responese.data);
+                    $('#list').addClass('animate__animated animate__fadeIn');
+                    $('#wow').html(responese.pagination);
+                    $('#total').html('Showing ' + responese.total + ' Results');
+                },
+            });
+        }
+
+        //   {{-- ajaxSearch --}}
+        //   {{-- ajaxPagination --}}
+        $(document).on('click', '.pagination a', function(event) {
+            event.preventDefault();
+            value = $('#keyword').val();
+            var href = $(this).attr('href');
+            // var page = $(this).attr('href').split('page=')[1];
+            $('#list').addClass('animate__animated animate__fadeOut');
+            ajaxSearch(value)
+        });
 
         function changecity() {
             // var city = $('#citiesSelect').children("option:selected").val();
@@ -321,7 +197,7 @@
                                 .setAttribute("placeholder", "Loading...");
                             // Fetch External Data Source
                             const source = await fetch(
-                                `http://uat.chhatt.com/api/allareas?city=${city}`
+                                `https://uat.chhatt.com/api/allareas?city=${city}`
                             );
                             areas = await source.json();
                             // Post Loading placeholder text
@@ -455,6 +331,7 @@
                 view.innerText = "View More"
             }
         });
+
     </script>
 
 @endsection

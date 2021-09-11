@@ -95,6 +95,10 @@ class PropertyController extends Controller
         $properties = Property::with(['images'])->where('id', '!=', null)->whereHas('images', function ($query) use ($search) {
             $query->where('name', '!=', null);
         });
+        $projects = Project::all();
+        // $projects= Project::with(['images'])->where('id','!=', null)->whereHas('images', function($query) use ($search){
+        //     $query->where('name', '!=', null);
+        // });
         $pagination_array = array();
         $devicecheck = is_numeric(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'mobile'));
 
@@ -121,6 +125,7 @@ class PropertyController extends Controller
             }
             $area_id = $str[1];
 
+
             $pagination_array = array('search_areas' => $request->search_areas);
             if ($area == 'area_one_id') {
                 $one = AreaOne::find($area_id);
@@ -128,13 +133,15 @@ class PropertyController extends Controller
                 $inputcity_id = $one->city_id;
                 $inputcity_name = $one->city->name;
 
-                $suggestedareas = AreaTwo::where('area_one_id', $area_id)->take(12)->get();
+
+                // $suggestedareas = AreaTwo::where('area_one_id', $area_id)->take(12)->get();
+                $suggestedareas = AreaTwo::where('area_one_id', $area_id)->orderby('name')->take(12)->get();
                 $suggestedareasid = 'a1';
             }
             if ($area == 'area_two_id') {
                 $two = AreaTwo::find($area_id);
                 $one = AreaOne::find($two->area_one_id);
-                $suggestedareas = AreaTwo::find($area_id)->take(12)->get();
+                $suggestedareas = AreaTwo::find($area_id)->orderby('name')->take(12)->get();
                 $inputval = $one->name . ' ' . $two->name;
                 $inputcity_id = $one->city_id;
                 $inputcity_name = $one->city->name;
@@ -147,6 +154,7 @@ class PropertyController extends Controller
 
 
             $properties = $properties->where($area, $area_id);
+
             $search = '';
 
             // for properties with images only
@@ -165,12 +173,13 @@ class PropertyController extends Controller
         }
         if (isset($request->projects)) {
             // $properties->where('inventory_type', $request->inventory_type);
-            $projects=Project::orderBy('created_at','desc')->paginate()->setPath('');
+            $projects = $projects->where($area, $area_id);
+            // dd($projects);
+            // $projects=Project::orderBy('created_at','desc')->paginate()->setPath('');
             // dd($properties);
             // dd($properties);
             // $pagination_array = $this->array_push_assoc($pagination_array, 'inventory_type', $request->projects);
-            return view('frontend.property.webbuy',compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_name', 'inputcity_id', 'suggestedareas', 'suggestedareasid','projects'));
-
+            return view('frontend.property.webbuy', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_name', 'inputcity_id', 'suggestedareas', 'suggestedareasid', 'projects'));
         }
         if (isset($request->property_type)) {
             $property_types = explode(',', $request->property_type);
@@ -188,6 +197,11 @@ class PropertyController extends Controller
         if (isset($request->area_type)) {
             $properties->where('type', $request->area_type);
             $pagination_array = $this->array_push_assoc($pagination_array, 'area_type', $request->area_type);
+        }
+        if (isset($request->inventory_type)) {
+            $properties->where('inventory_type', $request->inventory_type);
+            $pagination_array = $this->array_push_assoc($pagination_array, 'inventory_type', $request->inventory_type);
+            // dd('moiz');
         }
         if (isset($request->max_price) || isset($request->min_price)) {
             if ($request->min_price == null) {
@@ -338,7 +352,7 @@ class PropertyController extends Controller
 
     public function index(Request $request)
     {
-        $p_type= Property::where('type','residential')->select('property_type')->distinct()->get();
+        $p_type = Property::where('type', 'residential')->select('property_type')->distinct()->get();
 
         // return $p_type;
 
@@ -349,7 +363,7 @@ class PropertyController extends Controller
 
             if ($request->type == 'All') {
                 if (isset($request->p)) {
-                    $properties = Property::orderBy('created_at','desc')->paginate(4);
+                    $properties = Property::orderBy('created_at', 'desc')->paginate(4);
                 } else {
                     $properties = Property::paginate(10);
                 }
@@ -376,12 +390,12 @@ class PropertyController extends Controller
                 // 'pagination' => (string) $areas->links()
             ]);
         }
-        $mobile=User::whereNull('mobile')->get();
+        $mobile = User::whereNull('mobile')->get();
         // dd($mobile);
 
-        $properties = Property::orderBy('created_at','desc')->paginate(4);
+        $properties = Property::orderBy('created_at', 'desc')->paginate(4);
         // dd($properties);
-        $projects=Project::orderBy('created_at','desc')->paginate(4);
+        $projects = Project::orderBy('created_at', 'desc')->paginate(4);
         // dd($projects);
 
         // $properties = Property::paginate(200);
@@ -401,43 +415,49 @@ class PropertyController extends Controller
 
 
 
-        return view('frontend.property.index', compact('properties', 'agencies', 'city', 'propertytype', 'check','p_type','projects'));
+        return view('frontend.property.index', compact('properties', 'agencies', 'city', 'propertytype', 'check', 'p_type', 'projects'));
     }
     public function ajax(Request $request)
     {
 
-// dd($request->all());
+        // dd($request->all());
         if ($request->type == '') {
-            $p_type= Property::where('type','residential')->select('property_type')->distinct()->get();
+            $p_type = Property::where('type', 'residential')->select('property_type')->distinct()->get();
             // dd('hhh');
 
 
         }
         if ($request->type == 'Residential') {
-            $p_type= Property::where('type','residential')->select('property_type')->distinct()->get();
+            $p_type = Property::where('type', 'residential')->select('property_type')->distinct()->get();
             // dd('hhh');
             // dd($p_type);
 
         }
         if ($request->type == 'Commercial') {
 
-             $p_type= Property::where('type','commercial')->select('property_type')->distinct()->get();
+            $p_type = Property::where('type', 'commercial')->select('property_type')->distinct()->get();
             //  dd($p_type);
 
 
         }
         if ($request->type == 'Industrial') {
-            $p_type= Property::where('type','industrial')->select('property_type')->distinct()->get();
+            $p_type = Property::where('type', 'industrial')->select('property_type')->distinct()->get();
+            // dd($p_type);
+        }
+
+        if ($request->property_for == 'For Sale') {
+            $properties = Property::where('property_for', 'For Sale')->take(4)->get();
+            return view('layouts.listwithimage', compact('properties'));
+            // dd($p_type);
+        }
+        if ($request->property_for == 'For Rent') {
+            $properties = Property::where('property_for', 'For Rent')->take(4)->get();
+            return view('layouts.listwithimage', compact('properties'));
             // dd($p_type);
         }
         if ($request->inventory_type == 'requirement') {
-            $properties= Property::where('inventory_type','requirement')->take(4)->get();
-            return view('layouts.listwithimage',compact('properties'));
-            // dd($p_type);
-        }
-        if ($request->property_for) {
-            $properties = Property::orderBy('created_at','desc')->take(4)->get();
-            return view('layouts.listwithimage',compact('properties'));
+            $properties = Property::where('inventory_type', 'requirement')->take(4)->get();
+            return view('layouts.listwithimage', compact('properties'));
             // dd($p_type);
         }
 
@@ -451,11 +471,81 @@ class PropertyController extends Controller
             // 'brandid'=> $brandid,
             // 'pagination' => (string) $products->links()
         ]);
-
     }
     public function invest()
     {
-       return view('frontend.property.webinvest');
+        $projects = Project::all();
+        return view('frontend.property.invest.investindex', compact('projects'));
+    }
+    public function investAjax(Request $request)
+    {
+
+
+
+        if ($request->keyword == null || $request->keyword == ' ') {
+
+            $projects = Project::all();
+        } else {
+
+            $seacrh = $request->keyword;
+            $projects = Project::where('id', '!=', null);
+            // dd($projects);
+
+            $projects = $projects->whereHas('user', function ($query) use ($seacrh) {
+                $query->where('name', 'like', '%' . $seacrh . '%');
+            })->orWhereHas('user', function ($query) use ($seacrh) {
+                $query->where('phone', $seacrh);
+            })->orWhere('name', 'like', '%' . $seacrh . '%')
+                ->paginate(24)->setPath('');
+
+            $pagination = $projects->appends(array(
+                'keyword' => $request->keyword
+            ));
+            // dd($projects->count());
+        }
+
+        $data = view('layouts.investproject', compact('projects'))->render();
+
+        return response()->json([
+            'data' => $data
+            // 'total' => (string) $projects->total(),
+            // 'pagination' => (string) $projects->links()
+        ]);
+    }
+    public function projectAjax(Request $request)
+    {
+
+
+
+        if ($request->keyword == null || $request->keyword == ' ') {
+
+            $projects = Project::all();
+        } else {
+
+            $seacrh = $request->keyword;
+            $projects = Project::where('id', '!=', null);
+            // dd($projects);
+
+            $projects = $projects->whereHas('user', function ($query) use ($seacrh) {
+                $query->where('name', 'like', '%' . $seacrh . '%');
+            })->orWhereHas('user', function ($query) use ($seacrh) {
+                $query->where('phone', $seacrh);
+            })->orWhere('name', 'like', '%' . $seacrh . '%')
+                ->paginate(24)->setPath('');
+
+            $pagination = $projects->appends(array(
+                'keyword' => $request->keyword
+            ));
+            // dd($projects->count());
+        }
+
+        $data = view('layouts.featuredproject', compact('projects'))->render();
+
+        return response()->json([
+            'data' => $data,
+            'total' => (string) $projects->total()
+            // 'pagination' => (string) $projects->links()
+        ]);
     }
     public function forBuy(Request $request)
     {
@@ -466,31 +556,13 @@ class PropertyController extends Controller
         $inputcity_name = null;
         $city = City::all();
         $propertytype = PropertyType::all();
-        $projects=Project::orderBy('created_at','desc')->paginate()->setPath('');
-        $properties='';
+        $projects = Project::orderBy('created_at', 'desc')->paginate()->setPath('');
+        $properties = '';
 
 
-        // if ($request->property_for) {
 
-        //     if ($request->property_for == 'For Sale') {
-        //         // dd('asdsadadasdasdad');
-        //         $properties=Property::where('Property_for',$request->property_for)->paginate(25)->setPath('');
-        //         $pagination = $properties->appends(array(
-        //             'property_for' => $request->property_for
-        //         ));
-        //         // dd($properties);
-
-        //     }
-
-        //     if ($request->property_for == 'For Rent') {
-        //         $properties=Property::where('Property_for',$request->property_for)->paginate(25)->setPath('');
-        //         $pagination = $properties->appends(array(
-        //             'property_for' => $request->property_for
-        //         ));
-        //          }
-        //         }
-                return view('frontend.property.webbuy',compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_name', 'inputcity_id', 'suggestedareas', 'suggestedareasid','projects'));
-          $city = City::all();
+        return view('frontend.property.webbuy', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_name', 'inputcity_id', 'suggestedareas', 'suggestedareasid', 'projects'));
+        $city = City::all();
         $propertytype = PropertyType::all();
         $global = new GlobalClass;
         $search = '';
@@ -560,15 +632,23 @@ class PropertyController extends Controller
         if (isset($request->bed)) {
             $properties->where('bed', $request->bed);
             $pagination_array = $this->array_push_assoc($pagination_array, 'bed', $request->bed);
+            dd('bed');
         }
         if (isset($request->property_for)) {
             $properties->where('property_for', $request->property_for);
             $pagination_array = $this->array_push_assoc($pagination_array, 'property_for', $request->property_for);
         }
         if (isset($request->property_type)) {
+
             $property_types = explode(',', $request->property_type);
             $properties->whereIn('property_type', $property_types);
             $pagination_array = $this->array_push_assoc($pagination_array, 'property_type', $request->property_type);
+        }
+        if (isset($request->inventory_type)) {
+            $inventory_types = explode(',', $request->inventory_type);
+            $properties->whereIn('inventory_type', $inventory_types);
+            $pagination_array = $this->array_push_assoc($pagination_array, 'inventory_type', $request->inventory_type);
+            // dd($properties);
         }
         if (isset($request->bath)) {
             $properties->where('bath', $request->bath);
@@ -625,12 +705,10 @@ class PropertyController extends Controller
         $properties->sortBy('priority');
         $pagination = $properties->appends($pagination_array);
 
-        return view('frontend.property.search', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_name', 'inputcity_id', 'suggestedareas', 'suggestedareasid','projects'));
-
+        return view('frontend.property.search', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_name', 'inputcity_id', 'suggestedareas', 'suggestedareasid', 'projects'));
     }
     public function viewMore(Request $request)
-    {
-        {
+    { {
             $inputval = null;
             $inputcity_id = null;
             $suggestedareas = null;
@@ -638,22 +716,21 @@ class PropertyController extends Controller
             $inputcity_name = null;
             $city = City::all();
             $propertytype = PropertyType::all();
-            $projects=Project::orderBy('created_at','desc')->paginate()->setPath('');;
-            $properties='';
+            $projects = Project::orderBy('created_at', 'desc')->paginate()->setPath('');;
+            $properties = '';
 
 
             if ($request->property_for) {
                 if ($request->property_for == 'All') {
-                    $properties=Property::orderBy('created_at','desc')->paginate(25)->setpath('');
+                    $properties = Property::orderBy('created_at', 'desc')->paginate(25)->setpath('');
                     $pagination = $properties->appends(array(
                         'property_for' => $request->property_for
                     ));
-
                 }
 
                 if ($request->property_for == 'For Sale') {
                     // dd('asdsadadasdasdad');
-                    $properties=Property::where('Property_for',$request->property_for)->paginate(25)->setPath('');
+                    $properties = Property::where('Property_for', $request->property_for)->paginate(25)->setPath('');
                     $pagination = $properties->appends(array(
                         'property_for' => $request->property_for
                     ));
@@ -662,14 +739,21 @@ class PropertyController extends Controller
                 }
 
                 if ($request->property_for == 'For Rent') {
-                    $properties=Property::where('Property_for',$request->property_for)->paginate(25)->setPath('');
+                    $properties = Property::where('Property_for', $request->property_for)->paginate(25)->setPath('');
                     $pagination = $properties->appends(array(
                         'property_for' => $request->property_for
                     ));
-                     }
-                     return view('frontend.property.moreproperty',compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_name', 'inputcity_id', 'suggestedareas', 'suggestedareasid','projects'));
-                    }
-              $city = City::all();
+                }
+                if ($request->property_for == 'requirement') {
+                    // dd('asdasd');
+                    $properties = Property::where('inventory_type', $request->property_for)->paginate(25)->setPath('');
+                    $pagination = $properties->appends(array(
+                        'inventory_type' => $request->property_for
+                    ));
+                }
+                return view('frontend.property.moreproperty', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_name', 'inputcity_id', 'suggestedareas', 'suggestedareasid', 'projects'));
+            }
+            $city = City::all();
             $propertytype = PropertyType::all();
             $global = new GlobalClass;
             $search = '';
@@ -804,11 +888,8 @@ class PropertyController extends Controller
             $properties->sortBy('priority');
             $pagination = $properties->appends($pagination_array);
 
-            return view('frontend.property.search', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_name', 'inputcity_id', 'suggestedareas', 'suggestedareasid','projects'));
-
+            return view('frontend.property.search', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_name', 'inputcity_id', 'suggestedareas', 'suggestedareasid', 'projects'));
         }
-
-
     }
     public function popularProperty(Request $request)
     {
@@ -818,94 +899,77 @@ class PropertyController extends Controller
         $suggestedareasid = null;
         $inputcity_name = null;
         $city = City::all();
-            $propertytype = PropertyType::all();
+        $propertytype = PropertyType::all();
 
 
         if ($request->property_for) {
 
-            if ($request->property_for == 'For Sale' ) {
-                if ($request->type =='House' || $request->type =='Plot' || $request->type =='Shop' || $request->type =='Mezzanine' || $request->type =='Lower Portion' || $request->type =='Upper Portion'||$request->type =='Flat') {
+            if ($request->property_for == 'For Sale') {
+                if ($request->type == 'House' || $request->type == 'Plot' || $request->type == 'Shop' || $request->type == 'Mezzanine' || $request->type == 'Lower Portion' || $request->type == 'Upper Portion' || $request->type == 'Flat') {
 
-                    $properties=Property::where('Property_for',$request->property_for)
-                    ->where('property_type',$request->type)
-                    ->paginate(25)->setPath('');
+                    $properties = Property::where('Property_for', $request->property_for)
+                        ->where('property_type', $request->type)
+                        ->paginate(25)->setPath('');
                     // dd($properties);
                     $pagination = $properties->appends(array(
-                        'property_for' => $request->property_for,'type'=>$request->type
+                        'property_for' => $request->property_for, 'type' => $request->type
                     ));
                 }
-
             }
 
             if ($request->property_for == 'For Rent') {
 
-                if ($request->type =='House' || $request->type =='Plot' || $request->type =='Shop' || $request->type =='Mezzanine' || $request->type =='Lower Portion' || $request->type =='Upper Portion'||$request->type =='Flat') {
-                    $properties=Property::where('Property_for',$request->property_for)
-                    ->where('property_type',$request->type)
-                    ->paginate(25)->setPath('');
+                if ($request->type == 'House' || $request->type == 'Plot' || $request->type == 'Shop' || $request->type == 'Mezzanine' || $request->type == 'Lower Portion' || $request->type == 'Upper Portion' || $request->type == 'Flat') {
+                    $properties = Property::where('Property_for', $request->property_for)
+                        ->where('property_type', $request->type)
+                        ->paginate(25)->setPath('');
                     // dd($properties);
                     $pagination = $properties->appends(array(
-                        'property_for' => $request->property_for,'type'=>$request->type
+                        'property_for' => $request->property_for, 'type' => $request->type
                     ));
-
                 }
-
-                 }
-                //  if ($request->property_for == 'For Sale' ) {
-                //     if ($request->type =='House' || $request->type =='Plot' || $request->type =='Shop' || $request->type =='Mezzanine' || $request->type =='Lower Portion' || $request->type =='Upper Portion') {
-                //         $properties=Property::where('Property_for',$request->property_for)
-                //         ->where('property_type',$request->type)
-                //         ->paginate(25)->setPath('');
-                //         // dd($properties);
-                //         $pagination = $properties->appends(array(
-                //             'property_for' => $request->property_for,'type'=>$request->type
-                //         ));
-                //     }
-                    if ($request->property_for == 'For Sale' ) {
-                        if ($request->type =='House' || $request->type =='Plot' || $request->type =='Shop' || $request->type =='Mezzanine' || $request->type =='Lower Portion' || $request->type =='Upper Portion'|| $request->type =='Flat') {
-                            if ($request->area=='6'||$request->area=='2'||$request->area=='3') {
-                                $properties=Property::where('Property_for',$request->property_for)
-                                ->where('property_type',$request->type)
-                                ->where('area_one_id',$request->area)
-                                ->paginate(25)->setPath('');
-                                // dd($properties);
-                                $pagination = $properties->appends(array(
-                                    'property_for' => $request->property_for,'type'=>$request->type
-                                ));
-
-
-                            }
-
-
-                        }
-
-
-
-                }
-                if ($request->property_for == 'For Rent' ) {
-                    if ($request->type =='House' || $request->type =='Plot' || $request->type =='Shop' || $request->type =='Mezzanine' || $request->type =='Lower Portion' || $request->type =='Upper Portion'|| $request->type =='Flat') {
-                        if ($request->area=='6'||$request->area=='2'||$request->area=='3') {
-                            $properties=Property::where('Property_for',$request->property_for)
-                            ->where('property_type',$request->type)
-                            ->where('area_one_id',$request->area)
-                            ->paginate(25)->setPath('');
-                            // dd($properties);
-                            $pagination = $properties->appends(array(
-                                'property_for' => $request->property_for,'type'=>$request->type
-                            ));
-
-
-                        }
-
-
-                    }
-
-
-
             }
-                 return view('frontend.property.webpopular',compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_name', 'inputcity_id', 'suggestedareas', 'suggestedareasid'));
+            //  if ($request->property_for == 'For Sale' ) {
+            //     if ($request->type =='House' || $request->type =='Plot' || $request->type =='Shop' || $request->type =='Mezzanine' || $request->type =='Lower Portion' || $request->type =='Upper Portion') {
+            //         $properties=Property::where('Property_for',$request->property_for)
+            //         ->where('property_type',$request->type)
+            //         ->paginate(25)->setPath('');
+            //         // dd($properties);
+            //         $pagination = $properties->appends(array(
+            //             'property_for' => $request->property_for,'type'=>$request->type
+            //         ));
+            //     }
+            if ($request->property_for == 'For Sale') {
+                if ($request->type == 'House' || $request->type == 'Plot' || $request->type == 'Shop' || $request->type == 'Mezzanine' || $request->type == 'Lower Portion' || $request->type == 'Upper Portion' || $request->type == 'Flat') {
+                    if ($request->area == '6' || $request->area == '2' || $request->area == '3') {
+                        $properties = Property::where('Property_for', $request->property_for)
+                            ->where('property_type', $request->type)
+                            ->where('area_one_id', $request->area)
+                            ->paginate(25)->setPath('');
+                        // dd($properties);
+                        $pagination = $properties->appends(array(
+                            'property_for' => $request->property_for, 'type' => $request->type
+                        ));
+                    }
+                }
+            }
+            if ($request->property_for == 'For Rent') {
+                if ($request->type == 'House' || $request->type == 'Plot' || $request->type == 'Shop' || $request->type == 'Mezzanine' || $request->type == 'Lower Portion' || $request->type == 'Upper Portion' || $request->type == 'Flat') {
+                    if ($request->area == '6' || $request->area == '2' || $request->area == '3') {
+                        $properties = Property::where('Property_for', $request->property_for)
+                            ->where('property_type', $request->type)
+                            ->where('area_one_id', $request->area)
+                            ->paginate(25)->setPath('');
+                        // dd($properties);
+                        $pagination = $properties->appends(array(
+                            'property_for' => $request->property_for, 'type' => $request->type
+                        ));
+                    }
+                }
+            }
+            return view('frontend.property.webpopular', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_name', 'inputcity_id', 'suggestedareas', 'suggestedareasid'));
         }
-          $city = City::all();
+        $city = City::all();
         $propertytype = PropertyType::all();
         $global = new GlobalClass;
         $search = '';
@@ -1041,7 +1105,6 @@ class PropertyController extends Controller
         $pagination = $properties->appends($pagination_array);
 
         return view('frontend.property.search', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_name', 'inputcity_id', 'suggestedareas', 'suggestedareasid'));
-
     }
 
 

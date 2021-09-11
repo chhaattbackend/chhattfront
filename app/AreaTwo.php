@@ -13,7 +13,17 @@ class AreaTwo extends Model
     {
         return $this->belongsTo(AreaOne::class, 'area_one_id');
     }
-    
+    public function propertiesCount($inventory_type)
+    {
+         return $this->hasMany(Property::class, 'area_two_id')->where('property_for',$inventory_type)->count();
+    }
+    // public function propertiesCount($inventory_type)
+    // {
+    //     return $this->whereHas('properties', function ($query) use ($inventory_type) {
+    //         $query->where('property_for', $inventory_type);
+    //     })->count();
+    // }
+
     public function agencies()
     {
         return $this->hasMany(Agency::class, 'area_two_id')->limit(10);

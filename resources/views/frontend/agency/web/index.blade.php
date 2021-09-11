@@ -20,7 +20,7 @@
 @endsection
 
 @section('content')
-    <meta hidden name="csrf-token" content="{{ csrf_token() }}" />
+     
     <div>
         <div class="agency-search">
             <div class="secdiv">

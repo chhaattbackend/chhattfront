@@ -202,9 +202,12 @@
                                 @unless($suggestedareasid == 'a2' || $suggestedareasid == 'a3')
                                     <a href="{{ route('property.search', ['search_areas' => 'a2-' . $item->id]) }}"
                                         class="col-4 col-xl-3 fw-bold text-decoration-none text-dark my-1">{{ $item->name }}
-                                        ({{ $item->properties->count() }})
+                                       ({{ $item->propertiesCount(Request()->property_for)}})
+                                       {{-- @dd($item) --}}
+
                                     </a>
                                 @endunless
+
 
 
                             @endforeach
@@ -300,7 +303,7 @@
                                 .setAttribute("placeholder", "Loading...");
                             // Fetch External Data Source
                             const source = await fetch(
-                                `http://uat.chhatt.com/api/allareas?city=${city}`
+                                `https://uat.chhatt.com/api/allareas?city=${city}`
                             );
                             areas = await source.json();
                             // Post Loading placeholder text
@@ -328,7 +331,7 @@
                         return filteredResults;
                     }
                 },
-                placeHolder: "Try Something 'Final'",
+                placeHolder: "Search Location",
                 resultsList: {
 
                     // noResults: true,

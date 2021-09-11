@@ -14,8 +14,8 @@
     <div class="mn_div">
         <div class="backg ">
             <div class="backg_sdiv">
-                <div class="main_bar p-3 offset-1"
-                    style="background: rgba(19, 18, 18, 0.308);  max-width: 950px !important; ">
+                <div class="main_bar p-3"
+                    style="background: rgba(19, 18, 18, 0.753); border-radius: 10px;  outline: 2px; box-shadow: 12px 12px 20px #1b1c1d9a, -12px -12px 20px rgba(37, 39, 39, 0.712);   max-width: 950px !important; ">
                     <form id="form11" action="" class="frm">
                         <div class="row p-4 " style="margin-bottom: 1%; margin-left: 105px">
 
@@ -39,9 +39,8 @@
                                     style="line-height: 25px" onclick="dothis('project')">Project</button>
                             </div>
                             <div class="col-2">
-                                <a  href="#" class="btn btn-outline-primary btn-sm p-0" id="invest"
-                                    style="line-height: 25px"
-                                  >Invest</a>
+                                <a href="{{ route('invest') }}" class="btn btn-outline-primary btn-sm p-0" id="invest"
+                                    style="line-height: 25px">Invest</a>
 
                             </div>
 
@@ -314,10 +313,10 @@
                 <h3 class="fw-bold">Fresh Properties</h3>
 
             </div>
+
             <div class="d-flex">
                 <div class="ms-4" style="text-align: end">
-                    <button onclick="window.location='{{ route('more.property', ['property_for' => 'All']) }}'"
-                        class="themebtn2 px-3 py-1 ms-1">View
+                    <button id="viewall" onclick="viewall()" class="themebtn2 px-3 py-1 ms-1">View
                         all</button>
                 </div>
             </div>
@@ -449,7 +448,8 @@
                             </h5>
                         </div>
                         <div class="col-3 offset-1">
-                            <h5 style="text-align: start" class="">
+                            <h5 style="text-align: start"
+                                class="">
                                 Popular Location For Houses
                                 <hr>
                             </h5>
@@ -459,157 +459,176 @@
                     </div>
 
                     <br>
-                    <div class="row " style=" text-align: center">
-                        <div class="col-3 offset-1" style="text-align: start">
-                            <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'House']) }}"
-                                class="text-decoration-none">
-                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+                    <div class="
+                                row " style=" text-align: center">
+                                <div class="col-3 offset-1" style="text-align: start">
+                                    <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'House']) }}"
+                                        class="text-decoration-none">
+                                        <p class="txt"
+                                            style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
 
-                                    House For Sale In Karachi
-                                </p>
-                            </a>
-                            <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'Plot']) }}"
-                                class="text-decoration-none">
-                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+                                            House For Sale In Karachi
+                                        </p>
+                                    </a>
+                                    <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'Plot']) }}"
+                                        class="text-decoration-none">
+                                        <p class="txt"
+                                            style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
 
-                                    Plot For Sale In Karachi
-                                </p>
-                            </a>
-                            <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'Shop']) }}"
-                                class="text-decoration-none">
-                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+                                            Plot For Sale In Karachi
+                                        </p>
+                                    </a>
+                                    <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'Shop']) }}"
+                                        class="text-decoration-none">
+                                        <p class="txt"
+                                            style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
 
-                                    Shop For Sale In Karachi
-                                </p>
-                            </a>
-                            <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'Mezzanine']) }}"
-                                class="text-decoration-none">
-                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+                                            Shop For Sale In Karachi
+                                        </p>
+                                    </a>
+                                    <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'Mezzanine']) }}"
+                                        class="text-decoration-none">
+                                        <p class="txt"
+                                            style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
 
-                                    Mezzanine For Sale In Karachi
-                                </p>
-                            </a>
-                            <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'Lower Portion']) }}"
-                                class="text-decoration-none">
-                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+                                            Mezzanine For Sale In Karachi
+                                        </p>
+                                    </a>
+                                    <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'Lower Portion']) }}"
+                                        class="text-decoration-none">
+                                        <p class="txt"
+                                            style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
 
-                                    Lower Portion For Sale In Karachi
-                                </p>
-                            </a>
-                            <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'Upper Portion']) }}"
-                                class="text-decoration-none">
-                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+                                            Lower Portion For Sale In Karachi
+                                        </p>
+                                    </a>
+                                    <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'Upper Portion']) }}"
+                                        class="text-decoration-none">
+                                        <p class="txt"
+                                            style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
 
-                                    Upper Portion For Sale In Karachi
-                                </p>
-                            </a>
-
-
-                        </div>
-                        <div class="col-3 offset-1" style="text-align: start">
-                            <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'House']) }}"
-                                class="text-decoration-none">
-                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
-
-                                    House For Rent In Karachi
-                                </p>
-                            </a>
-
-                            <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Shop']) }}"
-                                class="text-decoration-none">
-                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
-
-                                    Shop For Rent In Karachi
-                                </p>
-                            </a>
-
-                            <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Flat']) }}"
-                                class="text-decoration-none">
-                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
-
-                                    Flat For Rent In Karachi
-                                </p>
-                            </a>
-                            <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Mezzanine']) }}"
-                                class="text-decoration-none">
-                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
-
-                                    Mezzanine For Rent In Karachi
-                                </p>
-                            </a>
-                            <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Lower Portion']) }}"
-                                class="text-decoration-none">
-                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
-
-                                    Lower Portion For Rent In Karachi
-                                </p>
-                            </a>
-                            <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Upper Portion']) }}"
-                                class="text-decoration-none">
-                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
-
-                                    Upper Portion For Rent In Karachi
-                                </p>
-                            </a>
+                                            Upper Portion For Sale In Karachi
+                                        </p>
+                                    </a>
 
 
+                                </div>
+                                <div class="col-3 offset-1" style="text-align: start">
+                                    <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'House']) }}"
+                                        class="text-decoration-none">
+                                        <p class="txt"
+                                            style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                            House For Rent In Karachi
+                                        </p>
+                                    </a>
+
+                                    <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Shop']) }}"
+                                        class="text-decoration-none">
+                                        <p class="txt"
+                                            style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                            Shop For Rent In Karachi
+                                        </p>
+                                    </a>
+
+                                    <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Flat']) }}"
+                                        class="text-decoration-none">
+                                        <p class="txt"
+                                            style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                            Flat For Rent In Karachi
+                                        </p>
+                                    </a>
+                                    <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Mezzanine']) }}"
+                                        class="text-decoration-none">
+                                        <p class="txt"
+                                            style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                            Mezzanine For Rent In Karachi
+                                        </p>
+                                    </a>
+                                    <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Lower Portion']) }}"
+                                        class="text-decoration-none">
+                                        <p class="txt"
+                                            style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                            Lower Portion For Rent In Karachi
+                                        </p>
+                                    </a>
+                                    <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Upper Portion']) }}"
+                                        class="text-decoration-none">
+                                        <p class="txt"
+                                            style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                            Upper Portion For Rent In Karachi
+                                        </p>
+                                    </a>
 
 
-                        </div>
-                        <div class="col-3 offset-1" style="text-align: start">
 
-                            <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'House', 'area' => '6']) }}"
-                                class="text-decoration-none">
-                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6; ">
-                                    House For Sale In Dha
-                                </p>
-                            </a>
-                            <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Flat', 'area' => '6']) }}"
-                                class="text-decoration-none">
 
-                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+                                </div>
+                                <div class="col-3 offset-1" style="text-align: start">
 
-                                    Flat For Rent In Dha
-                                </p>
-                            </a>
+                                    <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'House', 'area' => '6']) }}"
+                                        class="text-decoration-none">
+                                        <p class="txt"
+                                            style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6; ">
+                                            House For Sale In Dha
+                                        </p>
+                                    </a>
+                                    <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Flat', 'area' => '6']) }}"
+                                        class="text-decoration-none">
 
-                            <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'House', 'area' => '2']) }}"
-                                class="text-decoration-none txt_div">
-                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+                                        <p class="txt"
+                                            style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
 
-                                    House For Sale In Bahria
-                                </p>
-                            </a>
-                            <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Flat', 'area' => '2']) }}"
-                                class="text-decoration-none txt_div">
-                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+                                            Flat For Rent In Dha
+                                        </p>
+                                    </a>
 
-                                    Flat For Rent In Bahria
-                                </p>
-                            </a>
-                            <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Flat', 'area' => '3']) }}"
-                                class="text-decoration-none txt_div">
-                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+                                    <a href="{{ route('popular.property', ['property_for' => 'For Sale', 'type' => 'House', 'area' => '2']) }}"
+                                        class="text-decoration-none txt_div">
+                                        <p class="txt"
+                                            style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
 
-                                    Flat For Rent In Korangi
-                                </p>
-                            </a>
-                            <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'House', 'area' => '3']) }}"
-                                class="text-decoration-none txt_div">
-                                <p class="txt" style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
-                                    House For Rent In Korangi
-                                </p>
-                            </a>
+                                            House For Sale In Bahria
+                                        </p>
+                                    </a>
+                                    <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Flat', 'area' => '2']) }}"
+                                        class="text-decoration-none txt_div">
+                                        <p class="txt"
+                                            style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                            Flat For Rent In Bahria
+                                        </p>
+                                    </a>
+                                    <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'Flat', 'area' => '3']) }}"
+                                        class="text-decoration-none txt_div">
+                                        <p class="txt"
+                                            style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+
+                                            Flat For Rent In Korangi
+                                        </p>
+                                    </a>
+                                    <a href="{{ route('popular.property', ['property_for' => 'For Rent', 'type' => 'House', 'area' => '3']) }}"
+                                        class="text-decoration-none txt_div">
+                                        <p class="txt"
+                                            style="margin-bottom: 2ch; font-weight: 500; color: #333;opacity: 0.6">
+                                            House For Rent In Korangi
+                                        </p>
+                                    </a>
+                                </div>
                         </div>
                     </div>
+
                 </div>
 
             </div>
-
         </div>
-    </div>
 
-    {{-- <div class="row">
+        {{-- <div class="row">
         <div class="col-sm-4">
                 <div class="d-flex justify-content-center">
                 ashdjasdh
@@ -633,449 +652,499 @@
 
     </div> --}}
 
-    <script>
-        const btn1 = document.getElementById("all");
-        const btn2 = document.getElementById("resBtn");
-        const btn3 = document.getElementById("comBtn");
-        const btn4 = document.getElementById("indBtn");
-        const allProperties = () => {
-            getListdata('All');
-            btn1.classList.add("active_bestProperties");
-            btn2.classList.remove("active_bestProperties");
-            btn3.classList.remove("active_bestProperties");
-            btn4.classList.remove("active_bestProperties");
-        };
-        const residential = () => {
-            getListdata("residential");
-            btn2.classList.add("active_bestProperties");
-            btn1.classList.remove("active_bestProperties");
-            btn3.classList.remove("active_bestProperties");
-            btn4.classList.remove("active_bestProperties");
-        };
-        const commercial = () => {
-            getListdata("commercial");
-            btn3.classList.add("active_bestProperties");
-            btn1.classList.remove("active_bestProperties");
-            btn2.classList.remove("active_bestProperties");
-            btn4.classList.remove("active_bestProperties");
-        };
-        const industrial = () => {
-            getListdata("industrial");
-            btn4.classList.add("active_bestProperties");
-            btn1.classList.remove("active_bestProperties");
-            btn2.classList.remove("active_bestProperties");
-            btn3.classList.remove("active_bestProperties");
-        };
-        var serch_option = document.getElementById("serch_option_show");
-        var moreItems = document.getElementById("moreItems");
-        var view = document.getElementById("view_more");
-        var drop = document.getElementById("drop_show");
-        var drop1 = document.getElementById("drop_showl");
-        var view_more_bool = false
-        view.addEventListener("click", () => {
-            view_more_bool = !view_more_bool
-            if (view_more_bool === true) {
-                moreItems.style.transition = "500ms 1000ms";
-                serch_option.style.height = "200px";
+        <script>
+            const btn1 = document.getElementById("all");
+            const btn2 = document.getElementById("resBtn");
+            const btn3 = document.getElementById("comBtn");
+            const btn4 = document.getElementById("indBtn");
+            const allProperties = () => {
+                getListdata('All');
+                btn1.classList.add("active_bestProperties");
+                btn2.classList.remove("active_bestProperties");
+                btn3.classList.remove("active_bestProperties");
+                btn4.classList.remove("active_bestProperties");
+            };
+            const residential = () => {
+                getListdata("residential");
+                btn2.classList.add("active_bestProperties");
+                btn1.classList.remove("active_bestProperties");
+                btn3.classList.remove("active_bestProperties");
+                btn4.classList.remove("active_bestProperties");
+            };
+            const commercial = () => {
+                getListdata("commercial");
+                btn3.classList.add("active_bestProperties");
+                btn1.classList.remove("active_bestProperties");
+                btn2.classList.remove("active_bestProperties");
+                btn4.classList.remove("active_bestProperties");
+            };
+            const industrial = () => {
+                getListdata("industrial");
+                btn4.classList.add("active_bestProperties");
+                btn1.classList.remove("active_bestProperties");
+                btn2.classList.remove("active_bestProperties");
+                btn3.classList.remove("active_bestProperties");
+            };
+            var serch_option = document.getElementById("serch_option_show");
+            var moreItems = document.getElementById("moreItems");
+            var view = document.getElementById("view_more");
+            var drop = document.getElementById("drop_show");
+            var drop1 = document.getElementById("drop_showl");
+            var view_more_bool = false
+            view.addEventListener("click", () => {
+                view_more_bool = !view_more_bool
+                if (view_more_bool === true) {
+                    moreItems.style.transition = "500ms 1000ms";
+                    serch_option.style.height = "200px";
 
-                drop.style.opacity = "1";
-                drop.style.transition = "500ms 300ms";
-                drop1.style.opacity = "1";
-                drop1.style.transition = "500ms 300ms";
-                moreItems.style.display = "block";
+                    drop.style.opacity = "1";
+                    drop.style.transition = "500ms 300ms";
+                    drop1.style.opacity = "1";
+                    drop1.style.transition = "500ms 300ms";
+                    moreItems.style.display = "block";
 
-                view.innerText = "View Less";
-                serch_option.style.display = "block";
-            } else if (view_more_bool === false) {
-                moreItems.style.transition = "0ms";
-                serch_option.style.height = "111px";
-                serch_option.style.display = "none";
-                drop.style.transition = "400ms";
-                drop.style.opacity = "0";
-                drop1.style.transition = "300ms";
-                drop1.style.opacity = "0";
-                moreItems.style.display = "none";
-                view.innerText = "View More";
-            }
-        });
-        // view.addEventListener("click", () => {
-        //     view_more_bool = !view_more_bool
-        //     if (view_more_bool === true) {
-        //         moreItems.style.transition = "500ms 1000ms";
-        //         serch_option.style.height = "230px";
-        //         drop.style.opacity = "1";
-        //         drop.style.transition = "500ms 300ms";
-        //         drop1.style.opacity = "1";
-        //         drop1.style.transition = "500ms 300ms";
-        //         moreItems.style.display = "block";
-        //         view.innerText = "View Less"
-        //     } else if (view_more_bool === false) {
-        //         moreItems.style.transition = "0ms";
-        //         serch_option.style.height = "111px";
-        //         drop.style.transition = "400ms";
-        //         drop.style.opacity = "0";
-        //         drop1.style.transition = "300ms";
-        //         drop1.style.opacity = "0";
-        //         moreItems.style.display = "none";
-        //         view.innerText = "View More"
-        //     }
-        // });
-
-        function getListdata(type) {
-            $('#list').addClass('animate__animated animate__fadeOut');
-            $.ajax({
-                type: "get",
-                url: "/property",
-                dataType: 'JSON',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                data: {
-                    type: type,
-                    p: true
-                },
-                success: function(responese) {
-                    $('#list').removeClass('animate__animated animate__fadeOut');
-                    $('#list').html(responese.data);
-                    $('#box-wrapper').removeClass('animate__animated animate__fadeOut');
-                    $('#list').addClass('animate__animated animate__fadeIn');
-
-                },
+                    view.innerText = "View Less";
+                    serch_option.style.display = "block";
+                } else if (view_more_bool === false) {
+                    moreItems.style.transition = "0ms";
+                    serch_option.style.height = "111px";
+                    serch_option.style.display = "none";
+                    drop.style.transition = "400ms";
+                    drop.style.opacity = "0";
+                    drop1.style.transition = "300ms";
+                    drop1.style.opacity = "0";
+                    moreItems.style.display = "none";
+                    view.innerText = "View More";
+                }
             });
+            // view.addEventListener("click", () => {
+            //     view_more_bool = !view_more_bool
+            //     if (view_more_bool === true) {
+            //         moreItems.style.transition = "500ms 1000ms";
+            //         serch_option.style.height = "230px";
+            //         drop.style.opacity = "1";
+            //         drop.style.transition = "500ms 300ms";
+            //         drop1.style.opacity = "1";
+            //         drop1.style.transition = "500ms 300ms";
+            //         moreItems.style.display = "block";
+            //         view.innerText = "View Less"
+            //     } else if (view_more_bool === false) {
+            //         moreItems.style.transition = "0ms";
+            //         serch_option.style.height = "111px";
+            //         drop.style.transition = "400ms";
+            //         drop.style.opacity = "0";
+            //         drop1.style.transition = "300ms";
+            //         drop1.style.opacity = "0";
+            //         moreItems.style.display = "none";
+            //         view.innerText = "View More"
+            //     }
+            // });
 
-        }
-    </script>
-@endsection
-@section('personalscripts')
-    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.1.3/dist/autoComplete.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
-        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous">
-    </script>
-    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-    <!-- EXTERNAL LINKS END -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-    <script>
-        var city = $('#citiesSelect').children("option:selected").val();
+            function getListdata(type) {
+                $('#list').addClass('animate__animated animate__fadeOut');
+                $.ajax({
+                    type: "get",
+                    url: "/property",
+                    dataType: 'JSON',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: {
+                        type: type,
+                        p: true
+                    },
+                    success: function(responese) {
+                        $('#list').removeClass('animate__animated animate__fadeOut');
+                        $('#list').html(responese.data);
+                        $('#box-wrapper').removeClass('animate__animated animate__fadeOut');
+                        $('#list').addClass('animate__animated animate__fadeIn');
 
-        search('karachi');
+                    },
+                });
 
-        // function citiesData() {
-        // CITIES START
-        //     axios.get('https://uat.chhatt.com/api/cities').then((prev) =>
-        //         $.each(prev.data, function(key, value) {
-        //             console,log()
-        //             $("#citiesSelect").append(`
+            }
+
+            function viewall() {
+                let url = "{{ route('more.property', ['property_for' => 'All']) }}";
+                if ($("#typesasasasas").val() == "For Sale") {
+
+                    url = "{{ route('more.property', ['property_for' => 'For Sale']) }}";
+                }
+                if ($("#typesasasasas").val() == "For Rent") {
+                    url = "{{ route('more.property', ['property_for' => 'For Rent']) }}";
+
+                }
+                if ($("#typesasasasas").val() == "requirement") {
+                    console.log('asdhnajksdh')
+                    url = "{{ route('more.property', ['property_for' => 'requirement']) }}";
+
+                }
+
+                // url = url.replace(':id', id);
+                document.location.href = url;
+
+
+            }
+        </script>
+    @endsection
+    @section('personalscripts')
+        <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.1.3/dist/autoComplete.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+                integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+                integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous">
+        </script>
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+        <!-- EXTERNAL LINKS END -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+        <script>
+            var city = $('#citiesSelect').children("option:selected").val();
+
+            search('karachi');
+
+            // function citiesData() {
+            // CITIES START
+            //     axios.get('https://uat.chhatt.com/api/cities').then((prev) =>
+            //         $.each(prev.data, function(key, value) {
+            //             console,log()
+            //             $("#citiesSelect").append(`
     //         <option value="${value.id}">${value.name}</option>`);
-        //         })
-        //     )
-        // }
-        // CITIES END
+            //         })
+            //     )
+            // }
+            // CITIES END
 
-        // == SEARCH AREA DROPDOWN START
-        var areas;
-        var city;
+            // == SEARCH AREA DROPDOWN START
+            var areas;
+            var city;
 
-        function changecity() {
-            // var city = $('#citiesSelect').children("option:selected").val();
-            city = $('#citiesSelect').children("option:selected").val();
-            // console.log(city);
-            // areas = "";
-            search(city);
-        }
+            function changecity() {
+                // var city = $('#citiesSelect').children("option:selected").val();
+                city = $('#citiesSelect').children("option:selected").val();
+                // console.log(city);
+                // areas = "";
+                search(city);
+            }
 
 
-        function search() {
+            function search() {
 
-            const autoCompleteJS = new autoComplete({
-                data: {
-                    src: async () => {
-                        try {
-                            // Loading placeholder text
-                            document
-                                .getElementById("autoComplete")
-                                .setAttribute("placeholder", "Loading...");
-                            // Fetch External Data Source
-                            const source = await fetch(
-                                `https://uat.chhatt.com/api/allareas?city=${city}`
-                            );
-                            areas = await source.json();
-                            // Post Loading placeholder text
-                            document
-                                .getElementById("autoComplete")
-                                .setAttribute("placeholder", autoCompleteJS.placeHolder);
-                            // Returns Fetched data
-                            // console.log(areas.data)
-                            return areas.data;
-                        } catch (error) {
-                            return error;
+                const autoCompleteJS = new autoComplete({
+                    data: {
+                        src: async () => {
+                            try {
+                                // Loading placeholder text
+                                document
+                                    .getElementById("autoComplete")
+                                    .setAttribute("placeholder", "Loading...");
+                                // Fetch External Data Source
+                                const source = await fetch(
+                                    `https://uat.chhatt.com/api/allareas?city=${city}`
+                                );
+                                areas = await source.json();
+                                // Post Loading placeholder text
+                                document
+                                    .getElementById("autoComplete")
+                                    .setAttribute("placeholder", autoCompleteJS.placeHolder);
+                                // Returns Fetched data
+                                // console.log(areas.data)
+                                return areas.data;
+                            } catch (error) {
+                                return error;
+                            }
+                        },
+                        keys: ["name"],
+                        cache: true,
+                        filter: (list) => {
+
+                            // Filter duplicates
+                            // incase of multiple data keys usage
+                            const filteredResults = Array.from(
+                                new Set(list.map((value) => value.match))
+                            ).map((food) => {
+                                return list.find((value) => value.match === food);
+                            });
+                            return filteredResults;
                         }
                     },
-                    keys: ["name"],
-                    cache: true,
-                    filter: (list) => {
-
-                        // Filter duplicates
-                        // incase of multiple data keys usage
-                        const filteredResults = Array.from(
-                            new Set(list.map((value) => value.match))
-                        ).map((food) => {
-                            return list.find((value) => value.match === food);
-                        });
-                        return filteredResults;
-                    }
-                },
-                placeHolder: "Search Location",
-                resultsList: {
-                    element: (list, data) => {
-                        const info = document.createElement("p");
-                        if (data.results.length > 0) {
-                            info.innerHTML = `Displaying <strong>${data.matches.length}</strong> results`;
-                        } else {
-                            info.innerHTML =
-                                `Found <strong>${data.matches.length}</strong> matching results for <strong>"${data.query}"</strong>`;
-                        }
-                        list.prepend(info);
+                    placeHolder: "Search Location",
+                    resultsList: {
+                        element: (list, data) => {
+                            const info = document.createElement("p");
+                            if (data.results.length > 0) {
+                                info.innerHTML = `Displaying <strong>${data.matches.length}</strong> results`;
+                            } else {
+                                info.innerHTML =
+                                    `Found <strong>${data.matches.length}</strong> matching results for <strong>"${data.query}"</strong>`;
+                            }
+                            list.prepend(info);
+                        },
+                        // noResults: true,
+                        maxResults: 100,
+                        // tabSelect: true
                     },
-                    // noResults: true,
-                    maxResults: 100,
-                    // tabSelect: true
-                },
-                resultItem: {
-                    element: (item, data) => {
-                        // console.log(data.match)
-                        // Modify Results Item Style
-                        item.style = "display: flex; justify-content: space-between;";
-                        // Modify Results Item Content
-                        item.innerHTML =
-                            `<span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+                    resultItem: {
+                        element: (item, data) => {
+                            // console.log(data.match)
+                            // Modify Results Item Style
+                            item.style = "display: flex; justify-content: space-between;";
+                            // Modify Results Item Content
+                            item.innerHTML =
+                                `<span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ${data.match}
                                                                                                                                                                                                                                                                                                                                                                                                                                                                             </span>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                             <span style="margin-left:15px;display:inline-block;width:160px;text-align:right;align-items: center; font-size: 13px; font-weight: 100; text-transform: uppercase; color: rgba(0,0,0,.2); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ${data.value.parent}
                                                                                                                                                                                                             </span>`;
-                    },
-                    highlight: true
-                },
-                events: {
-                    input: {
-                        selection: (e) => {
-                            const selection = e.detail.selection.value;
-                            autoCompleteJS.input.value = selection.name;
                         },
-                        focus: () => {
-                            if (autoCompleteJS.input.value.length) autoCompleteJS.start();
+                        highlight: true
+                    },
+                    events: {
+                        input: {
+                            selection: (e) => {
+                                const selection = e.detail.selection.value;
+                                autoCompleteJS.input.value = selection.name;
+                            },
+                            focus: () => {
+                                if (autoCompleteJS.input.value.length) autoCompleteJS.start();
+                            }
                         }
                     }
-                }
-            });
+                });
 
-        }
-        $('#type').change(function() {
+            }
+            $('#type').change(function() {
 
-            var type = $(this).val();
+                var type = $(this).val();
 
-            console.log(type)
-            $('#property_type').find('option').not(':first').remove();
-            $.ajax({
-                url: 'ajax/' + type,
-                type: 'get',
-                dataType: 'json',
-                success: function(response) {
-                    var len = 0;
-                    console.log(response.p_type);
-                    if (response.p_type != null) {
-                        len = response.p_type.length;
-                    }
-                    if (len > 0) {
-                        for (var i = 0; i < len; i++) {
-                            // var id = response.data[i].id;
-                            // console.log('hhh')
-                            // console.log(response.p_type[1].property_type)
-                            var name = response.p_type[i].property_type;
-                            var option = "<option value='" + name + "'>" + name + "</option>";
-                            $("#property_type").append(option);
+                console.log(type)
+                $('#property_type').find('option').not(':first').remove();
+                $.ajax({
+                    url: 'ajax/' + type,
+                    type: 'get',
+                    dataType: 'json',
+                    success: function(response) {
+                        var len = 0;
+                        console.log(response.p_type);
+                        if (response.p_type != null) {
+                            len = response.p_type.length;
                         }
-                    }
+                        if (len > 0) {
+                            for (var i = 0; i < len; i++) {
+                                // var id = response.data[i].id;
+                                // console.log('hhh')
+                                // console.log(response.p_type[1].property_type)
+                                var name = response.p_type[i].property_type;
+                                var option = "<option value='" + name + "'>" + name + "</option>";
+                                $("#property_type").append(option);
+                            }
+                        }
 
-                }
+                    }
+                })
             })
-        })
 
-        function dothis(params) {
-            // console.log(params)
-            $("#typesasasasas").val(params);
-            // console.log($("#typesasasasas").val())
-            if ($("#typesasasasas").val() == "For Sale") {
-                var property_for = $("#typesasasasas").val();
-                $('#buy').addClass('active');
-                $('#rent').removeClass('active');
-                $('#wanted').removeClass('active');
-                $('#invest').removeClass('active');
-                $('#project').removeClass('active');
-                $('#type').show();
-                $('#viewmore').show();
-                $.ajax({
-                    type: "GET",
-                    url: 'ajax/' + property_for,
-                    dataType: 'html',
-                    data: {
-                        property_for: 'For Sale',
-                    },
-                    success: function(responese) {
-                        // console.log(responese.pagination)
+            function dothis(params) {
+                // console.log(params)
+                $("#typesasasasas").val(params);
+                // console.log($("#typesasasasas").val())
+                if ($("#typesasasasas").val() == "For Sale") {
+                    var property_for = $("#typesasasasas").val();
+                    $('#buy').addClass('active');
+                    $('#rent').removeClass('active');
+                    $('#wanted').removeClass('active');
+                    $('#invest').removeClass('active');
+                    $('#project').removeClass('active');
+                    $('#type').show();
+                    $('#viewmore').show();
+                    $.ajax({
+                        type: "GET",
+                        url: 'ajax/' + property_for,
+                        dataType: 'html',
+                        data: {
+                            property_for: 'For Sale',
+                        },
+                        success: function(responese) {
+                            // console.log(responese.pagination)
 
-                        $('#list').html(responese);
+                            $('#list').html(responese);
 
-                        $('#list').removeClass('animate__animated animate__fadeOut');
+                            $('#list').removeClass('animate__animated animate__fadeOut');
 
-                        // console.log(responese.pagination)
-                        $('#list').html(responese.p_type);
-                        $('#list').addClass('animate__animated animate__fadeIn');
-                        $('#wow').html(responese.pagination);
-                        $('#total').html('Showing ' + responese.total + ' Results');
-                    },
-                });
-            }
+                            // console.log(responese.pagination)
+                            $('#list').html(responese.p_type);
+                            $('#list').addClass('animate__animated animate__fadeIn');
+                            $('#wow').html(responese.pagination);
+                            $('#total').html('Showing ' + responese.total + ' Results');
+                        },
+                    });
+                    if ($("#type").val() == '' || $("#type").val() == null) {
 
-
-            if ($("#typesasasasas").val() == "For Rent") {
-                var property_for = $("#typesasasasas").val();
-
-                $('#rent').addClass('active');
-                $('#buy').removeClass('active');
-                $('#wanted').removeClass('active');
-                $('#invest').removeClass('active');
-                $('#project').removeClass('active');
-                $('#type').show();
-                $('#viewmore').show();
-                $.ajax({
-                    type: "GET",
-                    url: 'ajax/' + property_for,
-                    dataType: 'html',
-                    data: {
-                        property_for: 'For Rent',
-                    },
-                    success: function(responese) {
-                        // console.log(responese.pagination)
-
-                        $('#list').html(responese);
-
-                        $('#list').removeClass('animate__animated animate__fadeOut');
-
-                        // console.log(responese.pagination)
-                        $('#list').html(responese.p_type);
-                        $('#list').addClass('animate__animated animate__fadeIn');
-                        $('#wow').html(responese.pagination);
-                        $('#total').html('Showing ' + responese.total + ' Results');
-                    },
-                });
-            }
-            if ($("#typesasasasas").val() == "requirement") {
-                var inventory_type = $("#typesasasasas").val();
-
-                $('#typesasasasas').attr('name', 'inventory_type')
-                $('#wanted').addClass('active');
-                $('#rent').removeClass('active');
-                $('#buy').removeClass('active');
-                $('#invest').removeClass('active');
-                $('#project').removeClass('active');
-                $('#type').show();
-                $('#viewmore').show();
-                $.ajax({
-                    type: "GET",
-                    url: 'ajax/' + inventory_type,
-                    dataType: 'html',
-                    data: {
-                        inventory_type: 'requirement',
-                    },
-                    success: function(responese) {
-                        // console.log(responese.pagination)
-
-                        $('#list').html(responese);
-
-                        $('#list').removeClass('animate__animated animate__fadeOut');
-
-                        // console.log(responese.pagination)
-                        $('#list').html(responese.p_type);
-                        $('#list').addClass('animate__animated animate__fadeIn');
-                        $('#wow').html(responese.pagination);
-                        $('#total').html('Showing ' + responese.total + ' Results');
-                    },
-                });
-            }
-            if ($("#typesasasasas").val() == "invest") {
-                $('#typesasasasas').attr('name', '')
-                $('#invest').addClass('active');
-                $('#rent').removeClass('active');
-                $('#buy').removeClass('active');
-                $('#wanted').removeClass('active');
-                $('#project').removeClass('active');
-            }
-            if ($("#typesasasasas").val() == "project") {
-                $('#typesasasasas').attr('name', 'projects')
-
-                $('#project').addClass('active');
-                $('#rent').removeClass('active');
-                $('#buy').removeClass('active');
-                $('#wanted').removeClass('active');
-                $('#invest').removeClass('active');
-                $('#type').hide();
-                $('#viewmore').hide();
-            }
-
-        }
+                        $("#type").val('Residential');
 
 
-        // SUBMIT START
-        function changeFunc(e) {
-            e.preventDefault()
 
-            const inpVal = document.getElementById("autoComplete");
-            if (areas) {
-                const filteredArea = areas.data.filter((prev) => prev.name === inpVal.value)
-
-                if (filteredArea.length) {
-                    // console.log(filteredArea[0].key)
-                    var formData = $('#form11').serialize();
-                    // console.log(formData);
-                    var url = '{{ route('property.search', 'search_areas=:key:word:formdata') }}';
-                    // console.log(filteredArea[0].key)
-                    array = filteredArea[0].key.split(",");
-                    area = array[0];
-                    if (area == "area_one_id") {
-                        area = 'a1';
                     }
-                    if (area == "area_two_id") {
-                        area = 'a2';
-                    }
-                    if (area == "area_three_id") {
-                        area = 'a3';
-                    }
-                    key = area + ',' + array[1];
-                    // console.log(key)
-                    url = url.replace(':key', key);
-                    // console.log(formData);
-                    if (formData == null) {
-                        url = url.replace(':word', '&');
-                    } else {
-                        url = url.replace(':word', '');
-                    }
-                    url = url.replace(':formdata', '&' + formData);
-                    // console.log(url)
+                }
 
-                    document.location.href = url;
-                } else {}
-            } else {
-                // console.log("error")
+
+                if ($("#typesasasasas").val() == "For Rent") {
+                    var property_for = $("#typesasasasas").val();
+
+                    $('#rent').addClass('active');
+                    $('#buy').removeClass('active');
+                    $('#wanted').removeClass('active');
+                    $('#invest').removeClass('active');
+                    $('#project').removeClass('active');
+                    $('#type').show();
+                    $('#viewmore').show();
+                    $.ajax({
+                        type: "GET",
+                        url: 'ajax/' + property_for,
+                        dataType: 'html',
+                        data: {
+                            property_for: 'For Rent',
+                        },
+                        success: function(responese) {
+                            // console.log(responese.pagination)
+
+                            $('#list').html(responese);
+
+                            $('#list').removeClass('animate__animated animate__fadeOut');
+
+                            // console.log(responese.pagination)
+                            $('#list').html(responese.p_type);
+                            $('#list').addClass('animate__animated animate__fadeIn');
+                            $('#wow').html(responese.pagination);
+                            $('#total').html('Showing ' + responese.total + ' Results');
+                        },
+                    });
+                    if ($("#type").val() == '' || $("#type").val() == null) {
+
+                        $("#type").val('Residential');
+
+
+
+                    }
+                }
+                if ($("#typesasasasas").val() == "requirement") {
+                    var inventory_type = $("#typesasasasas").val();
+
+
+                    $('#typesasasasas').attr('name', 'inventory_type')
+                    $('#wanted').addClass('active');
+                    $('#rent').removeClass('active');
+                    $('#buy').removeClass('active');
+                    $('#invest').removeClass('active');
+                    $('#project').removeClass('active');
+                    $('#type').show();
+                    $('#viewmore').show();
+                    $.ajax({
+                        type: "GET",
+                        url: 'ajax/' + inventory_type,
+                        dataType: 'html',
+                        data: {
+                            inventory_type: 'requirement',
+                        },
+                        success: function(responese) {
+                            // console.log(responese.pagination)
+
+                            $('#list').html(responese);
+
+                            $('#list').removeClass('animate__animated animate__fadeOut');
+
+                            // console.log(responese.pagination)
+                            $('#list').html(responese.p_type);
+                            $('#list').addClass('animate__animated animate__fadeIn');
+                            $('#wow').html(responese.pagination);
+                            $('#total').html('Showing ' + responese.total + ' Results');
+                        },
+                    });
+
+                    if ($("#type").val() == '' || $("#type").val() == null) {
+
+                        $("#type").val('Residential');
+
+                        
+
+                    }
+                }
+                if ($("#typesasasasas").val() == "invest") {
+                    $('#typesasasasas').attr('name', '')
+                    $('#invest').addClass('active');
+                    $('#rent').removeClass('active');
+                    $('#buy').removeClass('active');
+                    $('#wanted').removeClass('active');
+                    $('#project').removeClass('active');
+                }
+                if ($("#typesasasasas").val() == "project") {
+                    $('#typesasasasas').attr('name', 'projects')
+
+                    $('#project').addClass('active');
+                    $('#rent').removeClass('active');
+                    $('#buy').removeClass('active');
+                    $('#wanted').removeClass('active');
+                    $('#invest').removeClass('active');
+                    $('#type').hide();
+                    // $('#type').prop("selected", false);
+
+                    $('#type').val([]);
+
+
+                    $('#viewmore').hide();
+                }
+
             }
-        }
 
 
-        // SUBMIT END
-        // == SEARCH AREA DROPDOWN END
-    </script>
+            // SUBMIT START
+            function changeFunc(e) {
+                e.preventDefault()
 
-@endsection
+                const inpVal = document.getElementById("autoComplete");
+                if (areas) {
+                    const filteredArea = areas.data.filter((prev) => prev.name === inpVal.value)
+
+                    if (filteredArea.length) {
+                        // console.log(filteredArea[0].key)
+                        var formData = $('#form11').serialize();
+                        // console.log(formData);
+                        var url = '{{ route('property.search', 'search_areas=:key:word:formdata') }}';
+                        // console.log(filteredArea[0].key)
+                        array = filteredArea[0].key.split(",");
+                        area = array[0];
+                        if (area == "area_one_id") {
+                            area = 'a1';
+                        }
+                        if (area == "area_two_id") {
+                            area = 'a2';
+                        }
+                        if (area == "area_three_id") {
+                            area = 'a3';
+                        }
+                        key = area + ',' + array[1];
+                        // console.log(key)
+                        url = url.replace(':key', key);
+                        // console.log(formData);
+                        if (formData == null) {
+                            url = url.replace(':word', '&');
+                        } else {
+                            url = url.replace(':word', '');
+                        }
+                        url = url.replace(':formdata', '&' + formData);
+                        // console.log(url)
+
+                        document.location.href = url;
+                    } else {}
+                } else {
+                    // console.log("error")
+                }
+            }
+
+
+            // SUBMIT END
+            // == SEARCH AREA DROPDOWN END
+        </script>
+
+    @endsection

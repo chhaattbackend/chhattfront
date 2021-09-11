@@ -25,6 +25,14 @@ class Project extends Model
     {
         return $this->hasMany(Lead::class, 'project_id');
     }
+    public function area_one()
+    {
+        return $this->belongsTo(AreaOne::class,'area_one_id');
+    }
+    public function area_two()
+    {
+        return $this->belongsTo(AreaTwo::class,'area_two_id');
+    }
     public function area_three()
     {
         return $this->belongsTo(AreaThree::class, 'area_three_id');

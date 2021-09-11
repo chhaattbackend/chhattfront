@@ -203,6 +203,7 @@
                                     <a href="{{ route('property.search', ['search_areas' => 'a2-' . $item->id]) }}"
                                         class="col-4 col-xl-3 fw-bold text-decoration-none text-dark my-1">{{ $item->name }}
                                         ({{ $item->properties->count() }})
+                                        asdadasda
                                     </a>
                                 @endunless
 

@@ -15,6 +15,13 @@ class AreaThree extends Model
     public function area_two(){
         return $this->belongsTo(AreaTwo::class,'area_two_id');
     }
+    public function propertiesCount($inventory_type)
+    {
+        return $this->hasMany(Property::class, 'area_two_id')->where('property_for',$inventory_type)->count();
+        // return $this->whereHas('properties', function ($query) use ($inventory_type) {
+        //     $query->where('property_for', $inventory_type);
+        // })->count();
+    }
 
     public function agencies(){
         return $this->hasMany(Agency::class,'area_three_id');

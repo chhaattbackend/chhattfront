@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('styles/mediaquery.css') }}">
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.1.3/dist/css/autoComplete.01.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 
@@ -55,7 +55,8 @@
                             <select id="citiesSelect" onchange="changecity()" class="form-select"
                                 aria-label="Default select example">
                                 @foreach ($city as $item)
-                                    <option @if (@$inputcity_id == @$item->id) selected @endif value="{{ $item->name }}">{{ $item->name }} </option>
+                                    <option @if (@$inputcity_id == @$item->id) selected @endif value="{{ $item->name }}">{{ $item->name }}
+                                    </option>
                                 @endforeach
                             </select>
                             <!-- city select end -->
@@ -365,10 +366,9 @@
                         // Modify Results Item Content
                         item.innerHTML =
                             `<span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ${data.match}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <span style="margin-left:15px;display:inline-block;width:160px;text-align:right;align-items: center; font-size: 13px; font-weight: 100; text-transform: uppercase; color: rgba(0,0,0,.2); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ${data.value.parent}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ${data.match}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <span style="margin-left:15px;display:inline-block;width:160px;text-align:right;align-items: center; font-size: 13px; font-weight: 100; text-transform: uppercase; color: rgba(0,0,0,.2); text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">                                                                                                                                                                                                                                                                                                                                                                                                                                          ${data.value.parent}
                                                                                                                                                                                                                                                                                            </span>`;
                     },
                     highlight: true

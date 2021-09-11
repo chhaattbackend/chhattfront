@@ -116,7 +116,7 @@
                     </div>
                 </a>
 
-                <a href="{{ route('construction.home') }}" class="text-decoration-none">
+                <a href="{{ route('invest') }}" class="text-decoration-none">
                     <div class="each_navigation">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="#007bff" id="Layer_5"
                             enable-background="new 0 0 64 64" height="25" viewBox="0 0 64 64" width="25">
@@ -181,7 +181,7 @@
 
 
     @yield('personalscripts')
-
+    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
     @if (isset($search))
         <script>
             // slick slider start

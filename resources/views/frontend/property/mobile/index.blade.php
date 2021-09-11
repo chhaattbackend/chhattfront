@@ -344,7 +344,7 @@
         </div>
         <!-- property Type end -->
         @php
-            $count=0;
+            $count = 0;
         @endphp
         <!-- best property start -->
         <div class="best_main_div">
@@ -358,44 +358,45 @@
                 <div class="sdiv">
                     <ul>
                         @foreach ($properties as $item)
-                        @if ($count < 24)
-                        @if (str_contains($item->images, 'StaticMap') != true && str_contains($item->images,
-                           'static') != true) @if ($item->images->count() > 1)
-                            @php
-                                $id = @$item->areaOne->city->name . '-' . @$item->type . '-' . @$item->property_type . '-' . @$item->property_for . '-' . @$item->areaOne->name . '-' . @$item->areaTwo->name . '-' . $item->id;
-                                $id = str_replace(str_split('\\/:*?"<>|()'), '-', strtolower($id));
-                                $id = str_replace(str_split(' '), '_', strtolower($id));
-                                $id = strtolower($id);
-                            @endphp
+                            {{-- @if ($count < 24) --}}
+                                {{-- @if (str_contains($item->images, 'StaticMap') != true && str_contains($item->images, 'static') != true) --}}
+                                    {{-- @if ($item->images->count() > 1) --}}
+                                        @php
+                                            $id = @$item->areaOne->city->name . '-' . @$item->type . '-' . @$item->property_type . '-' . @$item->property_for . '-' . @$item->areaOne->name . '-' . @$item->areaTwo->name . '-' . $item->id;
+                                            $id = str_replace(str_split('\\/:*?"<>|()'), '-', strtolower($id));
+                                            $id = str_replace(str_split(' '), '_', strtolower($id));
+                                            $id = strtolower($id);
+                                        @endphp
 
-                            <li>
-                                <div>
-                                    <a href="{{ route('single.property', $id) }}"
-                                        class="property_card_main_div text-decoration-none">
-                                        <img src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ @$item->images[0]->name }}"
-                                            class="propertyImg" alt="" />
-                                        <p> {{ $item->type }} </p>
-                                        <b>
-                                            {{ $item->property_for }} in
-                                            {{ optional($item->areaTwo)->name }},
-                                            {{ optional($item->areaOne)->name }}
-                                        </b>
-                                        <p>
-                                            <b>
-                                                @if ($item->price == null)
-                                                    <span style="background: red;" class="badge badge-pill badge-danger">On
-                                                        Request</span>
-                                                @else
-                                                    Rs: {{ convert_rupee($item->price) }}
-                                                @endif
-                                            </b>
-                                        </p>
-                                    </a>
-                                </div>
-                            </li>
-                            @endif
-                            @endif
-                             @endif
+                                        <li>
+                                            <div>
+                                                <a href="{{ route('single.property', $id) }}"
+                                                    class="property_card_main_div text-decoration-none">
+                                                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ @$item->images[0]->name }}"
+                                                        class="propertyImg" alt="" />
+                                                    <p> {{ $item->type }} </p>
+                                                    <b>
+                                                        {{ $item->property_for }} in
+                                                        {{ optional($item->areaTwo)->name }},
+                                                        {{ optional($item->areaOne)->name }}
+                                                    </b>
+                                                    <p>
+                                                        <b>
+                                                            @if ($item->price == null)
+                                                                <span style="background: red;"
+                                                                    class="badge badge-pill badge-danger">On
+                                                                    Request</span>
+                                                            @else
+                                                                Rs: {{ convert_rupee($item->price) }}
+                                                            @endif
+                                                        </b>
+                                                    </p>
+                                                </a>
+                                            </div>
+                                        </li>
+                                    {{-- @endif --}}
+                                {{-- @endif --}}
+                            {{-- @endif --}}
                         @endforeach
                     </ul>
                 </div>
@@ -409,8 +410,8 @@
                 <div class="top">
                     <p>Featured Projects</p>
                     <!-- <p onClick="">
-                                                                                                                                                View All
-                                                                                                                                              </p> -->
+                                                                                                                                                    View All
+                                                                                                                                                  </p> -->
                 </div>
                 <div class="sdiv">
                     <ul>
