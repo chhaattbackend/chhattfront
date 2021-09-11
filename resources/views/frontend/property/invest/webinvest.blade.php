@@ -254,7 +254,7 @@
 
 
     </div> --}}
-    {{-- <h6 id="total" class="text-end fw-bold">Showing {{ $projects->total() }} Results</h6> --}}
+    <h6 id="total" class="text-end fw-bold">Showing {{ $projects->total() }} Results</h6>
     <div id="list">
         @include('layouts.investproject')
 
@@ -550,7 +550,7 @@
                 $('#list').html(responese.data);
                 $('#list').addClass('animate__animated animate__fadeIn');
                 $('#wow').html(responese.pagination);
-                // $('#total').html('Showing ' + responese.total + ' Results');
+                $('#total').html('Showing ' + responese.total + ' Results');
             },
         });
         }

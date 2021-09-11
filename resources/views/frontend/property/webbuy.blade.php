@@ -8,7 +8,8 @@
         content="Browse the best properties in {{ @$inputcity_name }}, Pakistan. Find the latest apartments, plots, houses and commercial properties at leading property portal Chhatt.com">
     <link rel="stylesheet" href="{{ asset('styles/index.css') }}">
     {{-- <link rel="stylesheet" type="text/css" href="./styles/property/properties.css" /> --}}
-    <link rel="stylesheet" type="text/css" href="./styles/property/property.css" />
+
+    <link rel="stylesheet" href="{{ asset('styles/property/property.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/property/properties.css') }}">
 
     <link rel="stylesheet" href="{{ asset('styles/mediaquery.css') }}">
@@ -69,7 +70,8 @@
                 </h5>
             </div>
             <div class="col-6" style="align-self: flex-end;">
-                <h5 id="total" class=" fw-bold " style=" text-align: end">Showing {{ $projects->total() }} Results</h5>
+                <h5 id="total" class=" fw-bold " style=" text-align: end">Showing {{ $projects->total() }} Results
+                </h5>
             </div>
 
 
@@ -135,11 +137,13 @@
         var areas;
         var city;
         $('#keyword').on('keyup', function() {
-            var value = $(this).val();
-            $('#list').addClass('animate__animated animate__fadeOut');
 
-            console.log(value);
+            var value = $(this).val();
+
+           
+            $('#list').addClass('animate__animated animate__fadeOut');
             ajaxSearch(value)
+
         });
 
         function ajaxSearch(value) {
@@ -331,7 +335,6 @@
                 view.innerText = "View More"
             }
         });
-
     </script>
 
 @endsection

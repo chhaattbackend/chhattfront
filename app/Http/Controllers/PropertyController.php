@@ -474,7 +474,7 @@ class PropertyController extends Controller
     }
     public function invest()
     {
-        $projects = Project::all();
+        $projects = Project::paginate();
         return view('frontend.property.invest.investindex', compact('projects'));
     }
     public function investAjax(Request $request)
@@ -507,19 +507,21 @@ class PropertyController extends Controller
         $data = view('layouts.investproject', compact('projects'))->render();
 
         return response()->json([
-            'data' => $data
-            // 'total' => (string) $projects->total(),
+            'data' => $data,
+            'total' => (string) $projects->total(),
             // 'pagination' => (string) $projects->links()
         ]);
     }
     public function projectAjax(Request $request)
     {
 
+        // dd($request->all());
 
 
-        if ($request->keyword == null || $request->keyword == ' ') {
 
-            $projects = Project::all();
+        if ($request->keyword == null || $request->keyword == '') {
+
+            $projects = Project::paginate(15);
         } else {
 
             $seacrh = $request->keyword;
