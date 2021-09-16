@@ -92,7 +92,7 @@
             </div>
             <div class="col-3" style="">
 
-                <button style="background: white; border: white; margin-left: 20px;" onclick="hide()">
+                <button type="button" style="background: white; border: white; margin-left: 20px;" onclick="hide()">
                     <div class="card1 card-1" style="border-radius: 40px; display: none" id="cross1">
                         <h5 style="font-size: 25px; padding: 2px;  text-align: center">
                             x

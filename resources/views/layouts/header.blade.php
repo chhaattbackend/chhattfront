@@ -35,11 +35,11 @@
                             </li>
                         </a>
 
-                        {{-- <a class="text-decoration-none" href="">
-                            <li id="home" style="color: #fff" @if (Str::contains(Route::current()->getName(), 'rent.property')) class="activeNav" @endif class="lis">
+                        <a class="text-decoration-none" href="{{ route('maps') }}">
+                            <li id="home" style="color: #fff" @if (Str::contains(Route::current()->getName(), 'maps')) class="activeNav" @endif class="lis">
                                 <span>Maps</span>
                             </li>
-                        </a> --}}
+                        </a>
                         <a class="text-decoration-none" href="{{ route('contact') }}">
                             <li id="contact" style="color: #fff" @if (Route::current()->getName() == 'contact') class="activeNav" @endif class="lis">
                                 <span>Contact Us</span>

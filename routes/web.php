@@ -22,6 +22,9 @@ Route::get('/projects', 'PropertyController@forBuy')->name('buy.property');
 Route::get('/All', 'PropertyController@viewMore')->name('more.property');
 Route::get('/popularproperty', 'PropertyController@popularProperty')->name('popular.property');
 Route::get('invest','PropertyController@invest')->name('invest');
+Route::get('maps','MapController@index')->name('maps');
+Route::get('singlemap/{id}','MapController@single')->name('single.map');
+
 
 
 Route::get('/result', 'PropertyController@search')->name('property.search');
@@ -35,6 +38,7 @@ Route::get('/propertyDetail/{id}', 'PropertyController@singleProperty')->name('s
 Route::post('/agency/ajax', 'AgencyController@ajax');
 Route::post('/invest/ajax', 'PropertyController@investAjax');
 Route::post('/project/ajax', 'PropertyController@projectAjax');
+Route::post('/maps/ajax', 'MapController@Ajax');
 Route::post('/agency/mobileajax', 'AgencyController@mobileajax');
 Route::post('/agent/mobileajax', 'AgentController@mobileajax');
 Route::get('/property/{property_type}', 'PropertyController@explorer')->name('explorer.search');

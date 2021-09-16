@@ -49,7 +49,7 @@
 
             <div class="row">
                 <div class="col-3">
-                    <button style="background: white" onclick="show('IP1')">
+                    <button style="background: white" onclick="show('Trading accounts: Property, Buy, Sell ')">
 
                         <div class="card card-1" style="border-radius: 30px" id="bkg1">
                             <h5 style="font-size: 30px; padding: 15px; margin-top: 5px" id="txt1">
@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="col-3">
-                    <button style="background: white" onclick="show('IP2')">
+                    <button style="background: white" onclick="show('Buy, Built, Sell')">
 
                         <div class="card card-1" style="border-radius: 30px" id="bkg2">
                             <h5 style="font-size: 30px; padding: 15px; margin-top: 5px" id="txt2">
@@ -75,7 +75,7 @@
 
                 </div>
                 <div class="col-3">
-                    <button style="background: white" onclick="show('IP3')">
+                    <button style="background: white" onclick="show('IP1 + IP2')">
 
                         <div class="card card-1" style="border-radius: 30px" id="bkg3">
                             <h5 style="font-size: 30px; padding: 15px; margin-top: 5px; text-align: center" id="txt3">
@@ -95,10 +95,11 @@
                 <div class="row">
                     <div class="col-6">
 
-                        <p id="text">
+
+                        <h6 id="text" style="color: #333;">
                             We provide projects for you to invest
 
-                        </p>
+                        </h6>
                     </div>
                     <div class="col-6" style="">
 
@@ -254,7 +255,7 @@
 
 
     </div> --}}
-    <h6 id="total" class="text-end fw-bold">Showing {{ $projects->total() }} Results</h6>
+    <h6 id="total" style="margin-right: 30px" class="text-end fw-bold">Showing {{ $projects->total() }} Results</h6>
     <div id="list">
         @include('layouts.investproject')
 

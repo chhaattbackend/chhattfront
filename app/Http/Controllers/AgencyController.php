@@ -112,6 +112,7 @@ class AgencyController extends Controller
         }
         $agencyproperties = $agency->properties->count();
         $totalproperties = $agencyproperties + $agentproperties;
+        // dd($agents);
 
 
 

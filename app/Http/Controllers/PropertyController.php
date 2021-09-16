@@ -484,7 +484,7 @@ class PropertyController extends Controller
 
         if ($request->keyword == null || $request->keyword == ' ') {
 
-            $projects = Project::all();
+            $projects = Project::paginate(15);
         } else {
 
             $seacrh = $request->keyword;

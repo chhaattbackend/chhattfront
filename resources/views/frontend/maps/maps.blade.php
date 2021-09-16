@@ -1,32 +1,51 @@
 @extends('layouts.master')
-
 @section('style')
-    <title>Browse the Best Real Estate Agencies in Karachi Pakistan | Chhatt.com</title>
-    <meta name="title" content="Browse the Best Real Estate Agencies in Karachi Pakistan | Chhatt.com">
-
+    <title>Buy and Sell Property on Pakistan’s Best Real Estate Portal | Chhatt.com</title>
+    <meta name="title" content="Buy and Sell Property on Pakistan’s Best Real Estate Portal | Chhatt.com">
     <meta name="description"
-        content="Get in touch with the best real estate agencies in Karachi. And Choose yourbest properties like houses, flats, villas and commercial properties at Chhatt.com">
-    <link rel="stylesheet" type="text/css" href="./styles/agency/agency.css" />
-@endsection
+        content="Buy rent and sell your properties with Pakistan's best real estate portal at Chhatt.com. Find property dealers, developers and best property agents visit our website">
+    <link rel="stylesheet" type="text/css" href="./styles/property/property.css" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.1.3/dist/css/autoComplete.01.min.css">
+    <style>
+        .help-block {
+            color: red
+        }
+        .zoom {
+            /* padding: 20px; */
+            /* background-color: rgba(57, 65, 57, 0.151); */
+            transition: transform .2s;
+            /* Animation */
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+        }
 
+        .zoom:hover {
+            transform: scale(1.5);
+            /* (150% zoom)*/
+        }
+
+    </style>
+
+@endsection
 @section('headercontent')
     <div class="mn_divz">
         <div class="backgz">
             <div class="backg_sdivz">
-                <h1 class="fw-bolder">Find the Best Real Estate Agencies</h1>
+                <h1 class="fw-bolder">Maps</h1>
             </div>
         </div>
     </div>
 @endsection
-
 @section('content')
 
     <div>
         <meta hidden name="csrf-token" content="{{ csrf_token() }}" />
-        <div class="agency-search">
+        <div class="agency-search m-3 p-2">
             <div class="secdiv">
                 <!-- ============================  SEARCH BOX START  ================================  -->
-                <h3>Agencies Search</h3>
+                <h3>Search Maps</h3>
                 <div class="searchdiv">
                     <div class="leftSec">
                         <span>
@@ -39,38 +58,33 @@
                         </span>
                         <!-- search field start  -->
                         <div>
-                            <input id="keyword" type="text" placeholder="Search Agencies" />
+                            <input id="keyword" type="text" placeholder="Search Maps" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- agency search end -->
-    <!-- AGENCIES START -->
-    <!-- propertylist start -->
-    <div id="bestProperty" class="propertylist mapCardContainer">
-        <h6 id="total" class="text-end fw-bold">Showing {{ $agencies->total() }} Results</h6>
-        <br />
-        <!--  property slider -->
-        <!-- PROPERTY CARD START -->
+        <h2>
+            New Society Maps
+        </h2>
         <div class="mapCardContainer">
             <div class="container-fluid px-0">
+        <h6 id="total" class="text-end fw-bold">Showing {{ $maps->total() }} Results</h6>
+
                 <div id="list" class="row">
-                    @include('frontend.agency.list')
+                    @include('frontend.maps.list')
                 </div>
                 <div id="wow" class="justify-content-center pagination">
-                    {{ $agencies->links() }}
+                    {{ $maps->links() }}
                 </div>
                 <br />
                 <hr class="bg-dark" />
                 <br />
             </div>
         </div>
-        <!--  PROPERTY CARD START  -->
     </div>
     <script>
-        $('#keyword').on('keyup', function() {
+         $('#keyword').on('keyup', function() {
             var value = $(this).val();
             $('#list').addClass('animate__animated animate__fadeOut');
 
@@ -81,7 +95,7 @@
         function ajaxSearch(value, page) {
             $.ajax({
                 type: "POST",
-                url: "agency/ajax" + "?page=" + page,
+                url: "maps/ajax",
                 dataType: 'JSON',
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -90,7 +104,7 @@
                     keyword: value,
                 },
                 success: function(responese) {
-                    // console.log(responese.pagination)
+                    console.log(responese)
                     $('#list').removeClass('animate__animated animate__fadeOut');
 
                     // console.log(responese.pagination)
@@ -101,15 +115,8 @@
                 },
             });
         }
-        //   {{-- ajaxSearch --}}
-        //   {{-- ajaxPagination --}}
-        $(document).on('click', '.pagination a', function(event) {
-            event.preventDefault();
-            value = $('#keyword').val();
-            var href = $(this).attr('href');
-            var page = $(this).attr('href').split('page=')[1];
-            $('#list').addClass('animate__animated animate__fadeOut');
-            ajaxSearch(value, page)
-        });
     </script>
+
+
+
 @endsection
