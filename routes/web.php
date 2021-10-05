@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PropertyController@home')->name('home');
 Route::get('ajax/{type}', 'PropertyController@ajax')->name('ajax.index');
+Route::get('property/desc', 'PropertyController@description')->name('description');
 Route::get('/agentsingle', 'AgentController@singleRealtor')->name('agent.single');
 // Route::get('/number', 'AgentController@index')->name('agent.number');
 Route::get('/property', 'PropertyController@index')->name('property');

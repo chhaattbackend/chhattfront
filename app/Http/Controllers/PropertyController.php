@@ -417,6 +417,24 @@ class PropertyController extends Controller
 
         return view('frontend.property.index', compact('properties', 'agencies', 'city', 'propertytype', 'check', 'p_type', 'projects'));
     }
+    public function description(Request $request)
+    {
+        $inputval = null;
+        $inputcity_id = null;
+        $suggestedareas = null;
+        $suggestedareasid = null;
+        $inputcity_name = null;
+        $city = City::all();
+        $propertytype = PropertyType::all();
+
+        // dd($request->search);
+        $properties=Property::where('description' ,'like', '%' . $request->search_areas . '%')->paginate(25);
+        // dd($properties);
+        if ($properties!=null) {
+            return view('frontend.property.search', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_name', 'inputcity_id', 'suggestedareas', 'suggestedareasid'));
+        }
+
+    }
     public function ajax(Request $request)
     {
 
@@ -732,7 +750,7 @@ class PropertyController extends Controller
 
                 if ($request->property_for == 'For Sale') {
                     // dd('asdsadadasdasdad');
-                    $properties = Property::where('Property_for', $request->property_for)->paginate(25)->setPath('');
+                    $properties = Property::where('Property_for', $request->property_for)->orderBy('created_at', 'desc')->paginate(25)->setPath('');
                     $pagination = $properties->appends(array(
                         'property_for' => $request->property_for
                     ));
@@ -741,14 +759,14 @@ class PropertyController extends Controller
                 }
 
                 if ($request->property_for == 'For Rent') {
-                    $properties = Property::where('Property_for', $request->property_for)->paginate(25)->setPath('');
+                    $properties = Property::where('Property_for', $request->property_for)->orderBy('created_at', 'desc')->paginate(25)->setPath('');
                     $pagination = $properties->appends(array(
                         'property_for' => $request->property_for
                     ));
                 }
                 if ($request->property_for == 'requirement') {
                     // dd('asdasd');
-                    $properties = Property::where('inventory_type', $request->property_for)->paginate(25)->setPath('');
+                    $properties = Property::where('inventory_type', $request->property_for)->orderBy('created_at', 'desc')->paginate(25)->setPath('');
                     $pagination = $properties->appends(array(
                         'inventory_type' => $request->property_for
                     ));

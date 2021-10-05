@@ -2,24 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\AreaTwo;
 use App\Map;
 use Illuminate\Http\Request;
 
 class MapController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index(Request $request)
     {
+        $suggestedareas=null;
         // $maps=Map::paginate(25)->setpath('');
         $maps = Map::orderBy('created_at', 'desc')->paginate(28);
         $pagination = $maps->appends(array(
             'keyword' => $request->keyword
         ));
-        return view('frontend.maps.index', compact('maps'));
+        return view('frontend.maps.index', compact('maps','suggestedareas'));
     }
     public function single($id)
     {
@@ -39,6 +43,9 @@ class MapController extends Controller
         } else {
 
             $seacrh = $request->keyword;
+            if ($seacrh=='dha') {
+                $suggestedareas = AreaTwo::where('area_one_id', 6)->orderby('name')->take(12)->get();
+            }
             $maps = Map::where('id', '!=', null);
             // dd($projects);
 
@@ -57,7 +64,7 @@ class MapController extends Controller
             // dd($projects->count());
         }
 
-        $data = view('frontend.maps.list', compact('maps'))->render();
+        $data = view('frontend.maps.list', compact(['maps','suggestedareas']))->render();
 
         return response()->json([
             'data' => $data,

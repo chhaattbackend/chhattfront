@@ -11,6 +11,13 @@
 @endsection
 
 @section('headercontent')
+    @if (\Session::has('alert'))
+        <div class="alert alert-warning">
+            <ul>
+                <li>{!! \Session::get('alert') !!}</li>
+            </ul>
+        </div>
+    @endif
     <div class="mn_div">
         <div class="backg ">
             <div class="backg_sdiv">
@@ -87,6 +94,7 @@
                             <!-- city select end -->
                             <!-- search end -->
                             <!-- city lagana h -->
+                            {{-- <meta hidden name="csrf-token" content="{{ csrf_token() }}" /> --}}
                             <button type="submit" onclick="changeFunc(event)">
                                 Search
                             </button>
@@ -1066,7 +1074,7 @@
 
                         $("#type").val('Residential');
 
-                        
+
 
                     }
                 }
@@ -1136,7 +1144,13 @@
                         // console.log(url)
 
                         document.location.href = url;
-                    } else {}
+                    } else {
+                        var bb = $("#autoComplete").val();
+                        var url = '{{ route('description', 'search_areas=:id') }}';
+                        url = url.replace(':id', bb);
+                        // console.log(url);
+                        document.location.href = url;
+                    }
                 } else {
                     // console.log("error")
                 }
