@@ -11,6 +11,7 @@
         .help-block {
             color: red
         }
+
         .zoom {
             /* padding: 20px; */
             /* background-color: rgba(57, 65, 57, 0.151); */
@@ -40,7 +41,9 @@
 @endsection
 @section('content')
 
-    <div>
+    @livewire('map.item')
+
+    {{-- <div>
         <meta hidden name="csrf-token" content="{{ csrf_token() }}" />
         <div class="agency-search m-3 p-2">
             <div class="secdiv">
@@ -115,7 +118,7 @@
                 },
             });
         }
-    </script>
+    </script> --}}
 
 
 

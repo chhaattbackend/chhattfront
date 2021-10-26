@@ -43,6 +43,6 @@ class Project extends Model
     }
     public function images()
     {
-        return $this->hasMany(PropertyImage::class,'project_id');
+        return $this->hasMany(ProjectImage::class,'project_id');
     }
 }

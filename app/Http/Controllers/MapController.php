@@ -23,7 +23,8 @@ class MapController extends Controller
         $pagination = $maps->appends(array(
             'keyword' => $request->keyword
         ));
-        return view('frontend.maps.index', compact('maps','suggestedareas'));
+        // return view('frontend.maps.index', compact('maps','suggestedareas'));
+        return view('frontend.maps.index');
     }
     public function single($id)
     {
