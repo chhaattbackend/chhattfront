@@ -1,12 +1,7 @@
 @extends('layouts.master')
 @section('style')
-    <title>Beautiful {{ @$properties->size }} {{ @$properties->size_type }} {{ @$properties->property_type }}
-        {{ @$properties->property_for }} In {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }}
-        {{ $properties->areaOne->city->name }} | Chhatt.com</title>
-    <meta name="title"
-        content="Beautiful {{ @$properties->size }} {{ @$properties->size_type }} {{ @$properties->property_type }}{{ @$properties->property_for }} In {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }} {{ $properties->areaOne->city->name }} | Chhatt.com">
-    <meta name="description"
-        content="Find the {{ @$properties->size }} {{ @$properties->size_type }} {{ @$properties->property_type }} {{ @$properties->property_for }} In {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }} {{ $properties->areaOne->city->name }}. Chhatt.com provides you luxury apartments, flats and properties at best prices.">
+
+
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/index.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/property/single.css') }}" />
     <!-- EXTERNAL LINKS START -->
@@ -29,9 +24,9 @@
     <div class="mn_divz">
         <div class="backgz">
             <div class="backg_sdivz">
-                <h2 class="fw-bolder">Beautiful {{ @$properties->size }} {{ @$properties->size_type }}
+                {{-- <h2 class="fw-bolder">Beautiful {{ @$properties->size }} {{ @$properties->size_type }}
                     {{ @$properties->property_type }} {{ @$properties->property_for }} in
-                    {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }} </h2>
+                    {{ @$properties->areaOne->name }} {{ @$properties->areaTwo->name }} </h2> --}}
             </div>
         </div>
     </div>
@@ -40,7 +35,7 @@
     <!-- breadcrumbs start -->
     <div class="breadcrumbs_main_div">
         <div class="inner_div">
-            <div class="breadcrum_none" style="color: black;font-size: 13px;font-weight: bold ">
+            {{-- <div class="breadcrum_none" style="color: black;font-size: 13px;font-weight: bold ">
                 <a style="" href="{{ route('home') }}" title="Chhatt"> Chhatt </a> >
                 <a title=""
                     href="{{ route('property.search', ['city' => $properties->areaOne->city->name]) }}">{{ $properties->areaOne->city->name }}
@@ -64,7 +59,7 @@
 
 
                 &nbsp;
-            </div>
+            </div> --}}
             <div class="share_div">
 
                 <!--  <button>
@@ -87,10 +82,10 @@
                         <div class="fotorama mt-5" data-nav="thumbs" data-width="100%" data-allowfullscreen="true">
                             <!-- ↑ The same as data-ratio="4/3"  or data-ratio="1.3333333333". -->
                             {{-- @dd($propertyimage) --}}
-                            @foreach ($propertyimage as $item)
+                            @foreach ($projectimage as $item)
 
                                 <a href="">
-                                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/properties/{{ $item->name }}"
+                                    <img src="https://chhatt.s3.ap-south-1.amazonaws.com/projects/{{ $item->name }}"
                                         width="130" height="96">
                                 </a>
                             @endforeach
@@ -105,7 +100,7 @@
                             <div>
                                 <h5>Type</h5>
                                 <h4>
-                                    {{ @$properties->property_type }}
+                                    {{-- {{ @$project->property_type }} --}}
                                 </h4>
                             </div>
                             <span></span>
@@ -127,46 +122,45 @@
                                             }
                                         }
                                     @endphp
-                                    {{ convert_rupee(@$properties->price) }} </h4>
+                                    {{ convert_rupee(@$project->price) }} </h4>
                             </div>
                             <span></span>
                             <div>
                                 <h5>Area</h5>
                                 <h4>
-                                    {{ @$properties->size }} {{ @$properties->size_type }}
+                                    {{-- {{ @$properties->size }} {{ @$properties->size_type }} --}}
                                 </h4>
                             </div>
                             <span></span>
                             <div>
                                 <h5>Purpose</h5>
                                 <h4>
-                                    {{ @$properties->property_for }}
+                                    {{ @$project->description }}
                                 </h4>
                             </div>
                             <span></span>
-                            <div>
+                            {{-- <div>
                                 <h5>Bedroom(s)</h5>
                                 <h4>
                                     {{ @$properties->bed }}
                                 </h4>
-                            </div>
+                            </div> --}}
                             <span></span>
-                            <div>
+                            {{-- <div>
                                 <h5>Bath(s)</h5>
                                 <h4>
                                     {{ @$properties->bath }}
                                 </h4>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <!-- OVERVIEW END -->
                     <!-- DESCRIPTION START -->
                     <div class="descriptionContainer">
                         <h3> Description </h3>
-                        <p>{{ @$properties->size }} {{ @$properties->size_type }} {{ @$properties->property_type }}
-                            {{ @$properties->property_for }} for {{ convert_rupee(@$properties->price) }} in
-                            {{ @$properties->areaOne->name }},{{ @$properties->areaOne->city->name }} </p>
-                            <p> {{@$properties->description}}</p>
+                        <p>
+                             for {{ convert_rupee(@$project->price) }} in
+                            {{ @$project->areaOne->name }},{{ @$project->areaOne->city->name }} </p>
                     </div>
                     <!-- DESCRIPTION END -->
 
@@ -183,8 +177,8 @@
 
                         </style>
                         <div>
-                            <input hidden id="latitude" type="text" name="" value="{{ $properties->latitude }}">
-                            <input hidden id="longitude" type="text" name="" value="{{ $properties->longitude }}">
+                            <input hidden id="latitude" type="text" name="" value="{{ $project->latitude }}">
+                            <input hidden id="longitude" type="text" name="" value="{{ $project->longitude }}">
                             <div id="map"></div>
                         </div>
                     </div>
@@ -201,22 +195,22 @@
                     <!--  HIDDEN FOR MAP PAGE START  -->
                     <div class='saleTagContainer'>
                         <h2>
-                            {{ @$properties->property_type }} {{ @$properties->property_for }} in
-                            {{ @$properties->areaOne->name }}
+                            {{ @$project->property_type }} {{ @$project->property_for }} in
+                            {{ @$project->areaOne->name }}
                         </h2>
-                        @if (@convert_rupee($properties->price) == '0')
+                        @if (@convert_rupee($project->price) == '0')
                             <h2>
                                 PKR: On Call
                             </h2>
                         @else
                             <h2>
-                                PKR: {{ @convert_rupee($properties->price) }}
+                                PKR: {{ @convert_rupee($project->price) }}
                             </h2>
 
                         @endif
 
                         <p>
-                            {{ @$properties->address }}
+                            {{ @$project->address }}
                         </p>
                     </div>
                     <br />
@@ -225,44 +219,44 @@
                         <h2>Contact Realtor</h2>
                         <div class="Style_contactUser__3SauW">
                             {{-- {{ $properties->user }} --}}
-                            @if ($properties->user->thumbnail != null)
+                            @if ($project->user->thumbnail != null)
                                 <div style="text-align: center">
-                                    <a href="{{ route('agent.single', ['id' => $properties->user->agent->id]) }}">
+                                    <a href="{{ route('agent.single', ['id' => $project->user->agent->id]) }}">
 
                                         <img width="60px" height="60px" style="border-radius: 50px"
-                                            src="https://chhatt.s3.ap-south-1.amazonaws.com/users/{!! $properties->user->thumbnail !!}"
-                                            alt="{{ $properties->user->name }}">
+                                            src="https://chhatt.s3.ap-south-1.amazonaws.com/users/{!! $project->user->thumbnail !!}"
+                                            alt="{{ $project->user->name }}">
                                     </a>
                                     {{-- @dd($properties->user->agent) --}}
-                                    <h5 class="pt-2 pb-1">{!! $properties->user->name !!} </h5>
+                                    <h5 class="pt-2 pb-1">{!! $project->user->name !!} </h5>
 
-                                    <a href="{{ route('single.agency', ['id' => $properties->user->agent->agency->id]) }}">
+                                    <a href="{{ route('single.agency', ['id' => $project->user->agent->agency->id]) }}">
 
-                                        <h6 class="pt-2 pb-1">{!! @$properties->user->agent->agency->name !!}</h6>
+                                        <h6 class="pt-2 pb-1">{!! @$project->user->agent->agency->name !!}</h6>
                                     </a>
                                 </div>
 
                             @else
                                 <div style="text-align: center">
-                                    <a href="{{ route('agent.single', ['id' => $properties->user->agent->id]) }}">
+                                    <a href="{{ route('agent.single', ['id' => $project->user->agent->id]) }}">
 
                                         <img width="60px" height="60px" style="border-radius: 50px"
                                             src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
                                             alt="M Akhlaq Khan">
                                     </a>
-                                    <h5 class="pt-2 pb-1">{!! $properties->user->name !!} </h5>
+                                    <h5 class="pt-2 pb-1">{!! $project->user->name !!} </h5>
                                     {{-- @dd($properties->user) --}}
                                     {{-- @dd($properties->id) --}}
-                                    <a href="{{ route('single.agency', ['id' => $properties->user->agent->agency->id]) }}" class="text-decoration-none" style="color: #333;opacity: 0.6 ">
+                                    <a href="{{ route('single.agency', ['id' => $project->user->agent->agency->id]) }}" class="text-decoration-none" style="color: #333;opacity: 0.6 ">
 
-                                        <h6 class="pt-2 pb-1">{!! @$properties->user->agent->agency->name !!} </h6>
+                                        <h6 class="pt-2 pb-1">{!! @$project->user->agent->agency->name !!} </h6>
                                     </a>
                                 </div>
                             @endif
 
                         </div>
 
-                        <input hidden type="text" id="numberrrr" value="{{ @$properties->user->phone }}">
+                        <input hidden type="text" id="numberrrr" value="{{ @$project->user->phone }}">
 
 
                         <Button class="showNumber ripple" onclick="chnagenumb()">
@@ -279,7 +273,7 @@
                         <div class="innerContactform">
                             <form action="{{ route('contact.form') }}" method="POST">
                                 @csrf
-                                <input type="hidden" name='agent_id' value="{!! $properties->user->agent->id !!}">
+                                <input type="hidden" name='agent_id' value="{!! $project->user->agent->id !!}">
                                 <input type="hidden" name='lead_from' value="property">
                                 <input class="inpC @error('name') is-invalid @enderror" type="text" name="name"
                                     placeholder="Name" required />
@@ -296,7 +290,7 @@
                                     </div>
                                 </div>
                                 <textarea required name="description" class="@error('description') is-invalid @enderror"
-                                    rows="5">I saw your ad on Chhatt.com (چھت).&#013;I am interested in your property {!! $properties->id !!} Please do give reference of Chhatt.com to the Realtor/Property Owner</textarea>
+                                    rows="5">I saw your ad on Chhatt.com (چھت).&#013;I am interested in your property {!! $project->id !!} Please do give reference of Chhatt.com to the Realtor/Property Owner</textarea>
                                 <br />
 
                                 <Button type="submit" style="background: #4391f7;border-radius: 4px">
@@ -334,18 +328,18 @@
         <br />
         <hr />
         <div class="d-flex justify-content-between">
-            <h2 class="fw-bold">Related Properties</h2>
+            <h2 class="fw-bold">Related projects</h2>
             <div class="d-flex">
 
-                <div class="ms-4">
+                {{-- <div class="ms-4">
 
                     <a
-                        href="{{ route('property.search', ['city' => $properties->areaOne->city->name, 'area_type' => $properties->type]) }}">
+                        href="{{ route('property.search', ['city' => $project->areaOne->city->name, 'area_type' => $project->type]) }}">
                         <button class="themebtn2 px-3 py-1 ms-1" type="submit">
 
                             View all</button>
                     </a>
-                </div>
+                </div> --}}
 
             </div>
         </div>
@@ -356,7 +350,7 @@
             <!--image allary list-->
             <ul id="box-wrapper" class="boxWrapper ps-0 py-4">
                 <!--apply loop on this li-->
-                @include('frontend.property.relatedlist')
+                {{-- @include('frontend.property.relatedlist') --}}
 
             </ul>
             <div class="sliderBtnRight col-1 m-auto">

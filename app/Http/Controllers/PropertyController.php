@@ -18,6 +18,7 @@ use App\ConstructionStoreProduct;
 use App\GlobalClass;
 use App\Http\Resources\Area;
 use App\Project;
+use App\ProjectImage;
 use App\Property;
 use App\PropertyFor;
 use App\PropertyImage;
@@ -427,9 +428,9 @@ class PropertyController extends Controller
         $city = City::all();
         $propertytype = PropertyType::all();
 
-        // dd($request->search);
+        // dd($request->search_areas);
         $properties=Property::where('description' ,'like', '%' . $request->search_areas . '%')->paginate(25);
-        // dd($properties);
+        // return  $properties;
         if ($properties!=null) {
             return view('frontend.property.search', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_name', 'inputcity_id', 'suggestedareas', 'suggestedareasid'));
         }
@@ -726,6 +727,17 @@ class PropertyController extends Controller
         $pagination = $properties->appends($pagination_array);
 
         return view('frontend.property.search', compact('properties', 'propertytype', 'city', 'inputval', 'inputcity_name', 'inputcity_id', 'suggestedareas', 'suggestedareasid', 'projects'));
+    }
+    public function projectsingle($id)
+    {
+        $id = explode('-', $id);
+
+
+        $project = project::find(end($id));
+
+        $projectimage = ProjectImage::where('project_id', end($id))->get();
+
+        return view('frontend.project.websingle',compact('project','projectimage'));
     }
     public function viewMore(Request $request)
     { {
