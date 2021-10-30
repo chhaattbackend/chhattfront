@@ -192,7 +192,7 @@ class LeadController extends Controller
     public function formsubmit(Request $request)
     {
 
-        dd('d');
+        // dd('d');
 
         $request->validate([
             'name' => 'required',
@@ -225,6 +225,16 @@ class LeadController extends Controller
 
                 'agent_id' => $request->agent_id,
                 'lead_id' => $lead->id
+            ]);
+        }
+        if ($request->lead_from == 'project') {
+            // dd('property');
+
+            LeadAssign::create([
+
+                'agent_id' => $request->agent_id,
+                'lead_id' => $lead->id,
+                'project_id' => $request->project_id,
             ]);
         }
 

@@ -100,7 +100,7 @@
                             <div>
                                 <h5>Type</h5>
                                 <h4>
-                                    {{-- {{ @$project->property_type }} --}}
+                                    {{ @$project->message }}
                                 </h4>
                             </div>
                             <span></span>
@@ -128,6 +128,7 @@
                             <div>
                                 <h5>Area</h5>
                                 <h4>
+                                    {{@$project->area_one->name}}
                                     {{-- {{ @$properties->size }} {{ @$properties->size_type }} --}}
                                 </h4>
                             </div>
@@ -136,6 +137,7 @@
                                 <h5>Purpose</h5>
                                 <h4>
                                     {{ @$project->description }}
+
                                 </h4>
                             </div>
                             <span></span>
@@ -158,9 +160,13 @@
                     <!-- DESCRIPTION START -->
                     <div class="descriptionContainer">
                         <h3> Description </h3>
+                        {{-- @dd($project->area_two) --}}
                         <p>
                              for {{ convert_rupee(@$project->price) }} in
-                            {{ @$project->areaOne->name }},{{ @$project->areaOne->city->name }} </p>
+                            {{ @$project->area_one->name }},{{@$project->area_two->name}}, {{ @$project->area_one->city->name }}
+                            {{ @$project->description }}
+                                {{@$project->message}}
+                        </p>
                     </div>
                     <!-- DESCRIPTION END -->
 
@@ -196,7 +202,7 @@
                     <div class='saleTagContainer'>
                         <h2>
                             {{ @$project->property_type }} {{ @$project->property_for }} in
-                            {{ @$project->areaOne->name }}
+                            {{ @$project->area_one->name }}
                         </h2>
                         @if (@convert_rupee($project->price) == '0')
                             <h2>
@@ -217,6 +223,7 @@
                     <!--  HIDDEN FOR MAP PAGE END  -->
                     <div class="contactContainer">
                         <h2>Contact Realtor</h2>
+                        {{-- @dd($project->user->agent->agency->name) --}}
                         <div class="Style_contactUser__3SauW">
                             {{-- {{ $properties->user }} --}}
                             @if ($project->user->thumbnail != null)
@@ -271,10 +278,10 @@
 
                         <hr />
                         <div class="innerContactform">
-                            <form action="{{ route('contact.form') }}" method="POST">
+                            <form action="{{ route('contact.form',['project_id' => $project->id]) }}" method="POST">
                                 @csrf
                                 <input type="hidden" name='agent_id' value="{!! $project->user->agent->id !!}">
-                                <input type="hidden" name='lead_from' value="property">
+                                <input type="hidden" name='lead_from' value="project">
                                 <input class="inpC @error('name') is-invalid @enderror" type="text" name="name"
                                     placeholder="Name" required />
                                 <br />
@@ -324,22 +331,22 @@
         </div>
     </div>
     <!-- BEST PROPERTY START -->
-    <div class="relatedProperties">
+    {{-- <div class="relatedProperties">
         <br />
         <hr />
         <div class="d-flex justify-content-between">
             <h2 class="fw-bold">Related projects</h2>
             <div class="d-flex">
 
-                {{-- <div class="ms-4">
+                <div class="ms-4">
 
                     <a
-                        href="{{ route('property.search', ['city' => $project->areaOne->city->name, 'area_type' => $project->type]) }}">
+                        href="{{ route('property.search', ['city' => $project->area_one->city->name]) }}">
                         <button class="themebtn2 px-3 py-1 ms-1" type="submit">
 
                             View all</button>
                     </a>
-                </div> --}}
+                </div>
 
             </div>
         </div>
@@ -350,14 +357,14 @@
             <!--image allary list-->
             <ul id="box-wrapper" class="boxWrapper ps-0 py-4">
                 <!--apply loop on this li-->
-                {{-- @include('frontend.property.relatedlist') --}}
+                @include('frontend.property.relatedlist')
 
             </ul>
             <div class="sliderBtnRight col-1 m-auto">
                 <i class="scroll-right bi bi-arrow-right-circle-fill"></i>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- BEST PROPERTY END -->
     <!-- EXTERNAL LINKS START -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"

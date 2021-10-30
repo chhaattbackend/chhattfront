@@ -12,7 +12,7 @@
 
 
             <div class="propertyCard p-2">
-                <a class="text-decoration-none text-dark position-relative" href="">
+                <a class="text-decoration-none text-dark position-relative" href="{{route('single.project',$item->id)}}">
                     <div class="imageSection">
 
                         <img class="slideImg" src="https://chhatt.s3.ap-south-1.amazonaws.com/projects/{{ @$item->images[0]->name }}"

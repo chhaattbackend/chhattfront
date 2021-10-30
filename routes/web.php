@@ -20,7 +20,7 @@ Route::get('/agentsingle', 'AgentController@singleRealtor')->name('agent.single'
 // Route::get('/number', 'AgentController@index')->name('agent.number');
 Route::get('/property', 'PropertyController@index')->name('property');
 Route::get('/projects', 'PropertyController@forBuy')->name('buy.property');
-// Route::get('/singleproject/{project:id}', 'PropertyController@projectsingle')->name('single.project');
+Route::get('/singleproject/{project:id}', 'PropertyController@projectsingle')->name('single.project');
 Route::get('/All', 'PropertyController@viewMore')->name('more.property');
 Route::get('/popularproperty', 'PropertyController@popularProperty')->name('popular.property');
 Route::get('invest','PropertyController@invest')->name('invest');
@@ -44,15 +44,11 @@ Route::post('/maps/ajax', 'MapController@Ajax');
 Route::post('/agency/mobileajax', 'AgencyController@mobileajax');
 Route::post('/agent/mobileajax', 'AgentController@mobileajax');
 Route::get('/property/{property_type}', 'PropertyController@explorer')->name('explorer.search');
-// Route::get('/contact-us', function () {
-//     return view('layouts.contact');
-// })->name('contact');
+
 
 Route::view('/contact-us', 'layouts.contact')->name('contact');
 
-// Route::get('/exapmle', function () {
-//     return view('frontend.agency.agentlist');
-// })->name('contact');
+
 
 Route::post('sendform', 'LeadController@formsubmit')->name('contact.form');
 Route::post('sendform1', 'LeadController@formsubmit1')->name('contact.form1');
@@ -63,7 +59,7 @@ Route::get('filter/{for}', 'PropertyController@mobile')->name('filter');
 Route::get('results/{all}', 'PropertyController@search')->name('allproperties');
 // mobile
 
-// Route::prefix('construction')->group(function () {
+
 Route::get('construction', 'ConstructionACategoryController@index')->name('construction.home');
 Route::get('searchsuggestions', 'ConstructionACategoryController@searchsuggestions')->name('construction.searchsuggestions');
 Route::get('construction/result', 'ConstructionACategoryController@search')->name('construction.search');
@@ -74,4 +70,4 @@ Route::get('{acategory:slug}/{bcategory:slug}', 'ConstructionBCategoryController
 Route::get('{acategory:slug}/{bcategory:slug}/{ccategory:slug}', 'ConstructionBCategoryController@ccatproductlist')->name('construction.ccatproductlist');
 Route::get('{acategory:slug}/{bcategory:slug}/{ccategory:slug}/{dcategory:slug}', 'ConstructionBCategoryController@dcatproductlist')->name('construction.dcatproductlist');
 Route::get('{acategory:slug}/{bcategory:slug}/{ccategory:slug}/brand/{brand:slug}', 'ConstructionBCategoryController@brandproductlist')->name('construction.brandproductlist');
-// });
+
