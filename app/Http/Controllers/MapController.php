@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\AreaOne;
 use App\AreaTwo;
+use App\City;
 use App\Map;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MapController extends Controller
 {
@@ -17,14 +20,25 @@ class MapController extends Controller
 
     public function index(Request $request)
     {
-        $suggestedareas=null;
+
+        $city = City::all();
+
+        $area= DB::select(Map::raw("SELECT DISTINCT(maps.area_one_id) From maps,area_one WHERE area_one.id = maps.area_one_id"));
+        $a=collect($area)->map(function ($b){
+            return AreaOne::with('areatwos')->find($b->area_one_id);
+        });
+        // dd($a);
+        // $areaone=AreaOne::find(6);
+        // dd($areaone->map);
+
+
         // $maps=Map::paginate(25)->setpath('');
         $maps = Map::orderBy('created_at', 'desc')->paginate(28);
         $pagination = $maps->appends(array(
             'keyword' => $request->keyword
         ));
         // return view('frontend.maps.index', compact('maps','suggestedareas'));
-        return view('frontend.maps.index');
+        return view('frontend.maps.index',compact('city','area','a'));
     }
     public function single($id)
     {

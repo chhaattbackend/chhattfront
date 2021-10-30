@@ -41,7 +41,64 @@
 @endsection
 @section('content')
 
-    @livewire('map.item')
+
+    <div class="exp">
+
+        <div class="container" style="padding: 2%">
+
+
+            <div class="row ">
+                <div style="margin-bottom: 2%; text-align: center">
+                    <h4>
+                       Maps For KARACHI
+                        <hr>
+                    </h4>
+
+                </div>
+
+
+                <div class="col-12">
+                    <div class="row" style="text-align: center">
+                        @foreach ($a as $item)
+
+                            <div class="col-4 text-center py-5">
+                                {{-- <a href="{{route('')}}"> --}}
+                                    <h5  class="space-4">
+                                        {{ $item->name }}
+                                        <hr>
+                                    </h5>
+
+                                {{-- </a> --}}
+                                @foreach ($item->areatwos->slice(0,7) as $item1)
+                                <div class="col-10 offset-1 text-center pt-3" style="text-align: start">
+                                    <a href="" class="text-decoration-none " style="font-weight: 500; color: #333;opacity: 0.6;">
+                                                {{@$item1->name}}
+
+                                            </a>
+                                        </div>
+
+                                        @endforeach
+
+                            </div>
+                        @endforeach
+
+
+
+                    </div>
+
+                    <br>
+                 
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+    {{-- @livewire('map.item') --}}
+
 
     {{-- <div>
         <meta hidden name="csrf-token" content="{{ csrf_token() }}" />

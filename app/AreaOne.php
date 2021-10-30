@@ -32,5 +32,9 @@ class AreaOne extends Model
     public function leads(){
         return $this->hasMany(Lead::class,'area_one_id');
     }
+    public function map()
+    {
+        return $this->hasMany(Map::class,'area_one_id');
+    }
 
 }
