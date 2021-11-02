@@ -130,7 +130,7 @@
         <div class="card">
             <div class="card-header">
                 <h2>
-                    {{ $maps->name }}
+                    {{ $maps[0]->name }}
                 </h2>
 
             </div>
@@ -147,7 +147,7 @@
                     <div class="mt-5" data-nav="thumbs" data-width="70%" data-allowfullscreen="true"
                         style="margin-left: 5%">
 
-                        <img src="https://chhatt.s3.ap-south-1.amazonaws.com/maps/{{ $maps->image }}"
+                        <img src="https://chhatt.s3.ap-south-1.amazonaws.com/maps/{{ $maps[0]->image }}"
                               id="myimage" alt="" class="" width="
                             800" height="800">
 

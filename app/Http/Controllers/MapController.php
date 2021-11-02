@@ -40,12 +40,23 @@ class MapController extends Controller
         // return view('frontend.maps.index', compact('maps','suggestedareas'));
         return view('frontend.maps.index',compact('city','area','a'));
     }
+    public function viewallmaps($id)
+    {
+        $area= DB::select(Map::raw("SELECT DISTINCT(maps.area_one_id) From maps,area_one WHERE $id = maps.area_one_id"));
+        $a=collect($area)->map(function ($b){
+            return AreaOne::with('areatwos')->find($b->area_one_id);
+        });
+
+        return view('frontend.maps.allmaps',compact('a'));
+
+    }
     public function single($id)
     {
-        $id = explode('-', $id);
+        $id1 = $id;
 
 
-        $maps = Map::find(end($id));
+        $maps = Map::where('area_two_id',$id1)->get();
+
         return view('frontend.maps.single',compact('maps'));
 
     }

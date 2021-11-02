@@ -36,6 +36,7 @@ Route::get('/getspeciality', 'AgentController@getSpeciality')->name('agent.speci
 Route::get('/real-estate-agencies', 'AgencyController@index')->name('agency');
 Route::get('/agency/{id}', 'AgencyController@singleAgency')->name('single.agency');
 Route::get('/propertyDetail/{id}', 'PropertyController@singleProperty')->name('single.property');
+Route::get('viewall/{id}','MapController@viewallmaps')->name('maps123');
 
 Route::post('/agency/ajax', 'AgencyController@ajax');
 Route::post('/invest/ajax', 'PropertyController@investAjax');

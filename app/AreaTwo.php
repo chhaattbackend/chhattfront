@@ -44,4 +44,8 @@ class AreaTwo extends Model
     {
         return $this->hasMany(Lead::class, 'area_two_id');
     }
+    public function map()
+    {
+        return $this->hasMany(Map::class, 'area_two_id');
+    }
 }
