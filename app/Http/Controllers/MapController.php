@@ -40,16 +40,7 @@ class MapController extends Controller
         // return view('frontend.maps.index', compact('maps','suggestedareas'));
         return view('frontend.maps.index',compact('city','area','a'));
     }
-    public function viewallmaps($id)
-    {
-        $area= DB::select(Map::raw("SELECT DISTINCT(maps.area_one_id) From maps,area_one WHERE $id = maps.area_one_id"));
-        $a=collect($area)->map(function ($b){
-            return AreaOne::with('areatwos')->find($b->area_one_id);
-        });
 
-        return view('frontend.maps.allmaps',compact('a'));
-
-    }
     public function single($id)
     {
         $id1 = $id;
@@ -58,6 +49,18 @@ class MapController extends Controller
         $maps = Map::where('area_two_id',$id1)->get();
 
         return view('frontend.maps.single',compact('maps'));
+
+    }
+
+    public function viewallmaps(Request $request)
+    {
+        $area= DB::select(Map::raw("SELECT DISTINCT(maps.area_one_id) From maps,area_one WHERE $request->id = maps.area_one_id"));
+        $a=collect($area)->map(function ($b){
+            return AreaOne::with('areatwos')->find($b->area_one_id);
+        });
+
+
+        return view('frontend.home.try',compact('a'));
 
     }
     public function ajax(Request $request)
@@ -98,6 +101,7 @@ class MapController extends Controller
             // 'pagination' => (string) $projects->links()
         ]);
     }
+
 
     /**
      * Show the form for creating a new resource.

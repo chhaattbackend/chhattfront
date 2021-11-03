@@ -26,6 +26,7 @@ Route::get('/popularproperty', 'PropertyController@popularProperty')->name('popu
 Route::get('invest','PropertyController@invest')->name('invest');
 Route::get('maps','MapController@index')->name('maps');
 Route::get('singlemap/{id}','MapController@single')->name('single.map');
+Route::get('viewall','MapController@viewallmaps')->name('view.all');
 
 
 
@@ -36,7 +37,7 @@ Route::get('/getspeciality', 'AgentController@getSpeciality')->name('agent.speci
 Route::get('/real-estate-agencies', 'AgencyController@index')->name('agency');
 Route::get('/agency/{id}', 'AgencyController@singleAgency')->name('single.agency');
 Route::get('/propertyDetail/{id}', 'PropertyController@singleProperty')->name('single.property');
-Route::get('viewall/{id}','MapController@viewallmaps')->name('maps123');
+
 
 Route::post('/agency/ajax', 'AgencyController@ajax');
 Route::post('/invest/ajax', 'PropertyController@investAjax');
@@ -45,7 +46,7 @@ Route::post('/maps/ajax', 'MapController@Ajax');
 Route::post('/agency/mobileajax', 'AgencyController@mobileajax');
 Route::post('/agent/mobileajax', 'AgentController@mobileajax');
 Route::get('/property/{property_type}', 'PropertyController@explorer')->name('explorer.search');
-
+Route::get('trying', 'MapController@trying')->name('try.now');
 
 Route::view('/contact-us', 'layouts.contact')->name('contact');
 

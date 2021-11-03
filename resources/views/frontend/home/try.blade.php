@@ -60,51 +60,35 @@
                 <div class="col-12">
                     <div class="row" style="text-align: center">
                         <div class="col-12 text-center py-5 ">
-                            @foreach ($a as $item)
-
-                                {{-- <a href="{{route('')}}"> --}}
-                                <h5 class="space-4 pt-4">
-                                    {{ $item->name }}
-                                    <hr>
-                                </h5>
-
-                                {{-- </a> --}}
 
 
-                                <div class="col-12  text-center pt-3" style="text-align: start">
-                                    <div class="row">
-                                        @foreach ($item->areatwos->slice(0, 30) as $item1)
+                            {{-- <a href="{{route('')}}"> --}}
+                            <h5 class="space-4 pt-4">
+                                {{ $a[0]->name }}
+                                <hr>
+                            </h5>
 
-                                            <div class="col-4 text-center pt-3" style="text-align: start">
-
-                                                <a href="{{ route('single.map', $item1->id) }}" class="text-decoration-none "
-                                                    style="font-weight: 500; color: #333;opacity: 0.6; padding-top: 4%">
-                                                    {{ @$item1->name }}
-                                                </a>
-
-                                            </div>
-                                        @endforeach
-                                    </div>
+                            {{-- </a> --}}
 
 
+                            <div class="col-12  text-center pt-3" style="text-align: start">
+                                <div class="row">
+                                    @foreach ($a[0]->areatwos as $item1)
 
+                                        <div class="col-4 text-center pt-3" style="text-align: start">
 
+                                            <a href="{{ route('single.map', $item1->id) }}" class="text-decoration-none "
+                                                style="font-weight: 500; color: #333;opacity: 0.6; padding-top: 4%">
+                                                {{ @$item1->name }}
+                                            </a>
 
-
-
-
-
-
-
-
+                                        </div>
+                                    @endforeach
                                 </div>
-                                <a href="{{route('view.all',['id'=>$item->id])}}">
-                                    <button class="themebtn2 px-3 py-1 ms-1 align-end mt-5" type="submit">
-                                        View All
-                                    </button>
 
-                                </a>
-                            @endforeach
+                            </div>
+
+
                         </div>
 
 

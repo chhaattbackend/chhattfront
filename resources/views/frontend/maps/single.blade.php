@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/index.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/property/single.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('styles/zoom-main.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/xzoom.css') }}" />
     <!-- EXTERNAL LINKS START -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -14,6 +15,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  
+
+
     <!-- image gallery start -->
     <!-- jQuery 1.8 or later, 33 KB -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -23,6 +27,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
     <script>
         src = "public/js/zoom-image.js"
+        src = "public/js/xzoom.js"
     </script>
     <script>
         src = "public/js/zoom-main.js"
@@ -147,9 +152,9 @@
                     <div class="mt-5" data-nav="thumbs" data-width="70%" data-allowfullscreen="true"
                         style="margin-left: 5%">
 
-                        <img src="https://chhatt.s3.ap-south-1.amazonaws.com/maps/{{ $maps[0]->image }}"
-                              id="myimage" alt="" class="" width="
-                            800" height="800">
+                        <img src="https://chhatt.s3.ap-south-1.amazonaws.com/maps/{{ $maps[0]->image }}" id="myimage"
+                            alt="" class="" width="
+                                    800" height="800">
 
                         {{-- <a href="">
                         <img src="https://chhatt.s3.ap-south-1.amazonaws.com/maps/{{ $maps->image }}"
@@ -170,6 +175,25 @@
 
         <!-- Add images to <div class="fotorama"></div> -->
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <script>
         function imageZoom(imgID, resultID) {
             var img, lens, result, cx, cy;
@@ -259,5 +283,6 @@
     <script>
         imageZoom("myimage", "myresult");
     </script>
+
 
 @endsection
